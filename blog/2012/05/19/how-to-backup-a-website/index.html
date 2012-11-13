@@ -5,11 +5,14 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Dear Coding Diary,</title>
+  <title>How to Backup a Website on S3 - Dear Coding Diary,</title>
   <meta name="author" content="d-g-h">
 
   
-  <meta name="description" content="The past two months have been busy. I have been learning and implementing something new on every single project I touch. There are too many to list &hellip;">
+  <meta name="description" content="Some Requirements First: Free
+Easy
+Mirrors site
+Interacts nicely with AWS S3 Storage After a bit of extensive research I settled on a solution I &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +21,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://d-g-h.github.com">
+  <link rel="canonical" href="http://d-g-h.github.com/blog/2012/05/19/how-to-backup-a-website">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -75,53 +78,12 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/06/23/how-ec2/">How to for EC2</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-06-23T00:26:00-04:00" pubdate data-updated="true">Jun 23<span>rd</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The past two months have been busy. I have been learning and implementing something new on every single project I touch.  There are too many to list here, the most interesting thing that I have learned was building a site that could supposedly andle that could handle 15 millions pageviews or something like that in one hour.</p>
-
-<p><a href="http://www.ewanleith.com/blog/900/10-million-hits-a-day-with-wordpress-using-a-15-server">http://www.ewanleith.com/blog/900/10-million-hits-a-day-with-wordpress-using-a-15-server</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/05/19/how-to-backup-a-website/">How to Backup a Website on S3</a></h1>
+      <h1 class="entry-title">How to Backup a Website on S3</h1>
     
     
       <p class="meta">
@@ -144,7 +106,7 @@
   </header>
 
 
-  <div class="entry-content"><p>Some Requirements First:</p>
+<div class="entry-content"><p>Some Requirements First:</p>
 
 <ul>
 <li><p>Free</p></li>
@@ -171,22 +133,16 @@ a. activate
 boto-rsync -a UUUUUUUUUUUUUUUU -s IIIIIIIIIIIIIIIIIIIIIIIII  /home/adfadfadsf/users/.home/domains s3://c.namename.co
 </code></pre>
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/04/14/one-of-many/">How to Save a Website</a></h1>
-    
-    
-      <p class="meta">
-        
+  
+
+<span class="byline author vcard">Posted by <span class="fn">d-g-h</span></span>
+
+      
 
 
 
@@ -198,58 +154,40 @@ boto-rsync -a UUUUUUUUUUUUUUUU -s IIIIIIIIIIIIIIIIIIIIIIIII  /home/adfadfadsf/us
   
 
 
-<time datetime="2012-04-14T16:37:00-04:00" pubdate data-updated="true">Apr 14<span>th</span>, 2012</time>
-        
-      </p>
+<time datetime="2012-05-19T22:43:00-04:00" pubdate data-updated="true">May 19<span>th</span>, 2012</time>
+      
+
+
+    </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>What happened? The dude that had the full control over the site, just let it go. For reasons unknown to me, he did. The creator of the site, and other friends tried contacting him, and they got ignored. So, what to do. You have a site, not that small, not that large, and it&#8217;s dead.
-It&#8217;s embarrassing.</p>
-
-<p>What we did before. Before all this I was working around all the problems with the lack SSH or even sFTP. I was mirroring the site once a week, using this snippet of code.</p>
-
-<pre><code>wget --mirror --ftp-user=user --ftp-password=pass -o /log.txt ftp://ftp.thelastpeople.com
-</code></pre>
-
-<p>That was fun, until I started shutdown my computer, but now that I have SSH enabled, I will post my experience how to back your site on Amazon and schedule via cron job on the server and hopefully, I will not delete the shell scripts for that as well.</p>
-
-<p>I just needed the IP of the server, and I found it. Thanks for the cardinal rule of internet, which is something like nothing ever ever escapes the internet. So, I downloaded directory</p>
-
-<pre><code>scp ... /999.99.9999 /home/whatever/downloads  
-</code></pre>
-
-<p>Then I acquired new server space and a new domain name</p>
-
-<p>Moved everything back over, the entire file system, and all the SQL INSERT statements that I had mailed to me twice a day. Did a find &amp; replace job on statements as the url changed.</p>
-
-<p>All is fixed except file permissions which I changed with something like</p>
-
-<pre><code>find *.html | chmod 755
-</code></pre>
-
-<p>Then I fixed all the plugins or eliminated the plugins that didn&#8217;t handle the switch well.</p>
-
-<p>Now, I just change the logs every now and then. Done. However, we have lost half of site traffic even though I updated the Google webmaster configuration.</p>
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://d-g-h.github.com/blog/2012/05/19/how-to-backup-a-website/" data-via="" data-counturl="http://d-g-h.github.com/blog/2012/05/19/how-to-backup-a-website/" >Tweet</a>
+  
+  
+  
 </div>
-  
-  
 
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2012/04/14/one-of-many/" title="Previous Post: How to Save a Website">&laquo; How to Save a Website</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/06/23/how-ec2/" title="Next Post: How to for EC2">How to for EC2 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
 
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
 </div>
+
 <aside class="sidebar">
   
     
   
 </aside>
+
 
     </div>
   </div>
