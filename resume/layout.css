@@ -1,0 +1,250 @@
+/*********************** 
+general styling
+************************/
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section { display: block; }
+
+body { margin: 0; font-size: 13px; line-height: 1.231; }
+
+body, button, input, select, textarea { font-family: sans-serif; color: #222; }
+
+a { color: #00e; }
+a:visited { }
+a:hover {  }
+a:focus { outline: thin dotted; }
+a:hover, a:active { outline: 0; }
+
+html { font-size: 95%; overflow-y: auto; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+
+/*********************** 
+important for easy em usage
+************************/
+body { font-size: 100%; background-color: rgb(214, 214, 214); }
+
+/*********************** 
+a clean header font
+************************/
+
+
+/*********************** 
+our mobile-first styles
+************************/
+[role="main"] {
+    float:left;
+    width:100%;
+    font-family: 'PT Sans', sans-serif;
+    font-weight:400;
+    color: rgba(0,0,0,0.65);
+}
+#container {
+    width:100%;
+    margin:0 auto;
+    max-width: 1400px;
+    position:relative;
+}
+#inner-wrap {
+    -webkit-box-shadow: 0 0 0 0 transparent;
+    -moz-box-shadow: 0 0 0 0 transparent;
+    box-shadow: 0 0 0 0 transparent;
+    float:left;
+    padding:2em 1em;
+}
+    .col-one header {
+        float:none;
+        width:80%;
+        white-space: nowrap;
+    }
+header h2,
+dd.achievement,
+#work-experience:after,
+.col-two dl:after,
+.col-two ul:after,
+.col-two blockquote p,
+article h2 {
+    color:#31a8ca;
+}
+header h1,
+header h2 {
+    margin: 0;
+    font-weight:normal;
+}   
+header h1 {
+    font-family: 'Droid Sans', sans-serif;
+    font-size: 3em;
+    margin-bottom:-0.1em;
+    font-weight:700;
+}
+header h2 {
+    font-size: 2em;
+}
+article hgroup {
+    float:left;
+    width:100%;
+}
+    article hgroup * {
+        margin:0;
+        padding:0;
+    }
+
+.col-two dl:after,
+.col-two ul:after {
+    margin-left:0;
+}
+
+#work-experience {
+    float:left;
+}
+
+    }
+dl {
+    clear:left;
+    margin: 0 0 1em;
+}
+
+dt,
+dd,
+.col-two h1,
+.col-two li,
+.col-two p,
+{
+    font-size: 1.2em;
+    margin: 0;
+}
+
+
+dt {
+    margin:0;
+    }
+dd {
+    margin:0;
+}
+.col-one,
+.col-two {
+    float:none;
+    width:auto;
+    clear:left;
+}
+.col-two {
+    margin-top:2em;
+    float:left;
+    clear:left;
+}
+    .col-one article {
+        float:left;
+        clear:left;
+        margin-bottom:1em;
+     }
+    #contact-info {
+        margin-bottom:2.5em;
+        float: left;
+        width: 79.5361%;
+    }
+    #contact-info dd {
+        float:left;
+        width: 79.5361%;
+    }
+    .col-one > div {
+        padding: 0;
+    }
+    .col-two h2 {
+        margin:0;
+    }
+    .col-two dt {
+        display: block;
+        float: none;
+        font-style: normal;
+        margin: 0.7em 0 0;
+        text-align: left;
+        width: auto;
+        color:#211b1b;
+    }
+    .col-two dt:first-child {
+        margin-top:1.1em;
+    }
+    .date-ranges {
+        width: 79.5361%;
+        float: left;
+    }
+    .col-two dd,
+    .col-two > p,
+    .job-time {
+        font-size:1.2em;
+        float:none;
+        text-align:left;
+        width:100%;
+    }
+    .job-location,
+    .job-title,
+    .company-name,
+    .job-details {
+        font-size:1.2em;
+    }
+    
+    .job-details {
+        float:left;
+        width:100%;
+        margin:0 0 0.3em 0;
+        padding:0;
+    }
+    .col-two ul {
+        padding:0;
+    }
+    .col-two li {
+        list-style: none;
+        color: rgba(0,0,0,0.65);
+        margin-bottom:0.25em;
+        font-size: 0.8em;
+    }
+
+
+    .skills {
+        font-size: 1.4em !important;
+    }
+/*********************** 
+these styles will override
+our mobile-first styles for
+larger displays
+************************/
+@media only screen and (min-width: 568px) {
+  /* Style adjustments for viewports 520px and over go here */
+    .col-one {
+        float:left;
+        width: 65%;
+    }
+        .col-one header {
+            float:right;
+        }
+        .col-one > div {
+            padding:0 4em 0 0;
+        }
+    .col-two {
+        float:right;
+        width:35%;
+        margin-top:9.3em;
+        clear:none;
+    }
+    
+    #contact-info dd {
+        float:right;
+    }
+    article hgroup, .job-time, .date-ranges, #contact-info {
+        float:right;
+        width: 79.5361%;
+    }
+     
+    .job-time {
+        text-align:left;
+        float:left;
+    }
+    .job-time:after {
+        display:block;
+        content: "";
+    }
+    .job-details {
+        float:right;
+        width:79.536082474%;
+    }   
+    
+        
+    .col-two dl:after,
+    .col-two ul:after {
+        margin-left:0;
