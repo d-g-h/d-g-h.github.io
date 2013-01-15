@@ -9,7 +9,7 @@
   <meta name="author" content="d-g-h">
 
   
-  <meta name="description" content="Everytime I blog over here, I want to be like I&#8217;m so busy, I can&#8217;t talk right now. I feel like I will always feel this way, but I if I &hellip;">
+  <meta name="description" content="First off, to get back here, I needed to use this cmd for .zsh rake "new_post[Zombie Ninjas Attack: A Pastafarian's Retrospective]" and not&#8230; &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,275 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/01/15/custom-excerpt-lengths-all-around-wordpress-and-a-year-ender-list/">Custom Excerpt Lengths All Around WordPress</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-15T17:03:00-05:00" pubdate data-updated="true">Jan 15<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>First off, to get back here, I needed to use this cmd for .zsh</p>
+
+<p><code>rake "new_post[Zombie Ninjas Attack: A Pastafarian's Retrospective]"</code></p>
+
+<p>and not&#8230;</p>
+
+<p><code>rake new_post["title"]</code></p>
+
+<p>Moving on, I wanted to share this with rest of the world as I don&#8217;t understand why it isn&#8217;t default in WordPress.</p>
+
+<p>I didn&#8217;t write this myself, but it&#8217;s clear as to what it does. I believe the original was found in codex.wordpress.org, but maybe not.</p>
+
+<p>By default, the_excerpt function in WP is 55 words. You can customize this length via there API. That is weaksauce though.  This plugin allows you to make different custom lengths where you need them to be custom. Here we go.</p>
+
+<figure class='code'><figcaption><span>functions.php</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="cp">&lt;?php</span>
+</span><span class='line'>  <span class="k">function</span> <span class="nf">my_excerpt</span><span class="p">(</span><span class="nv">$excerpt_length</span> <span class="o">=</span> <span class="mi">55</span><span class="p">,</span> <span class="nv">$id</span> <span class="o">=</span> <span class="k">false</span><span class="p">,</span> <span class="nv">$echo</span> <span class="o">=</span> <span class="k">true</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nv">$text</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="k">if</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>                  <span class="nv">$the_post</span> <span class="o">=</span> <span class="o">&amp;</span> <span class="nx">get_post</span><span class="p">(</span> <span class="nv">$my_id</span> <span class="o">=</span> <span class="nv">$id</span> <span class="p">);</span>
+</span><span class='line'>                  <span class="nv">$text</span> <span class="o">=</span> <span class="p">(</span><span class="nv">$the_post</span><span class="o">-&gt;</span><span class="na">post_excerpt</span><span class="p">)</span> <span class="o">?</span> <span class="nv">$the_post</span><span class="o">-&gt;</span><span class="na">post_excerpt</span> <span class="o">:</span> <span class="nv">$the_post</span><span class="o">-&gt;</span><span class="na">post_content</span><span class="p">;</span>
+</span><span class='line'>            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>                  <span class="k">global</span> <span class="nv">$post</span><span class="p">;</span>
+</span><span class='line'>                  <span class="nv">$text</span> <span class="o">=</span> <span class="p">(</span><span class="nv">$post</span><span class="o">-&gt;</span><span class="na">post_excerpt</span><span class="p">)</span> <span class="o">?</span> <span class="nv">$post</span><span class="o">-&gt;</span><span class="na">post_excerpt</span> <span class="o">:</span> <span class="nx">get_the_content</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>                  <span class="nv">$text</span> <span class="o">=</span> <span class="nx">strip_shortcodes</span><span class="p">(</span> <span class="nv">$text</span> <span class="p">);</span>
+</span><span class='line'>                  <span class="nv">$text</span> <span class="o">=</span> <span class="nx">apply_filters</span><span class="p">(</span><span class="s1">&#39;the_content&#39;</span><span class="p">,</span> <span class="nv">$text</span><span class="p">);</span>
+</span><span class='line'>                  <span class="nv">$text</span> <span class="o">=</span> <span class="nb">str_replace</span><span class="p">(</span><span class="s1">&#39;]]&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;]]&amp;gt;&#39;</span><span class="p">,</span> <span class="nv">$text</span><span class="p">);</span>
+</span><span class='line'>            <span class="nv">$text</span> <span class="o">=</span> <span class="nb">strip_tags</span><span class="p">(</span><span class="nv">$text</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>                  <span class="nv">$excerpt_more</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span> <span class="o">.</span> <span class="s1">&#39;[...]&#39;</span><span class="p">;</span>
+</span><span class='line'>                  <span class="nv">$words</span> <span class="o">=</span> <span class="nb">preg_split</span><span class="p">(</span><span class="s2">&quot;/[</span><span class="se">\n\r\t</span><span class="s2"> ]+/&quot;</span><span class="p">,</span> <span class="nv">$text</span><span class="p">,</span> <span class="nv">$excerpt_length</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">PREG_SPLIT_NO_EMPTY</span><span class="p">);</span>
+</span><span class='line'>                  <span class="k">if</span> <span class="p">(</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$words</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nv">$excerpt_length</span> <span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>                          <span class="nb">array_pop</span><span class="p">(</span><span class="nv">$words</span><span class="p">);</span>
+</span><span class='line'>                          <span class="nv">$text</span> <span class="o">=</span> <span class="nb">implode</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="nv">$words</span><span class="p">);</span>
+</span><span class='line'>                          <span class="nv">$text</span> <span class="o">=</span> <span class="nv">$text</span> <span class="o">.</span> <span class="nv">$excerpt_more</span><span class="p">;</span>
+</span><span class='line'>                  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>                          <span class="nv">$text</span> <span class="o">=</span> <span class="nb">implode</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="nv">$words</span><span class="p">);</span>
+</span><span class='line'>                  <span class="p">}</span>
+</span><span class='line'>          <span class="k">if</span><span class="p">(</span><span class="nv">$echo</span><span class="p">)</span>
+</span><span class='line'>            <span class="k">echo</span> <span class="nx">apply_filters</span><span class="p">(</span><span class="s1">&#39;the_content&#39;</span><span class="p">,</span> <span class="nv">$text</span><span class="p">);</span>
+</span><span class='line'>          <span class="k">else</span>
+</span><span class='line'>          <span class="k">return</span> <span class="nv">$text</span><span class="p">;</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">function</span> <span class="nf">get_my_excerpt</span><span class="p">(</span><span class="nv">$excerpt_length</span> <span class="o">=</span> <span class="mi">55</span><span class="p">,</span> <span class="nv">$id</span> <span class="o">=</span> <span class="k">false</span><span class="p">,</span> <span class="nv">$echo</span> <span class="o">=</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>   <span class="k">return</span> <span class="nx">my_excerpt</span><span class="p">(</span><span class="nv">$excerpt_length</span><span class="p">,</span> <span class="nv">$id</span><span class="p">,</span> <span class="nv">$echo</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'>  <span class="nx">add_filter</span><span class="p">(</span> <span class="s1">&#39;excerpt_length&#39;</span><span class="p">,</span> <span class="s1">&#39;custom_excerpt_length&#39;</span><span class="p">,</span> <span class="mi">999</span> <span class="p">);</span>
+</span><span class='line'><span class="cp">?&gt;</span><span class="x"></span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Yay!</p>
+
+<p>I can&#8217;t blog and never do so while I&#8217;m on a roll. I just wanted to completely think about all the new tools and I have used or I am currently using.</p>
+
+<figure class='code'><figcaption><span>Off the Top of My Head Tool List</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+</pre></td><td class='code'><pre><code class='vim'><span class='line'>tmux
+</span><span class='line'>mvim
+</span><span class='line'>osx lion
+</span><span class='line'>chrome canary
+</span><span class='line'>vimium
+</span><span class='line'>iOS simulator <span class="m">6</span>.<span class="m">0</span> <span class="k">w</span>/safari <span class="k">as</span> the inspector
+</span><span class='line'>solarized
+</span><span class='line'><span class="nb">magic</span> keyboard and trackpad
+</span><span class='line'>virtualbox with ie7<span class="m">-10</span>
+</span><span class='line'>ec2
+</span><span class='line'>nginx
+</span><span class='line'>node
+</span><span class='line'>express
+</span><span class='line'>jade
+</span><span class='line'>stylus
+</span><span class='line'>octopress
+</span><span class='line'>github pages
+</span><span class='line'>github
+</span><span class='line'><span class="k">dig</span>
+</span><span class='line'>ack
+</span><span class='line'><span class="k">history</span> <span class="p">|</span> <span class="k">grep</span> patternname
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>That&#8217;s it I guess I can add to this list. I&#8217;m sure I&#8217;m missing a bunch of things. I didn&#8217;t mention any VIM plugins&#8230;</p>
+
+<p>Here is it real quick though</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+</pre></td><td class='code'><pre><code class='vim'><span class='line'>My Bundles
+</span><span class='line'>Bundle <span class="s1">&#39;gmarik/vundle&#39;</span>
+</span><span class='line'>Bundle <span class="s1">&#39;MarcWeber/vim-addon-mw-utils&#39;</span>
+</span><span class='line'>Bundle <span class="s1">&#39;tomtom/tlib_vim&#39;</span>
+</span><span class='line'>Bundle <span class="s1">&#39;mileszs/ack.vim&#39;</span>
+</span><span class='line'>Bundle <span class="s1">&#39;scrooloose/nerdtree&#39;</span>
+</span><span class='line'>Bundle <span class="s1">&#39;altercation/vim-colors-solarized&#39;</span>
+</span><span class='line'>Bundle <span class="s1">&#39;spf13/vim-colors&#39;</span>
+</span><span class='line'>Bundle <span class="s1">&#39;tpope/vim-surround&#39;</span>
+</span><span class='line'>Bundle <span class="s1">&#39;AutoClose&#39;</span>
+</span><span class='line'>Bundle <span class="s1">&#39;kien/ctrlp.vim&#39;</span>
+</span><span class='line'>Bundle <span class="s1">&#39;vim-scripts/sessionman.vim&#39;</span>
+</span><span class='line'>Bundle <span class="s1">&#39;matchit.zip&#39;</span>
+</span><span class='line'>Bundle <span class="s1">&#39;Lokaltog/vim-powerline&#39;</span>
+</span><span class='line'>Bundle <span class="s1">&#39;Lokaltog/vim-easymotion&#39;</span>
+</span><span class='line'>Bundle <span class="s1">&#39;godlygeek/csapprox&#39;</span>
+</span><span class='line'>Bundle <span class="s1">&#39;flazz/vim-colorschemes&#39;</span>
+</span><span class='line'>Bundle <span class="s1">&#39;corntrace/bufexplorer&#39;</span>
+</span><span class='line'>Bundle <span class="s1">&#39;vim-stylus&#39;</span>
+</span><span class='line'>Bundle <span class="s1">&#39;vim-jade&#39;</span>
+</span><span class='line'>Bundle <span class="s1">&#39;rstacruz/sparkup&#39;</span>
+</span><span class='line'>Bundle <span class="s1">&#39;scrooloose/syntastic&#39;</span>
+</span><span class='line'>Bundle <span class="s1">&#39;garbas/vim-snipmate&#39;</span>
+</span><span class='line'>Bundle <span class="s1">&#39;spf13/snipmate-snippets&#39;</span>
+</span><span class='line'>Bundle <span class="s1">&#39;tpope/vim-fugitive&#39;</span>
+</span><span class='line'>Bundle <span class="s1">&#39;scrooloose/nerdcommenter&#39;</span>
+</span><span class='line'>Bundle <span class="s1">&#39;godlygeek/tabular&#39;</span>
+</span><span class='line'>Bundle <span class="s1">&#39;majutsushi/tagbar&#39;</span>
+</span><span class='line'>Bundle <span class="s1">&#39;Shougo/neocomplcache&#39;</span>
+</span><span class='line'>Bundle <span class="s1">&#39;spf13/PIV&#39;</span>
+</span><span class='line'>Bundle <span class="s1">&#39;klen/python-mode&#39;</span>
+</span><span class='line'>Bundle <span class="s1">&#39;python.vim&#39;</span>
+</span><span class='line'>Bundle <span class="s1">&#39;python_match.vim&#39;</span>
+</span><span class='line'>Bundle <span class="s1">&#39;pythoncomplete&#39;</span>
+</span><span class='line'>Bundle <span class="s1">&#39;leshill/vim-json&#39;</span>
+</span><span class='line'>Bundle <span class="s1">&#39;groenewege/vim-less&#39;</span>
+</span><span class='line'>Bundle <span class="s1">&#39;taxilian/vim-web-indent&#39;</span>
+</span><span class='line'>Bundle <span class="s1">&#39;HTML-AutoCloseTag&#39;</span>
+</span><span class='line'>Bundle <span class="s1">&#39;rails.vim&#39;</span>
+</span><span class='line'>Bundle <span class="s1">&#39;spf13/vim-markdown&#39;</span>
+</span><span class='line'>Bundle <span class="s1">&#39;spf13/vim-preview&#39;</span>
+</span><span class='line'>Bundle <span class="s1">&#39;tpope/vim-cucumber&#39;</span>
+</span><span class='line'>Bundle <span class="s1">&#39;Puppet-Syntax-Highlighting&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -298,7 +567,7 @@ It&#8217;s embarrassing.</p>
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2012 - d-g-h -
+  Copyright &copy; 2013 - d-g-h -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
