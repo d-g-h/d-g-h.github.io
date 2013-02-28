@@ -31,7 +31,7 @@ our mobile-first styles
 [role="main"] {
     float:left;
     width:100%;
-    font-family: 'PT Sans', sans-serif;
+    font-family: 'PT Serif', sans-serif;
     font-weight:400;
     color: rgba(0,0,0,0.65);
 }
@@ -68,7 +68,7 @@ header h2 {
     font-weight:normal;
 }   
 header h1 {
-    font-family: 'PT Sans', sans-serif;
+    font-family: 'PT Serif","Georgia","Helvetica Neue",Arial,sans-serif';
     font-size: 3em;
     margin-bottom:-0.1em;
     font-weight:700;
