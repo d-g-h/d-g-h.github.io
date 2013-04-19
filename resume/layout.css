@@ -137,11 +137,11 @@ dd {
     #contact-info {
         margin-bottom:2.5em;
         float: left;
-        width: 79.5361%;
+        width: 100%;
     }
     #contact-info dd {
         float:left;
-        width: 79.5361%;
+        width: 100%;
     }
     .col-one > div {
         padding: 0;
