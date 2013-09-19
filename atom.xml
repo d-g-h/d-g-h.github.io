@@ -4,7 +4,7 @@
   <title><![CDATA[Dear Coding Diary,]]></title>
   <link href="http://d-g-h.github.com/atom.xml" rel="self"/>
   <link href="http://d-g-h.github.com/"/>
-  <updated>2013-05-19T00:24:19-04:00</updated>
+  <updated>2013-09-18T23:27:24-04:00</updated>
   <id>http://d-g-h.github.com/</id>
   <author>
     <name><![CDATA[d-g-h]]></name>
@@ -12,6 +12,17 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[VLEMP]]></title>
+    <link href="http://d-g-h.github.com/blog/2013/09/10/VLEMP/"/>
+    <updated>2013-09-10T11:57:00-04:00</updated>
+    <id>http://d-g-h.github.com/blog/2013/09/10/VLEMP</id>
+    <content type="html"><![CDATA[<p><a href="https://github.com/d-g-h/vlemp">Vagrant Linux NGINX MySQL PHP</a></p>
+
+<p>Here&#8217;s a start for those interested in NGINX, PHP, MySQL, Chef and of course, Wordpress, The stack is based up another repo I found. If you any problems or feedback, please create an issue over on the repo page. I have been using this setup for a while without Chef. I rolled something a bit more complex for <a href="http://graphpaperpress.com/">Graph Paper Press</a>. Once I reroll up my EC2 server, I&#8217;m moving to Digital Ocean by ways of <a href="http://www.packer.io/">Packer</a>. I&#8217;m moving on up.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Custom Excerpt Lengths All Around WordPress]]></title>
