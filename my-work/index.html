@@ -10,7 +10,7 @@
 
   
   <meta name="description" content="My Work Lauren and Dave.us , built this happily with Node and used Express, Stylus, Jade and other fun stuff.
-Obra Obscura, built this happily with &hellip;">
+hirshleifers.com/brands, sorted and &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -85,6 +85,81 @@ Obra Obscura, built this happily with &hellip;">
   
   <ul>
 <li><p><a href="http://laurenanddave.us">Lauren and Dave.us </a>, built this happily with Node and used Express, Stylus, Jade and other fun stuff.</p></li>
+<li><p><a href="http://www.hirshleifers.com/brands">hirshleifers.com/brands</a>, sorted and indexed the brands via jQuery</p></li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">jQuery</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">jQuery</span><span class="p">(</span><span class="s2">&quot;.SubBrandList&quot;</span><span class="p">).</span><span class="nx">prepend</span><span class="p">(</span><span class="s1">&#39;&lt;div class=&quot;banner_brand_page_top&quot;&gt;&lt;img src=&quot;/product_images/uploaded_images/brands_banner.jpg&quot; /&gt;&lt;/div&gt;&#39;</span><span class="p">);</span>
+</span><span class='line'>  <span class="nx">jQuery</span><span class="p">(</span><span class="s2">&quot;.SubBrandList &gt; ul&quot;</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;brandlistwrapper&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">list</span><span class="p">;</span>
+</span><span class='line'>  <span class="nx">list</span> <span class="o">=</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">letters</span><span class="o">:</span> <span class="p">[]</span>
+</span><span class='line'>    <span class="p">};</span>
+</span><span class='line'>  <span class="nx">jQuery</span><span class="p">(</span><span class="s2">&quot;.SubBrandList &gt; ul &gt; li&quot;</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">itmLetter</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">itmLetter</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">text</span><span class="p">().</span><span class="nx">substring</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">).</span><span class="nx">toUpperCase</span><span class="p">();</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">isNaN</span><span class="p">(</span><span class="nx">itmLetter</span><span class="p">))</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">list</span><span class="p">[</span><span class="nx">itmLetter</span><span class="p">]</span> <span class="o">=</span> <span class="p">[];</span>
+</span><span class='line'>      <span class="nx">itmLetter</span> <span class="o">=</span> <span class="s2">&quot;0-9&quot;</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="nx">itmLetter</span> <span class="k">in</span> <span class="nx">list</span><span class="p">))</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">list</span><span class="p">[</span><span class="nx">itmLetter</span><span class="p">]</span> <span class="o">=</span> <span class="p">[];</span>
+</span><span class='line'>      <span class="nx">list</span><span class="p">.</span><span class="nx">letters</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">itmLetter</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">list</span><span class="p">[</span><span class="nx">itmLetter</span><span class="p">].</span><span class="nx">push</span><span class="p">(</span><span class="nx">jQuery</span><span class="p">(</span><span class="k">this</span><span class="p">));</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'>  <span class="nx">list</span><span class="p">.</span><span class="nx">letters</span><span class="p">.</span><span class="nx">sort</span><span class="p">();</span>
+</span><span class='line'>  <span class="nx">jQuery</span><span class="p">(</span><span class="s2">&quot;.SubBrandList &gt; ul&quot;</span><span class="p">).</span><span class="nx">empty</span><span class="p">();</span>
+</span><span class='line'>  <span class="nx">jQuery</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">list</span><span class="p">.</span><span class="nx">letters</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">letter</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">ul</span><span class="p">;</span>
+</span><span class='line'>    <span class="nx">list</span><span class="p">[</span><span class="nx">letter</span><span class="p">].</span><span class="nx">sort</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="nx">jQuery</span><span class="p">(</span><span class="nx">a</span><span class="p">).</span><span class="nx">text</span><span class="p">().</span><span class="nx">toUpperCase</span><span class="p">().</span><span class="nx">localeCompare</span><span class="p">(</span><span class="nx">jQuery</span><span class="p">(</span><span class="nx">b</span><span class="p">).</span><span class="nx">text</span><span class="p">().</span><span class="nx">toUpperCase</span><span class="p">());</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>    <span class="nx">ul</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">(</span><span class="s2">&quot;&lt;ul/&gt;&quot;</span><span class="p">);</span>
+</span><span class='line'>    <span class="nx">jQuery</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="nx">list</span><span class="p">[</span><span class="nx">letter</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">idx</span><span class="p">,</span> <span class="nx">itm</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="nx">ul</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="nx">itm</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">});</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">jQuery</span><span class="p">(</span><span class="s2">&quot;.SubBrandList &gt; ul&quot;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">jQuery</span><span class="p">(</span><span class="s2">&quot;&lt;li/&gt;&quot;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="nx">jQuery</span><span class="p">(</span><span class="s2">&quot;&lt;a/&gt;&quot;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="nx">letter</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">()).</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">letter</span><span class="p">)).</span><span class="nx">append</span><span class="p">(</span><span class="nx">ul</span><span class="p">));</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<ul>
+<li><p><a href="http://unitedbikeco.com">unitedbikeco.com</a>, rolled this site up on Linode, it&#8217;s a LEMP setup. I performed a classic Wordpress migration, and mail migration, and setup a dev environment, and implemented an image nav system, which of course is intergrated with the Wordpress menu (gui)rolled this site up on Linode,. I prformed a classic migration, and setup a dev environment, and implemented m image bnav system, wich of course is intergrated  wth tee Wordpress menu (gui)rolled this site up on Linode,. I prformed a classic migration, and setup a dev environment, and implemented m image bnav system, wich of course is intergrated  wth tee Wordpress menu (gui).</p></li>
 <li><p><a href="http://www.obraobscura.com">Obra Obscura</a>, built this happily with Node, Nodefront, Stylus, Jade and MaxImage. It&#8217;s easy on the bandwidth.</p></li>
 <li><p><a href="http://buffaloshowlist.com">Buffalo Showlist</a>, currently in development, and one of my recent undertakings. I have equity in this venture, I&#8217;m currently running the technological portion of the site. In order to meet various business requirements and meet possible user expectations, we decided to build a site that would serve an optimal mobile experience, have a flexible and easy to use CMS, a VPS, and fast web server. Those are respectively are Wordpress, EC2, Nginx, acceleration by Varnish, and some help from W3 Total Cache plugin for the cost of near zero dollars (LEMP). The site is fluid and responsive for mobile devices, and utilizes CSS3 and HTML5 features.  This is the first project I have used Compass from more control over the CSS. Github is used from version control, and cron jobs run every now and then to backup to the data to S3.</p></li>
 <li><p><a href="http://thelastpeople.co">The Last People</a>, in maintenance mode, this active site was collaboration amongst designers, bloggers, and two developers.  The site grew from having Blogger blogs embedded in an iframe to a setup very much like the setup above.  The site has gone through some ups and downs, but due to good practices we have managed to operate without any loss of data.</p></li>
