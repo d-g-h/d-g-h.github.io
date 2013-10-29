@@ -1,22 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://d-g-h.github.com/blog/2012/04/14/one-of-many/</loc>
-        <lastmod>2013-10-16T20:05:18-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://d-g-h.github.com/blog/2012/05/19/how-to-backup-a-website/</loc>
-        <lastmod>2013-10-16T20:05:18-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://d-g-h.github.com/blog/2012/06/23/how-ec2/</loc>
-        <lastmod>2013-10-16T20:05:18-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://d-g-h.github.com/blog/2012/11/14/Next-Up-Is/</loc>
-        <lastmod>2013-10-16T20:05:18-04:00</lastmod>
-    </url>
-    <url>
         <loc>
             http://d-g-h.github.com/blog/2013/01/15/custom-excerpt-lengths-all-around-wordpress-and-a-year-ender-list/
         </loc>

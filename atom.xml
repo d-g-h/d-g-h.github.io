@@ -4,7 +4,7 @@
   <title><![CDATA[Dear Coding Diary,]]></title>
   <link href="http://d-g-h.github.com/atom.xml" rel="self"/>
   <link href="http://d-g-h.github.com/"/>
-  <updated>2013-10-28T12:47:47-04:00</updated>
+  <updated>2013-10-29T10:52:58-04:00</updated>
   <id>http://d-g-h.github.com/</id>
   <author>
     <name><![CDATA[d-g-h]]></name>
@@ -279,103 +279,6 @@
 
 
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Next up is...]]></title>
-    <link href="http://d-g-h.github.com/blog/2012/11/14/Next-Up-Is/"/>
-    <updated>2012-11-14T10:47:00-05:00</updated>
-    <id>http://d-g-h.github.com/blog/2012/11/14/Next-Up-Is</id>
-    <content type="html"><![CDATA[<p>Everytime I blog over here, I want to be like I&#8217;m so busy, I can&#8217;t talk right now. I feel like I will always feel this way, but I if I start off this post like this, hopefully, I will not be able to do it again. Anyways&#8230;</p>
-
-<p>Next up is&#8230; Node. I like it a lot. For me, it just like a bunch of stripped down files. It&#8217;s like that for me because I&#8217;m using Jade, Stylus, Nib.  For the next project, if I have to write more javascript, I will be using CoffeeScript.</p>
-
-<p>So, my Next post is more productive, I think I&#8217;m going to list some of resources for getting my Wedding deployed and running.</p>
-
-<p>Deployed meaning Git, and running meaning monit or something or something else.</p>
-
-<p>We&#8217;ll see. Hopefully, I will have something up next week.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[How to for EC2]]></title>
-    <link href="http://d-g-h.github.com/blog/2012/06/23/how-ec2/"/>
-    <updated>2012-06-23T00:26:00-04:00</updated>
-    <id>http://d-g-h.github.com/blog/2012/06/23/how-ec2</id>
-    <content type="html"><![CDATA[<p>The past two months have been busy. I have been learning and implementing something new on every single project I touch.  There are too many to list here, the most interesting thing that I have learned was building a site that could supposedly andle that could handle 15 millions pageviews or something like that in one hour.</p>
-
-<p><a href="http://www.ewanleith.com/blog/900/10-million-hits-a-day-with-wordpress-using-a-15-server">http://www.ewanleith.com/blog/900/10-million-hits-a-day-with-wordpress-using-a-15-server</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[How to Backup a Website on S3]]></title>
-    <link href="http://d-g-h.github.com/blog/2012/05/19/how-to-backup-a-website/"/>
-    <updated>2012-05-19T22:43:00-04:00</updated>
-    <id>http://d-g-h.github.com/blog/2012/05/19/how-to-backup-a-website</id>
-    <content type="html"><![CDATA[<p>Some Requirements First:</p>
-
-<ul>
-<li><p>Free</p></li>
-<li><p>Easy</p></li>
-<li><p>Mirrors site</p></li>
-<li><p>Interacts nicely with AWS S3 Storage</p></li>
-</ul>
-
-
-<p>After a bit of extensive research I settled on a solution I found over at github called boto-rsync.  The boto part communicates with Amazon and the rsync part&#8230;keeps a track of what has changed and what as not, by dumping files here and there at them it ask what is different and what is not.</p>
-
-<p>Now, there were some challenges, I&#8217;m cheap and I&#8217;m on the lowest plan that my host had, and while it has the support for Python, the language of choice for boto, it does not play nice with other versions of Python that I have on the server. I don&#8217;t want mess with that configuration, even if I could, which I don&#8217;t think I can, but I didn&#8217;t try because it sounds like a bad idea, so the workout around</p>
-
-<p>Install virtualenv -  http://pypi.python.org/pypi/virtualenv</p>
-
-<p>Now, I can whatever I would as long as start this up.
-http://pypi.python.org/pypi/boto_rsync</p>
-
-<p>Here is the script that is run by a cron job.</p>
-
-<pre><code>#boots into the virtual env to get boto, boto then mirrors the directories via an rsync of sorts
-cd /home/namename/users/.home/my_new_env/bin/
-a. activate
-boto-rsync -a UUUUUUUUUUUUUUUU -s IIIIIIIIIIIIIIIIIIIIIIIII  /home/adfadfadsf/users/.home/domains s3://c.namename.co
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[How to Save a Website]]></title>
-    <link href="http://d-g-h.github.com/blog/2012/04/14/one-of-many/"/>
-    <updated>2012-04-14T16:37:00-04:00</updated>
-    <id>http://d-g-h.github.com/blog/2012/04/14/one-of-many</id>
-    <content type="html"><![CDATA[<p>What happened? The dude that had the full control over the site, just let it go. For reasons unknown to me, he did. The creator of the site, and other friends tried contacting him, and they got ignored. So, what to do. You have a site, not that small, not that large, and it&#8217;s dead.
-It&#8217;s embarrassing.</p>
-
-<p>What we did before. Before all this I was working around all the problems with the lack SSH or even sFTP. I was mirroring the site once a week, using this snippet of code.</p>
-
-<pre><code>wget --mirror --ftp-user=user --ftp-password=pass -o /log.txt ftp://ftp.thelastpeople.com
-</code></pre>
-
-<p>That was fun, until I started shutdown my computer, but now that I have SSH enabled, I will post my experience how to back your site on Amazon and schedule via cron job on the server and hopefully, I will not delete the shell scripts for that as well.</p>
-
-<p>I just needed the IP of the server, and I found it. Thanks for the cardinal rule of internet, which is something like nothing ever ever escapes the internet. So, I downloaded directory</p>
-
-<pre><code>scp ... /999.99.9999 /home/whatever/downloads  
-</code></pre>
-
-<p>Then I acquired new server space and a new domain name</p>
-
-<p>Moved everything back over, the entire file system, and all the SQL INSERT statements that I had mailed to me twice a day. Did a find &amp; replace job on statements as the url changed.</p>
-
-<p>All is fixed except file permissions which I changed with something like</p>
-
-<pre><code>find *.html | chmod 755
-</code></pre>
-
-<p>Then I fixed all the plugins or eliminated the plugins that didn&#8217;t handle the switch well.</p>
-
-<p>Now, I just change the logs every now and then. Done. However, we have lost half of site traffic even though I updated the Google webmaster configuration.</p>
 ]]></content>
   </entry>
   
