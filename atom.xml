@@ -4,7 +4,7 @@
   <title><![CDATA[Dear Coding Diary,]]></title>
   <link href="http://d-g-h.github.com/atom.xml" rel="self"/>
   <link href="http://d-g-h.github.com/"/>
-  <updated>2013-11-04T15:19:26-05:00</updated>
+  <updated>2013-11-08T22:17:38-05:00</updated>
   <id>http://d-g-h.github.com/</id>
   <author>
     <name><![CDATA[d-g-h]]></name>
@@ -12,6 +12,46 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Development Stack]]></title>
+    <link href="http://d-g-h.github.com/blog/2013/11/08/development-stack/"/>
+    <updated>2013-11-08T20:18:00-05:00</updated>
+    <id>http://d-g-h.github.com/blog/2013/11/08/development-stack</id>
+    <content type="html"><![CDATA[<p>I imagine it only a matter of time till zsh comes bundled with Chrome.</p>
+
+<p>Chrome Canary Dev Tools, coupled with my solarized color scheme, <a href="https://github.com/d-g-h/solarized-dark-skin-chrome-devtools">https://github.com/d-g-h/solarized-dark-skin-chrome-devtools</a></p>
+
+<div class="nolinenumbers">
+<figure class='code'><figcaption><span>efficient.sh</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew install node
+</span><span class='line'>npm install -g grunt-cli
+</span><span class='line'>npm install grunt-contrib-watch --save-dev
+</span><span class='line'>npm install grunt-browser-sync --save-dev
+</span><span class='line'><span class="nb">echo</span> <span class="s1">&#39;I have vagrant running already, right?&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+</div>
+
+
+<p>Node.js, installing this much easier, brew install node for those of you using homebrew. This will help run the utilities below.</p>
+
+<p>npm install grunt, running this with right configuration will run the tasks again.</p>
+
+<p>grunt-contrib-watch to compile preprocessor code, for me, stylus.</p>
+
+<p>grunt-browser-sync for live reloading across all connected devices, connected as in, viewing the site on your network.</p>
+
+<p>And, vagrant for virtual servers in your neighborhood.</p>
+
+<p>It might take a day or so to get things running, but that&#8217;s only 1 day wasted instead of 20.
+Thanks to everyone who helped build these amazing tools.
+And remember, &#8220;Tools not fools, or rules.&#8221;</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[VLEMP]]></title>

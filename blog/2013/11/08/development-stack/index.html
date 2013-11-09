@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>VLEMP - Dear Coding Diary,</title>
+  <title>Development Stack - Dear Coding Diary,</title>
   <meta name="author" content="d-g-h">
 
   
-  <meta name="description" content="Vagrant Linux NGINX MySQL PHP Here&#8217;s a start for those interested in NGINX, PHP, MySQL, Chef and of course, Wordpress, The stack is based up &hellip;">
+  <meta name="description" content="I imagine it only a matter of time till zsh comes bundled with Chrome. Chrome Canary Dev Tools, coupled with my solarized color scheme, https:// &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://d-g-h.github.com/blog/2013/09/10/VLEMP">
+  <link rel="canonical" href="http://d-g-h.github.com/blog/2013/11/08/development-stack">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -80,7 +80,7 @@
   
   <header>
     
-      <h1 class="entry-title">VLEMP</h1>
+      <h1 class="entry-title">Development Stack</h1>
     
     
       <p class="meta">
@@ -96,16 +96,45 @@
   
 
 
-<time datetime="2013-09-10T11:57:00-04:00" pubdate data-updated="true">Sep 10<span>th</span>, 2013</time>
+<time datetime="2013-11-08T20:18:00-05:00" pubdate data-updated="true">Nov 8<span>th</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p><a href="https://github.com/d-g-h/vlemp">Vagrant Linux NGINX MySQL PHP</a></p>
+<div class="entry-content"><p>I imagine it only a matter of time till zsh comes bundled with Chrome.</p>
 
-<p>Here&#8217;s a start for those interested in NGINX, PHP, MySQL, Chef and of course, Wordpress, The stack is based up another repo I found. If you any problems or feedback, please create an issue over on the repo page. I have been using this setup for a while without Chef. I rolled something a bit more complex for <a href="http://graphpaperpress.com/">Graph Paper Press</a>. Once I reroll up my EC2 server, I&#8217;m moving to Digital Ocean by ways of <a href="http://www.packer.io/">Packer</a>. I&#8217;m moving on up.</p>
+<p>Chrome Canary Dev Tools, coupled with my solarized color scheme, <a href="https://github.com/d-g-h/solarized-dark-skin-chrome-devtools">https://github.com/d-g-h/solarized-dark-skin-chrome-devtools</a></p>
+
+<div class="nolinenumbers">
+<figure class='code'><figcaption><span>efficient.sh</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew install node
+</span><span class='line'>npm install -g grunt-cli
+</span><span class='line'>npm install grunt-contrib-watch --save-dev
+</span><span class='line'>npm install grunt-browser-sync --save-dev
+</span><span class='line'><span class="nb">echo</span> <span class="s1">&#39;I have vagrant running already, right?&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+</div>
+
+
+<p>Node.js, installing this much easier, brew install node for those of you using homebrew. This will help run the utilities below.</p>
+
+<p>npm install grunt, running this with right configuration will run the tasks again.</p>
+
+<p>grunt-contrib-watch to compile preprocessor code, for me, stylus.</p>
+
+<p>grunt-browser-sync for live reloading across all connected devices, connected as in, viewing the site on your network.</p>
+
+<p>And, vagrant for virtual servers in your neighborhood.</p>
+
+<p>It might take a day or so to get things running, but that&#8217;s only 1 day wasted instead of 20.
+Thanks to everyone who helped build these amazing tools.
+And remember, &#8220;Tools not fools, or rules.&#8221;</p>
 </div>
 
 
@@ -128,7 +157,7 @@
   
 
 
-<time datetime="2013-09-10T11:57:00-04:00" pubdate data-updated="true">Sep 10<span>th</span>, 2013</time>
+<time datetime="2013-11-08T20:18:00-05:00" pubdate data-updated="true">Nov 8<span>th</span>, 2013</time>
       
 
 
@@ -136,7 +165,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://d-g-h.github.com/blog/2013/09/10/VLEMP/" data-via="" data-counturl="http://d-g-h.github.com/blog/2013/09/10/VLEMP/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://d-g-h.github.com/blog/2013/11/08/development-stack/" data-via="" data-counturl="http://d-g-h.github.com/blog/2013/11/08/development-stack/" >Tweet</a>
   
   
   
@@ -145,10 +174,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/01/15/custom-excerpt-lengths-all-around-wordpress-and-a-year-ender-list/" title="Previous Post: Custom Excerpt Lengths All Around WordPress">&laquo; Custom Excerpt Lengths All Around WordPress</a>
+        <a class="basic-alignment left" href="/blog/2013/09/10/VLEMP/" title="Previous Post: VLEMP">&laquo; VLEMP</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2013/11/08/development-stack/" title="Next Post: Development Stack">Development Stack &raquo;</a>
       
     </p>
   </footer>
