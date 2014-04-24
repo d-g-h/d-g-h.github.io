@@ -119,7 +119,7 @@ dd {
 }
 .col-one article {
     float:left;
-    width: 100;
+    width: 100%;
     clear:left;
     margin-bottom:1em;
  }
