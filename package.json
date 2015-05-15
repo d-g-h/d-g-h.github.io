@@ -1,0 +1,25 @@
+{
+  "name": "d-g-h.co",
+  "version": "0.0.1",
+  "description": "Site for d-g-h.co",
+  "private": "true",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/d-g-h/d-g-h.github.com"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.7.1",
+    "gulp": "^3.8.11",
+    "gulp-autoprefixer": "^2.2.0",
+    "gulp-csslint": "^0.1.5",
+    "gulp-jade": "^1.0.0",
+    "gulp-jscs": "^1.6.0",
+    "gulp-jshint": "^1.10.0",
+    "gulp-markdown": "^1.0.0",
+    "gulp-sass": "^2.0.0",
+    "gulp-sourcemaps": "^1.5.2",
+    "highlight.js": "^8.5.0",
+    "jshint": "^2.7.0",
+    "jshint-stylish": "^1.0.2"
+  }
+}
