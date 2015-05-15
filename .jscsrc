@@ -1,0 +1,6 @@
+{
+  "disallowMultipleVarDecl": true,
+  "disallowSpacesInsideObjectBrackets": true,
+  "excludeFiles": ["node_modules/**"],
+  "preset": "airbnb"
+}
