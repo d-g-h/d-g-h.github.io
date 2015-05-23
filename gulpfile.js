@@ -48,10 +48,7 @@ gulp.task('markdown', function() {
       gfm: true,
       tables: true,
       breaks: true,
-      pedantic: false,
-      sanitize: true,
-      smartLists: true,
-      smartypants: false,
+      sanitize: false,
       highlight: function(code) {
         return require('highlight.js').highlightAuto(code).value;
       }
@@ -63,6 +60,17 @@ gulp.task('markdown', function() {
 //markdown, then jade
 gulp.task('jade', ['markdown'], function() {
   gulp.src('templates/index.jade')
+    .pipe(jade({
+      pretty: true
+    }))
+    .pipe(gulp.dest('.'))
+    .pipe(reload({stream: true}));
+
+});
+
+//markdown, then jade
+gulp.task('jade', ['markdown'], function() {
+  gulp.src('templates/resume.jade')
     .pipe(jade({
       pretty: true
     }))
