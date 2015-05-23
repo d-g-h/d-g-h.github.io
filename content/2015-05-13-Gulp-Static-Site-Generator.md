@@ -1,6 +1,6 @@
 ## Gulp Generated Static Site
 
-May 2015
+<time datetime=2015-05-17>May 17, 2015</time>
 
 ```js
 console.log(‘alert’);
