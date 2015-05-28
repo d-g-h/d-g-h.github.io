@@ -1,5 +1,126 @@
 <h2 id="gulp-generated-static-site">Gulp Generated Static Site</h2>
-<p>May 2015</p>
-<pre><code class="lang-js">console.<span class="hljs-command">log</span>(‘alert’);
+<p><time datetime=2015-05-17>May 17, 2015</time></p>
+<p><img src="https://www.dropbox.com/s/l1z33fqfyetcd0p/gulpBrowserSync.gif?raw=1" alt="Gulp running in terminal"></p>
+<h3 id="why-">Why?</h3>
+<pre><code class="lang-sh">gulp
 </code></pre>
-<p>A site should be simple. I should be able to use a daily used language to highlight some thoughts about sharing information digitally. A site of this natural should also be not based on my sole opinion, but rather, it should be corrected, or duplicated, or replicated for general public. Source control, and centralized repository, namely GitHub at this time should help with that. Markdown should help with writing, separating presentation and the content.</p>
+<p>A site should be simple. I should be able to use a daily used language to highlight some thoughts about sharing information digitally. A site of this natural should also be not based on my sole opinion, but rather, it should be corrected, or duplicated, or replicated for the general public. Source control, and centralized repository, namely GitHub at this time should help with that. Markdown should help with writing, separating presentation and the content. It should be able to travel with us, until the end of time.</p>
+<p>To run the file below, you will need to either node or iojs(2.10), which is what I have started to<br>run. The idea here to run checks on files on file changes, and to see changes immediately.</p>
+<h3 id="how-">How?</h3>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> gulp         = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gulp'</span>);
+<span class="hljs-keyword">var</span> sass         = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gulp-sass'</span>);
+<span class="hljs-keyword">var</span> sourcemaps   = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gulp-sourcemaps'</span>);
+<span class="hljs-keyword">var</span> autoprefixer = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gulp-autoprefixer'</span>);
+<span class="hljs-keyword">var</span> csslint      = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gulp-csslint'</span>);
+<span class="hljs-keyword">var</span> jshint       = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gulp-jshint'</span>);
+<span class="hljs-keyword">var</span> jscs         = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gulp-jscs'</span>);
+<span class="hljs-keyword">var</span> stylish      = <span class="hljs-built_in">require</span>(<span class="hljs-string">'jshint-stylish'</span>);
+<span class="hljs-keyword">var</span> markdown     = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gulp-markdown'</span>);
+<span class="hljs-keyword">var</span> jade         = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gulp-jade'</span>);
+<span class="hljs-keyword">var</span> browserSync  = <span class="hljs-built_in">require</span>(<span class="hljs-string">'browser-sync'</span>);
+<span class="hljs-keyword">var</span> reload       = browserSync.reload;
+
+gulp.task(<span class="hljs-string">'sass'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+  gulp.src(<span class="hljs-string">'assets/sass/style.sass'</span>)
+    .pipe(sourcemaps.init())
+    .pipe(sass({
+      indentedSyntax: <span class="hljs-literal">true</span>,
+      outputStyle: <span class="hljs-string">'compressed'</span>,
+      errLogToConsole: <span class="hljs-literal">true</span>
+    }))
+    .pipe(autoprefixer())
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest(<span class="hljs-string">'.'</span>))
+    .pipe(reload({stream: <span class="hljs-literal">true</span>}));
+});
+
+gulp.task(<span class="hljs-string">'csslint'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+  gulp.src(<span class="hljs-string">'style.css'</span>)
+    .pipe(csslint(<span class="hljs-string">'.csslintrc'</span>))
+    .pipe(csslint.reporter());
+});
+
+gulp.task(<span class="hljs-string">'jshint'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+  gulp.src([<span class="hljs-string">'gulpfile.js'</span>])
+    .pipe(jshint(<span class="hljs-string">'.jshintrc'</span>))
+    .pipe(jshint.reporter(stylish));
+});
+
+gulp.task(<span class="hljs-string">'jscs'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+  <span class="hljs-keyword">return</span> gulp.src([<span class="hljs-string">'gulpfile.js'</span>])
+    .pipe(jscs());
+});
+
+gulp.task(<span class="hljs-string">'markdown'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+  <span class="hljs-keyword">var</span> stream = gulp.src([<span class="hljs-string">'content/**/*.md'</span>])
+    .pipe(markdown({
+      gfm: <span class="hljs-literal">true</span>,
+      tables: <span class="hljs-literal">true</span>,
+      breaks: <span class="hljs-literal">true</span>,
+      sanitize: <span class="hljs-literal">false</span>,
+      highlight: <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(code)</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">require</span>(<span class="hljs-string">'highlight.js'</span>).highlightAuto(code).value;
+      }
+    }))
+    .pipe(gulp.dest(<span class="hljs-string">'blog'</span>));
+  <span class="hljs-keyword">return</span> stream;
+});
+
+<span class="hljs-comment">//markdown, then jade</span>
+gulp.task(<span class="hljs-string">'indexJade'</span>, [<span class="hljs-string">'markdown'</span>], <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+  gulp.src(<span class="hljs-string">'templates/index.jade'</span>)
+    .pipe(jade({
+      pretty: <span class="hljs-literal">true</span>
+    }))
+    .pipe(gulp.dest(<span class="hljs-string">'.'</span>))
+    .pipe(reload({stream: <span class="hljs-literal">true</span>}));
+
+});
+
+<span class="hljs-comment">//markdown, then jade</span>
+gulp.task(<span class="hljs-string">'resumeJade'</span>, [<span class="hljs-string">'markdown'</span>], <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+  gulp.src(<span class="hljs-string">'templates/resume.jade'</span>)
+    .pipe(jade({
+      pretty: <span class="hljs-literal">true</span>
+    }))
+    .pipe(gulp.dest(<span class="hljs-string">'.'</span>))
+    .pipe(reload({stream: <span class="hljs-literal">true</span>}));
+
+});
+
+gulp.task(<span class="hljs-string">'browser-sync'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+  browserSync({
+    server: <span class="hljs-literal">true</span>,
+    notify: <span class="hljs-literal">false</span>,
+    ghostMode: {
+      clicks: <span class="hljs-literal">true</span>,
+      forms: <span class="hljs-literal">true</span>,
+      scroll: <span class="hljs-literal">true</span>
+    },
+    logConnections: <span class="hljs-literal">true</span>,
+    open: <span class="hljs-literal">true</span>,
+    port: <span class="hljs-number">8001</span>
+  });
+});
+
+gulp.task(<span class="hljs-string">'watch'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+  gulp.watch(<span class="hljs-string">'assets/sass/**/*'</span>, [<span class="hljs-string">'sass'</span>]);
+  gulp.watch(<span class="hljs-string">'style.css'</span>, [<span class="hljs-string">'csslint'</span>]);
+  gulp.watch(<span class="hljs-string">'templates/**/*.jade'</span>, [<span class="hljs-string">'indexJade'</span>, <span class="hljs-string">'resumeJade'</span>]);
+  gulp.watch([<span class="hljs-string">'gulpfile.js'</span>], [<span class="hljs-string">'jscs'</span>, <span class="hljs-string">'jshint'</span>]);
+  gulp.watch(<span class="hljs-string">'**/*.md'</span>, [<span class="hljs-string">'indexJade'</span>, <span class="hljs-string">'resumeJade'</span>, <span class="hljs-string">'markdown'</span>]);
+});
+
+<span class="hljs-comment">// Default Task</span>
+gulp.task(<span class="hljs-string">'default'</span>, [
+  <span class="hljs-string">'sass'</span>,
+  <span class="hljs-string">'csslint'</span>,
+  <span class="hljs-string">'jshint'</span>,
+  <span class="hljs-string">'jscs'</span>,
+  <span class="hljs-string">'markdown'</span>,
+  <span class="hljs-string">'indexJade'</span>,
+  <span class="hljs-string">'resumeJade'</span>,
+  <span class="hljs-string">'browser-sync'</span>,
+  <span class="hljs-string">'watch'</span>
+]);
+</code></pre>
