@@ -28,14 +28,16 @@
         <li><a href="https://github.com/d-g-h/d-g-h.github.com" class="contribute">(View Source/Contribute)</a></li>
       </ul>
     </nav>
-    <div class="container"><h2 id="-gulp-generated-static-site-post-gulp-static-site-generator-html-"><a href="post/Gulp-Static-Site-Generator.html">Gulp Generated Static Site</a></h2>
+    <div class="container"><h2 id="-gulp-generated-static-site-post-gulp-static-site-generator-html-"><a href="/post/Gulp-Static-Site-Generator.html">Gulp Generated Static Site</a></h2>
 <p><img src="https://www.dropbox.com/s/l1z33fqfyetcd0p/gulpBrowserSync.gif?raw=1" alt="Gulp running in terminal"></p>
 <h3 id="why-">Why?</h3>
 <pre><code class="lang-sh">gulp
 </code></pre>
-<p>A site should be simple. I should be able to use a daily used language to highlight some thoughts about sharing information digitally. A site of this natural should also be not based on my sole opinion, but rather, it should be corrected, or duplicated, or replicated for the general public. Source control, and centralized repository, namely GitHub at this time should help with that. Markdown should help with writing, separating presentation and the content. It should be able to travel with us, until the end of time.</p>
+<p>A site should be simple. I should be able to use a daily used language to highlight some thoughts about sharing information digitally. A site of this natural should also be not based on my sole opinion, but rather, it should be corrected, or duplicated, or replicated by anyone. Source control, and centralized repository, namely GitHub at this time should help with that. Markdown should help with writing, separating presentation and the content.</p>
 <p>To run the file below, you will need to either node or iojs(2.10), which is what I have started to
-run. The idea here to run checks on files on file changes, and to see changes immediately.</p>
+run. The idea here to run checks on files on file changes, and to see changes immediately, and to
+regenerate all the content. For my purposes this is perfect for the 4-6 posts I plan on writing for
+the year.</p>
 <h3 id="how-">How?</h3>
 <pre><code class="lang-js">var gulp         = require(&#39;gulp&#39;);
 var sass         = require(&#39;gulp-sass&#39;);
@@ -45,7 +47,6 @@ var csslint      = require(&#39;gulp-csslint&#39;);
 var jshint       = require(&#39;gulp-jshint&#39;);
 var jscs         = require(&#39;gulp-jscs&#39;);
 var stylish      = require(&#39;jshint-stylish&#39;);
-var markdown     = require(&#39;gulp-markdown&#39;);
 var jade         = require(&#39;gulp-jade&#39;);
 var browserSync  = require(&#39;browser-sync&#39;);
 var reload       = browserSync.reload;
@@ -81,23 +82,7 @@ gulp.task(&#39;jscs&#39;, function() {
     .pipe(jscs());
 });
 
-gulp.task(&#39;markdown&#39;, function() {
-  var stream = gulp.src([&#39;content/**/*.md&#39;])
-    .pipe(markdown({
-      gfm: true,
-      tables: true,
-      breaks: true,
-      sanitize: false,
-      highlight: function(code) {
-        return require(&#39;highlight.js&#39;).highlightAuto(code).value;
-      }
-    }))
-    .pipe(gulp.dest(&#39;blog&#39;));
-  return stream;
-});
-
-//markdown, then jade
-gulp.task(&#39;indexJade&#39;, [&#39;markdown&#39;], function() {
+gulp.task(&#39;indexJade&#39;, function() {
   gulp.src(&#39;templates/index.jade&#39;)
     .pipe(jade({
       pretty: true
@@ -107,8 +92,17 @@ gulp.task(&#39;indexJade&#39;, [&#39;markdown&#39;], function() {
 
 });
 
-//markdown, then jade
-gulp.task(&#39;resumeJade&#39;, [&#39;markdown&#39;], function() {
+gulp.task(&#39;postsJade&#39;, function() {
+  gulp.src(&#39;templates/posts/*.jade&#39;)
+    .pipe(jade({
+      pretty: true
+    }))
+    .pipe(gulp.dest(&#39;post&#39;))
+    .pipe(reload({stream: true}));
+
+});
+
+gulp.task(&#39;resumeJade&#39;, function() {
   gulp.src(&#39;templates/resume.jade&#39;)
     .pipe(jade({
       pretty: true
@@ -136,9 +130,9 @@ gulp.task(&#39;browser-sync&#39;, function() {
 gulp.task(&#39;watch&#39;, function() {
   gulp.watch(&#39;assets/sass/**/*&#39;, [&#39;sass&#39;]);
   gulp.watch(&#39;style.css&#39;, [&#39;csslint&#39;]);
-  gulp.watch(&#39;templates/**/*.jade&#39;, [&#39;indexJade&#39;, &#39;resumeJade&#39;]);
+  gulp.watch(&#39;templates/**/*.jade&#39;, [&#39;indexJade&#39;, &#39;postsJade&#39;, &#39;resumeJade&#39;]);
   gulp.watch([&#39;gulpfile.js&#39;], [&#39;jscs&#39;, &#39;jshint&#39;]);
-  gulp.watch(&#39;**/*.md&#39;, [&#39;indexJade&#39;, &#39;resumeJade&#39;, &#39;markdown&#39;]);
+  gulp.watch(&#39;**/*.md&#39;, [&#39;indexJade&#39;, &#39;postsJade&#39;, &#39;resumeJade&#39;]);
 });
 
 // Default Task
@@ -147,8 +141,8 @@ gulp.task(&#39;default&#39;, [
   &#39;csslint&#39;,
   &#39;jshint&#39;,
   &#39;jscs&#39;,
-  &#39;markdown&#39;,
   &#39;indexJade&#39;,
+  &#39;postsJade&#39;,
   &#39;resumeJade&#39;,
   &#39;browser-sync&#39;,
   &#39;watch&#39;
