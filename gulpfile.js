@@ -6,7 +6,6 @@ var csslint      = require('gulp-csslint');
 var jshint       = require('gulp-jshint');
 var jscs         = require('gulp-jscs');
 var stylish      = require('jshint-stylish');
-var markdown     = require('gulp-markdown');
 var jade         = require('gulp-jade');
 var browserSync  = require('browser-sync');
 var reload       = browserSync.reload;
@@ -42,23 +41,7 @@ gulp.task('jscs', function() {
     .pipe(jscs());
 });
 
-gulp.task('markdown', function() {
-  var stream = gulp.src(['content/**/*.md'])
-    .pipe(markdown({
-      gfm: true,
-      tables: true,
-      breaks: true,
-      sanitize: false,
-      highlight: function(code) {
-        return require('highlight.js').highlightAuto(code).value;
-      }
-    }))
-    .pipe(gulp.dest('blog'));
-  return stream;
-});
-
-//markdown, then jade
-gulp.task('jade', ['markdown'], function() {
+gulp.task('indexJade', function() {
   gulp.src('templates/index.jade')
     .pipe(jade({
       pretty: true
@@ -68,8 +51,17 @@ gulp.task('jade', ['markdown'], function() {
 
 });
 
-//markdown, then jade
-gulp.task('jade', ['markdown'], function() {
+gulp.task('postsJade', function() {
+  gulp.src('templates/posts/*.jade')
+    .pipe(jade({
+      pretty: true
+    }))
+    .pipe(gulp.dest('post'))
+    .pipe(reload({stream: true}));
+
+});
+
+gulp.task('resumeJade', function() {
   gulp.src('templates/resume.jade')
     .pipe(jade({
       pretty: true
@@ -97,9 +89,9 @@ gulp.task('browser-sync', function() {
 gulp.task('watch', function() {
   gulp.watch('assets/sass/**/*', ['sass']);
   gulp.watch('style.css', ['csslint']);
-  gulp.watch('templates/**/*.jade', ['jade']);
+  gulp.watch('templates/**/*.jade', ['indexJade', 'postsJade', 'resumeJade']);
   gulp.watch(['gulpfile.js'], ['jscs', 'jshint']);
-  gulp.watch('**/*.md', ['jade', 'markdown']);
+  gulp.watch('**/*.md', ['indexJade', 'postsJade', 'resumeJade']);
 });
 
 // Default Task
@@ -108,8 +100,9 @@ gulp.task('default', [
   'csslint',
   'jshint',
   'jscs',
-  'markdown',
-  'jade',
+  'indexJade',
+  'postsJade',
+  'resumeJade',
   'browser-sync',
   'watch'
 ]);
