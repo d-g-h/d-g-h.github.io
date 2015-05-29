@@ -1,3 +1,6 @@
+# A commandline driven blog created with the aid of Gulp, Jade, Markdown, and SASS
+
+```js
 var gulp         = require('gulp');
 var sass         = require('gulp-sass');
 var sourcemaps   = require('gulp-sourcemaps');
@@ -7,8 +10,7 @@ var jshint       = require('gulp-jshint');
 var jscs         = require('gulp-jscs');
 var stylish      = require('jshint-stylish');
 var jade         = require('gulp-jade');
-var path         = require('path');
-var tap          = require('gulp-tap');
+var rename       = require('gulp-rename');
 var browserSync  = require('browser-sync').create();
 var reload       = browserSync.reload;
 
@@ -53,27 +55,13 @@ gulp.task('indexJade', function() {
 
 });
 
-/*
- *Here let's create, and maintain the content in .content
- *Once, we are ready to go, we can feature it in the .template/index.jade,
- *and/or we can add a new directory (named after the title), and copy of
- *over the layout with specific .content that matches. The task below will
- *generate the .html in the same directory four times a year.
- */
-
 gulp.task('postsJade', function() {
   gulp.src('posts/**/*.jade')
-    .pipe(tap(function(file, t) {
-      var filename = path.basename(file.path);
-      var dirname  = path.basename(path.dirname(file.path));
-      return gulp.src(file.path)
-      .pipe(jade({
-        pretty: true,
-        name: filename
-      }))
-      .pipe(gulp.dest('posts/' + dirname));
+    .pipe(jade({
+      pretty: true
     }))
     .pipe(reload({stream: true}));
+
 });
 
 gulp.task('resumeJade', function() {
@@ -81,8 +69,8 @@ gulp.task('resumeJade', function() {
     .pipe(jade({
       pretty: true
     }))
-    .pipe(gulp.dest('resume'))
     .pipe(reload({stream: true}));
+
 });
 
 gulp.task('browser-sync', function() {
@@ -101,12 +89,11 @@ gulp.task('browser-sync', function() {
 });
 
 gulp.task('watch', function() {
-  gulp.watch(['gulpfile.js'], ['jscs', 'jshint']);
-  gulp.watch('.content/**/*.md', ['indexJade', 'postsJade']);
-  gulp.watch('**/*.jade', ['indexJade', 'postsJade']);
-  gulp.watch('.templates/**/*.jade', ['indexJade', 'postsJade']);
   gulp.watch('assets/sass/**/*', ['sass']);
   gulp.watch('style.css', ['csslint']);
+  gulp.watch('templates/**/*.jade', ['indexJade', 'postsJade']);
+  gulp.watch(['gulpfile.js'], ['jscs', 'jshint']);
+  gulp.watch('**/*.md', ['indexJade', 'postsJade']);
 });
 
 // Default Task
@@ -120,3 +107,4 @@ gulp.task('default', [
   'browser-sync',
   'watch'
 ]);
+```
