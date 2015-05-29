@@ -2,14 +2,33 @@
 .contact-info
   color: $color-blue
   text-align: center
+.contact-info
+  span
+   font-size: 50%
 .job-time
   font-size: $posts-font-size/1.5
-  color: $color-gray
+  color: $color-gray-light
 .resume
   h2,
   h3,
   h4,
-  h5
+  h5,
+  p
     margin: 0
+  h2,
+  h3,
+  h4,
+  h5,
+    color: $color-gray-dark
+  p
+    color: $color-gray
+    span
+     font-size: 75%
+  a
+    display: block
 article
   margin-top: 1em
+
+@media print
+  .resume
+    font-size: 85%
