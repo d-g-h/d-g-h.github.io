@@ -19,16 +19,18 @@
   </head>
   <body>
     <div class="main-container"></div>
-    <div class="logo"></div>
-    <h1><a href="/">Thoughts-about-Thoughts</a></h1>
-    <nav>
-      <ul>
-        <li><a href="https://github.com/d-g-h" class="icon-mark-github">GitHub</a></li>
-        <li><a href="/resume.html" class="icon-file-text">Resume</a></li>
-        <li><a href="https://github.com/d-g-h/d-g-h.github.com" class="contribute">(View Source/Contribute)</a></li>
-      </ul>
-    </nav>
-    <div class="container"><h2 id="-gulp-generated-static-site-post-gulp-static-site-generator-html-"><a href="/post/Gulp-Static-Site-Generator.html">Gulp Generated Static Site</a></h2>
+    <header>
+      <div class="logo"></div>
+      <h1><a href="/">Thoughts-about-Thoughts</a></h1>
+      <nav>
+        <ul>
+          <li><a href="https://github.com/d-g-h" class="icon-mark-github">GitHub</a></li>
+          <li><a href="/resume" class="icon-file-text">Resume</a></li>
+          <li><a href="https://github.com/d-g-h/d-g-h.github.com" class="contribute">(View Source/Contribute)</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div class="container"><h2 id="-gulp-generated-static-site-posts-gulp-static-site-generator-"><a href="/posts/Gulp-Static-Site-Generator">Gulp Generated Static Site</a></h2>
 <p><img src="https://www.dropbox.com/s/l1z33fqfyetcd0p/gulpBrowserSync.gif?raw=1" alt="Gulp running in terminal"></p>
 <h3 id="why-">Why?</h3>
 <pre><code class="lang-sh">gulp
@@ -48,7 +50,9 @@ var jshint       = require(&#39;gulp-jshint&#39;);
 var jscs         = require(&#39;gulp-jscs&#39;);
 var stylish      = require(&#39;jshint-stylish&#39;);
 var jade         = require(&#39;gulp-jade&#39;);
-var browserSync  = require(&#39;browser-sync&#39;);
+var path         = require(&#39;path&#39;);
+var tap          = require(&#39;gulp-tap&#39;);
+var browserSync  = require(&#39;browser-sync&#39;).create();
 var reload       = browserSync.reload;
 
 gulp.task(&#39;sass&#39;, function() {
@@ -83,7 +87,7 @@ gulp.task(&#39;jscs&#39;, function() {
 });
 
 gulp.task(&#39;indexJade&#39;, function() {
-  gulp.src(&#39;templates/index.jade&#39;)
+  gulp.src(&#39;.templates/index.jade&#39;)
     .pipe(jade({
       pretty: true
     }))
@@ -92,28 +96,41 @@ gulp.task(&#39;indexJade&#39;, function() {
 
 });
 
+/*
+ *Here let&#39;s create, and maintain the content in .content
+ *Once, we are ready to go, we can feature it in the .template/index.jade,
+ *and/or we can add a new directory (named after the title), and copy of 
+ *over the layout with specific .content that matches. The task below will
+ *generate the .html in the same directory four times a year.
+ */
+
 gulp.task(&#39;postsJade&#39;, function() {
-  gulp.src(&#39;templates/posts/*.jade&#39;)
-    .pipe(jade({
-      pretty: true
+  gulp.src(&#39;posts/**/*.jade&#39;)
+    .pipe(tap(function(file, t) {
+      var filename = path.basename(file.path);
+      var dirname  = path.basename(path.dirname(file.path));
+      return gulp.src(file.path)
+      .pipe(jade({
+        pretty: true,
+        name: filename
+      }))
+      .pipe(gulp.dest(&#39;posts/&#39; + dirname));
     }))
-    .pipe(gulp.dest(&#39;post&#39;))
     .pipe(reload({stream: true}));
 
 });
 
 gulp.task(&#39;resumeJade&#39;, function() {
-  gulp.src(&#39;templates/resume.jade&#39;)
+  gulp.src(&#39;resume/*.jade&#39;)
     .pipe(jade({
       pretty: true
     }))
-    .pipe(gulp.dest(&#39;.&#39;))
+    .pipe(gulp.dest(&#39;resume&#39;))
     .pipe(reload({stream: true}));
-
 });
 
 gulp.task(&#39;browser-sync&#39;, function() {
-  browserSync({
+  browserSync.init({
     server: true,
     notify: false,
     ghostMode: {
@@ -128,11 +145,12 @@ gulp.task(&#39;browser-sync&#39;, function() {
 });
 
 gulp.task(&#39;watch&#39;, function() {
+  gulp.watch([&#39;gulpfile.js&#39;], [&#39;jscs&#39;, &#39;jshint&#39;]);
+  gulp.watch(&#39;.content/**/*.md&#39;, [&#39;indexJade&#39;, &#39;postsJade&#39;]);
+  gulp.watch(&#39;**/*.jade&#39;, [&#39;indexJade&#39;, &#39;postsJade&#39;]);
+  gulp.watch(&#39;.templates/**/*.jade&#39;, [&#39;indexJade&#39;, &#39;postsJade&#39;]);
   gulp.watch(&#39;assets/sass/**/*&#39;, [&#39;sass&#39;]);
   gulp.watch(&#39;style.css&#39;, [&#39;csslint&#39;]);
-  gulp.watch(&#39;templates/**/*.jade&#39;, [&#39;indexJade&#39;, &#39;postsJade&#39;, &#39;resumeJade&#39;]);
-  gulp.watch([&#39;gulpfile.js&#39;], [&#39;jscs&#39;, &#39;jshint&#39;]);
-  gulp.watch(&#39;**/*.md&#39;, [&#39;indexJade&#39;, &#39;postsJade&#39;, &#39;resumeJade&#39;]);
 });
 
 // Default Task
@@ -143,7 +161,6 @@ gulp.task(&#39;default&#39;, [
   &#39;jscs&#39;,
   &#39;indexJade&#39;,
   &#39;postsJade&#39;,
-  &#39;resumeJade&#39;,
   &#39;browser-sync&#39;,
   &#39;watch&#39;
 ]);

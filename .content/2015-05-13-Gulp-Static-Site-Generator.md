@@ -1,4 +1,4 @@
-## [Gulp Generated Static Site](/post/Gulp-Static-Site-Generator.html)
+## [Gulp Generated Static Site](/posts/Gulp-Static-Site-Generator)
 
 ![Gulp running in terminal](https://www.dropbox.com/s/l1z33fqfyetcd0p/gulpBrowserSync.gif?raw=1)
 
@@ -25,7 +25,9 @@ var jshint       = require('gulp-jshint');
 var jscs         = require('gulp-jscs');
 var stylish      = require('jshint-stylish');
 var jade         = require('gulp-jade');
-var browserSync  = require('browser-sync');
+var path         = require('path');
+var tap          = require('gulp-tap');
+var browserSync  = require('browser-sync').create();
 var reload       = browserSync.reload;
 
 gulp.task('sass', function() {
@@ -60,7 +62,7 @@ gulp.task('jscs', function() {
 });
 
 gulp.task('indexJade', function() {
-  gulp.src('templates/index.jade')
+  gulp.src('.templates/index.jade')
     .pipe(jade({
       pretty: true
     }))
@@ -69,28 +71,41 @@ gulp.task('indexJade', function() {
 
 });
 
+/*
+ *Here let's create, and maintain the content in .content
+ *Once, we are ready to go, we can feature it in the .template/index.jade,
+ *and/or we can add a new directory (named after the title), and copy of 
+ *over the layout with specific .content that matches. The task below will
+ *generate the .html in the same directory four times a year.
+ */
+
 gulp.task('postsJade', function() {
-  gulp.src('templates/posts/*.jade')
-    .pipe(jade({
-      pretty: true
+  gulp.src('posts/**/*.jade')
+    .pipe(tap(function(file, t) {
+      var filename = path.basename(file.path);
+      var dirname  = path.basename(path.dirname(file.path));
+      return gulp.src(file.path)
+      .pipe(jade({
+        pretty: true,
+        name: filename
+      }))
+      .pipe(gulp.dest('posts/' + dirname));
     }))
-    .pipe(gulp.dest('post'))
     .pipe(reload({stream: true}));
 
 });
 
 gulp.task('resumeJade', function() {
-  gulp.src('templates/resume.jade')
+  gulp.src('resume/*.jade')
     .pipe(jade({
       pretty: true
     }))
-    .pipe(gulp.dest('.'))
+    .pipe(gulp.dest('resume'))
     .pipe(reload({stream: true}));
-
 });
 
 gulp.task('browser-sync', function() {
-  browserSync({
+  browserSync.init({
     server: true,
     notify: false,
     ghostMode: {
@@ -105,11 +120,12 @@ gulp.task('browser-sync', function() {
 });
 
 gulp.task('watch', function() {
+  gulp.watch(['gulpfile.js'], ['jscs', 'jshint']);
+  gulp.watch('.content/**/*.md', ['indexJade', 'postsJade']);
+  gulp.watch('**/*.jade', ['indexJade', 'postsJade']);
+  gulp.watch('.templates/**/*.jade', ['indexJade', 'postsJade']);
   gulp.watch('assets/sass/**/*', ['sass']);
   gulp.watch('style.css', ['csslint']);
-  gulp.watch('templates/**/*.jade', ['indexJade', 'postsJade', 'resumeJade']);
-  gulp.watch(['gulpfile.js'], ['jscs', 'jshint']);
-  gulp.watch('**/*.md', ['indexJade', 'postsJade', 'resumeJade']);
 });
 
 // Default Task
@@ -120,7 +136,6 @@ gulp.task('default', [
   'jscs',
   'indexJade',
   'postsJade',
-  'resumeJade',
   'browser-sync',
   'watch'
 ]);
