@@ -8,9 +8,9 @@
     "url": "https://github.com/d-g-h/d-g-h.github.com"
   },
   "devDependencies": {
-    "browser-sync": "^2.7.6",
-    "gulp": "^3.8.11",
-    "gulp-autoprefixer": "^2.3.0",
+    "browser-sync": "^2.7.10",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^2.3.1",
     "gulp-csslint": "^0.1.5",
     "gulp-jade": "^1.0.1",
     "gulp-jscs": "^1.6.0",
@@ -19,7 +19,7 @@
     "gulp-sass": "^2.0.1",
     "gulp-sourcemaps": "^1.5.2",
     "highlight.js": "^8.6.0",
-    "jshint": "^2.7.0",
+    "jshint": "^2.8.0",
     "jshint-stylish": "^2.0.0"
   }
 }
