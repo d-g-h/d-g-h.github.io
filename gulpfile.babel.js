@@ -1,56 +1,52 @@
-var gulp         = require('gulp');
-var sass         = require('gulp-sass');
-var sourcemaps   = require('gulp-sourcemaps');
-var autoprefixer = require('gulp-autoprefixer');
-var csslint      = require('gulp-csslint');
-var jshint       = require('gulp-jshint');
-var jscs         = require('gulp-jscs');
-var stylish      = require('jshint-stylish');
-var jade         = require('gulp-jade');
-var path         = require('path');
-var tap          = require('gulp-tap');
-var browserSync  = require('browser-sync').create();
-var reload       = browserSync.reload;
+import path from 'path';
+import gulp from 'gulp';
+import browserSync from 'browser-sync';
+import gulpLoadPlugins from 'gulp-load-plugins';
 
-gulp.task('sass', function() {
+const $ = gulpLoadPlugins();
+const reload = browserSync.reload;
+
+gulp.task('scripts', () => {
+  return gulp.src('assets/js/src/**/*.js')
+    .pipe($.sourcemaps.init())
+    .pipe($.concat('main.js'))
+    .pipe($.sourcemaps.write('.'))
+    .pipe(gulp.dest('assets/js/dist'));
+});
+
+gulp.task('styles', () => {
   gulp.src('assets/sass/style.sass')
-    .pipe(sourcemaps.init())
-    .pipe(sass({
+    .pipe($.sourcemaps.init())
+    .pipe($.sass({
       indentedSyntax: true,
       outputStyle: 'compressed',
       errLogToConsole: true
     }))
-    .pipe(autoprefixer())
-    .pipe(sourcemaps.write())
+    .pipe($.autoprefixer())
+    .pipe($.sourcemaps.write())
     .pipe(gulp.dest('.'))
     .pipe(reload({stream: true}));
 });
 
-gulp.task('csslint', function() {
+gulp.task('csslint', () => {
   gulp.src('style.css')
-    .pipe(csslint('.csslintrc'))
-    .pipe(csslint.reporter());
+    .pipe($.csslint('.csslintrc'))
+    .pipe($.csslint.reporter());
 });
 
-gulp.task('jshint', function() {
+gulp.task('eslint', () => {
   gulp.src(['gulpfile.js'])
-    .pipe(jshint('.jshintrc'))
-    .pipe(jshint.reporter(stylish));
+    .pipe($.eslint())
+    .pipe($.eslint.format());
 });
 
-gulp.task('jscs', function() {
-  return gulp.src(['gulpfile.js'])
-    .pipe(jscs());
-});
-
-gulp.task('indexJade', function() {
+gulp.task('indexJade', () => {
   gulp.src('.templates/index.jade')
-    .pipe(jade({
+    .pipe($.jade({
       pretty: true
     }))
     .pipe(gulp.dest('.'))
     .pipe(reload({stream: true}));
-
 });
 
 /*
@@ -61,13 +57,13 @@ gulp.task('indexJade', function() {
  *generate the .html in the same directory four times a year.
  */
 
-gulp.task('postsJade', function() {
+gulp.task('postsJade', () => {
   gulp.src('posts/**/*.jade')
-    .pipe(tap(function(file, t) {
-      var filename = path.basename(file.path);
-      var dirname  = path.basename(path.dirname(file.path));
+    .pipe($.tap( file => {
+      let filename = path.basename(file.path);
+      let dirname  = path.basename(path.dirname(file.path));
       return gulp.src(file.path)
-      .pipe(jade({
+      .pipe($.jade({
         pretty: true,
         name: filename
       }))
@@ -76,16 +72,16 @@ gulp.task('postsJade', function() {
     .pipe(reload({stream: true}));
 });
 
-gulp.task('resumeJade', function() {
+gulp.task('resumeJade', () => {
   gulp.src('resume/*.jade')
-    .pipe(jade({
+    .pipe($.jade({
       pretty: true
     }))
     .pipe(gulp.dest('resume'))
     .pipe(reload({stream: true}));
 });
 
-gulp.task('browser-sync', function() {
+gulp.task('browser-sync', () => {
   browserSync.init({
     server: true,
     notify: false,
@@ -100,21 +96,20 @@ gulp.task('browser-sync', function() {
   });
 });
 
-gulp.task('watch', function() {
-  gulp.watch(['gulpfile.js'], ['jscs', 'jshint']);
+gulp.task('watch', () => {
+  gulp.watch(['gulpfile.js'], ['eslint']);
   gulp.watch('.content/**/*.md', ['indexJade', 'postsJade']);
   gulp.watch('**/*.jade', ['indexJade', 'postsJade']);
   gulp.watch('.templates/**/*.jade', ['indexJade', 'postsJade']);
-  gulp.watch('assets/sass/**/*', ['sass']);
+  gulp.watch('assets/sass/**/*', ['styles']);
   gulp.watch('style.css', ['csslint']);
 });
 
 // Default Task
 gulp.task('default', [
-  'sass',
+  'styles',
   'csslint',
-  'jshint',
-  'jscs',
+  'eslint',
   'indexJade',
   'postsJade',
   'browser-sync',
