@@ -33,6 +33,7 @@
     </header>
     <div class="container"><h2 id="-gulp-generated-static-site-posts-gulp-static-site-generator-"><a href="/posts/Gulp-Static-Site-Generator">Gulp Generated Static Site</a></h2>
 <p><img src="https://www.dropbox.com/s/l1z33fqfyetcd0p/gulpBrowserSync.gif?raw=1" alt="Gulp running in terminal"></p>
+<p><em>Updated: June 22, 2015 for es6+</em></p>
 <h3 id="why-">Why?</h3>
 <pre><code class="lang-sh">gulp
 </code></pre>
@@ -42,6 +43,126 @@ run. The idea here to run checks on files on file changes, and to see changes im
 regenerate all the content. For my purposes this is perfect for the 4-6 posts I plan on writing for
 the year.</p>
 <h3 id="how-">How?</h3>
+<h4 id="es6-">es6+</h4>
+<pre><code class="lang-js">import path from &#39;path&#39;;
+import gulp from &#39;gulp&#39;;
+import browserSync from &#39;browser-sync&#39;;
+import gulpLoadPlugins from &#39;gulp-load-plugins&#39;;
+
+const $ = gulpLoadPlugins();
+const reload = browserSync.reload;
+
+gulp.task(&#39;scripts&#39;, () =&gt; {
+  return gulp.src(&#39;assets/js/src/**/*.js&#39;)
+    .pipe($.sourcemaps.init())
+    .pipe($.concat(&#39;main.js&#39;))
+    .pipe($.sourcemaps.write(&#39;.&#39;))
+    .pipe(gulp.dest(&#39;assets/js/dist&#39;));
+});
+
+gulp.task(&#39;styles&#39;, () =&gt; {
+  gulp.src(&#39;assets/sass/style.sass&#39;)
+    .pipe($.sourcemaps.init())
+    .pipe($.sass({
+      indentedSyntax: true,
+      outputStyle: &#39;compressed&#39;,
+      errLogToConsole: true
+    }))
+    .pipe($.autoprefixer())
+    .pipe($.sourcemaps.write())
+    .pipe(gulp.dest(&#39;.&#39;))
+    .pipe(reload({stream: true}));
+});
+
+gulp.task(&#39;csslint&#39;, () =&gt; {
+  gulp.src(&#39;style.css&#39;)
+    .pipe($.csslint(&#39;.csslintrc&#39;))
+    .pipe($.csslint.reporter());
+});
+
+gulp.task(&#39;eslint&#39;, () =&gt; {
+  gulp.src([&#39;gulpfile.js&#39;])
+    .pipe($.eslint())
+    .pipe($.eslint.format());
+});
+
+gulp.task(&#39;indexJade&#39;, () =&gt; {
+  gulp.src(&#39;.templates/index.jade&#39;)
+    .pipe($.jade({
+      pretty: true
+    }))
+    .pipe(gulp.dest(&#39;.&#39;))
+    .pipe(reload({stream: true}));
+});
+
+/*
+ *Here let&#39;s create, and maintain the content in .content
+ *Once, we are ready to go, we can feature it in the .template/index.jade,
+ *and/or we can add a new directory (named after the title), and copy of
+ *over the layout with specific .content that matches. The task below will
+ *generate the .html in the same directory four times a year.
+ */
+
+gulp.task(&#39;postsJade&#39;, () =&gt; {
+  gulp.src(&#39;posts/**/*.jade&#39;)
+    .pipe($.tap( file =&gt; {
+      let filename = path.basename(file.path);
+      let dirname  = path.basename(path.dirname(file.path));
+      return gulp.src(file.path)
+      .pipe($.jade({
+        pretty: true,
+        name: filename
+      }))
+      .pipe(gulp.dest(&#39;posts/&#39; + dirname));
+    }))
+    .pipe(reload({stream: true}));
+});
+
+gulp.task(&#39;resumeJade&#39;, () =&gt; {
+  gulp.src(&#39;resume/*.jade&#39;)
+    .pipe($.jade({
+      pretty: true
+    }))
+    .pipe(gulp.dest(&#39;resume&#39;))
+    .pipe(reload({stream: true}));
+});
+
+gulp.task(&#39;browser-sync&#39;, () =&gt; {
+  browserSync.init({
+    server: true,
+    notify: false,
+    ghostMode: {
+      clicks: true,
+      forms: true,
+      scroll: true
+    },
+    logConnections: true,
+    open: true,
+    port: 8001
+  });
+});
+
+gulp.task(&#39;watch&#39;, () =&gt; {
+  gulp.watch([&#39;gulpfile.js&#39;], [&#39;eslint&#39;]);
+  gulp.watch(&#39;.content/**/*.md&#39;, [&#39;indexJade&#39;, &#39;postsJade&#39;]);
+  gulp.watch(&#39;**/*.jade&#39;, [&#39;indexJade&#39;, &#39;postsJade&#39;]);
+  gulp.watch(&#39;.templates/**/*.jade&#39;, [&#39;indexJade&#39;, &#39;postsJade&#39;]);
+  gulp.watch(&#39;assets/sass/**/*&#39;, [&#39;styles&#39;]);
+  gulp.watch(&#39;style.css&#39;, [&#39;csslint&#39;]);
+});
+
+// Default Task
+gulp.task(&#39;default&#39;, [
+  &#39;styles&#39;,
+  &#39;csslint&#39;,
+  &#39;eslint&#39;,
+  &#39;indexJade&#39;,
+  &#39;postsJade&#39;,
+  &#39;browser-sync&#39;,
+  &#39;watch&#39;
+]);
+</code></pre>
+<h4 id="es5">es5</h4>
 <pre><code class="lang-js">var gulp         = require(&#39;gulp&#39;);
 var sass         = require(&#39;gulp-sass&#39;);
 var sourcemaps   = require(&#39;gulp-sourcemaps&#39;);
