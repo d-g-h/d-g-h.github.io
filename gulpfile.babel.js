@@ -8,14 +8,18 @@ const reload = browserSync.reload;
 
 gulp.task('scripts', () => {
   return gulp.src('assets/js/src/**/*.js')
+    .pipe($.changed('asset/js/dist', {extension: '.js'}))
     .pipe($.sourcemaps.init())
-    .pipe($.concat('main.js'))
+    .pipe($.babel({stage: 1}))
+    .pipe($.concat('main.min.js'))
+    .pipe($.uglify({preserveComments: 'some'}))
     .pipe($.sourcemaps.write('.'))
     .pipe(gulp.dest('assets/js/dist'));
 });
 
 gulp.task('styles', () => {
   gulp.src('assets/sass/style.sass')
+    .pipe($.changed('.', {extension: '.sass'}))
     .pipe($.sourcemaps.init())
     .pipe($.sass({
       indentedSyntax: true,
@@ -35,13 +39,14 @@ gulp.task('csslint', () => {
 });
 
 gulp.task('eslint', () => {
-  gulp.src(['gulpfile.js'])
+  gulp.src(['assets/js/src/*.js', 'gulpfile.js'])
     .pipe($.eslint())
     .pipe($.eslint.format());
 });
 
 gulp.task('indexJade', () => {
   gulp.src('.templates/index.jade')
+    .pipe($.changed('.', {extension: '.jade'}))
     .pipe($.jade({
       pretty: true
     }))
@@ -97,17 +102,18 @@ gulp.task('browser-sync', () => {
 });
 
 gulp.task('watch', () => {
-  gulp.watch(['gulpfile.js'], ['eslint']);
-  gulp.watch('.content/**/*.md', ['indexJade', 'postsJade']);
-  gulp.watch('**/*.jade', ['indexJade', 'postsJade']);
-  gulp.watch('.templates/**/*.jade', ['indexJade', 'postsJade']);
-  gulp.watch('assets/sass/**/*', ['styles']);
-  gulp.watch('style.css', ['csslint']);
+  gulp.watch(['**/*.js'], { interval: 500 }, ['eslint', 'styles']);
+  gulp.watch('.content/**/*.md', { interval: 500 }, ['indexJade', 'postsJade']);
+  gulp.watch('**/*.jade', { interval: 500 }, ['indexJade', 'postsJade']);
+  gulp.watch('.templates/**/*.jade', { interval: 500 }, ['indexJade', 'postsJade']);
+  gulp.watch('assets/sass/**/*', { interval: 500 }, ['styles']);
+  gulp.watch('style.css', { interval: 500 }, ['csslint']);
 });
 
 // Default Task
 gulp.task('default', [
   'styles',
+  'scripts',
   'csslint',
   'eslint',
   'indexJade',
