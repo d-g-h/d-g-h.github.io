@@ -15,6 +15,8 @@
     "eslint-plugin-react": "^2.5.2",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^2.3.1",
+    "gulp-babel": "^5.1.0",
+    "gulp-changed": "^1.2.1",
     "gulp-concat": "^2.5.2",
     "gulp-csslint": "^0.1.5",
     "gulp-eslint": "^0.14.0",
