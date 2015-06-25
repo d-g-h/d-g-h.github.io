@@ -33,17 +33,15 @@
     </header>
     <div class="container"><h2 id="-gulp-generated-static-site-posts-gulp-static-site-generator-"><a href="/posts/Gulp-Static-Site-Generator">Gulp Generated Static Site</a></h2>
 <p><img src="https://www.dropbox.com/s/l1z33fqfyetcd0p/gulpBrowserSync.gif?raw=1" alt="Gulp running in terminal"></p>
-<p><em>Updated: June 22, 2015 for es6+</em></p>
 <h3 id="why-">Why?</h3>
 <pre><code class="lang-sh">gulp
 </code></pre>
-<p>A site should be simple. I should be able to use a daily used language to highlight some thoughts about sharing information digitally. A site of this natural should also be not based on my sole opinion, but rather, it should be corrected, or duplicated, or replicated by anyone. Source control, and centralized repository, namely GitHub at this time should help with that. Markdown should help with writing, separating presentation and the content.</p>
-<p>To run the file below, you will need to either node or iojs(2.10), which is what I have started to
-run. The idea here to run checks on files on file changes, and to see changes immediately, and to
-regenerate all the content. For my purposes this is perfect for the 4-6 posts I plan on writing for
-the year.</p>
+<p>This site is simple. It’s based on <a href="http://daringfireball.net/projects/markdown/syntax#philosophy">an easy-to-read and easy-to-write as is feasible</a> language (markdown) to share information. It can be corrected, or duplicated, or replicated by anyone over at <a href="https://github.com/d-g-h/d-g-h.github.com">https://github.com/d-g-h/d-g-h.github.com</a></p>
 <h3 id="how-">How?</h3>
-<h4 id="es6-">es6+</h4>
+<p>The dependencies are <a href="https://iojs.org/">iojs</a>(2.31), and everything in <code>package.json</code>.</p>
+<p>Run <code>npm install</code>.</p>
+<p>The idea here is to watch for file changes, and then recompile all related styles, scripts, and content.</p>
+<h5 id="current-es6-version">current es6 version</h5>
 <pre><code class="lang-js">import path from &#39;path&#39;;
 import gulp from &#39;gulp&#39;;
 import browserSync from &#39;browser-sync&#39;;
@@ -54,14 +52,18 @@ const reload = browserSync.reload;
 
 gulp.task(&#39;scripts&#39;, () =&gt; {
   return gulp.src(&#39;assets/js/src/**/*.js&#39;)
+    .pipe($.changed(&#39;asset/js/dist&#39;, {extension: &#39;.js&#39;}))
     .pipe($.sourcemaps.init())
-    .pipe($.concat(&#39;main.js&#39;))
+    .pipe($.babel({stage: 1}))
+    .pipe($.concat(&#39;main.min.js&#39;))
+    .pipe($.uglify({preserveComments: &#39;some&#39;}))
     .pipe($.sourcemaps.write(&#39;.&#39;))
     .pipe(gulp.dest(&#39;assets/js/dist&#39;));
 });
 
 gulp.task(&#39;styles&#39;, () =&gt; {
   gulp.src(&#39;assets/sass/style.sass&#39;)
+    .pipe($.changed(&#39;.&#39;, {extension: &#39;.sass&#39;}))
     .pipe($.sourcemaps.init())
     .pipe($.sass({
       indentedSyntax: true,
@@ -81,13 +83,14 @@ gulp.task(&#39;csslint&#39;, () =&gt; {
 });
 
 gulp.task(&#39;eslint&#39;, () =&gt; {
-  gulp.src([&#39;gulpfile.js&#39;])
+  gulp.src([&#39;assets/js/src/*.js&#39;, &#39;gulpfile.js&#39;])
     .pipe($.eslint())
     .pipe($.eslint.format());
 });
 
 gulp.task(&#39;indexJade&#39;, () =&gt; {
   gulp.src(&#39;.templates/index.jade&#39;)
+    .pipe($.changed(&#39;.&#39;, {extension: &#39;.jade&#39;}))
     .pipe($.jade({
       pretty: true
     }))
@@ -143,17 +146,18 @@ gulp.task(&#39;browser-sync&#39;, () =&gt; {
 });
 
 gulp.task(&#39;watch&#39;, () =&gt; {
-  gulp.watch([&#39;gulpfile.js&#39;], [&#39;eslint&#39;]);
-  gulp.watch(&#39;.content/**/*.md&#39;, [&#39;indexJade&#39;, &#39;postsJade&#39;]);
-  gulp.watch(&#39;**/*.jade&#39;, [&#39;indexJade&#39;, &#39;postsJade&#39;]);
-  gulp.watch(&#39;.templates/**/*.jade&#39;, [&#39;indexJade&#39;, &#39;postsJade&#39;]);
-  gulp.watch(&#39;assets/sass/**/*&#39;, [&#39;styles&#39;]);
-  gulp.watch(&#39;style.css&#39;, [&#39;csslint&#39;]);
+  gulp.watch([&#39;**/*.js&#39;], { interval: 500 }, [&#39;eslint&#39;, &#39;styles&#39;]);
+  gulp.watch(&#39;.content/**/*.md&#39;, { interval: 500 }, [&#39;indexJade&#39;, &#39;postsJade&#39;]);
+  gulp.watch(&#39;**/*.jade&#39;, { interval: 500 }, [&#39;indexJade&#39;, &#39;postsJade&#39;]);
+  gulp.watch(&#39;.templates/**/*.jade&#39;, { interval: 500 }, [&#39;indexJade&#39;, &#39;postsJade&#39;]);
+  gulp.watch(&#39;assets/sass/**/*&#39;, { interval: 500 }, [&#39;styles&#39;]);
+  gulp.watch(&#39;style.css&#39;, { interval: 500 }, [&#39;csslint&#39;]);
 });
 
 // Default Task
 gulp.task(&#39;default&#39;, [
   &#39;styles&#39;,
+  &#39;scripts&#39;,
   &#39;csslint&#39;,
   &#39;eslint&#39;,
   &#39;indexJade&#39;,
@@ -162,7 +166,7 @@ gulp.task(&#39;default&#39;, [
   &#39;watch&#39;
 ]);
 </code></pre>
-<h4 id="es5">es5</h4>
+<h5 id="old-es5-version">old es5 version</h5>
 <pre><code class="lang-js">var gulp         = require(&#39;gulp&#39;);
 var sass         = require(&#39;gulp-sass&#39;);
 var sourcemaps   = require(&#39;gulp-sourcemaps&#39;);
@@ -287,7 +291,7 @@ gulp.task(&#39;default&#39;, [
   &#39;watch&#39;
 ]);
 </code></pre>
-<p>Modified <time datetime=2015-05-17>May 17, 2015</time></p>
+<p>Modified <time datetime=2015-05-17>June 24, 2015</time></p>
 
     </div>
   </body>

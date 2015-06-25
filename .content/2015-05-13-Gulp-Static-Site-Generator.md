@@ -2,23 +2,21 @@
 
 ![Gulp running in terminal](https://www.dropbox.com/s/l1z33fqfyetcd0p/gulpBrowserSync.gif?raw=1)
 
-*Updated: June 22, 2015 for es6+*
-
 ### Why?
 ```sh
 gulp
 ```
-A site should be simple. I should be able to use a daily used language to highlight some thoughts about sharing information digitally. A site of this natural should also be not based on my sole opinion, but rather, it should be corrected, or duplicated, or replicated by anyone. Source control, and centralized repository, namely GitHub at this time should help with that. Markdown should help with writing, separating presentation and the content.
-
-To run the file below, you will need to either node or iojs(2.10), which is what I have started to
-run. The idea here to run checks on files on file changes, and to see changes immediately, and to
-regenerate all the content. For my purposes this is perfect for the 4-6 posts I plan on writing for
-the year.
+This site is simple. It’s based on [an easy-to-read and easy-to-write as is feasible](http://daringfireball.net/projects/markdown/syntax#philosophy) language (markdown) to share information. It can be corrected, or duplicated, or replicated by anyone over at https://github.com/d-g-h/d-g-h.github.com
 
 ### How?
 
+The dependencies are [iojs](https://iojs.org/)(2.31), and everything in `package.json`.
 
-#### es6+
+Run `npm install`.
+
+The idea here is to watch for file changes, and then recompile all related styles, scripts, and content.
+
+##### current es6 version
 ```js
 import path from 'path';
 import gulp from 'gulp';
@@ -30,14 +28,18 @@ const reload = browserSync.reload;
 
 gulp.task('scripts', () => {
   return gulp.src('assets/js/src/**/*.js')
+    .pipe($.changed('asset/js/dist', {extension: '.js'}))
     .pipe($.sourcemaps.init())
-    .pipe($.concat('main.js'))
+    .pipe($.babel({stage: 1}))
+    .pipe($.concat('main.min.js'))
+    .pipe($.uglify({preserveComments: 'some'}))
     .pipe($.sourcemaps.write('.'))
     .pipe(gulp.dest('assets/js/dist'));
 });
 
 gulp.task('styles', () => {
   gulp.src('assets/sass/style.sass')
+    .pipe($.changed('.', {extension: '.sass'}))
     .pipe($.sourcemaps.init())
     .pipe($.sass({
       indentedSyntax: true,
@@ -57,13 +59,14 @@ gulp.task('csslint', () => {
 });
 
 gulp.task('eslint', () => {
-  gulp.src(['gulpfile.js'])
+  gulp.src(['assets/js/src/*.js', 'gulpfile.js'])
     .pipe($.eslint())
     .pipe($.eslint.format());
 });
 
 gulp.task('indexJade', () => {
   gulp.src('.templates/index.jade')
+    .pipe($.changed('.', {extension: '.jade'}))
     .pipe($.jade({
       pretty: true
     }))
@@ -119,17 +122,18 @@ gulp.task('browser-sync', () => {
 });
 
 gulp.task('watch', () => {
-  gulp.watch(['gulpfile.js'], ['eslint']);
-  gulp.watch('.content/**/*.md', ['indexJade', 'postsJade']);
-  gulp.watch('**/*.jade', ['indexJade', 'postsJade']);
-  gulp.watch('.templates/**/*.jade', ['indexJade', 'postsJade']);
-  gulp.watch('assets/sass/**/*', ['styles']);
-  gulp.watch('style.css', ['csslint']);
+  gulp.watch(['**/*.js'], { interval: 500 }, ['eslint', 'styles']);
+  gulp.watch('.content/**/*.md', { interval: 500 }, ['indexJade', 'postsJade']);
+  gulp.watch('**/*.jade', { interval: 500 }, ['indexJade', 'postsJade']);
+  gulp.watch('.templates/**/*.jade', { interval: 500 }, ['indexJade', 'postsJade']);
+  gulp.watch('assets/sass/**/*', { interval: 500 }, ['styles']);
+  gulp.watch('style.css', { interval: 500 }, ['csslint']);
 });
 
 // Default Task
 gulp.task('default', [
   'styles',
+  'scripts',
   'csslint',
   'eslint',
   'indexJade',
@@ -137,12 +141,9 @@ gulp.task('default', [
   'browser-sync',
   'watch'
 ]);
-
-
-
 ```
 
-#### es5
+##### old es5 version
 ```js
 var gulp         = require('gulp');
 var sass         = require('gulp-sass');
@@ -269,4 +270,4 @@ gulp.task('default', [
 ]);
 ```
 
-Modified <time datetime=2015-05-17>May 17, 2015</time>
+Modified <time datetime=2015-05-17>June 24, 2015</time>
