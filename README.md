@@ -1,4 +1,4 @@
-# A commandline driven blog created with the aid of Gulp, Jade, Markdown, and SASS
+#### A commandline driven blog created with the aid of Gulp, Jade, Markdown, and SASS
 
 ```js
 import path from 'path';
