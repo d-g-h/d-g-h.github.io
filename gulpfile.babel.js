@@ -19,8 +19,8 @@ gulp.task('scripts', () => {
 
 gulp.task('styles', () => {
   gulp.src('assets/sass/style.sass')
-    .pipe($.changed('.', {extension: '.sass'}))
     .pipe($.sourcemaps.init())
+    .pipe($.changed('.', {extension: '.sass'}))
     .pipe($.sass({
       indentedSyntax: true,
       outputStyle: 'compressed',
