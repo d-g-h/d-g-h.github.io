@@ -6,15 +6,144 @@
 ```sh
 gulp
 ```
-A site should be simple. I should be able to use a daily used language to highlight some thoughts about sharing information digitally. A site of this natural should also be not based on my sole opinion, but rather, it should be corrected, or duplicated, or replicated by anyone. Source control, and centralized repository, namely GitHub at this time should help with that. Markdown should help with writing, separating presentation and the content.
-
-To run the file below, you will need to either node or iojs(2.10), which is what I have started to
-run. The idea here to run checks on files on file changes, and to see changes immediately, and to
-regenerate all the content. For my purposes this is perfect for the 4-6 posts I plan on writing for
-the year.
+This site is simple. It’s based on [an easy-to-read and easy-to-write as is feasible](http://daringfireball.net/projects/markdown/syntax#philosophy) language (markdown) to share information. It can be corrected, or duplicated, or replicated by anyone over at https://github.com/d-g-h/d-g-h.github.com
 
 ### How?
 
+The dependencies are [iojs](https://iojs.org/)(2.31), and everything in `package.json`.
+
+Run `npm install`.
+
+The idea here is to watch for file changes, and then recompile all related styles, scripts, and content.
+
+##### current es6 version
+```js
+import path from 'path';
+import gulp from 'gulp';
+import browserSync from 'browser-sync';
+import gulpLoadPlugins from 'gulp-load-plugins';
+
+const $ = gulpLoadPlugins();
+const reload = browserSync.reload;
+
+gulp.task('scripts', () => {
+  return gulp.src('assets/js/src/**/*.js')
+    .pipe($.changed('asset/js/dist', {extension: '.js'}))
+    .pipe($.sourcemaps.init())
+    .pipe($.babel({stage: 1}))
+    .pipe($.concat('main.min.js'))
+    .pipe($.uglify({preserveComments: 'some'}))
+    .pipe($.sourcemaps.write('.'))
+    .pipe(gulp.dest('assets/js/dist'));
+});
+
+gulp.task('styles', () => {
+  gulp.src('assets/sass/style.sass')
+    .pipe($.changed('.', {extension: '.sass'}))
+    .pipe($.sourcemaps.init())
+    .pipe($.sass({
+      indentedSyntax: true,
+      outputStyle: 'compressed',
+      errLogToConsole: true
+    }))
+    .pipe($.autoprefixer())
+    .pipe($.sourcemaps.write())
+    .pipe(gulp.dest('.'))
+    .pipe(reload({stream: true}));
+});
+
+gulp.task('csslint', () => {
+  gulp.src('style.css')
+    .pipe($.csslint('.csslintrc'))
+    .pipe($.csslint.reporter());
+});
+
+gulp.task('eslint', () => {
+  gulp.src(['assets/js/src/*.js', 'gulpfile.js'])
+    .pipe($.eslint())
+    .pipe($.eslint.format());
+});
+
+gulp.task('indexJade', () => {
+  gulp.src('.templates/index.jade')
+    .pipe($.changed('.', {extension: '.jade'}))
+    .pipe($.jade({
+      pretty: true
+    }))
+    .pipe(gulp.dest('.'))
+    .pipe(reload({stream: true}));
+});
+
+/*
+ *Here let's create, and maintain the content in .content
+ *Once, we are ready to go, we can feature it in the .template/index.jade,
+ *and/or we can add a new directory (named after the title), and copy of
+ *over the layout with specific .content that matches. The task below will
+ *generate the .html in the same directory four times a year.
+ */
+
+gulp.task('postsJade', () => {
+  gulp.src('posts/**/*.jade')
+    .pipe($.tap( file => {
+      let filename = path.basename(file.path);
+      let dirname  = path.basename(path.dirname(file.path));
+      return gulp.src(file.path)
+      .pipe($.jade({
+        pretty: true,
+        name: filename
+      }))
+      .pipe(gulp.dest('posts/' + dirname));
+    }))
+    .pipe(reload({stream: true}));
+});
+
+gulp.task('resumeJade', () => {
+  gulp.src('resume/*.jade')
+    .pipe($.jade({
+      pretty: true
+    }))
+    .pipe(gulp.dest('resume'))
+    .pipe(reload({stream: true}));
+});
+
+gulp.task('browser-sync', () => {
+  browserSync.init({
+    server: true,
+    notify: false,
+    ghostMode: {
+      clicks: true,
+      forms: true,
+      scroll: true
+    },
+    logConnections: true,
+    open: true,
+    port: 8001
+  });
+});
+
+gulp.task('watch', () => {
+  gulp.watch(['**/*.js'], { interval: 500 }, ['eslint', 'styles']);
+  gulp.watch('.content/**/*.md', { interval: 500 }, ['indexJade', 'postsJade']);
+  gulp.watch('**/*.jade', { interval: 500 }, ['indexJade', 'postsJade']);
+  gulp.watch('.templates/**/*.jade', { interval: 500 }, ['indexJade', 'postsJade']);
+  gulp.watch('assets/sass/**/*', { interval: 500 }, ['styles']);
+  gulp.watch('style.css', { interval: 500 }, ['csslint']);
+});
+
+// Default Task
+gulp.task('default', [
+  'styles',
+  'scripts',
+  'csslint',
+  'eslint',
+  'indexJade',
+  'postsJade',
+  'browser-sync',
+  'watch'
+]);
+```
+
+##### old es5 version
 ```js
 var gulp         = require('gulp');
 var sass         = require('gulp-sass');
@@ -141,4 +270,4 @@ gulp.task('default', [
 ]);
 ```
 
-Modified <time datetime=2015-05-17>May 17, 2015</time>
+Modified <time datetime=2015-05-17>June 24, 2015</time>
