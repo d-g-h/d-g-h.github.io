@@ -9,25 +9,22 @@ const reload = browserSync.reload;
 gulp.task('scripts', () => {
   return gulp.src('assets/js/src/**/*.js')
     .pipe($.changed('asset/js/dist', {extension: '.js'}))
-    .pipe($.sourcemaps.init())
     .pipe($.babel({stage: 1}))
     .pipe($.concat('main.min.js'))
     .pipe($.uglify({preserveComments: 'some'}))
-    .pipe($.sourcemaps.write('.'))
     .pipe(gulp.dest('assets/js/dist'));
 });
 
 gulp.task('styles', () => {
   gulp.src('assets/sass/style.sass')
     .pipe($.changed('.', {extension: '.sass'}))
-    .pipe($.sourcemaps.init())
     .pipe($.sass({
       indentedSyntax: true,
       outputStyle: 'compressed',
-      errLogToConsole: true
+      errLogToConsole: true,
+      sourceComments: false
     }))
     .pipe($.autoprefixer())
-    .pipe($.sourcemaps.write())
     .pipe(gulp.dest('.'))
     .pipe(reload({stream: true}));
 });
