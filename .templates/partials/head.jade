@@ -5,7 +5,10 @@ html(lang="en")
     link(rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/solarized_dark.min.css")
     link(rel="stylesheet" href="/style.css")
     link(rel="icon" href="/favicon.ico")
-    title d-g-h.co
+    if MAINTITLE
+      title Dave's Resume
+    else
+      title d-g-h.co
     script.
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-31166273-1']);
