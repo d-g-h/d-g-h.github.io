@@ -38,11 +38,11 @@
 </code></pre>
 <p>This site is simple. It’s based on <a href="http://daringfireball.net/projects/markdown/syntax#philosophy">an easy-to-read and easy-to-write as is feasible</a> language (markdown) to share information. It can be corrected, or duplicated, or replicated by anyone over at <a href="https://github.com/d-g-h/d-g-h.github.com">https://github.com/d-g-h/d-g-h.github.com</a></p>
 <h3 id="how-">How?</h3>
-<p>The dependencies are <a href="https://iojs.org/">iojs</a>(2.31), and everything in <code>package.json</code>.</p>
+<p>The dependencies are <a href="https://iojs.org/">iojs</a>(2.31), or <a href="http://blog.nodejs.org/2015/07/10/node-v0-12-7-stable/">node</a>(v0.12.7), and everything in <code>package.json</code>.</p>
 <p>Run <code>npm install</code>.</p>
 <p>The idea here is to watch for file changes, and then recompile all related styles, scripts, and content.</p>
-<h5 id="current-es6-version">current es6 version</h5>
-<pre><code class="lang-js">import path from &#39;path&#39;;
+<pre><code class="lang-js">//ECMAScript 2015, ECMAScript 6, ES6 version
+import path from &#39;path&#39;;
 import gulp from &#39;gulp&#39;;
 import browserSync from &#39;browser-sync&#39;;
 import gulpLoadPlugins from &#39;gulp-load-plugins&#39;;
@@ -166,8 +166,8 @@ gulp.task(&#39;default&#39;, [
   &#39;watch&#39;
 ]);
 </code></pre>
-<h5 id="old-es5-version">old es5 version</h5>
-<pre><code class="lang-js">var gulp         = require(&#39;gulp&#39;);
+<pre><code class="lang-js">//ES5 version
+var gulp         = require(&#39;gulp&#39;);
 var sass         = require(&#39;gulp-sass&#39;);
 var sourcemaps   = require(&#39;gulp-sourcemaps&#39;);
 var autoprefixer = require(&#39;gulp-autoprefixer&#39;);
@@ -291,7 +291,7 @@ gulp.task(&#39;default&#39;, [
   &#39;watch&#39;
 ]);
 </code></pre>
-<p>Modified <time datetime=2015-05-17>June 24, 2015</time></p>
+<p>Modified <time datetime=2015-07-22>July 22, 2015</time></p>
 
     </div>
   </body>
