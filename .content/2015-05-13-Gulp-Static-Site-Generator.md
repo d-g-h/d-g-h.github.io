@@ -10,14 +10,14 @@ This site is simple. It’s based on [an easy-to-read and easy-to-write as is fe
 
 ### How?
 
-The dependencies are [iojs](https://iojs.org/)(2.31), and everything in `package.json`.
+The dependencies are [iojs](https://iojs.org/)(2.31), or [node](http://blog.nodejs.org/2015/07/10/node-v0-12-7-stable/)(v0.12.7), and everything in `package.json`.
 
 Run `npm install`.
 
 The idea here is to watch for file changes, and then recompile all related styles, scripts, and content.
 
-##### current es6 version
 ```js
+//ECMAScript 2015, ECMAScript 6, ES6 version
 import path from 'path';
 import gulp from 'gulp';
 import browserSync from 'browser-sync';
@@ -143,8 +143,8 @@ gulp.task('default', [
 ]);
 ```
 
-##### old es5 version
 ```js
+//ES5 version
 var gulp         = require('gulp');
 var sass         = require('gulp-sass');
 var sourcemaps   = require('gulp-sourcemaps');
@@ -270,4 +270,4 @@ gulp.task('default', [
 ]);
 ```
 
-Modified <time datetime=2015-05-17>June 24, 2015</time>
+Modified <time datetime=2015-07-22>July 22, 2015</time>
