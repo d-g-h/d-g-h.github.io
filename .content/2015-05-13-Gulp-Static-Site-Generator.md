@@ -1,18 +1,15 @@
-## [Gulp Generated Static Site](/posts/Gulp-Static-Site-Generator)
+## Gulp Generated Static Site
 
 ![Gulp running in terminal](https://www.dropbox.com/s/l1z33fqfyetcd0p/gulpBrowserSync.gif?raw=1)
 
-### Why?
 ```sh
 gulp
 ```
 This site is simple. It’s based on [an easy-to-read and easy-to-write as is feasible](http://daringfireball.net/projects/markdown/syntax#philosophy) language (markdown) to share information. It can be corrected, or duplicated, or replicated by anyone over at https://github.com/d-g-h/d-g-h.github.com
 
-### How?
-
 The dependencies are [iojs](https://iojs.org/)(2.31), or [node](http://blog.nodejs.org/2015/07/10/node-v0-12-7-stable/)(v0.12.7), and everything in `package.json`.
 
-Run `npm install`.
+Run `npm install`
 
 The idea here is to watch for file changes, and then recompile all related styles, scripts, and content.
 
