@@ -1,5 +1,7 @@
-include ../../.templates/partials/head.jade
-  include ../../.templates/partials/header.jade
-  .container
-    include:markdown ../../.content/2015-05-13-Gulp-Static-Site-Generator.md
-include ../../.templates/partials/footer.jade
+html(lang="en")
+  include ../../.templates/partials/head.jade
+  body
+    include ../../.templates/partials/header.jade
+    .container
+      include:markdown ../../.content/2015-05-13-Gulp-Static-Site-Generator.md
+    include ../../.templates/partials/footer.jade
