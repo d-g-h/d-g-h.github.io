@@ -1,10 +1,13 @@
 import path from 'path';
+import childProcess from 'child_process';
 import gulp from 'gulp';
 import browserSync from 'browser-sync';
 import gulpLoadPlugins from 'gulp-load-plugins';
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
+const exec = childProcess.exec;
+const port = '8001';
 
 gulp.task('scripts', () => {
   return gulp.src('assets/js/src/**/*.js')
@@ -36,9 +39,16 @@ gulp.task('csslint', () => {
 });
 
 gulp.task('eslint', () => {
-  gulp.src(['assets/js/src/*.js', 'gulpfile.js'])
+  gulp.src(['assets/js/src/*.js', 'gulpfile.babel.js'])
     .pipe($.eslint())
     .pipe($.eslint.format());
+});
+
+gulp.task('exec', () => {
+  exec('pa11y -s Section508 localhost:8001 --color', (err, stdout, stderr) => {
+    console.log(stdout);
+    console.log(stderr);
+  });
 });
 
 gulp.task('indexJade', () => {
@@ -93,16 +103,26 @@ gulp.task('browser-sync', () => {
       scroll: true
     },
     logConnections: true,
-    open: true,
-    port: 8001
+    open: false,
+    port: port
   });
 });
 
 gulp.task('watch', () => {
-  gulp.watch(['**/*.js'], { interval: 500 }, ['eslint', 'styles']);
-  gulp.watch('.content/**/*.md', { interval: 500 }, ['indexJade', 'postsJade']);
-  gulp.watch('**/*.jade', { interval: 500 }, ['indexJade', 'postsJade']);
-  gulp.watch('.templates/**/*.jade', { interval: 500 }, ['indexJade', 'postsJade']);
+  gulp.watch(['assets/**/*.js', 'gulpfile.babel.js'], { interval: 500 }, ['eslint', 'styles']);
+  gulp.watch(
+    [
+      '.content/**/*.md',
+      '**/*.jade',
+      '.templates/**/*.jade'
+    ],
+    { interval: 500 },
+    [
+      'indexJade',
+      'postsJade',
+      'exec'
+    ]
+  );
   gulp.watch('assets/sass/**/*', { interval: 500 }, ['styles']);
   gulp.watch('style.css', { interval: 500 }, ['csslint']);
 });
@@ -116,5 +136,6 @@ gulp.task('default', [
   'indexJade',
   'postsJade',
   'browser-sync',
+  'exec',
   'watch'
 ]);
