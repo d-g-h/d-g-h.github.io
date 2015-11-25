@@ -1,13 +1,13 @@
 ## Gulp Generated Static Site
 
-![Gulp running in terminal](https://www.dropbox.com/s/l1z33fqfyetcd0p/gulpBrowserSync.gif?raw=1)
+<img alt="gulp animation" src="https://www.dropbox.com/s/l1z33fqfyetcd0p/gulpBrowserSync.gif?raw=1"/ width="400" height="210">
 
 ```sh
 gulp
 ```
 This site is simple. It’s based on [an easy-to-read and easy-to-write as is feasible](http://daringfireball.net/projects/markdown/syntax#philosophy) language (markdown) to share information. It can be corrected, or duplicated, or replicated by anyone over at https://github.com/d-g-h/d-g-h.github.com
 
-The dependencies are [node](https://nodejs.org/)(v5.0.0), and everything in `package.json`.
+The dependencies are [node](https://nodejs.org/)(v5.1.0), and everything in `package.json`.
 
 Run
 ```sh
@@ -160,4 +160,4 @@ gulp.task('default', [
 ]);
 ```
 
-Modified <time datetime=2015-11-11>November 11, 2015</time>
+Modified <time datetime=2015-11-24>November 24, 2015</time>
