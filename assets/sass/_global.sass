@@ -1,35 +1,45 @@
 body
-  color: $color-gray-dark;
+  color: $color-gray-dark
   font: #{$body-font-size}/1.4 $body-font
+
 a
   color: $color-blue
   text-decoration: none
+
+  &:hover
+    text-decoration: underline
+
   span
-    font-size: $posts-font-size * 0.5
-    padding-left: 0.25em
-a:hover
-  text-decoration: underline
+    font-size: $posts-font-size * .5
+    padding-left: .25em
+
 h1
   text-align: center
+
 h2,
   margin-bottom: 0
+
 h3,
 h4,
 h5,
 h6
   color: $color-gray
+
 li
   list-style: none
+
 p
-  margin: 0.5em 0
+  margin: .5em 0
+
 time
-  font: #{$body-font-size}/1 $body-font
   color: $color-gray-light
+  font: #{$body-font-size}/1 $body-font
+
 .logo
-  display: block
-  margin: 0 auto
   background-image: url('/assets/images/dgh.png')
   background-size: contain
-  width: 3em
-  height: 3em
   border-radius: 50%
+  display: block
+  height: 3em
+  margin: 0 auto
+  width: 3em

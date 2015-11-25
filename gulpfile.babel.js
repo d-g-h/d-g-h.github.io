@@ -136,6 +136,6 @@ gulp.task('default', [
   'indexJade',
   'postsJade',
   'browser-sync',
-  'exec',
-  'watch'
+  'watch',
+  'exec'
 ]);
