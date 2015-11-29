@@ -2,6 +2,7 @@ import path from 'path';
 import childProcess from 'child_process';
 import gulp from 'gulp';
 import browserSync from 'browser-sync';
+import critical from 'critical';
 import gulpLoadPlugins from 'gulp-load-plugins';
 
 const $ = gulpLoadPlugins();
@@ -20,7 +21,7 @@ gulp.task('scripts', () => {
 
 gulp.task('styles', () => {
   gulp.src('assets/sass/style.sass')
-    .pipe($.changed('.', {extension: '.sass'}))
+    .pipe($.changed(process.cwd(), {extension: '.sass'}))
     .pipe($.sass({
       indentedSyntax: true,
       outputStyle: 'compressed',
@@ -28,7 +29,7 @@ gulp.task('styles', () => {
       sourceComments: false
     }))
     .pipe($.autoprefixer())
-    .pipe(gulp.dest('.'))
+    .pipe(gulp.dest(process.cwd()))
     .pipe(reload({stream: true}));
 });
 
@@ -51,13 +52,25 @@ gulp.task('exec', () => {
   });
 });
 
+gulp.task('critical', () => {
+  return critical.generate({
+    src: process.cwd() + '/index.html',
+    base: process.cwd(),
+    dest: process.cwd() + '/index.html',
+    inline: true,
+    width: 1440,
+    height: 900,
+    css: [process.cwd() + '/style.css']
+  });
+});
+
 gulp.task('indexJade', () => {
   gulp.src('.templates/index.jade')
-    .pipe($.changed('.', {extension: '.jade'}))
+    .pipe($.changed(process.cwd(), {extension: '.jade'}))
     .pipe($.jade({
       pretty: true
     }))
-    .pipe(gulp.dest('.'))
+    .pipe(gulp.dest(process.cwd()))
     .pipe(reload({stream: true}));
 });
 
@@ -120,6 +133,7 @@ gulp.task('watch', () => {
     [
       'indexJade',
       'postsJade',
+      'critical',
       'exec'
     ]
   );
