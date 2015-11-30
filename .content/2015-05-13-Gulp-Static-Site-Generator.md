@@ -1,7 +1,11 @@
 ## Gulp Generated Static Site
 
-<img alt="gulp animation" src="https://www.dropbox.com/s/l1z33fqfyetcd0p/gulpBrowserSync.gif?raw=1"/ width="400" height="210">
-
+<video width="400" height="210" nocontrols autoplay loop>
+  <source src="https://www.dropbox.com/s/0w5qdbp1z4ku9lj/gulpBrowserSync.webm?raw=1" type="video/webm"/>
+  <source src="https://www.dropbox.com/s/gn841eedzduxlwx/gulpBrowserSync.mp4?raw=1" type="video/mp4"/>
+https://www.dropbox.com/s/gn841eedzduxlwx/gulpBrowserSync.mp4?dl=0
+  Your browser does not support the <code>video</code> element.
+</video>
 ```sh
 gulp
 ```
