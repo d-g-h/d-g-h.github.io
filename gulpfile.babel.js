@@ -45,7 +45,7 @@ gulp.task('eslint', () => {
     .pipe($.eslint.format());
 });
 
-gulp.task('exec', () => {
+gulp.task('exec', ['browser-sync'], () => {
   exec('pa11y -s Section508 localhost:8001 --color', (err, stdout, stderr) => {
     console.log(stdout);
     console.log(stderr);
@@ -106,8 +106,8 @@ gulp.task('resumeJade', () => {
     .pipe(reload({stream: true}));
 });
 
-gulp.task('browser-sync', () => {
-  browserSync.init({
+gulp.task('browser-sync', (callback) => {
+  let bs = browserSync.init({
     server: true,
     notify: false,
     ghostMode: {
@@ -119,6 +119,8 @@ gulp.task('browser-sync', () => {
     open: false,
     port: port
   });
+
+  return callback(bs.active);
 });
 
 gulp.task('watch', () => {
@@ -149,7 +151,6 @@ gulp.task('default', [
   'eslint',
   'indexJade',
   'postsJade',
-  'browser-sync',
   'watch',
   'exec'
 ]);
