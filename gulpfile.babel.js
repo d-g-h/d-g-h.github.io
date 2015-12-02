@@ -51,7 +51,7 @@ gulp.task('eslint', () => {
     .pipe($.eslint.format());
 });
 
-gulp.task('exec', ['browser-sync'], () => {
+gulp.task('pa11y', () => {
   exec('pa11y -s Section508 localhost:8001 --color', (err, stdout, stderr) => {
     console.log(stdout);
     console.log(stderr);
@@ -112,8 +112,8 @@ gulp.task('resumeJade', () => {
     .pipe(reload({stream: true}));
 });
 
-gulp.task('browser-sync', (callback) => {
-  let bs = browserSync.init({
+gulp.task('browser-sync', () => {
+  browserSync.init({
     server: true,
     notify: false,
     ghostMode: {
@@ -125,12 +125,10 @@ gulp.task('browser-sync', (callback) => {
     open: false,
     port: port
   });
-
-  return callback(bs.active);
 });
 
 gulp.task('watch', () => {
-  gulp.watch(['assets/**/*.js', 'gulpfile.babel.js'], { interval: 500 }, ['eslint', 'styles']);
+  gulp.watch(['assets/**/*.js', 'gulpfile.babel.js'], { interval: 500 }, ['eslint', 'styles', 'pa11y']);
   gulp.watch(
     [
       '.content/**/*.md',
@@ -142,15 +140,16 @@ gulp.task('watch', () => {
       'indexJade',
       'postsJade',
       'critical',
-      'exec'
+      'pa11y'
     ]
   );
   gulp.watch('assets/sass/**/*', { interval: 500 }, ['sassLint', 'styles']);
-  gulp.watch('style.css', { interval: 500 }, ['csslint']);
+  gulp.watch('style.css', { interval: 500 }, ['csslint', 'pa11y']);
 });
 
 // Default Task
 gulp.task('default', [
+  'browser-sync',
   'sassLint',
   'styles',
   'scripts',
@@ -158,6 +157,5 @@ gulp.task('default', [
   'eslint',
   'indexJade',
   'postsJade',
-  'watch',
-  'exec'
+  'watch'
 ]);
