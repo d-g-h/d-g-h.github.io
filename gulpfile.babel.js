@@ -33,6 +33,12 @@ gulp.task('styles', () => {
     .pipe(reload({stream: true}));
 });
 
+gulp.task('sassLint', () => {
+  gulp.src('assets/sass/**/*.s+(a|c)ss')
+    .pipe($.sassLint())
+    .pipe($.sassLint.format());
+});
+
 gulp.task('csslint', () => {
   gulp.src('style.css')
     .pipe($.csslint('.csslintrc'))
@@ -139,12 +145,13 @@ gulp.task('watch', () => {
       'exec'
     ]
   );
-  gulp.watch('assets/sass/**/*', { interval: 500 }, ['styles']);
+  gulp.watch('assets/sass/**/*', { interval: 500 }, ['sassLint', 'styles']);
   gulp.watch('style.css', { interval: 500 }, ['csslint']);
 });
 
 // Default Task
 gulp.task('default', [
+  'sassLint',
   'styles',
   'scripts',
   'csslint',
