@@ -87,6 +87,8 @@ gulp.task('critical', () => {
     inline: true,
     width: 1440,
     height: 900
+  }, (err) => {
+    if (err) console.log(err);
   });
 });
 
