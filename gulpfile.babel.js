@@ -1,22 +1,39 @@
 import path from 'path';
 import childProcess from 'child_process';
 import gulp from 'gulp';
-import browserSync from 'browser-sync';
-import critical from 'critical';
 import gulpLoadPlugins from 'gulp-load-plugins';
+import critical from './lib/gulp/dist/critical';
 
-const $ = gulpLoadPlugins();
-const reload = browserSync.reload;
+const $ = gulpLoadPlugins({
+  pattern: ['gulp-*', 'gulp.*', 'browser-sync'],
+  rename: {
+    'browser-sync': 'browserSync'
+  }
+});
+const reload = $.browserSync.reload;
 const exec = childProcess.exec;
 const port = '8001';
 
-gulp.task('scripts', () => {
+gulp.task('build', () => {
   return gulp.src('assets/js/src/**/*.js')
     .pipe($.changed('asset/js/dist', {extension: '.js'}))
-    .pipe($.babel({stage: 1}))
+    .pipe($.babel())
     .pipe($.concat('main.min.js'))
     .pipe($.uglify({preserveComments: 'some'}))
     .pipe(gulp.dest('assets/js/dist'));
+});
+
+gulp.task('transform', () => {
+  return gulp.src('test/src/**/*.js')
+    .pipe($.changed('test/dist/**/*.js', {extension: '.js'}))
+    .pipe($.babel())
+    .pipe(gulp.dest('test/dist'));
+});
+
+gulp.task('compiles', () => {
+  return gulp.src('lib/gulp/src/*.js')
+    .pipe($.babel())
+    .pipe(gulp.dest('lib/gulp/dist'));
 });
 
 gulp.task('styles', () => {
@@ -46,27 +63,30 @@ gulp.task('csslint', () => {
 });
 
 gulp.task('eslint', () => {
-  gulp.src(['assets/js/src/*.js', 'gulpfile.babel.js'])
+  gulp.src(['assets/js/src/*.js', 'lib/gulp/src/**/*', 'test/src/**/*', 'gulpfile.babel.js'])
     .pipe($.eslint())
     .pipe($.eslint.format());
 });
 
 gulp.task('pa11y', () => {
-  exec('pa11y -s Section508 localhost:8001 --color', (err, stdout, stderr) => {
+  exec(`pa11y -s Section508 localhost:${port} --color`, (err, stdout, stderr) => {
+    console.log(stdout);
+    console.log(stderr);
+  });
+  exec(`pa11y -s Section508 localhost:${port}/resume --color`, (err, stdout, stderr) => {
     console.log(stdout);
     console.log(stderr);
   });
 });
 
 gulp.task('critical', () => {
-  return critical.generate({
+  critical({
     src: process.cwd() + '/index.html',
     base: process.cwd(),
     dest: process.cwd() + '/index.html',
     inline: true,
     width: 1440,
-    height: 900,
-    css: [process.cwd() + '/style.css']
+    height: 900
   });
 });
 
@@ -79,14 +99,6 @@ gulp.task('indexJade', () => {
     .pipe(gulp.dest(process.cwd()))
     .pipe(reload({stream: true}));
 });
-
-/*
- *Here let's create, and maintain the content in .content
- *Once, we are ready to go, we can feature it in the .template/index.jade,
- *and/or we can add a new directory (named after the title), and copy of
- *over the layout with specific .content that matches. The task below will
- *generate the .html in the same directory four times a year.
- */
 
 gulp.task('postsJade', () => {
   gulp.src('posts/**/*.jade')
@@ -113,7 +125,7 @@ gulp.task('resumeJade', () => {
 });
 
 gulp.task('browser-sync', () => {
-  browserSync.init({
+  $.browserSync.init({
     server: true,
     notify: false,
     ghostMode: {
@@ -139,20 +151,22 @@ gulp.task('watch', () => {
     [
       'indexJade',
       'postsJade',
+      'resumeJade',
       'critical',
       'pa11y'
     ]
   );
   gulp.watch('assets/sass/**/*', { interval: 500 }, ['sassLint', 'styles']);
+  gulp.watch('test/**/*', ['transform', 'eslint']);
+  gulp.watch('lib/**/*', ['compiles', 'eslint']);
   gulp.watch('style.css', { interval: 500 }, ['csslint', 'pa11y']);
 });
 
-// Default Task
 gulp.task('default', [
   'browser-sync',
   'sassLint',
   'styles',
-  'scripts',
+  'build',
   'csslint',
   'eslint',
   'indexJade',
