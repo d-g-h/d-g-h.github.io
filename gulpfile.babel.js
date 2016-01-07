@@ -85,6 +85,7 @@ gulp.task('critical', () => {
     base: process.cwd(),
     dest: process.cwd() + '/index.html',
     inline: true,
+    minify: true,
     width: 1440,
     height: 900
   }, (err) => {
