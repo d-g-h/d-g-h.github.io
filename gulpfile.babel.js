@@ -132,7 +132,7 @@ gulp.task('404Jade', () => {
     .pipe($.jade({
       pretty: true
     }))
-    .pipe(gulp.dest('404'))
+    .pipe(gulp.dest(process.cwd()))
     .pipe(reload({stream: true}));
 });
 
