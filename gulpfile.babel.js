@@ -110,7 +110,7 @@ gulp.task('postsJade', () => {
       let dirname  = path.basename(path.dirname(file.path));
       return gulp.src(file.path)
       .pipe($.jade({
-        pretty: true,
+        pretty: false,
         name: filename
       }))
       .pipe(gulp.dest('posts/' + dirname));
@@ -161,9 +161,9 @@ gulp.task('watch', () => {
     ],
     { interval: 500 },
     [
-      'indexJade',
       'postsJade',
       'resumeJade',
+      'indexJade',
       'critical',
       'pa11y'
     ]
@@ -181,7 +181,7 @@ gulp.task('default', [
   'build',
   'csslint',
   'eslint',
-  'indexJade',
   'postsJade',
+  'indexJade',
   'watch'
 ]);
