@@ -127,6 +127,15 @@ gulp.task('resumeJade', () => {
     .pipe(reload({stream: true}));
 });
 
+gulp.task('404Jade', () => {
+  gulp.src('404/*.jade')
+    .pipe($.jade({
+      pretty: true
+    }))
+    .pipe(gulp.dest('404'))
+    .pipe(reload({stream: true}));
+});
+
 gulp.task('browser-sync', () => {
   $.browserSync.init({
     server: true,
