@@ -9,7 +9,8 @@
   font-style: normal;
 }
 
-[class^="icon-"], [class*=" icon-"] {
+.icon-mark-github:before,
+.icon-file-text:before {
   font-family: 'icomoon';
   speak: none;
   font-style: normal;
