@@ -1,0 +1,57 @@
+{
+  "name": "d-g-h.co",
+  "short_name": "d-g-h",
+  "display": "minimal-ui",
+  "description": "dgh's thoughts",
+  "start_url": "/",
+  "theme_color": "#4078c0",
+  "background_color": "#fff",
+  "icons": [
+    {
+      "src": "/assets/images/dgh-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/dgh-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/dgh-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/dgh-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/dgh-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/dgh-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/dgh-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/dgh-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "icomoon.eot": "75cf10f313532a120f287de6a31e64bb.eot",
+  "icomoon.svg?-rsav07": "f3efa91a2cf7b68aee70aa70dc8eb3db.svg",
+  "icomoon.ttf?-rsav07": "00958aa80c387f15ac23398ce58da5e6.ttf",
+  "icomoon.woff?-rsav07": "5f49880e43263c57f009240776e181e0.woff",
+  "main.js": "main.js",
+  "vendor.js": "vendor.js"
+}
