@@ -1,0 +1,21 @@
+CACHE MANIFEST
+#ver:2017-7-31 16:49:16
+#plugin:4.8.3
+
+CACHE:
+../75cf10f313532a120f287de6a31e64bb.eot
+../5f49880e43263c57f009240776e181e0.woff
+../00958aa80c387f15ac23398ce58da5e6.ttf
+../f3efa91a2cf7b68aee70aa70dc8eb3db.svg
+../main.js
+../vendor.js
+../
+../dist/vendor.js
+../dist/main.js
+../assets/fonts/icomoon.svg
+../assets/fonts/icomoon.ttf
+../assets/fonts/icomoon.woff
+../assets/fonts/icomoon.eot
+
+NETWORK:
+*
