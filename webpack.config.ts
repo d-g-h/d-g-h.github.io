@@ -11,7 +11,7 @@ const config: webpack.Configuration = {
   output: {
     filename: '[name].js',
     chunkFilename: '[id].chunk.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, '/')
   },
   module: {
     rules: [
@@ -38,8 +38,8 @@ const config: webpack.Configuration = {
     new OfflinePlugin({
       externals: [
         './index.html',
-        './dist/vendor.js',
-        './dist/main.js',
+        './vendor.js',
+        './main.js',
         './assets/images/dgh.png',
         './assets/fonts/icomoon.svg',
         './assets/fonts/icomoon.ttf',
