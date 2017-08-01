@@ -7,8 +7,24 @@
     "type": "git",
     "url": "https://github.com/d-g-h/d-g-h.github.com"
   },
+  "scripts": {
+    "start": "webpack-dev-server --inline --progress --port=4201",
+    "build": "webpack"
+  },
   "devDependencies": {
-    "browser-sync": "^2.18.12",
+    "@types/node": "^8.0.17",
+    "@types/webpack": "^3.0.5",
+    "css-loader": "^0.28.4",
+    "file-loader": "^0.11.2",
+    "offline-plugin": "^4.8.3",
+    "style-loader": "^0.18.2",
+    "ts-node": "^3.3.0",
+    "typescript": "^2.4.2",
+    "webpack": "^3.4.1",
+    "webpack-dev-server": "^2.6.1",
+    "webpack-manifest-plugin": "^1.2.1"
+  },
+  "dependencies": {
     "highlight.js": "^9.12.0"
   }
 }
