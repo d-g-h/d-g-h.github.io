@@ -11,7 +11,6 @@ const config: webpack.Configuration = {
   output: {
     filename: '[name].js',
     chunkFilename: '[id].chunk.js',
-    path: path.resolve(__dirname, '/')
   },
   module: {
     rules: [
