@@ -1,4 +1,4 @@
-import './style.css'
+import './styles.css'
 import * as hljs from 'highlight.js/lib/highlight.js';
 import * as OfflinePluginRuntime from 'offline-plugin/runtime';
 

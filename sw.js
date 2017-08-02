@@ -7,6 +7,7 @@ var __wpo = {
       "./f3efa91a2cf7b68aee70aa70dc8eb3db.svg",
       "./main.js",
       "./vendor.js",
+      "./styles.css",
       "./",
       "./vendor.js",
       "./main.js",
@@ -34,12 +35,13 @@ var __wpo = {
     "39218ad0d4b475b15a5cbf9583e5accf4e3e5dc8": "./5f49880e43263c57f009240776e181e0.woff",
     "0153580f5955fd49e313a568430fcb1cc0a9c388": "./00958aa80c387f15ac23398ce58da5e6.ttf",
     "84f3c99b3da8d324dbd8efec362341d4bce19609": "./f3efa91a2cf7b68aee70aa70dc8eb3db.svg",
-    "c3156124fec6208f20b4a6739ec42338a8e665e7": "./main.js",
-    "eaf8efba92d1a412fc49a1690adef9ec9040e912": "./vendor.js"
+    "597b25f3e5ccc13497c68bdd782594c32ab04c29": "./main.js",
+    "b94790c1a513958c3b27dcadf98679ef7d592b9d": "./vendor.js",
+    "8cfb7b091728fbfef1d4b05966c9ec25eb05d13c": "./styles.css"
   },
   "strategy": "changed",
   "responseStrategy": "cache-first",
-  "version": "2017-8-1 20:59:03",
+  "version": "8/1/2017, 9:47:35 PM",
   "name": "webpack-offline",
   "pluginVersion": "4.8.3",
   "relativePaths": true
