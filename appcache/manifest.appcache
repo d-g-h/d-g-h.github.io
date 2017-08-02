@@ -1,5 +1,5 @@
 CACHE MANIFEST
-#ver:2017-7-31 16:49:16
+#ver:2017-8-1 20:59:03
 #plugin:4.8.3
 
 CACHE:
@@ -10,8 +10,9 @@ CACHE:
 ../main.js
 ../vendor.js
 ../
-../dist/vendor.js
-../dist/main.js
+../vendor.js
+../main.js
+../assets/images/dgh.png
 ../assets/fonts/icomoon.svg
 ../assets/fonts/icomoon.ttf
 ../assets/fonts/icomoon.woff
