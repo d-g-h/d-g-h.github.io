@@ -1,5 +1,5 @@
 CACHE MANIFEST
-#ver:2017-8-1 20:59:03
+#ver:8/1/2017, 9:47:35 PM
 #plugin:4.8.3
 
 CACHE:
@@ -9,6 +9,7 @@ CACHE:
 ../f3efa91a2cf7b68aee70aa70dc8eb3db.svg
 ../main.js
 ../vendor.js
+../styles.css
 ../
 ../vendor.js
 ../main.js

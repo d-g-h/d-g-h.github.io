@@ -2,6 +2,7 @@ import * as webpack from 'webpack';
 import * as path from 'path';
 import * as OfflinePlugin from 'offline-plugin';
 import * as ManifestPlugin from 'webpack-manifest-plugin';
+import * as ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 const nodeModules = path.join(process.cwd(), 'node_modules');
 declare var __dirname;
@@ -14,22 +15,23 @@ const config: webpack.Configuration = {
   },
   module: {
     rules: [
-     {
-       test: /\.css$/,
-       use: [
-         'style-loader',
-         'css-loader'
-       ]
-     },
-     {
-       test: /\.(woff|woff2|eot|ttf|otf|svg)$/,
-       use: [
-         'file-loader'
-       ]
-     }
+      {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: 'css-loader'
+        })
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf|svg)$/,
+        use: [
+          'file-loader'
+        ]
+      }
     ]
   },
   plugins: [
+    new ExtractTextPlugin('styles.css'),
     new webpack.optimize.CommonsChunkPlugin({
       'name': 'vendor',
       'minChunks': (module) => module.resource && module.resource.startsWith(nodeModules),
