@@ -8,8 +8,8 @@
     "url": "https://github.com/d-g-h/d-g-h.github.com"
   },
   "scripts": {
-    "start": "webpack-dev-server --inline --progress --port=4201",
-    "build": "webpack"
+    "start": "webpack-dev-server --inline --progress --hot --compress --port=4201",
+    "build": "webpack --progress --profile --bail --optimize-minimize"
   },
   "devDependencies": {
     "@types/node": "^8.0.26",
