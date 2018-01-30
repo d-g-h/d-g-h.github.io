@@ -1,5 +1,7 @@
-#### A commandline driven blog created with the aid of Gulp, Jade, Markdown, & SASS
+Progressive Web App (PWA) build w/Webpack
 
-See https://github.com/d-g-h/d-g-h.github.com/blob/master/gulpfile.babel.js for details
-
-Install global node-sass, and pa11y
+```sh
+npm install #install
+npm build   #build
+npm start   #develop
+```
