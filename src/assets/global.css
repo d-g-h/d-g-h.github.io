@@ -1,0 +1,36 @@
+:root {
+  --dark-bg-color: #22272e;
+  --dark-text-color: #adbac7;
+  --bg-color: #ffffff;
+  --link-color: #539bf5;
+  --highlight-color: #8ddb8c;
+}
+
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--dark-bg-color);
+  color: var(--dark-text-color);
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: var(--link-color);
+}
+
+.highlight  {
+  color: var(--highlight-color);
+}
+
+@media print {
+  background-color: var(--bg-color);
+}

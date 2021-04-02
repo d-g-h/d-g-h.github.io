@@ -1,1 +1,0 @@
-webpackJsonp([0],[function(e,n,i){"use strict";Object.defineProperty(n,"__esModule",{value:!0});var t=i(1),a=(i.n(t),i(3)),g=(i.n(a),i(4));i.n(g);a.registerLanguage("shell",i(5)),a.registerLanguage("javascript",i(6)),a.initHighlightingOnLoad(),g.install()},function(e,n){}],[0]);
