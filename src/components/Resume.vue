@@ -56,7 +56,7 @@
         >
           <ul>
             <Description
-              description="Architect and plan coding solutions for responsive websites using a variety of open source technologies"
+              description="Architect and plan coding solutions for responsive websites"
             />
           </ul>
         </Labor>
@@ -69,13 +69,13 @@
         >
           <ul>
             <Description
-              description="Created, and managed developer operations, and workflow with training, documentation, and automation"
+              description="Create, and manage developer operations"
             />
             <Description
-              description="Scoped, managed, architected projects under tight budgets coupled at times with short deadlines"
+              description="Scope, manage, architect projects"
             />
             <Description
-              description="Built sites, and RESTful APIs using a variety of technologies including WordPress, Node.js, ExpressJS, and AngularJS"
+              description="Build sites, and RESTful APIs using WordPress, Node.js, ExpressJS, and AngularJS"
             />
           </ul>
         </Labor>
@@ -88,16 +88,16 @@
         >
           <ul>
             <Description
-              description="Created and maintained environments for seamless developer operations"
+              description="Create and maintain environments for seamless developer operations"
             />
             <Description
-              description="Offered consultation about various design, development, and business practices"
+              description="Offer consultation about various design, development, and business practices"
             />
             <Description
-              description="Developed customized WordPress themes"
+              description="Develop customized WordPress themes"
             />
             <Description
-              description="Triaged and responded to theme related issues"
+              description="Triage and respond to theme related bugs"
             />
           </ul>
         </Labor>
