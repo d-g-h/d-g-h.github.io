@@ -9,10 +9,18 @@
     <div>
       <ul>
         <Labor
+          title="Software Developer"
+          location="New York, NY"
+          company="Kyndryl"
+          time="November 2021 - Present"
+        >
+        </Labor>
+
+        <Labor
           title="Software Engineer"
           location="New York, NY"
           company="IBM"
-          time="August 2018 - Present"
+          time="August 2018 - November 2021"
         >
           <ul>
             <Description
