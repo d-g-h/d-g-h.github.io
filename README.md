@@ -1,4 +1,5 @@
 # d-g-h.co
+[![CodeQL](https://github.com/d-g-h/d-g-h.github.com/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/d-g-h/d-g-h.github.com/actions/workflows/codeql-analysis.yml)
 
 ## Project setup
 ```
