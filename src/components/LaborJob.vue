@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: 'Labor',
+  name: 'LaborJob',
   props: {
     title: String,
     location: String,

@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: 'Description',
+  name: 'DescriptionJob',
   props: {
     description: String,
   }

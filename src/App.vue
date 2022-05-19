@@ -1,14 +1,14 @@
 <template>
-  <Resume/>
+  <ResumeJobs/>
 </template>
 
 <script>
-import Resume from './components/Resume.vue'
+import ResumeJobs from './components/ResumeJobs.vue'
 
 export default {
   name: 'App',
   components: {
-    Resume,
+    ResumeJobs,
   }
 }
 </script>
