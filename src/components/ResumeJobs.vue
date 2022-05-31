@@ -12,7 +12,7 @@
           title="Software Developer"
           location="New York, NY"
           company="Kyndryl"
-          time="November 2021 - Present"
+          time="August 2021 - Present"
         >
           <ul>
             <DescriptionJob
@@ -25,7 +25,7 @@
           title="Software Engineer"
           location="New York, NY"
           company="IBM"
-          time="August 2018 - November 2021"
+          time="August 2018 - August 2021"
         >
           <ul>
             <DescriptionJob
