@@ -12,11 +12,11 @@
           title="Software Developer"
           location="New York, NY"
           company="Kyndryl"
-          time="August 2021 - Present"
+          time="August 2021 - June 2022"
         >
           <ul>
             <DescriptionJob
-              description="Develop single page applications using Vue, and services using TypeScript, Node.js"
+              description="Develop single page applications using Vue.js and backend services using TypeScript, Node.js"
             />
           </ul>
         </LaborJob>
@@ -29,7 +29,7 @@
         >
           <ul>
             <DescriptionJob
-              description="Deliver HTML, JavaScript, & CSS to the client with Vue, and TypeScript"
+              description="Deliver HTML, JavaScript, & CSS to the client with Vue.js and TypeScript"
             />
             <DescriptionJob
               description="Create maintainable code with Functional programming and Test Driven Development"
