@@ -1,20 +1,20 @@
 <template>
-  <ResumeJobs/>
+  <ResumeJobs />
 </template>
 
 <script>
-import ResumeJobs from './components/ResumeJobs.vue'
+import ResumeJobs from "./components/ResumeJobs.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     ResumeJobs,
-  }
-}
+  },
+};
 </script>
 
 <style>
-@import './assets/global.css';
+@import "./assets/global.css";
 
 #app {
   font-family: sans-serif;
