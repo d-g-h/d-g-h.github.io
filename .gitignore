@@ -7,6 +7,7 @@
 *.pid
 *.gz
 pids
+dist
 logs
 npm-debug.log
 node_modules
