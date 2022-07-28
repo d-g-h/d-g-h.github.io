@@ -16,7 +16,7 @@
         >
           <ul>
             <DescriptionJob
-              description="Develop single page applications using Vue.js and backend services using TypeScript, Node.js"
+              description="Develop single page applications using Vue.js and backend services using TypeScript, GraphQL, and Node.js"
             />
           </ul>
         </LaborJob>
