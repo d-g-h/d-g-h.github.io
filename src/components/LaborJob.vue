@@ -10,14 +10,14 @@
 
 <script>
 export default {
-  name: 'LaborJob',
+  name: "LaborJob",
   props: {
     title: String,
     location: String,
     company: String,
     time: String,
-  }
-}
+  },
+};
 </script>
 
 <style scoped>
