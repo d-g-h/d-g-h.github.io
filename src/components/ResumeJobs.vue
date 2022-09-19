@@ -3,9 +3,7 @@
     <header>
       <h1 class="name"><a href="https://github.com/d-g-h">Dave Hall</a></h1>
     </header>
-    <div class="email">
-      daveghall the-at-sign<span>(@)</span>gmail period<span>(.)</span>com
-    </div>
+    <a href="mailto:daveghall@gmail.com" class="email">daveghall@gmail.com</a>
     <div>
       <ul>
         <LaborJob
