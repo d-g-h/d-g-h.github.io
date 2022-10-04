@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import ResumeJobs from "./components/ResumeJobs.vue";
+import ResumeJobs from "./views/ResumeJobs.vue";
 
 export default {
   name: "App",

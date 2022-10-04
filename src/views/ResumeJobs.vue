@@ -14,7 +14,10 @@
         >
           <ul>
             <DescriptionJob
-              description="Develop single page applications using Vue.js and backend services using TypeScript, GraphQL, and Node.js"
+              description="Develop single page applications using Vue.js"
+            />
+            <DescriptionJob
+              description="Maintain backend microservices using TypeScript, and Node.js"
             />
           </ul>
         </LaborJob>
@@ -27,7 +30,10 @@
         >
           <ul>
             <DescriptionJob
-              description="Deliver HTML, JavaScript, & CSS to the client with Vue.js and TypeScript"
+              description="Deliver HTML, JavaScript, & CSS to the client with Vue.js, SASS, and TypeScript"
+            />
+            <DescriptionJob
+              description="Modify microservices with using Node.js, GraphQL for various APIs"
             />
             <DescriptionJob
               description="Create maintainable code with Functional programming and Test Driven Development"
@@ -47,19 +53,6 @@
           <ul>
             <DescriptionJob
               description="Architect, and deliver, compiled HTML, JavaScript, & CSS via Angular, Webpack"
-            />
-          </ul>
-        </LaborJob>
-
-        <LaborJob
-          title="Freelance Full Stack Web Developer"
-          location="New York, NY"
-          company="d-g-h.co"
-          time="January 2009 - Present"
-        >
-          <ul>
-            <DescriptionJob
-              description="Architect and plan coding solutions for responsive websites"
             />
           </ul>
         </LaborJob>
@@ -117,8 +110,8 @@
 </template>
 
 <script>
-import LaborJob from "./LaborJob.vue";
-import DescriptionJob from "./DescriptionJob.vue";
+import LaborJob from "../components/LaborJob.vue";
+import DescriptionJob from "../components/DescriptionJob.vue";
 
 export default {
   name: "ResumeJobs",
