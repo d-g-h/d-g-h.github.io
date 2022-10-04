@@ -29,5 +29,6 @@ npm run test:unit
 
 ### Deploy
 ```
-git subtree push --prefix dist origin gh-pages
+git checkout gh-pages
+git rebase -i HEAD~2 #fixup commit into 'deploy'
 ```
