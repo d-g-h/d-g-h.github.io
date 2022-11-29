@@ -9,10 +9,10 @@ npm install
 
 ### Compiles and hot-reloads for development
 ```
-npm run serve
+npm run dev
 ```
 
-### Compiles and minifies for production
+### Compiles, minifies, exports build for production
 ```
 npm run build
 ```
@@ -22,13 +22,5 @@ npm run build
 npm run lint
 ```
 
-### Tests
-```
-npm run test:unit
-```
-
 ### Deploy
-```
-git checkout gh-pages
-git rebase -i HEAD~2 #fixup commit into 'deploy'
-```
+Push to the main branch to trigger https://github.com/d-g-h/d-g-h.github.com/blob/main/.github/workflows/nextjs.yml
