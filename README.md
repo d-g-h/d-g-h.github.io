@@ -9,10 +9,10 @@ npm install
 
 ### Compiles and hot-reloads for development
 ```
-npm run serve
+npm run dev
 ```
 
-### Compiles and minifies for production
+### Compiles, minifies, exports build for production
 ```
 npm run build
 ```
@@ -20,11 +20,6 @@ npm run build
 ### Lints and fixes files
 ```
 npm run lint
-```
-
-### Tests
-```
-npm run test:unit
 ```
 
 ### Deploy
