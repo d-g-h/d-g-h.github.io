@@ -26,7 +26,7 @@ export default function Home() {
               title="Senior Software Engineer"
               location="New York, NY"
               company="TED"
-              time="November 2022 - Present"
+              time="November 2022 - June 2023"
             >
               <ul>
                 <Description description="Develop single page applications using Next.js"></Description>
