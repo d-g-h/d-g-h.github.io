@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "next build && next lint && next export",
-    "dev": "next",
+    "dev": "next --turbo",
     "lint": "next lint"
   },
   "dependencies": {
