@@ -1,7 +1,13 @@
 import Link from "next/link";
+import { Metadata } from 'next'
 import Description from "../components/description";
 import Labor from "../components/labor";
 import styles from "./page.module.css";
+
+export const metadata: Metadata = {
+  title: 'Hi.reDave',
+  description: 'Resume',
+}
 
 export default function Home() {
   return (
