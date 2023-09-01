@@ -105,8 +105,10 @@ export default function Home() {
           <div className={styles.title}>Education</div>
           <ul>
             <li>
-              Brooklyn College, Information Systems, MS Candidate (completed all
-              course requirements)
+              Brooklyn College, Information Systems, MS Candidate{" "}
+              <span className={styles.subtitle}>
+                (completed all course requirements)
+              </span>
             </li>
             <li>City College of New York, General Psychology, MA 2008</li>
             <li>Binghamton University, Psychology, BA 2005</li>
