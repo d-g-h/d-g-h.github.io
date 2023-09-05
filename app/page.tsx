@@ -35,7 +35,7 @@ export default function Home() {
               time="November 2022 - June 2023"
             >
               <ul>
-                <Description description="Develop single page applications using Next.js"></Description>
+                <Description description="Develop single page applications using Next.js (TypeScript, React, CSS)"></Description>
                 <Description description="Collaborate using agile development methodologies to construct software"></Description>
               </ul>
             </Labor>
