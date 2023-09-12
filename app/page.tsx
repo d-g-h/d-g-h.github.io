@@ -35,7 +35,7 @@ export default function Home() {
               time="November 2022 - June 2023"
             >
               <ul>
-                <Description description="Develop single page applications using Next.js (TypeScript, React, CSS)"></Description>
+                <Description description="Develop single page applications using Next.js (TypeScript, React, Tailwind CSS)"></Description>
                 <Description description="Collaborate using agile development methodologies to construct software"></Description>
               </ul>
             </Labor>
@@ -60,7 +60,8 @@ export default function Home() {
                 <Description description="Deliver HTML, JavaScript, & CSS to the client with Vue.js, SASS, and TypeScript" />
                 <Description description="Modify microservices with using Node.js, GraphQL for various APIs" />
                 <Description description="Create maintainable code with Functional programming and Test Driven Development" />
-                <Description description="Collaborate using agile development methodologies to construct software" />
+                <Description description="Collaborate using Agile Development Methodologies to construct software" />
+                <Description description="Maintained and improved IBM software during the Kyndryl divestiture" />
               </ul>
             </Labor>
 
@@ -94,7 +95,6 @@ export default function Home() {
               time="August 2012 - April 2014"
             >
               <ul>
-                <Description description="Create and maintain environments for seamless developer operations" />
                 <Description description="Develop customized WordPress themes" />
                 <Description description="Triage and respond to theme related bugs" />
               </ul>
