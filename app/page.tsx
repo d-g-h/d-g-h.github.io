@@ -36,6 +36,7 @@ export default function Home() {
             >
               <ul>
                 <Description description="Add features to a single page application using Next.js (TypeScript, React, Tailwind CSS)"></Description>
+                <Description description="Create and modify components for design system" />
                 <Description description="Collaborate using agile development methodologies to construct software"></Description>
               </ul>
             </Labor>
@@ -59,9 +60,8 @@ export default function Home() {
               <ul>
                 <Description description="Deliver HTML, JavaScript, & CSS to the client with Vue.js, SASS, and TypeScript" />
                 <Description description="Modify microservices with using Node.js, GraphQL for various APIs" />
+                <Description description="Create and modify components for design system" />
                 <Description description="Create maintainable code with Functional programming and Test Driven Development" />
-                <Description description="Collaborate using Agile Development Methodologies to construct software" />
-                <Description description="Maintained and improved IBM software during the Kyndryl divestiture" />
               </ul>
             </Labor>
 
@@ -73,6 +73,7 @@ export default function Home() {
             >
               <ul>
                 <Description description="Architect, and deliver, compiled HTML, JavaScript, & CSS via Angular, Webpack" />
+                <Description description="Create and modify components for design system" />
               </ul>
             </Labor>
 
@@ -83,7 +84,6 @@ export default function Home() {
               time="December 2013 - July 2015"
             >
               <ul>
-                <Description description="Create, and manage developer operations" />
                 <Description description="Build sites, and RESTful APIs using WordPress, Node.js, ExpressJS, and AngularJS" />
               </ul>
             </Labor>
@@ -95,8 +95,7 @@ export default function Home() {
               time="August 2012 - April 2014"
             >
               <ul>
-                <Description description="Develop customized WordPress themes" />
-                <Description description="Triage and respond to theme related bugs" />
+                <Description description="Collaborate with users to develop customized WordPress themes" />
               </ul>
             </Labor>
           </ul>

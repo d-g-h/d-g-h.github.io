@@ -36,6 +36,7 @@ export default function Home() {
             >
               <ul>
                 <Description description="Add features to a single page application for Search and Video Pages (TypeScript, React, Tailwind CSS, Next.js)"></Description>
+                <Description description="Create and add components to TED UI"></Description>
                 <Description description="Collaborate using agile development methodologies to construct software"></Description>
               </ul>
             </Labor>
@@ -62,7 +63,6 @@ export default function Home() {
                 <Description description="Refactor Microservices for modularity, improving testability and readability of code" />
                 <Description description="Create maintainable code with Functional programming and Test Driven Development" />
                 <Description description="Collaborate using Agile Development Methodologies to construct software" />
-                <Description description="Maintain and improve IBM software during the Kyndryl divestiture" />
               </ul>
             </Labor>
 
