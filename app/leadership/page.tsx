@@ -63,6 +63,7 @@ export default function Home() {
                 <Description description="Refactor Microservices for modularity, improving testability and readability of code" />
                 <Description description="Create maintainable code with Functional programming and Test Driven Development" />
                 <Description description="Collaborate using Agile Development Methodologies to construct software" />
+                <Description description="Participated in hiring and onboarding processes by creating assessments and documentation" />
               </ul>
             </Labor>
 
@@ -87,6 +88,7 @@ export default function Home() {
               <ul>
                 <Description description="Create, and manage developer operations" />
                 <Description description="Build sites, and RESTful APIs using WordPress, Node.js, ExpressJS, and AngularJS" />
+                <Description description="Participated hiring and onboarding processes by creating assessments and documentation" />
               </ul>
             </Labor>
           </ul>
