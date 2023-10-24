@@ -35,7 +35,7 @@ export default function Home() {
               time="November 2022 - June 2023"
             >
               <ul>
-                <Description description="Add features to a single page application using Next.js (TypeScript, React, Tailwind CSS)"></Description>
+                <Description description="Add features to a single page application using Next.js (TypeScript & React)"></Description>
                 <Description description="Create and modify components for design system" />
                 <Description description="Collaborate using agile development methodologies to construct software"></Description>
               </ul>
