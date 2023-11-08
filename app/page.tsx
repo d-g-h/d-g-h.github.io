@@ -72,7 +72,7 @@ export default function Home() {
               time="February 2016 - August 2018"
             >
               <ul>
-                <Description description="Architect, and deliver, compiled HTML, JavaScript, & CSS via Angular, Webpack" />
+                <Description description="Architect, and deliver, compiled HTML, JavaScript, & CSS via React, Angular, & Webpack" />
                 <Description description="Create and modify components for design system" />
               </ul>
             </Labor>
