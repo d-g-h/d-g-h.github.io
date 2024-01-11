@@ -35,8 +35,8 @@ export default function Home() {
               time="November 2022 - June 2023"
             >
               <ul>
-                <Description description="Add features to a single page application for Search and Video Pages (TypeScript, React, Tailwind CSS, Next.js)"></Description>
-                <Description description="Create and add components to TED UI Design System"></Description>
+                <Description description="Add features to a single page application for Search & Video Pages (TypeScript, React, Tailwind CSS, Next.js)"></Description>
+                <Description description="Create & add components to TED UI Design System"></Description>
                 <Description description="Collaborate using agile development methodologies"></Description>
               </ul>
             </Labor>
@@ -48,7 +48,7 @@ export default function Home() {
             >
               <ul>
                 <Description description="Develop single page applications using Vue.js"></Description>
-                <Description description="Develop backend microservices using TypeScript, and Node.js"></Description>
+                <Description description="Develop backend microservices using TypeScript, & Node.js"></Description>
               </ul>
             </Labor>
             <Labor
@@ -58,12 +58,12 @@ export default function Home() {
               time="August 2018 - August 2021"
             >
               <ul>
-                <Description description="Deliver HTML, JavaScript, & CSS to the client with Vue.js, SASS, and TypeScript" />
+                <Description description="Deliver HTML, JavaScript, & CSS to the client with Vue.js, SASS, & TypeScript" />
                 <Description description="Aggregate legacy APIs using Node.js, GraphQL to feed into client side components" />
-                <Description description="Refactor Microservices for modularity, improving testability and readability of code" />
-                <Description description="Create maintainable code with Functional programming and Test Driven Development" />
+                <Description description="Refactor Microservices for modularity, improving testability & readability of code" />
+                <Description description="Create maintainable code with Functional programming & Test Driven Development" />
                 <Description description="Collaborate using Agile Development Methodologies" />
-                <Description description="Participate in hiring and onboarding processes by creating assessments and documentation" />
+                <Description description="Participate in hiring & onboarding processes by creating assessments & documentation" />
               </ul>
             </Labor>
 
@@ -74,8 +74,8 @@ export default function Home() {
               time="February 2016 - August 2018"
             >
               <ul>
-                <Description description="Architect, and deliver, compiled HTML, JavaScript, & CSS via React, Angular, & Webpack" />
-                <Description description="Create Progressive Web Application utilizing AWS Lex with voice data, and other third party APIs" />
+                <Description description="Architect, & deliver, compiled HTML, JavaScript, & CSS via React, Angular, & Webpack" />
+                <Description description="Create Progressive Web Application utilizing AWS Lex with voice data, & other third party APIs" />
               </ul>
             </Labor>
 
@@ -86,9 +86,9 @@ export default function Home() {
               time="December 2013 - July 2015"
             >
               <ul>
-                <Description description="Create, and manage developer operations" />
-                <Description description="Build sites, and RESTful APIs using WordPress, Node.js, ExpressJS, and AngularJS" />
-                <Description description="Participated hiring and onboarding processes by creating assessments and documentation" />
+                <Description description="Create, & manage developer operations" />
+                <Description description="Build sites, & RESTful APIs using WordPress, Node.js, ExpressJS, & AngularJS" />
+                <Description description="Participated hiring & onboarding processes by creating assessments & documentation" />
               </ul>
             </Labor>
           </ul>
