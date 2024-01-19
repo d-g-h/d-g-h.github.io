@@ -5,8 +5,8 @@ import Labor from "../components/labor";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: "Hire Dave",
-  description: "Resume",
+  title: "💻",
+  description: "❤️",
 };
 
 export default function Home() {
@@ -35,7 +35,8 @@ export default function Home() {
               time="November 2022 - June 2023"
             >
               <ul>
-                <Description description="Add features to a single page application for Search & Video Pages (TypeScript, React, Tailwind CSS, Next.js, Ruby, Rails)"></Description>
+                <Description description="Add features to a single page application for Search & Video Pages"></Description>
+                <Description description="using TypeScript, React, Tailwind CSS, Next.js, Ruby, Rails)"></Description>
                 <Description description="Create & add components to TED UI Design System"></Description>
                 <Description description="Collaborate using agile development methodologies"></Description>
               </ul>
@@ -58,7 +59,7 @@ export default function Home() {
               time="August 2018 - August 2021"
             >
               <ul>
-                <Description description="Deliver HTML, JavaScript, & CSS to the client with Vue.js, SASS, & TypeScript" />
+                <Description description="Deliver HTML, JavaScript, & CSS to the client using Vue.js, SASS, & TypeScript" />
                 <Description description="Aggregate legacy APIs using Node.js, GraphQL to feed into client side components" />
                 <Description description="Refactor Microservices for modularity, improving testability & readability of code" />
                 <Description description="Create maintainable code with Functional programming & Test Driven Development" />
