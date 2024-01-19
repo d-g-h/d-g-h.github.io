@@ -35,7 +35,7 @@ export default function Home() {
               time="November 2022 - June 2023"
             >
               <ul>
-                <Description description="Add features to a single page application for Search & Video Pages (TypeScript, React, Tailwind CSS, Next.js)"></Description>
+                <Description description="Add features to a single page application for Search & Video Pages (TypeScript, React, Tailwind CSS, Next.js, Ruby, Rails)"></Description>
                 <Description description="Create & add components to TED UI Design System"></Description>
                 <Description description="Collaborate using agile development methodologies"></Description>
               </ul>
