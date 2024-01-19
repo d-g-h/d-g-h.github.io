@@ -36,7 +36,7 @@ export default function Home() {
             >
               <ul>
                 <Description description="Add features to a single page application for Search & Video Pages"></Description>
-                <Description description="using TypeScript, React, Tailwind CSS, Next.js, Ruby, Rails)"></Description>
+                <Description description="using TypeScript, React, Tailwind CSS, Next.js, Ruby, Rails"></Description>
                 <Description description="Create & add components to TED UI Design System"></Description>
                 <Description description="Collaborate using agile development methodologies"></Description>
               </ul>
