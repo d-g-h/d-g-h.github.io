@@ -63,10 +63,10 @@
     "time": "August 2016 - August 2018",
     "descriptions": [
       {
-        "description": "Architect, deliver compiled HTML with TypeScript, CSS, React, Angular, & Webpack"
+        "description": "Deliver HTML, JavaScript, & CSS to components using React, Angular, SASS, & TypeScript"
       },
       {
-        "description": "Add & improve Infor Design Library components"
+        "description": "Add & improve performance of Infor Design Library components"
       },
       {
         "description": "Create Progressive Web Application utilizing AWS Lambda & Lex, & other third party APIs"
@@ -85,7 +85,7 @@
         "description": "Build sites & REST APIs using WordPress, Node.js, ExpressJS, & AngularJS"
       },
       {
-        "description": "Conduct interviews & onboard by create documentation"
+        "description": "Conduct interviews & onboard"
       }
     ]
   }
