@@ -1,0 +1,92 @@
+[
+  {
+    "key": "d1d8eaf0-7232-4542-a9c0-fe9abd9f82b8",
+    "title": "Senior Software Engineer",
+    "location": "New York, NY",
+    "company": "TED",
+    "time": "November 2022 - June 2023",
+    "descriptions": [
+      {
+        "description": "Add features to a single page application & Rails application for Discovery, Talk, & Member Pages"
+      },
+      {
+        "description": "using TypeScript, React, Tailwind CSS, Next.js, Ruby on Rails"
+      },
+      { "description": "Create & add components to TED UI Design System" },
+      { "description": "Collaborate using agile development methodologies" }
+    ]
+  },
+  {
+    "key": "1e251034-c753-499a-bde3-663d4dd7dbaa",
+    "title": "Software Developer",
+    "location": "New York, NY",
+    "company": "Kyndryl",
+    "time": "August 2021 - June 2022",
+    "descriptions": [
+      { "description": "Build ingestion tool for Sharepoint migration" },
+      { "description": "Develop single page applications using Vue.js" },
+      {
+        "description": "Develop backend microservices using TypeScript, & Node.js"
+      }
+    ]
+  },
+  {
+    "key": "24bcbc62-a62f-43eb-b097-e3b4cfd02ff4",
+    "title": "Software Engineer",
+    "location": "New York, NY",
+    "company": "IBM",
+    "time": "August 2018 - August 2021",
+    "descriptions": [
+      {
+        "description": "Deliver HTML, JavaScript, & CSS to the client using Vue.js, SASS, & TypeScript"
+      },
+      {
+        "description": "Aggregate legacy APIs using Node.js, GraphQL to feed into Design Library components"
+      },
+      {
+        "description": "Refactor Microservices for modularity, improving testability & readability of code"
+      },
+      {
+        "description": "Create maintainable code with Functional programming & Test Driven Development"
+      },
+      { "description": "Collaborate using Agile Development Methodologies" },
+      {
+        "description": "Participate in hiring & onboarding processes by creating assessments & documentation"
+      }
+    ]
+  },
+  {
+    "key": "3784faf7-01ad-45c2-a32d-bc9c54f5b3a4",
+    "title": "Software Engineer",
+    "location": "New York, NY",
+    "company": "Infor",
+    "time": "August 2016 - August 2018",
+    "descriptions": [
+      {
+        "description": "Architect, deliver compiled HTML with TypeScript, CSS, React, Angular, & Webpack"
+      },
+      {
+        "description": "Add & improve Infor Design Library components"
+      },
+      {
+        "description": "Create Progressive Web Application utilizing AWS Lambda & Lex, & other third party APIs"
+      }
+    ]
+  },
+  {
+    "key": "bb7a27f1-7160-4cdd-beeb-3ead5504aad9",
+    "title": "Lead Developer",
+    "location": "New York, NY",
+    "company": "Radish Lab",
+    "time": "December 2013 - July 2015",
+    "descriptions": [
+      { "description": "Create & manage developer operations" },
+      {
+        "description": "Build sites & REST APIs using WordPress, Node.js, ExpressJS, & AngularJS"
+      },
+      {
+        "description": "Conduct interviews & onboard by create documentation"
+      }
+    ]
+  }
+]
