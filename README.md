@@ -23,3 +23,8 @@ npm run lint
 
 ### Deploy
 Push to the main branch to trigger https://github.com/d-g-h/d-g-h.github.com/blob/main/.github/workflows/nextjs.yml
+
+
+### API
+
+`curl -s https://d-g-h.co/labors | jq`
