@@ -51,7 +51,8 @@ export default function Home() {
         </div>
         <div>
           <div className={styles.title}>Education</div>
-          <ul>
+          <ul className={styles.education}>
+            <li>Brooklyn College, Information Systems</li>
             <li>City College of New York, General Psychology, MA</li>
             <li>Binghamton University, Psychology, BA</li>
           </ul>
