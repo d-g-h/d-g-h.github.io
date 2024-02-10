@@ -7,13 +7,18 @@
     "time": "November 2022 - June 2023",
     "descriptions": [
       {
-        "description": "Add features to a single page application & Rails application for Discovery, Talk, & Member Pages"
+        "description": "Add features to a single page application & Rails application for Discovery, Talk, & Member Pages using TypeScript, React, Tailwind CSS, Next.js, Ruby on Rails"
       },
       {
-        "description": "using TypeScript, React, Tailwind CSS, Next.js, Ruby on Rails"
+        "description": "Improve code quality by adding code coverage tools & providing actionable code reviews & pairing sessions to reduce QA testing to reduce deployment times"
       },
-      { "description": "Create & add components to TED UI Design System" },
-      { "description": "Collaborate using agile development methodologies" }
+      {
+        "description": "Create & add components to accessible TED UI Design System"
+      },
+
+      {
+        "description": "Foster collaboration and team focus using team choosen agile development methodologies to reduce blockers"
+      }
     ]
   },
   {
@@ -38,7 +43,7 @@
     "time": "August 2018 - August 2021",
     "descriptions": [
       {
-        "description": "Deliver HTML, JavaScript, & CSS to the client using Vue.js, SASS, & TypeScript"
+        "description": "Deliver accessible HTML, JavaScript, & CSS to the client using Vue.js, Vuex, SASS, & TypeScript"
       },
       {
         "description": "Aggregate legacy APIs using Node.js, GraphQL to feed into Design Library components"
@@ -49,7 +54,9 @@
       {
         "description": "Create maintainable code with Functional programming & Test Driven Development"
       },
-      { "description": "Collaborate using Agile Development Methodologies" },
+      {
+        "description": "Foster collaboration and user engagement using team choosen agile development methodologies"
+      },
       {
         "description": "Participate in hiring & onboarding processes by creating assessments & documentation"
       }
@@ -82,10 +89,10 @@
     "descriptions": [
       { "description": "Create & manage developer operations" },
       {
-        "description": "Build sites & REST APIs using WordPress, Node.js, ExpressJS, & AngularJS"
+        "description": "Build devops environment, create websites, & REST APIs using WordPress, Node.js, ExpressJS, & AngularJS"
       },
       {
-        "description": "Conduct interviews & onboard"
+        "description": "Conduct interviews & onboard 2 hires"
       }
     ]
   }

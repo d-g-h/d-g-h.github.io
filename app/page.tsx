@@ -18,13 +18,17 @@ export default function Home() {
           <Link href="https://github.com/d-g-h">Dave Hall</Link>
         </h1>
       </header>
-      <div>
-        <Link href="mailto:daveghall@gmail.com" className={styles.email}>
-          daveghall@gmail.com
-        </Link>
-      </div>
-      <div>
-        <Link href="https://www.linkedin.com/in/d-g-h/">linkedin/in/d-g-h</Link>
+      <div className={styles.sub}>
+        <div>
+          <Link href="mailto:daveghall@gmail.com" className={styles.email}>
+            daveghall@gmail.com
+          </Link>
+        </div>
+        <div>
+          <Link href="https://www.linkedin.com/in/d-g-h/">
+            linkedin/in/d-g-h
+          </Link>
+        </div>
       </div>
       <main>
         <div>
@@ -51,7 +55,7 @@ export default function Home() {
         </div>
         <div>
           <div className={styles.title}>Education</div>
-          <ul className={styles.education}>
+          <ul className={styles.sub}>
             <li>Brooklyn College, Information Systems</li>
             <li>City College of New York, General Psychology, MA</li>
             <li>Binghamton University, Psychology, BA</li>
