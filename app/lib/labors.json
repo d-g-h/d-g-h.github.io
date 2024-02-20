@@ -7,7 +7,7 @@
     "time": "November 2022 - June 2023",
     "descriptions": [
       {
-        "description": "Add features to a single page application & Rails application for Discovery, Talk, & Member Pages using TypeScript, React, Tailwind CSS, Next.js, Ruby on Rails"
+        "description": "Add features to a single page application & Ruby on Rails application for Discovery, Talk, & Member Pages using TypeScript, React, Tailwind CSS, Next.js, & Ruby on Rails"
       },
       {
         "description": "Improve code quality by adding code coverage tools & providing actionable code reviews & pairing sessions to reduce QA testing to reduce deployment times"
@@ -70,10 +70,13 @@
     "time": "August 2016 - August 2018",
     "descriptions": [
       {
-        "description": "Deliver HTML, JavaScript, & CSS to components using React, Angular, SASS, & TypeScript"
+        "description": "Deliver HTML, JavaScript, & CSS to components using React, Angular, SASS, & TypeScript from jQuery library based components"
       },
       {
-        "description": "Add & improve performance of Infor Design Library components"
+        "description": "Create, measure & modify performance of Design Library components"
+      },
+      {
+        "description": "Design, develop and demonstrate proof of concept prototypes"
       },
       {
         "description": "Create Progressive Web Application utilizing AWS Lambda & Lex, & other third party APIs"
