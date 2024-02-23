@@ -1,13 +1,10 @@
-name: 'Node.js CI & CodeQL'
-
+name: 'Analysis'
 
 on:
   push:
     branches: [ 'main' ]
   pull_request:
     branches: [ 'main' ]
-  schedule:
-    - cron: '28 2 * * 0'
 
 jobs:
   analyze:
@@ -18,29 +15,29 @@ jobs:
       actions: read
       contents: read
       security-events: write
-
     strategy:
       fail-fast: false
       matrix:
         language: [ 'javascript-typescript' ]
-        node-version: [18.x]
-
+        node-version: [20.x]
     steps:
-      - uses: actions/checkout@v3
       - name: Checkout repository
-        uses: actions/setup-node@v3
+        uses: actions/checkout@v4
+
+      - name: Setup repository
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
       - run: npm run build --if-present
-      - run: npm run test --if-present
+      - run: npm run test:ci --if-present
 
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@v2
+        uses: github/codeql-action/init@v3
         with:
           languages: ${{ matrix.language }}
 
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v2
-      with:
-        category: '/language:${{matrix.language}}'
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: '/language:${{matrix.language}}'
