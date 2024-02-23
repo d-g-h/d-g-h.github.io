@@ -4,7 +4,8 @@
     "title": "Senior Software Engineer",
     "location": "New York, NY",
     "company": "TED",
-    "time": "November 2022 - June 2023",
+    "start": "2022-11",
+    "end": "2023-06",
     "descriptions": [
       {
         "description": "Add features to a single page application & Ruby on Rails application for Discovery, Talk, & Member Pages using TypeScript, React, Tailwind CSS, Next.js, & Ruby on Rails"
@@ -27,6 +28,8 @@
     "location": "New York, NY",
     "company": "Kyndryl",
     "time": "August 2021 - June 2022",
+    "start": "2021-08",
+    "end": "2022-06",
     "descriptions": [
       { "description": "Build ingestion tool for Sharepoint migration" },
       { "description": "Develop single page applications using Vue.js" },
@@ -40,7 +43,8 @@
     "title": "Software Engineer",
     "location": "New York, NY",
     "company": "IBM",
-    "time": "August 2018 - August 2021",
+    "start": "2018-08",
+    "end": "2021-08",
     "descriptions": [
       {
         "description": "Deliver accessible HTML, JavaScript, & CSS to the client using Vue.js, Vuex, SASS, & TypeScript"
@@ -67,7 +71,8 @@
     "title": "Software Engineer",
     "location": "New York, NY",
     "company": "Infor",
-    "time": "August 2016 - August 2018",
+    "start": "2016-08",
+    "end": "2018-08",
     "descriptions": [
       {
         "description": "Deliver HTML, JavaScript, & CSS to components using React, Angular, SASS, & TypeScript from jQuery library based components"
@@ -88,7 +93,8 @@
     "title": "Lead Developer",
     "location": "New York, NY",
     "company": "Radish Lab",
-    "time": "December 2013 - July 2015",
+    "start": "2013-12",
+    "end": "2015-07",
     "descriptions": [
       { "description": "Create & manage developer operations" },
       {

@@ -39,7 +39,8 @@ export default function Home() {
                 title={labor.title}
                 location={labor.location}
                 company={labor.company}
-                time={labor.time}
+                start={labor.start}
+                end={labor.end}
               >
                 <ul>
                   {labor.descriptions.map((description, j) => (
