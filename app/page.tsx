@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Metadata } from "next";
-import labors from "./lib/labors.json";
+import labors from "../public/labors.json";
 import Description from "../components/description";
 import Labor from "../components/labor";
 import styles from "./page.module.css";
