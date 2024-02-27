@@ -96,9 +96,9 @@
     "start": "2013-12",
     "end": "2015-07",
     "descriptions": [
-      { "description": "Create & manage developer operations" },
+      { "description": "Create & manage developer operations using Vagrant, Chef, & Ansible" },
       {
-        "description": "Build devops environment, create websites, & REST APIs using WordPress, Node.js, ExpressJS, & AngularJS"
+        "description": "Create web apps, & REST APIs using PHP, MySQL, WordPress, Node.js, ExpressJS, AngularJS"
       },
       {
         "description": "Conduct interviews & onboard 2 hires"
