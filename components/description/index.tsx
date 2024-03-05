@@ -1,11 +1,9 @@
 type DescriptionProps = {
-  description: string
-}
+  description: string;
+};
+
+import styles from "./description.module.css";
 
 export default function Description({ description }: DescriptionProps) {
-  return (
-    <li>
-      {description}
-    </li>
-  )
+  return <li className={styles.description}>{description}</li>;
 }
