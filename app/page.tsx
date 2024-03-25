@@ -6,7 +6,7 @@ import Labor from "../components/labor";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: "💻",
+  title: "⇗💻",
   description: "❤️",
 };
 
