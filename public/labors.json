@@ -1,6 +1,6 @@
 [
   {
-    "key": "d1d8eaf0-7232-4542-a9c0-fe9abd9f82b8",
+    "key": "0",
     "title": "Senior Software Engineer",
     "location": "New York, NY",
     "company": "TED",
@@ -23,7 +23,7 @@
     ]
   },
   {
-    "key": "1e251034-c753-499a-bde3-663d4dd7dbaa",
+    "key": "1",
     "title": "Software Developer",
     "location": "New York, NY",
     "company": "Kyndryl",
@@ -39,7 +39,7 @@
     ]
   },
   {
-    "key": "24bcbc62-a62f-43eb-b097-e3b4cfd02ff4",
+    "key": "2",
     "title": "Software Engineer",
     "location": "New York, NY",
     "company": "IBM",
@@ -67,7 +67,7 @@
     ]
   },
   {
-    "key": "3784faf7-01ad-45c2-a32d-bc9c54f5b3a4",
+    "key": "3",
     "title": "Software Engineer",
     "location": "New York, NY",
     "company": "Infor",
@@ -89,7 +89,7 @@
     ]
   },
   {
-    "key": "bb7a27f1-7160-4cdd-beeb-3ead5504aad9",
+    "key": "4",
     "title": "Lead Developer",
     "location": "New York, NY",
     "company": "Radish Lab",
