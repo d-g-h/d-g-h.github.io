@@ -5,7 +5,7 @@ type TimeProps = {
 
 import monthYear from "../../lib/utils/monthYear";
 
-export default function Time({ start, end }: TimeProps) {
+export default function Time({ start, end }: Readonly<TimeProps>) {
   return (
     <>
       <time dateTime={start}>{monthYear({ date: start })}</time>
