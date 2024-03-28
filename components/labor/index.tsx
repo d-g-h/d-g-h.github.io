@@ -17,7 +17,7 @@ export default function Labor({
   start,
   end,
   children,
-}: LaborProps) {
+}: Readonly<LaborProps>) {
   return (
     <li className={styles.labor}>
       <div className={styles.title}>{title}</div>
