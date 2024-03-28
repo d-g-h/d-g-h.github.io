@@ -1,4 +1,4 @@
-import monthYear from "../app/lib/utils/monthYear";
+import monthYear from "../lib/utils/monthYear";
 
 describe("formattedDate", () => {
   test("should create a Date object from a formatted string", () => {
