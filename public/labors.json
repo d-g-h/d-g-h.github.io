@@ -18,7 +18,7 @@
       },
 
       {
-        "description": "Foster collaboration and team focus using team choosen agile development methodologies to reduce blockers"
+        "description": "Foster collaboration & team focus using team choosen agile development methodologies to reduce blockers"
       }
     ]
   },
@@ -31,10 +31,10 @@
     "start": "2021-08",
     "end": "2022-06",
     "descriptions": [
-      { "description": "Build ingestion tool for Sharepoint migration" },
+      { "description": "Build ingestion tool for Sharepoint migration from CouchDB" },
       { "description": "Develop single page applications using Vue.js" },
       {
-        "description": "Develop backend microservices using TypeScript, & Node.js"
+        "description": "Develop backend microservices using TypeScript, CouchDB, & Node.js"
       }
     ]
   },
@@ -47,19 +47,19 @@
     "end": "2021-08",
     "descriptions": [
       {
-        "description": "Deliver accessible HTML, JavaScript, & CSS to the client using Vue.js, Vuex, SASS, & TypeScript"
+        "description": "Deliver accessible HTML, JavaScript, & CSS to the client using Vue.js, Vuex, SASS, & TypeScript using WebPack"
       },
       {
-        "description": "Aggregate legacy APIs using Node.js, GraphQL to feed into Design Library components"
+        "description": "Aggregate legacy APIs, & Cassandra column-family data using GraphQL to feed into Design Library components"
       },
       {
-        "description": "Refactor Microservices for modularity, improving testability & readability of code"
+        "description": "Refactor Node.js API microservices for modularity. Increase code coverage up to 85% & over"
       },
       {
         "description": "Create maintainable code with Functional programming & Test Driven Development"
       },
       {
-        "description": "Foster collaboration and user engagement using team choosen agile development methodologies"
+        "description": "Foster collaboration & user engagement using team choosen agile development methodologies"
       },
       {
         "description": "Participate in hiring & onboarding processes by creating assessments & documentation"
@@ -81,7 +81,7 @@
         "description": "Create, measure & modify performance of Design Library components"
       },
       {
-        "description": "Design, develop and demonstrate proof of concept prototypes"
+        "description": "Design, develop & demonstrate proof of concept prototypes"
       },
       {
         "description": "Create Progressive Web Application utilizing AWS Lambda, AWS Lex, & Infor Coleman AI"
