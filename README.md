@@ -19,9 +19,14 @@ npm run dev:inspect
 ```
 
 
-test
+test in dev
 ```
 npm test
+```
+
+test in prod w/coverage report
+```
+npm run test:ci
 ```
 
 prod
