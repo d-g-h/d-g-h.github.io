@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { Metadata } from "next";
-import labors from "../public/labors.json";
-import Description from "../components/description";
-import Labor from "../components/labor";
-import styles from "./page.module.css";
+import labors from "@/public/labors.json";
+import Description from "@/components/description";
+import Labor from "@/components/labor";
+import styles from "@/app/page.module.css";
 
 export const metadata: Metadata = {
   title: "⇗💻",
@@ -15,17 +15,20 @@ export default function Home() {
     <div className={styles.resume}>
       <header>
         <h1 className={styles.name}>
-          <Link href="https://github.com/d-g-h">Dave Hall</Link>
+          <Link href={`${process.env.NEXT_PUBLIC_GITHUB}`}>Dave Hall</Link>
         </h1>
       </header>
       <div className={styles.sub}>
         <div>
-          <Link href="mailto:daveghall@gmail.com" className={styles.email}>
+          <Link
+            href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`}
+            className={styles.email}
+          >
             daveghall@gmail.com
           </Link>
         </div>
         <div>
-          <Link href="https://www.linkedin.com/in/d-g-h/">
+          <Link href={`${process.env.NEXT_PUBLIC_LINKEDIN}`}>
             linkedin/in/d-g-h
           </Link>
         </div>

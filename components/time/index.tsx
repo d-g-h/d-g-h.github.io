@@ -3,7 +3,7 @@ type TimeProps = {
   end?: string;
 };
 
-import monthYear from "../../lib/utils/monthYear";
+import monthYear from "@/lib/utils/monthYear";
 
 export default function Time({ start, end }: Readonly<TimeProps>) {
   return (
