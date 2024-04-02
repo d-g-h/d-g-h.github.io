@@ -7,8 +7,8 @@ type LaborProps = {
   children: React.ReactNode;
 };
 
-import styles from "./labor.module.css";
-import Time from "../time"
+import styles from "@/components/labor/labor.module.css";
+import Time from "@/components/time"
 
 export default function Labor({
   title,

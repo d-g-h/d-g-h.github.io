@@ -57,6 +57,10 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
+        env:
+          NEXT_PUBLIC_EMAIL: ${{ secrets.NEXT_PUBLIC_EMAIL }}
+          NEXT_PUBLIC_GITHUB: ${{ secrets.NEXT_PUBLIC_GITHUB }}
+          NEXT_PUBLIC_LINKEDIN: ${{ secrets.NEXT_PUBLIC_LINKEDIN }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
