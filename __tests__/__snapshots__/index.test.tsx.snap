@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Time renders html correctly 1`] = `
+[
+  <time
+    dateTime="2024-04"
+  >
+    April 2024
+  </time>,
+  "- present",
+]
+`;
