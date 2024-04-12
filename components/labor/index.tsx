@@ -21,7 +21,7 @@ export default function Labor({
   return (
     <li className={styles.labor}>
       <div className={styles.title}>{title}</div>
-      <div className={`${company === "TED" ? styles.ted : "highlight"}`}>
+      <div className={styles.highlight}>
         {company}
       </div>
       <div className={styles.location}>{location}</div>
