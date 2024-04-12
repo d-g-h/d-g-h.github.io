@@ -3,7 +3,7 @@
   --dark-dark-color: #22272e;
   --light-color: #ffffff;
   --blue-color: #539bf5;
-  --highlight-color: #8ddb8c;
+  --lime-color: #8ddb8c;
 }
 
 html {
@@ -38,14 +38,9 @@ a {
   color: var(--blue-color);
 }
 
-.highlight {
-  color: var(--highlight-color);
-}
-
 @media print {
   body,
-  a,
-  .highlight {
+  a {
     color: var(--dark-dark-color);
   }
 }
