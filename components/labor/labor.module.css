@@ -1,8 +1,3 @@
-.ted {
-  color: #eb2008;
-  font-weight: 900;
-  letter-spacing: -0.05rem;
-}
 .labor {
   margin-bottom: 0.75rem;
 }
@@ -10,10 +5,19 @@
   font-size: 1.25rem;
   font-weight: bold;
 }
+.highlight {
+  color: var(--lime-color);
+}
 .time {
   font-size: 0.75rem;
   margin-bottom: 0.25rem;
 }
 .location {
   font-size: 0.75rem;
+}
+
+@media print {
+  .highlight {
+    color: var(--dark-dark-color);
+  }
 }
