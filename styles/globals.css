@@ -1,6 +1,6 @@
 :root {
-  --dark-color: #adbac7;
-  --dark-dark-color: #22272e;
+  --light-gray-color: #adbac7;
+  --dark-gray-color: #22272e;
   --light-color: #ffffff;
   --blue-color: #539bf5;
   --lime-color: #8ddb8c;
@@ -22,8 +22,8 @@ html {
 }
 
 body {
-  background-color: var(--dark-dark-color);
-  color: var(--dark-color);
+  background-color: var(--dark-gray-color);
+  color: var(--light-gray-color);
   padding: 0;
   margin: 0;
 }
@@ -41,6 +41,6 @@ a {
 @media print {
   body,
   a {
-    color: var(--dark-dark-color);
+    color: var(--dark-gray-color);
   }
 }
