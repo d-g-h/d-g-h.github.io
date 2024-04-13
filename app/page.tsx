@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Metadata } from "next";
 import labors from "@/public/labors.json";
+import shortenerLinkedIn from "@/lib/utils/shortenerLinkedIn";
 import Description from "@/components/description";
 import Labor from "@/components/labor";
 import styles from "@/app/page.module.css";
@@ -24,12 +25,12 @@ export default function Home() {
             href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`}
             className={styles.email}
           >
-            daveghall@gmail.com
+            {process.env.NEXT_PUBLIC_EMAIL}
           </Link>
         </div>
         <div>
           <Link href={`${process.env.NEXT_PUBLIC_LINKEDIN}`}>
-            linkedin/in/d-g-h
+            {shortenerLinkedIn({url: `${process.env.NEXT_PUBLIC_LINKEDIN}`})}
           </Link>
         </div>
       </div>
