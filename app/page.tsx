@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Metadata } from "next";
 import labors from "@/public/labors.json";
+import educations from "@/public/educations.json";
 import shortenerLinkedIn from "@/lib/utils/shortenerLinkedIn";
 import Description from "@/components/description";
 import Labor from "@/components/labor";
@@ -16,7 +17,9 @@ export default function Home() {
     <div className={styles.resume}>
       <header>
         <h1 className={styles.name}>
-          <Link href={`${process.env.NEXT_PUBLIC_GITHUB}`}>Dave Hall</Link>
+          <Link
+            href={`${process.env.NEXT_PUBLIC_GITHUB}`}
+          >{`${process.env.NEXT_PUBLIC_NAME}`}</Link>
         </h1>
       </header>
       <div className={styles.sub}>
@@ -30,7 +33,7 @@ export default function Home() {
         </div>
         <div>
           <Link href={`${process.env.NEXT_PUBLIC_LINKEDIN}`}>
-            {shortenerLinkedIn({url: `${process.env.NEXT_PUBLIC_LINKEDIN}`})}
+            {shortenerLinkedIn({ url: `${process.env.NEXT_PUBLIC_LINKEDIN}` })}
           </Link>
         </div>
       </div>
@@ -47,9 +50,9 @@ export default function Home() {
                 end={labor.end}
               >
                 <ul>
-                  {labor.descriptions.map((description, j) => (
+                  {labor.descriptions.map((description, i) => (
                     <Description
-                      key={j}
+                      key={`${labor.company}${i}`}
                       description={description.description}
                     ></Description>
                   ))}
@@ -61,9 +64,9 @@ export default function Home() {
         <div>
           <div className={styles.title}>Education</div>
           <ul className={styles.sub}>
-            <li>Brooklyn College, Information Systems</li>
-            <li>City College of New York, General Psychology, MA</li>
-            <li>Binghamton University, Psychology, BA</li>
+            {educations.map((education) => (
+              <li key={education.key}>{education.name}</li>
+            ))}
           </ul>
         </div>
       </main>
