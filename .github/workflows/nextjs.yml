@@ -72,6 +72,7 @@ jobs:
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
         env:
+          NEXT_PUBLIC_NAME: ${{ secrets.NEXT_PUBLIC_NAME }}
           NEXT_PUBLIC_EMAIL: ${{ secrets.NEXT_PUBLIC_EMAIL }}
           NEXT_PUBLIC_GITHUB: ${{ secrets.NEXT_PUBLIC_GITHUB }}
           NEXT_PUBLIC_LINKEDIN: ${{ secrets.NEXT_PUBLIC_LINKEDIN }}
