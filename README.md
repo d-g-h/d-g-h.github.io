@@ -1,5 +1,5 @@
-[![Analysis](https://github.com/d-g-h/d-g-h.github.io/actions/workflows/analysis.yml/badge.svg)](https://github.com/d-g-h/d---h.github.io/actions/workflows/analysis.yml)
-[![Deploy Next.js site to Pages](https://github.com/d-g-h/d---h.github.io/actions/workflows/next.yml/badge.svg)](https://github.com/d-g-h/d---h.github.io/actions/workflows/next.yml)
+[![Analysis](https://github.com/d-g-h/d-g-h.github.io/actions/workflows/analysis.yml/badge.svg)](https://github.com/d-g-h/d-g-h.github.io/actions/workflows/analysis.yml)
+[![Deploy Next.js site to Pages](https://github.com/d-g-h/d-g-h.github.io/actions/workflows/next.yml/badge.svg)](https://github.com/d-g-h/d-g-h.github.io/actions/workflows/next.yml)
 
 install
 ```
@@ -43,6 +43,6 @@ Push to the main branch to trigger `.github/workflows/next.yml`
 
 ### API
 ```
-curl -s https://d---h.github.io/labors.json | jq
+curl -s https://d-g-h.github.io/labors.json | jq
 curl -s http://localhost:3000/labors.json | jq
 ```
