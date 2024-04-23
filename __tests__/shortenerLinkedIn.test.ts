@@ -2,8 +2,8 @@ import shortenerLinkedIn from "@/lib/utils/shortenerLinkedIn";
 
 describe("formattedURL`", () => {
   test("should shorten LinkedIn URL", () => {
-    const formattedString = "https://www.linkedin.com/in/d---h";
-    const expectedDateString = "linkedin.com/in/d---h";
+    const formattedString = "https://www.linkedin.com/in/d-g-h";
+    const expectedDateString = "linkedin.com/in/d-g-h";
 
     const result = shortenerLinkedIn({ url: formattedString });
 
