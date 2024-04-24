@@ -42,9 +42,9 @@ Push to the main branch to trigger `.github/workflows/nextjs.yml`
 
 
 ### API
-```
-curl -s https://d-g-h.github.io/labors.json | jq
-curl -s http://localhost:3000/labors.json | jq
+```sh
+curl -s https://d-g-h.github.io/labors.json     | jq
+curl -s http://localhost:3000/labors.json       | jq
 curl -s https://d-g-h.github.io/educations.json | jq
-curl -s http://localhost:3000/educations.json | jq
+curl -s http://localhost:3000/educations.json   | jq
 ```
