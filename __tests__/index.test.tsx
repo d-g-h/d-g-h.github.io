@@ -4,7 +4,7 @@
 import { render, screen } from "@testing-library/react";
 import renderer from "react-test-renderer";
 import "@testing-library/jest-dom";
-import Time from "../components/time";
+import Time from "@/components/time";
 
 describe("Time", () => {
   it("renders start date to present", () => {
