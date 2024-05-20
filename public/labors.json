@@ -75,13 +75,16 @@
     "end": "2018-08",
     "descriptions": [
       {
-        "description": "Deliver HTML, JavaScript, & CSS to components using React, Angular, SASS, & TypeScript from jQuery library based components"
+        "description": "Deliver HTML, JavaScript, & CSS to components using React, Angular, SASS, & TypeScript from jQuery Soho library based components"
       },
       {
-        "description": "Create, measure & modify performance of Design Library components"
+        "description": "Create, measure & modify performance of Infor Design Library components"
       },
       {
-        "description": "Design, develop & demonstrate proof of concept prototypes"
+        "description": "Develop Python CMS for documentation about Infor Design System"
+      },
+      {
+        "description": "Design, develop & demonstrate proof of concept prototypes such as Infor Ming.le Chat"
       },
       {
         "description": "Create Progressive Web Application utilizing AWS Lambda, AWS Lex, & Infor Coleman AI"
