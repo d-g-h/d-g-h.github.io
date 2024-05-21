@@ -1,10 +1,10 @@
-name: 'Analysis'
+name: "Analysis"
 
 on:
   push:
-    branches: [ 'main' ]
+    branches: ["main"]
   pull_request:
-    branches: [ 'main' ]
+    branches: ["main"]
 
 jobs:
   analyze:
@@ -18,7 +18,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'javascript-typescript' ]
+        language: ["javascript-typescript"]
         node-version: [20.x]
     steps:
       - name: Checkout repository
