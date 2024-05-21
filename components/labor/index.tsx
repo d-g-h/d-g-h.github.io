@@ -8,7 +8,7 @@ type LaborProps = {
 };
 
 import styles from "@/components/labor/labor.module.css";
-import Time from "@/components/time"
+import Time from "@/components/time";
 
 export default function Labor({
   title,
@@ -21,9 +21,7 @@ export default function Labor({
   return (
     <li className={styles.labor}>
       <div className={styles.title}>{title}</div>
-      <div className={styles.highlight}>
-        {company}
-      </div>
+      <div className={styles.highlight}>{company}</div>
       <div className={styles.location}>{location}</div>
       <div className={styles.time}>
         <Time start={start} end={end} />
