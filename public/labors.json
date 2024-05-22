@@ -1,5 +1,26 @@
 [
   {
+    "key": "5",
+    "title": "Web Developer",
+    "location": "New York, NY",
+    "company": "Freelance",
+    "start": "2023-06",
+    "descriptions": [
+      {
+        "description": "Build software and systems to manage platform infrastructure and applications"
+      },
+      {
+        "description": "Run the production environment by monitoring availability and taking a holistic view of system health of client applications"
+      },
+      {
+        "description": "Consult clients on projects by providing expertise in agile development and user experience strategy across diverse industries with a focus on delivering working software to deliver impactful user experiences"
+      },
+      {
+        "description": "Attend online webinars, and in-person meetups to elevate trending tools, technologies, and leadership skills"
+      }
+    ]
+  },
+  {
     "key": "4",
     "title": "Senior Software Engineer",
     "location": "New York, NY",
@@ -105,7 +126,7 @@
         "description": "Create & manage developer operations using Vagrant, Chef, & Ansible"
       },
       {
-        "description": "Create web apps, & REST APIs using PHP, MySQL, WordPress, Node.js, ExpressJS, AngularJS"
+        "description": "Create web applications, & REST APIs using PHP, MySQL, WordPress, Node.js, ExpressJS, AngularJS"
       },
       {
         "description": "Conduct interviews & onboard 2 hires"
