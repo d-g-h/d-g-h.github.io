@@ -7,7 +7,7 @@
     "start": "2023-06",
     "descriptions": [
       {
-        "description": "Build software and systems to manage platform infrastructure and applications"
+        "description": "Build functional software and systems to manage platform infrastructure and applications"
       },
       {
         "description": "Run the production environment by monitoring availability and taking a holistic view of system health of client applications"
@@ -35,7 +35,7 @@
         "description": "Improve code quality by adding code coverage tools & providing actionable code reviews & pairing sessions to reduce QA testing to reduce deployment times"
       },
       {
-        "description": "Create & add components to accessible TED UI Design System"
+        "description": "Add & modify accessible components to TED UI Design System"
       },
 
       {
@@ -79,7 +79,7 @@
         "description": "Refactor Node.js API microservices for modularity. Increase code coverage up to 85% & over"
       },
       {
-        "description": "Create maintainable code with Functional programming & Test Driven Development"
+        "description": "Create maintainable code with Functional Programming & Test Driven Development"
       },
       {
         "description": "Foster collaboration & user engagement using team choosen agile development methodologies"
@@ -111,25 +111,6 @@
       },
       {
         "description": "Create Progressive Web Application utilizing AWS Lambda, AWS Lex, & Infor Coleman AI"
-      }
-    ]
-  },
-  {
-    "key": "0",
-    "title": "Lead Developer",
-    "location": "New York, NY",
-    "company": "Radish Lab",
-    "start": "2013-12",
-    "end": "2015-07",
-    "descriptions": [
-      {
-        "description": "Create & manage developer operations using Vagrant, Chef, & Ansible"
-      },
-      {
-        "description": "Create web applications, & REST APIs using PHP, MySQL, WordPress, Node.js, ExpressJS, AngularJS"
-      },
-      {
-        "description": "Conduct interviews & onboard 2 hires"
       }
     ]
   }
