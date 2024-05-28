@@ -35,7 +35,7 @@
         "description": "Improve code quality by adding code coverage tools & providing actionable code reviews & pairing sessions to reduce QA testing to reduce deployment times"
       },
       {
-        "description": "Add & modify accessible components to TED UI Design System"
+        "description": "Add & modify accessible modular components to TED UI Design System"
       },
 
       {
@@ -53,11 +53,10 @@
     "end": "2022-06",
     "descriptions": [
       {
-        "description": "Build ingestion tool for Sharepoint migration from CouchDB"
+        "description": "Build ingestion tool for Kyndryl Sharepoint migration from an IBM non-relational CMS"
       },
-      { "description": "Develop single page applications using Vue.js" },
       {
-        "description": "Develop backend microservices using TypeScript, CouchDB, & Node.js"
+        "description": "Develop single page applications using Vue.js & backend microservices using TypeScript, CouchDB, & Node.js"
       }
     ]
   },
@@ -70,7 +69,7 @@
     "end": "2021-08",
     "descriptions": [
       {
-        "description": "Deliver accessible HTML, JavaScript, & CSS to the client using Vue.js, Vuex, SASS, & TypeScript using WebPack"
+        "description": "Deliver accessible HTML, JavaScript, & CSS to the client using Vue.js, Vuex, SASS, & TypeScript using webpack"
       },
       {
         "description": "Aggregate legacy APIs, & Cassandra column-family data using GraphQL to feed into Design Library components"
@@ -110,7 +109,7 @@
         "description": "Design, develop & demonstrate proof of concept prototypes such as Infor Ming.le Chat"
       },
       {
-        "description": "Create Progressive Web Application utilizing AWS Lambda, AWS Lex, & Infor Coleman AI"
+        "description": "Created Progressive Web Application utilizing NgRX, AWS Lambda, AWS Lex, Infor Coleman AI, & Reactive Programming"
       }
     ]
   }
