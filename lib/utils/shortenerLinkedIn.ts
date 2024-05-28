@@ -4,7 +4,7 @@ export default function shortenerLinkedIn({ url }: { url: string }): string {
     const shortenedURL = new URL(url);
     return `${LINKEDIN_URL}${shortenedURL.pathname}`;
   } catch (error) {
-    console.error(error);
+    console.log(error);
     return "";
   }
 }
