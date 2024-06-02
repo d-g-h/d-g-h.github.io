@@ -7,16 +7,16 @@
     "start": "2023-06",
     "descriptions": [
       {
-        "description": "Build functional software and systems to manage platform infrastructure and applications"
+        "description": "Build functional software & systems to manage platform infrastructure & applications"
       },
       {
-        "description": "Run the production environment by monitoring availability and taking a holistic view of system health of client applications"
+        "description": "Run the production environment by monitoring availability & taking a holistic view of system health of client applications"
       },
       {
-        "description": "Consult clients on projects by providing expertise in agile development and user experience strategy across diverse industries with a focus on delivering working software to deliver impactful user experiences"
+        "description": "Consult clients on projects by providing expertise in agile development & user experience strategy across diverse industries with a focus on delivering working software to deliver impactful user experiences"
       },
       {
-        "description": "Attend online webinars, and in-person meetups to elevate trending tools, technologies, and leadership skills"
+        "description": "Attend online webinars, & in-person meetups to elevate trending tools, technologies, & leadership skills"
       }
     ]
   },
@@ -53,7 +53,7 @@
     "end": "2022-06",
     "descriptions": [
       {
-        "description": "Build ingestion tool for Kyndryl Sharepoint migration from an IBM non-relational CMS"
+        "description": "Build ingestion tool for Kyndryl Sharepoint migration from an IBM non-relational database content management system"
       },
       {
         "description": "Develop single page applications using Vue.js & backend microservices using TypeScript, CouchDB, & Node.js"
@@ -75,7 +75,7 @@
         "description": "Aggregate legacy APIs, & Cassandra column-family data using GraphQL to feed into Design Library components"
       },
       {
-        "description": "Refactor Node.js API microservices for modularity. Increase code coverage up to 85% & over"
+        "description": "Refactor Node.js API microservices for modularity, increasing code coverage up to 85% & over"
       },
       {
         "description": "Create maintainable code with Functional Programming & Test Driven Development"
@@ -103,7 +103,7 @@
         "description": "Create, measure & modify performance of Infor Design Library components"
       },
       {
-        "description": "Develop Python CMS for documentation about Infor Design System"
+        "description": "Develop Python Content Management System for documentation about Infor Design System"
       },
       {
         "description": "Design, develop & demonstrate proof of concept prototypes such as Infor Ming.le Chat"
