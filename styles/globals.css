@@ -4,6 +4,7 @@
   --white-color: #ffffff;
   --blue-color: #539bf5;
   --lime-color: #8ddb8c;
+  --anchor-space: 0.7rem;
 }
 
 html {
@@ -35,7 +36,10 @@ ul {
 }
 
 a {
+  display: block;
   color: var(--blue-color);
+  margin-bottom: var(--anchor-space);
+  margin-top: var(--anchor-space);
 }
 
 @media print {
