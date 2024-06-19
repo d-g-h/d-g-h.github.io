@@ -24,10 +24,7 @@ export default function Home() {
       </header>
       <div className={styles.sub}>
         <div>
-          <Link
-            href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`}
-            className={styles.email}
-          >
+          <Link href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`}>
             {process.env.NEXT_PUBLIC_EMAIL}
           </Link>
         </div>
