@@ -2,8 +2,7 @@
   {
     "key": "5",
     "title": "Web Developer",
-    "location": "New York, NY",
-    "company": "Freelance",
+    "location": "Remote",
     "start": "2023-06",
     "descriptions": [
       {
@@ -39,7 +38,7 @@
       },
 
       {
-        "description": "Foster collaboration & team focus using team chosen agile development methodologies to reduce blockers"
+        "description": "Foster team collaboration through the application of agile development methodologies"
       }
     ]
   },

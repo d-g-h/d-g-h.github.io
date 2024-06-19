@@ -2,7 +2,6 @@ import Link from "next/link";
 import { Metadata } from "next";
 import labors from "@/public/labors.json";
 import educations from "@/public/educations.json";
-import skills from "@/public/skills.json";
 import shortenerLinkedIn from "@/lib/utils/shortenerLinkedIn";
 import Description from "@/components/description";
 import Labor from "@/components/labor";
@@ -63,14 +62,6 @@ export default function Home() {
           </ul>
         </div>
         <div className={styles.footer}>
-          <div className={styles.skills}>
-            <h2 className={styles.title}>Skills</h2>
-            <ul style={{ fontSize: "0.75rem" }}>
-              {skills.map((skill) => (
-                <li key={skill.key}>{skill.name}</li>
-              ))}
-            </ul>
-          </div>
           <div className={styles.education}>
             <h2 className={styles.title}>Education</h2>
             <ul className={styles.sub}>

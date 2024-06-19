@@ -1,6 +1,6 @@
 type LaborProps = {
   title: string;
-  company: string;
+  company?: string;
   location: string;
   start: string;
   end?: string;
