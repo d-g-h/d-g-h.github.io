@@ -31,10 +31,10 @@
         "description": "Add features to a Next.js & Ruby on Rails application for Discovery, Talk, & Member Pages using TypeScript, React, Tailwind CSS, & Split URL Testing"
       },
       {
-        "description": "Improve code quality by adding code coverage tools & providing actionable code reviews & pairing sessions to reduce QA testing to reduce deployment times"
+        "description": "Improve code quality by adding code coverage tool, provide actionable code reviews, & pair with developers to reduce QA testing to reduce deployment times by 31%"
       },
       {
-        "description": "Add & modify accessible modular components to TED UI Design System"
+        "description": "Create & modify accessible modular components to TED UI Design System"
       },
 
       {
@@ -52,7 +52,7 @@
     "end": "2022-06",
     "descriptions": [
       {
-        "description": "Build ingestion tool for Kyndryl Sharepoint migration from an IBM non-relational database content management system"
+        "description": "Build ingestion tool for Kyndryl Sharepoint migration sites from an IBM non-relational database content management system for over 20,000 sites"
       },
       {
         "description": "Develop single page applications using Vue.js & backend microservices using TypeScript, CouchDB, & Node.js"
@@ -83,7 +83,7 @@
         "description": "Foster collaboration & user engagement using team choosen agile development methodologies"
       },
       {
-        "description": "Participate in hiring & onboarding processes by creating assessments & documentation"
+        "description": "Participate in hiring & onboarding processes by creating assessments & documentation for 2 additional team members"
       }
     ]
   },
