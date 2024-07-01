@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Metadata } from "next";
 import labors from "@/public/labors.json";
 import educations from "@/public/educations.json";
-import shortenerLinkedIn from "@/lib/utils/shortenerLinkedIn";
+import shortenerLink from "@/lib/utils/shortenerLink";
 import Description from "@/components/description";
 import Labor from "@/components/labor";
 import styles from "@/app/page.module.css";
@@ -22,7 +22,7 @@ export default function Home() {
           >{`${process.env.NEXT_PUBLIC_NAME}`}</Link>
         </h1>
       </header>
-      <div className={styles.sub}>
+      <div className={`${styles.sub} ${styles.links}`}>
         <div>
           <Link href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`}>
             {process.env.NEXT_PUBLIC_EMAIL}
@@ -30,7 +30,18 @@ export default function Home() {
         </div>
         <div>
           <Link href={`${process.env.NEXT_PUBLIC_LINKEDIN}`}>
-            {shortenerLinkedIn({ url: `${process.env.NEXT_PUBLIC_LINKEDIN}` })}
+            {shortenerLink({
+              url: `${process.env.NEXT_PUBLIC_LINKEDIN}`,
+              link: `linkedin.com`,
+            })}
+          </Link>
+        </div>
+        <div>
+          <Link href={`${process.env.NEXT_PUBLIC_GITHUB}`}>
+            {shortenerLink({
+              url: `${process.env.NEXT_PUBLIC_GITHUB}`,
+              link: `github.com`,
+            })}
           </Link>
         </div>
       </div>
