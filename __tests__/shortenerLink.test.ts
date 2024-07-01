@@ -1,11 +1,12 @@
-import shortenerLinkedIn from "@/lib/utils/shortenerLinkedIn";
+import shortenerLink from "@/lib/utils/shortenerLink";
 
 describe("formattedURL`", () => {
   test("should shorten LinkedIn URL", () => {
+    const link = "linkedin.com";
     const formattedString = "https://www.linkedin.com/in/d-g-h";
-    const expectedDateString = "linkedin.com/in/d-g-h";
+    const expectedDateString = `${link}/in/d-g-h`;
 
-    const result = shortenerLinkedIn({ url: formattedString });
+    const result = shortenerLink({ url: formattedString, link: link });
 
     expect(result).toEqual(expectedDateString);
   });
@@ -14,7 +15,7 @@ describe("formattedURL`", () => {
     const formattedString = "------------------------";
     const expectedDateString = "";
 
-    const result = shortenerLinkedIn({ url: formattedString });
+    const result = shortenerLink({ url: formattedString, link: "" });
 
     expect(result).toEqual(expectedDateString);
   });
