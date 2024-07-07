@@ -15,7 +15,7 @@ export default function Time({ start, end }: Readonly<TimeProps>) {
           <time dateTime={end}>{monthYear({ date: end })}</time>
         </>
       ) : (
-        "- present"
+        " - present"
       )}
     </>
   );
