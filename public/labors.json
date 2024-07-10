@@ -9,13 +9,10 @@
         "description": "Build functional software & systems to manage platform infrastructure & applications"
       },
       {
-        "description": "Run the production environment by monitoring availability & taking a holistic view of system health of client applications"
+        "description": "Monitor production environments utilizing 3rd party monitoring tools"
       },
       {
-        "description": "Consult clients on projects by providing expertise in agile development & user experience strategy across diverse industries with a focus on delivering working software to deliver impactful user experiences"
-      },
-      {
-        "description": "Attend online webinars, & in-person meetups to elevate trending tools, technologies, & leadership skills"
+        "description": "Consult clients in agile development & UX strategy with a focus on enabling impactful user experiences"
       }
     ]
   },
@@ -38,7 +35,7 @@
       },
 
       {
-        "description": "Foster team collaboration through the application of agile development methodologies"
+        "description": "Foster team collaboration through the application of agile development methodologies bridging the gap between frontend & backend teams"
       }
     ]
   },
@@ -47,15 +44,14 @@
     "title": "Software Developer",
     "location": "New York, NY",
     "company": "Kyndryl",
-    "time": "August 2021 - June 2022",
     "start": "2021-08",
     "end": "2022-06",
     "descriptions": [
       {
-        "description": "Build ingestion tool for Kyndryl Sharepoint migration sites from an IBM non-relational database content management system for over 20,000 sites"
+        "description": "Build ingestion tool for Kyndryl Sharepoint migration sites from an IBM non-relational database content management system 20,000+ sites"
       },
       {
-        "description": "Develop single page applications using Vue.js & backend microservices using TypeScript, CouchDB, & Node.js"
+        "description": "Develop 3 single page applications using Vue.js & backend microservices using TypeScript, CouchDB, & Node.js for all employees"
       }
     ]
   },
@@ -71,10 +67,10 @@
         "description": "Deliver accessible HTML, JavaScript, & CSS to the client using Vue.js, Vuex, SASS, & TypeScript using webpack"
       },
       {
-        "description": "Aggregate legacy APIs, & Cassandra column-family data using GraphQL to feed into Design Library components"
+        "description": "Aggregate legacy APIs, & Cassandra column-family data using GraphQL to feed into Design Library components for employee intranet homepage and profile pages"
       },
       {
-        "description": "Refactor Node.js API microservices for modularity, increasing code coverage up to 85% & over"
+        "description": "Refactor Node.js API microservices for modularity, increasing code coverage 85%+"
       },
       {
         "description": "Create maintainable code with Functional Programming & Test Driven Development"
@@ -99,16 +95,16 @@
         "description": "Deliver HTML, JavaScript, & CSS to components using React, Angular, SASS, & TypeScript from jQuery Soho library based components"
       },
       {
-        "description": "Create, measure & modify performance of Infor Design Library components"
+        "description": "Measure & modify performance of Infor Design System components with Chrome DevTools to reduce rendering times by 700ms on average"
       },
       {
         "description": "Develop Python Content Management System for documentation about Infor Design System"
       },
       {
-        "description": "Design, develop & demonstrate proof of concept prototypes such as Infor Ming.le Chat"
+        "description": "Design, develop & demonstrate proof of concept prototypes such as Infor Ming.le Chat & Project Max"
       },
       {
-        "description": "Created Progressive Web Application utilizing NgRX, AWS Lambda, AWS Lex, Infor Coleman AI, & Reactive Programming"
+        "description": "Create Progressive Web Application utilizing NgRX, AWS Lambda, AWS Lex, Infor Coleman AI, & Reactive Programming"
       }
     ]
   }
