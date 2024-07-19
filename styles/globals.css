@@ -42,6 +42,12 @@ a {
   margin-top: var(--anchor-space);
 }
 
+.error {
+  display: flex;
+  justify-content: center;
+  font-size: 10rem;
+}
+
 @media print {
   body,
   a {

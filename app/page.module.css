@@ -34,3 +34,10 @@
 
   display: block;
 }
+
+.skills {
+  @media (min-width: 640px) {
+    margin-right: 0.5rem;
+    max-width: 65%;
+  }
+}
