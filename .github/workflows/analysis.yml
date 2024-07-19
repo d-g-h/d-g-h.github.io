@@ -19,7 +19,7 @@ jobs:
       fail-fast: false
       matrix:
         language: ["javascript-typescript"]
-        node-version: ["22.x"]
+        node-version: ["22.4"]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
