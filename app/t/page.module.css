@@ -30,7 +30,22 @@
 .footer {
   @media (min-width: 640px) {
     display: flex;
+    justify-content: space-between;
   }
 
   display: block;
+}
+
+.skills {
+  @media (min-width: 640px) {
+    margin-right: 0.5rem;
+    max-width: 65%;
+  }
+}
+
+.education {
+  @media (min-width: 640px) {
+    max-width: 65%;
+    text-align: right;
+  }
 }
