@@ -7,7 +7,7 @@ import skills from "@/public/skills.json";
 import shortenerLink from "@/lib/utils/shortenerLink";
 import Description from "@/components/description";
 import LaborT from "@/components/labort";
-import styles from "@/app/page.module.css";
+import styles from "@/app/t/page.module.css";
 
 export const metadata: Metadata = {
   title: "⇗💻",

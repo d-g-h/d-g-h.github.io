@@ -5,8 +5,11 @@
 }
 
 .header {
+  @media (min-width: 640px) {
+    flex-direction: row;
+  }
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: baseline;
   justify-content: space-between;
 }
@@ -28,6 +31,7 @@
 .time {
   font-size: 0.75rem;
   margin-bottom: 0.25rem;
+  text-align: right;
 }
 
 @media print {
