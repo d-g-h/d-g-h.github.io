@@ -81,7 +81,7 @@ export default function Home() {
           </ul>
         </div>
         <div className={styles.footer}>
-          <div className={styles.skills}>
+          <div className={styles.skills} style={{ textAlign: "left" }}>
             <h2
               className={styles.title}
               style={{ textDecoration: "underline" }}
