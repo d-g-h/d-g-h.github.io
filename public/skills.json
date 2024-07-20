@@ -1,0 +1,18 @@
+[
+  {
+    "key": "3",
+    "name": "PostgreSQL, MySQL, IBM Cloud, AWS S3, AWS Lex, AWS S3, Cassandra, CouchDB, Redis, Azure"
+  },
+  {
+    "key": "2",
+    "name": "GraphQL, Express.js, Next.js, React.js, Angular, Vue, D3.js, NgRX, Redux, zustand, RxJS, webpack"
+  },
+  {
+    "key": "1",
+    "name": "Git, Chrome DevTools, SonarLint, ESLint, Prettier, npm, Node.js"
+  },
+  {
+    "key": "0",
+    "name": "HTML, CSS, JavaScript, ES6, ESNext, TypeScript, PHP, Ruby on Rails, Python, SQL, Bash, zsh, vim, Markdown"
+  }
+]

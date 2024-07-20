@@ -8,7 +8,6 @@
     "dev:inspect": "NODE_OPTIONS='--inspect' next dev",
     "lint": "next lint",
     "prettier:check": "npx prettier . --check",
-    "prettier:write": "npx prettier .",
     "test": "jest --watch",
     "test:ci": "jest --ci --coverage"
   },
