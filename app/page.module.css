@@ -8,6 +8,9 @@
 }
 
 .links {
+  margin-bottom: 0.75rem;
+}
+.links {
   @media (min-width: 640px) {
     justify-content: space-between;
     flex-direction: row;

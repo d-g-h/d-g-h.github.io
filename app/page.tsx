@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { Metadata } from "next";
 import labors from "@/public/labors.json";
 import educations from "@/public/educations.json";
@@ -17,32 +16,32 @@ export default function Home() {
     <div className={styles.resume}>
       <header>
         <h1 className={styles.name}>
-          <Link
+          <a
             href={`${process.env.NEXT_PUBLIC_GITHUB}`}
-          >{`${process.env.NEXT_PUBLIC_NAME}`}</Link>
+          >{`${process.env.NEXT_PUBLIC_NAME}`}</a>
         </h1>
       </header>
       <div className={`${styles.sub} ${styles.links}`}>
         <div>
-          <Link href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`}>
+          <a href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`}>
             {process.env.NEXT_PUBLIC_EMAIL}
-          </Link>
+          </a>
         </div>
         <div>
-          <Link href={`${process.env.NEXT_PUBLIC_LINKEDIN}`}>
+          <a href={`${process.env.NEXT_PUBLIC_LINKEDIN}`}>
             {shortenerLink({
               url: `${process.env.NEXT_PUBLIC_LINKEDIN}`,
               link: `linkedin.com`,
             })}
-          </Link>
+          </a>
         </div>
         <div>
-          <Link href={`${process.env.NEXT_PUBLIC_GITHUB}`}>
+          <a href={`${process.env.NEXT_PUBLIC_GITHUB}`}>
             {shortenerLink({
               url: `${process.env.NEXT_PUBLIC_GITHUB}`,
               link: `github.com`,
             })}
-          </Link>
+          </a>
         </div>
       </div>
       <main>

@@ -39,7 +39,6 @@
 .skills {
   @media (min-width: 640px) {
     text-align: left;
-    margin-right: 0.5rem;
     max-width: 65%;
   }
 }
