@@ -25,17 +25,17 @@
     "end": "2023-06",
     "descriptions": [
       {
-        "description": "Add features to a Next.js & Ruby on Rails application for Discovery, Talk, & Member Pages using TypeScript, React, Tailwind CSS, & Split URL Testing"
+        "description": "Add 6 features to a Next.js & Ruby on Rails application for Discovery, Talk, & Member Pages using TypeScript, React, Tailwind CSS, & Split URL Testing"
       },
       {
         "description": "Improve code quality by adding code coverage tool, provide actionable code reviews, & pair with developers to reduce QA testing to reduce deployment times by 31%"
       },
       {
-        "description": "Create & modify accessible modular components to TED UI Design System"
+        "description": "Create & modify 10+ accessible modular components to TED UI Design System"
       },
 
       {
-        "description": "Foster team collaboration through the application of agile development methodologies bridging the gap between frontend & backend teams"
+        "description": "Foster team collaboration through the application of agile development methodologies bridging the gap between frontend & 2 backend teams"
       }
     ]
   },
