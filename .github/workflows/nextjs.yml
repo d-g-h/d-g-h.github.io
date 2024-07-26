@@ -76,6 +76,7 @@ jobs:
           NEXT_PUBLIC_EMAIL: ${{ secrets.NEXT_PUBLIC_EMAIL }}
           NEXT_PUBLIC_GITHUB: ${{ secrets.NEXT_PUBLIC_GITHUB }}
           NEXT_PUBLIC_LINKEDIN: ${{ secrets.NEXT_PUBLIC_LINKEDIN }}
+          NEXT_PUBLIC_PHONE: ${{ secrets.NEXT_PUBLIC_PHONE }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
