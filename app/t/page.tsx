@@ -68,6 +68,7 @@ export default function Home() {
               <LaborT
                 key={labor.key}
                 title={labor.title}
+                location={labor.location}
                 company={labor.company}
                 start={labor.start}
                 end={labor.end}

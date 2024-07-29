@@ -1,6 +1,7 @@
-type LaborProps = {
+type LaborTProps = {
   title: string;
   company?: string;
+  location: string;
   start: string;
   end?: string;
   children: React.ReactNode;
@@ -12,10 +13,11 @@ import Time from "@/components/time";
 export default function LaborT({
   title,
   company,
+  location,
   start,
   end,
   children,
-}: Readonly<LaborProps>) {
+}: Readonly<LaborTProps>) {
   return (
     <li className={styles.labor}>
       <div className={styles.header}>
@@ -30,8 +32,11 @@ export default function LaborT({
             ""
           )}
         </div>
-        <div className={styles.time}>
-          <Time start={start} end={end} />
+        <div>
+          <div className={styles.location}>{location}</div>
+          <div className={styles.time}>
+            <Time start={start} end={end} />
+          </div>
         </div>
       </div>
       {children}
