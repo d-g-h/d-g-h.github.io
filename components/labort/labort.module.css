@@ -33,6 +33,12 @@
   margin-bottom: 0.25rem;
   text-align: right;
 }
+.location {
+  @media (min-width: 640px) {
+    text-align: right;
+  }
+  font-size: 0.75rem;
+}
 
 @media print {
   .highlight {
