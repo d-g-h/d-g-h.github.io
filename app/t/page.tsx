@@ -13,6 +13,8 @@ export const metadata: Metadata = {
   description: "❤️",
 };
 
+const AST = "AST";
+
 export default function Home() {
   return (
     <div className={styles.resume}>
@@ -94,9 +96,15 @@ export default function Home() {
               Skills
             </h2>
             <ul style={{ fontSize: "0.75rem" }}>
-              {skills.map((skill) => (
-                <li key={skill.key}>{skill.name}</li>
-              ))}
+              {skills.map((skill) =>
+                skill.key === AST ? (
+                  <li key={skill.key} className={styles.ast}>
+                    {skill.name}
+                  </li>
+                ) : (
+                  <li key={skill.key}>{skill.name}</li>
+                ),
+              )}
             </ul>
           </div>
           <div className={styles.education}>

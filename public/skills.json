@@ -1,18 +1,22 @@
 [
   {
     "key": "3",
-    "name": "PostgreSQL, MySQL, IBM Cloud, AWS S3, AWS Lex, AWS S3, Cassandra, CouchDB, Redis, Azure"
+    "name": "PostgreSQL, MySQL, IBM Cloud, Heroku, AWS S3, AWS Lambda, AWS Lex, Cassandra, CouchDB, Redis, Azure"
   },
   {
     "key": "2",
-    "name": "GraphQL, Express.js, Next.js, React.js, Angular, Vue, D3.js, NgRX, Redux, zustand, RxJS, webpack"
+    "name": "GraphQL, Express.js, Next.js, React, Angular, Vue, D3.js, NgRX, Redux, zustand, RxJS, webpack, Tailwind CSS"
   },
   {
     "key": "1",
-    "name": "Git, Chrome DevTools, SonarLint, ESLint, Prettier, npm, Node.js"
+    "name": "Git, Chrome DevTools, SonarLint, ESLint, Prettier, Jest, npm, Node.js, GitHub Actions"
   },
   {
     "key": "0",
-    "name": "HTML, CSS, JavaScript, ES6, ESNext, TypeScript, PHP, Ruby on Rails, Python, SQL, Bash, zsh, vim, Markdown"
+    "name": "HTML5, CSS3, JavaScript, ESNext, TypeScript, PHP, Ruby on Rails, Python, SQL, Bash, Markdown zsh, vim"
+  },
+  {
+    "key": "AST",
+    "name": "Playwright, WebDriverIO, Cypress, Responsive Design, Mobile Development, React.js, frontend, front-end,"
   }
 ]

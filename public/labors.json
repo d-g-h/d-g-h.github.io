@@ -31,11 +31,11 @@
         "description": "Improve code quality by adding code coverage tool, provide actionable code reviews, & pair with developers to reduce QA testing to reduce deployment times by 31%"
       },
       {
-        "description": "Create & modify 10+ accessible modular components to TED UI Design System"
+        "description": "Create & modify 10 accessible modular components to TED UI Design System"
       },
 
       {
-        "description": "Foster team collaboration through the application of agile development methodologies bridging the gap between frontend & 2 backend teams"
+        "description": "Foster team collaboration through the application of Agile practices bridging the gap between frontend & 2 backend teams"
       }
     ]
   },
@@ -48,7 +48,7 @@
     "end": "2022-06",
     "descriptions": [
       {
-        "description": "Build ingestion tool for Kyndryl Sharepoint migration sites from an IBM non-relational database content management system 20,000+ sites"
+        "description": "Build ingestion tool for Kyndryl Sharepoint migration sites from an IBM non-relational database content management system over 20,000 sites"
       },
       {
         "description": "Develop 3 single page applications using Vue.js & backend microservices using TypeScript, CouchDB, & Node.js for all employees"
@@ -70,7 +70,7 @@
         "description": "Aggregate legacy APIs, & Cassandra column-family data using GraphQL to feed into Design Library components for employee intranet homepage and profile pages"
       },
       {
-        "description": "Refactor Node.js API microservices for modularity, increasing code coverage 85%+"
+        "description": "Refactor Node.js API microservices for improvements in modularity, readability and increased code coverage by 85%"
       },
       {
         "description": "Create maintainable code with Functional Programming & Test Driven Development"
