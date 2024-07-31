@@ -50,3 +50,13 @@
     text-align: right;
   }
 }
+
+.ast {
+  @media print {
+    color: white;
+    font-size: 0.25rem;
+    -webkit-print-color-adjust: exact;
+  }
+
+  font-size: 0;
+}
