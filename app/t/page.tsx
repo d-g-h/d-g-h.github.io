@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description: "❤️",
 };
 
-const AST = "AST";
+const ATS = "ATS";
 
 export default function Home() {
   return (
@@ -97,7 +97,7 @@ export default function Home() {
             </h2>
             <ul style={{ fontSize: "0.75rem" }}>
               {skills.map((skill) =>
-                skill.key === AST ? (
+                skill.key === ATS ? (
                   <li key={skill.key} className={styles.ast}>
                     {skill.name}
                   </li>

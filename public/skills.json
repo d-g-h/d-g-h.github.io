@@ -9,14 +9,14 @@
   },
   {
     "key": "1",
-    "name": "Git, Chrome DevTools, SonarLint, ESLint, Prettier, Jest, npm, Node.js, GitHub Actions"
+    "name": "Git, Chrome DevTools, SonarLint, ESLint, Prettier, Jest, npm, Node.js, GitHub Actions, pino, Datadog"
   },
   {
     "key": "0",
-    "name": "HTML5, CSS3, JavaScript, ESNext, TypeScript, PHP, Ruby on Rails, Python, SQL, Bash, Markdown zsh, vim"
+    "name": "HTML5, CSS3, JavaScript, ESNext, TypeScript, PHP, Ruby on Rails, Python, SQL, NoSQL, Bash, Markdown zsh, vim"
   },
   {
-    "key": "AST",
-    "name": "Playwright, WebDriverIO, Cypress, Responsive Design, Mobile Development, React.js, frontend, front-end,"
+    "key": "ATS",
+    "name": "JIRA Playwright WebDriverIO Cypress Responsive Design Mobile Development React.js frontend front-end unix linux user experience fullstack product development Amazon Web Services, CI/CD, Microservices architecture UX design create documentation"
   }
 ]
