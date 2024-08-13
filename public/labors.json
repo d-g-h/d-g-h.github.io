@@ -6,7 +6,7 @@
     "start": "2023-06",
     "descriptions": [
       {
-        "description": "Build functional software & systems to manage platform infrastructure & applications"
+        "description": "Develop functional software & systems for applications & infrastructure"
       },
       {
         "description": "Monitor production environments utilizing 3rd party monitoring tools"
@@ -28,14 +28,14 @@
         "description": "Add 6 features to a Next.js & Ruby on Rails application for Discovery, Talk, & Member Pages using TypeScript, React, Tailwind CSS, & Split URL Testing"
       },
       {
-        "description": "Improve code quality by adding code coverage tool, provide actionable code reviews, & pair with developers to reduce QA testing to reduce deployment times by 31%"
+        "description": "Improve code quality by adding code coverage tool, provide actionable code reviews, pair with developers to reduce QA testing to reduce deployment times by 31%"
       },
       {
         "description": "Create & modify 10 accessible modular components to TED UI Design System"
       },
 
       {
-        "description": "Foster team collaboration through the application of Agile practices bridging the gap between frontend & 2 backend teams"
+        "description": "Foster team collaboration through the application of Agile practices by bridging the gap between frontend & 2 backend teams"
       }
     ]
   },
@@ -67,10 +67,10 @@
         "description": "Deliver accessible HTML, JavaScript, & CSS to the client using Vue.js, Vuex, SASS, & TypeScript using webpack"
       },
       {
-        "description": "Aggregate legacy APIs, & Cassandra column-family data using GraphQL to feed into Design Library components for employee intranet homepage and profile pages"
+        "description": "Aggregate legacy APIs, & Cassandra column-family data using GraphQL to feed into Design Library components for intranet homepage & profile pages"
       },
       {
-        "description": "Refactor Node.js API microservices for improvements in modularity, readability and increased code coverage by 85%"
+        "description": "Refactor Node.js API microservices for improvements in modularity, readability & increased code coverage by 85%"
       },
       {
         "description": "Create maintainable code with Functional Programming & Test Driven Development"
