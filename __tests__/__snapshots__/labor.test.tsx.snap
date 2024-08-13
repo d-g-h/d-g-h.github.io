@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Labor renders html correctly 1`] = `
+<div>
+  <li
+    class="labor"
+  >
+    <div
+      class="title"
+    >
+      Job Title
+    </div>
+    <div
+      class="highlight"
+    >
+      Company
+    </div>
+    <div
+      class="location"
+    >
+      Location
+    </div>
+    <div
+      class="time"
+    >
+      <time
+        datetime="2020-02"
+      >
+        February 2020
+      </time>
+      <span>
+         - 
+      </span>
+      <time
+        datetime="2024-02"
+      >
+        February 2024
+      </time>
+    </div>
+  </li>
+</div>
+`;

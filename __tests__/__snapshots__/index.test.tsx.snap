@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Time renders html correctly 1`] = `
-[
+<div>
   <time
-    dateTime="2024-04"
+    datetime="2024-04"
   >
     April 2024
-  </time>,
-  " - present",
-]
+  </time>
+   - present
+</div>
 `;
