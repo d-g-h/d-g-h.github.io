@@ -2,7 +2,6 @@
  * @jest-environment jsdom
  */
 import { render, screen } from "@testing-library/react";
-import renderer from "react-test-renderer";
 import "@testing-library/jest-dom";
 import Time from "@/components/time";
 
@@ -30,7 +29,7 @@ describe("Time", () => {
   });
 
   it("renders html correctly", () => {
-    const tree = renderer.create(<Time start={"2024-04"} />).toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<Time start={"2024-04"} />);
+    expect(container).toMatchSnapshot();
   });
 });
