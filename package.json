@@ -9,7 +9,7 @@
     "lint": "next lint",
     "prettier:check": "npx prettier . --check",
     "test": "jest --watch",
-    "test:ci": "jest --ci --coverage"
+    "test:ci": "jest --ci --coverage --silent"
   },
   "dependencies": {
     "@types/react-test-renderer": "^18.3.0",
