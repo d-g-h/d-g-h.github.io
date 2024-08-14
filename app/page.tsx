@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import labors from "@/public/labors.json";
-import educations from "@/public/educations.json";
+import education from "@/public/education.json";
 import shortenerLink from "@/lib/utils/shortenerLink";
 import Description from "@/components/description";
 import Labor from "@/components/labor";
@@ -72,7 +72,7 @@ export default function Home() {
           <div className={styles.education}>
             <h2 className={styles.title}>Education</h2>
             <ul className={styles.sub}>
-              {educations.map((education) => (
+              {education.map((education) => (
                 <li key={education.key}>{education.name}</li>
               ))}
             </ul>
