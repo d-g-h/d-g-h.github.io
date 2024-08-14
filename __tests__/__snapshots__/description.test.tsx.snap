@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Description renders html correctly 1`] = `
+<div>
+  <li
+    class="description"
+  >
+    Job description
+  </li>
+</div>
+`;
