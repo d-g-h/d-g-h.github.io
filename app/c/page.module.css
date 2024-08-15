@@ -1,0 +1,62 @@
+.name {
+  font-size: 1.5rem;
+  margin: 0 0 0.25rem 0;
+}
+
+.sub {
+  font-size: 0.75rem;
+}
+
+.links {
+  @media (min-width: 640px) {
+    justify-content: space-between;
+    flex-direction: row;
+  }
+
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.resume {
+  margin: 0 auto;
+  width: 85%;
+}
+
+.footer {
+  @media (min-width: 640px) {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  display: block;
+}
+
+.skills {
+  @media (min-width: 640px) {
+    text-align: left;
+    max-width: 65%;
+  }
+}
+
+.education {
+  @media (min-width: 640px) {
+    text-align: right;
+    max-width: 65%;
+    text-align: right;
+  }
+}
+
+.ast {
+  @media print {
+    color: white;
+    font-size: 0.25rem;
+    -webkit-print-color-adjust: exact;
+  }
+
+  font-size: 0;
+}

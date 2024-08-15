@@ -1,0 +1,111 @@
+[
+  {
+    "key": "5",
+    "title": "Web Developer",
+    "location": "Remote",
+    "start": "2023-06",
+    "descriptions": [
+      {
+        "description": "Develop functional software & systems for applications & infrastructure in a Monorepo"
+      },
+      {
+        "description": "Monitor production environments utilizing 3rd party monitoring tools"
+      },
+      {
+        "description": "Consult clients in agile development & UX strategy with a focus on enabling impactful user experiences"
+      }
+    ]
+  },
+  {
+    "key": "4",
+    "title": "Senior Software Engineer",
+    "location": "New York, NY",
+    "company": "TED",
+    "start": "2022-11",
+    "end": "2023-06",
+    "descriptions": [
+      {
+        "description": "Add 6 features to a Next.js & Ruby on Rails application for Discovery, Talk, & Member Pages using TypeScript, React, Tailwind CSS, & Split URL Testing"
+      },
+      {
+        "description": "Improve code quality by adding code coverage tool, provide actionable code reviews, pair with developers to reduce QA testing to reduce deployment times by 31%"
+      },
+      {
+        "description": "Create & modify 10 accessible modular components to TED UI Design System"
+      },
+
+      {
+        "description": "Foster team collaboration through the application of Agile practices by bridging the gap between frontend & 2 backend teams"
+      }
+    ]
+  },
+  {
+    "key": "3",
+    "title": "Software Developer",
+    "location": "New York, NY",
+    "company": "Kyndryl",
+    "start": "2021-08",
+    "end": "2022-06",
+    "descriptions": [
+      {
+        "description": "Build ingestion tool for Kyndryl Sharepoint migration sites from an IBM non-relational database content management system over 20,000 sites"
+      },
+      {
+        "description": "Develop 3 single page applications using Vue 2 & backend microservices in a Monorepo using TypeScript, CouchDB, & Node.js intranet applications"
+      }
+    ]
+  },
+  {
+    "key": "2",
+    "title": "Software Engineer",
+    "location": "New York, NY",
+    "company": "IBM",
+    "start": "2018-08",
+    "end": "2021-08",
+    "descriptions": [
+      {
+        "description": "Deliver accessible HTML, JavaScript, & CSS to the client using Vue 2, & Vue 3, Vuex, SASS, & TypeScript using webpack"
+      },
+      {
+        "description": "Aggregate legacy APIs, & Cassandra column-family data using GraphQL to feed into Design Library components for intranet homepage & profile pages"
+      },
+      {
+        "description": "Refactor Node.js API microservices for improvements in modularity, readability & increased code coverage by 85%"
+      },
+      {
+        "description": "Create maintainable code with Functional Programming & Test Driven Development"
+      },
+      {
+        "description": "Foster collaboration & user engagement using team chosen agile development methodologies"
+      },
+      {
+        "description": "Participate in hiring & onboarding processes by creating assessments & documentation for 2 additional team members"
+      }
+    ]
+  },
+  {
+    "key": "1",
+    "title": "Software Engineer",
+    "location": "New York, NY",
+    "company": "Infor",
+    "start": "2016-02",
+    "end": "2018-08",
+    "descriptions": [
+      {
+        "description": "Deliver HTML, JavaScript, & CSS to components using React, Angular, SASS, & TypeScript from jQuery Soho library based components"
+      },
+      {
+        "description": "Measure & modify performance of Infor Design System components with Chrome DevTools to reduce rendering times by 700ms on average"
+      },
+      {
+        "description": "Develop Python Content Management System for documentation about Infor Design System"
+      },
+      {
+        "description": "Design, develop & demonstrate proof of concept prototypes such as Infor Ming.le Chat & Project Max"
+      },
+      {
+        "description": "Create Progressive Web Application utilizing NgRX, AWS Lambda, AWS Lex, Infor Coleman AI, & Reactive Programming"
+      }
+    ]
+  }
+]
