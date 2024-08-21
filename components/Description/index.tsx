@@ -2,7 +2,7 @@ type DescriptionProps = {
   description: string;
 };
 
-import styles from "@/components/description/description.module.css";
+import styles from "@/components/Description/description.module.css";
 
 export default function Description({
   description,
