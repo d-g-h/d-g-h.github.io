@@ -1,5 +1,6 @@
-[![Analysis](https://github.com/d-g-h/d-g-h.github.io/actions/workflows/analysis.yml/badge.svg)](https://github.com/d-g-h/d-g-h.github.io/actions/workflows/analysis.yml)
-[![Deploy Next.js site to Pages](https://github.com/d-g-h/d-g-h.github.io/actions/workflows/nextjs.yml/badge.svg)](https://github.com/d-g-h/d-g-h.github.io/actions/workflows/nextjs.yml)
+[![CodeQL](https://github.com/d-g-h/d-g-h.github.io/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/d-g-h/d-g-h.github.io/actions/workflows/github-code-scanning/codeql)
+[![Test](https://github.com/d-g-h/d-g-h.github.io/actions/workflows/test.yml/badge.svg)](https://github.com/d-g-h/d-g-h.github.io/actions/workflows/test.yml)
+[![Deploy](https://github.com/d-g-h/d-g-h.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/d-g-h/d-g-h.github.io/actions/workflows/deploy.yml)
 
 install
 
