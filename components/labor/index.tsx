@@ -21,13 +21,7 @@ export default function Labor({
   return (
     <li className={styles.labor}>
       <div className={styles.title}>{title}</div>
-      {company ? (
-        <>
-          <div className={styles.highlight}>{company}</div>
-        </>
-      ) : (
-        ""
-      )}
+      {company ? <div className={styles.highlight}>{company}</div> : ""}
       <div className={styles.location}>{location}</div>
       <div className={styles.time}>
         <Time start={start} end={end} />
