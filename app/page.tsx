@@ -2,8 +2,8 @@ import { Metadata } from "next";
 import labors from "@/public/labors.json";
 import education from "@/public/education.json";
 import shortenerLink from "@/lib/utils/shortenerLink";
-import Description from "@/components/description";
-import Labor from "@/components/labor";
+import Description from "@/components/Description";
+import Labor from "@/components/Labor";
 import styles from "@/app/page.module.css";
 
 export const metadata: Metadata = {

@@ -3,7 +3,7 @@
  */
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import Labor from "@/components/labor";
+import Labor from "@/components/Labor";
 
 const KEY = "0";
 const COMPANY = "Company";
