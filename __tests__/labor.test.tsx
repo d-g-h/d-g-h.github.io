@@ -24,7 +24,7 @@ describe("Labor", () => {
         end={END}
       >
         <></>
-      </Labor>,
+      </Labor>
     );
 
     const jobTitle = screen.getByText("Job Title");
@@ -43,7 +43,7 @@ describe("Labor", () => {
         end={END}
       >
         <></>
-      </Labor>,
+      </Labor>
     );
 
     const jobTitle = screen.getByText("Job Title");
@@ -63,7 +63,7 @@ describe("Labor", () => {
         end={END}
       >
         <></>
-      </Labor>,
+      </Labor>
     );
     expect(container).toMatchSnapshot();
   });
