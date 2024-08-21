@@ -103,7 +103,7 @@ export default function Home() {
                   </li>
                 ) : (
                   <li key={skill.key}>{skill.name}</li>
-                ),
+                )
               )}
             </ul>
           </div>
