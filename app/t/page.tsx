@@ -4,8 +4,8 @@ import summary from "@/public/summary.json";
 import education from "@/public/education.json";
 import skills from "@/public/skills.json";
 import shortenerLink from "@/lib/utils/shortenerLink";
-import Description from "@/components/description";
-import LaborT from "@/components/labort";
+import Description from "@/components/Description";
+import LaborT from "@/components/LaborT";
 import styles from "@/app/t/page.module.css";
 
 export const metadata: Metadata = {

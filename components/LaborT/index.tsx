@@ -7,8 +7,8 @@ type LaborTProps = {
   children: React.ReactNode;
 };
 
-import styles from "@/components/labort/labort.module.css";
-import Time from "@/components/time";
+import styles from "@/components/LaborT/labort.module.css";
+import Time from "@/components/Time";
 
 export default function LaborT({
   title,
