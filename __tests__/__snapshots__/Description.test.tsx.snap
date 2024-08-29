@@ -4,7 +4,6 @@ exports[`Description renders html correctly 1`] = `
 <div>
   <li
     class="description"
-    contenteditable="true"
   >
     Job description
   </li>
