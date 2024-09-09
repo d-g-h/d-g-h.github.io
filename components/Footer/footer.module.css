@@ -11,6 +11,10 @@
   text-decoration: underline;
 }
 
+.skill {
+  font-size: 0.75rem;
+}
+
 .skills {
   @media (min-width: 640px) {
     max-width: 65%;

@@ -14,8 +14,8 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <div className="resume">
-      <Header />
       <main>
+        <Header />
         <div>
           <ul>
             {labors.map((labor) => (
