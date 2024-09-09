@@ -32,6 +32,12 @@ test in prod w/coverage report
 npm run test:ci
 ```
 
+test in prod w/coverage report & update snapshot
+
+```
+npm run test:ci -- -u
+```
+
 prod
 
 ```
