@@ -20,16 +20,18 @@ export default function Footer({ skills, education }: Readonly<FooterProps>) {
   return (
     <div className={styles.footer}>
       {skills ? (
-        <div className={styles.skills}>
+        <div className={styles.skills} style={{ textAlign: "left" }}>
           <h2 className="title">Skills</h2>
-          <ul style={{ fontSize: "0.75rem" }}>
+          <ul>
             {skills.map((skill: Skill) =>
               skill.key === ATS ? (
                 <li key={skill.key} className={styles.ast}>
                   {skill.name}
                 </li>
               ) : (
-                <li key={skill.key}>{skill.name}</li>
+                <li key={skill.key} className={styles.skill}>
+                  {skill.name}
+                </li>
               )
             )}
           </ul>
@@ -38,7 +40,7 @@ export default function Footer({ skills, education }: Readonly<FooterProps>) {
         ""
       )}
       <div className={skills ? styles.education : ""}>
-        <h2 className={styles.title}>Education</h2>
+        <h2 className="title">Education</h2>
         <ul className="sub">
           {education.map((education: Education) => (
             <li key={education.key}>{education.name}</li>

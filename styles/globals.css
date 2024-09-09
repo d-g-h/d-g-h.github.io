@@ -47,6 +47,12 @@ a {
   width: 85%;
 }
 
+.title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
 .sub {
   font-size: 0.75rem;
 }

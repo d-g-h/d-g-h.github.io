@@ -4,10 +4,10 @@ import summary from "@/public/summary.json";
 import education from "@/public/education.json";
 import skills from "@/public/skills.json";
 import Header from "@/components/Header";
+import Summary from "@/components/Summary";
 import Footer from "@/components/Footer";
 import Description from "@/components/Description";
 import LaborT from "@/components/LaborT";
-import styles from "@/app/c/page.module.css";
 
 export const metadata: Metadata = {
   title: "⇗💻",
@@ -19,16 +19,8 @@ export default function Home() {
     <div className="resume">
       <main>
         <Header phone />
-        <h2
-          className={styles.title}
-          style={{ textDecoration: "underline", marginTop: "0.75rem" }}
-        >
-          Summary
-        </h2>
-        <p style={{ fontSize: "0.75rem" }}>{summary.summary}</p>
-        <h2 className={styles.title} style={{ textDecoration: "underline" }}>
-          Experience
-        </h2>
+        <Summary summary={summary.summary} />
+        <h2 className="title">Experience</h2>
         <div>
           <ul>
             {labors.map((labor) => (

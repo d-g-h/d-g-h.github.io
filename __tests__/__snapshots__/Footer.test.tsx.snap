@@ -39,17 +39,18 @@ exports[`Footer When skills are provided matches snapshot when skills and educat
     >
       <h2
         class="title"
-        style="text-decoration: underline;"
       >
         Skills
       </h2>
-      <ul
-        style="font-size: 0.75rem;"
-      >
-        <li>
+      <ul>
+        <li
+          class="skill"
+        >
           JavaScript
         </li>
-        <li>
+        <li
+          class="skill"
+        >
           React
         </li>
       </ul>

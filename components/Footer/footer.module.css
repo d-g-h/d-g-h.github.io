@@ -22,13 +22,13 @@
   }
 }
 .ast {
+  font-size: 0;
+
   @media print {
     color: white;
     font-size: 0.25rem;
     -webkit-print-color-adjust: exact;
   }
-
-  font-size: 0;
 }
 
 @media (min-width: 640px) {

@@ -1,0 +1,10 @@
+.title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-top: "0.75rem";
+  text-decoration: "underline";
+}
+
+.summary {
+  font-size: 0.75rem;
+}
