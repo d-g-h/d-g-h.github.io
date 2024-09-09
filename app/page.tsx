@@ -3,8 +3,8 @@ import labors from "@/public/labors.json";
 import education from "@/public/education.json";
 import Description from "@/components/Description";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import Labor from "@/components/Labor";
-import styles from "@/app/page.module.css";
 
 export const metadata: Metadata = {
   title: "⇗💻",
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <div className={styles.resume}>
+    <div className="resume">
       <Header />
       <main>
         <div>
@@ -39,16 +39,7 @@ export default function Home() {
             ))}
           </ul>
         </div>
-        <div className={styles.footer}>
-          <div className={styles.education}>
-            <h2 className={styles.title}>Education</h2>
-            <ul className={styles.sub}>
-              {education.map((education) => (
-                <li key={education.key}>{education.name}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
+        <Footer education={education} />
       </main>
     </div>
   );

@@ -4,20 +4,19 @@ import summary from "@/public/summary.json";
 import education from "@/public/education.json";
 import skills from "@/public/skills.json";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import Description from "@/components/Description";
 import LaborT from "@/components/LaborT";
-import styles from "@/app/t/page.module.css";
+import styles from "@/app/c/page.module.css";
 
 export const metadata: Metadata = {
   title: "⇗💻",
   description: "❤️",
 };
 
-const ATS = "ATS";
-
 export default function Home() {
   return (
-    <div className={styles.resume}>
+    <div className="resume">
       <main>
         <Header phone />
         <h2
@@ -53,40 +52,7 @@ export default function Home() {
             ))}
           </ul>
         </div>
-        <div className={styles.footer}>
-          <div className={styles.skills} style={{ textAlign: "left" }}>
-            <h2
-              className={styles.title}
-              style={{ textDecoration: "underline" }}
-            >
-              Skills
-            </h2>
-            <ul style={{ fontSize: "0.75rem" }}>
-              {skills.map((skill) =>
-                skill.key === ATS ? (
-                  <li key={skill.key} className={styles.ast}>
-                    {skill.name}
-                  </li>
-                ) : (
-                  <li key={skill.key}>{skill.name}</li>
-                )
-              )}
-            </ul>
-          </div>
-          <div className={styles.education}>
-            <h2
-              className={styles.title}
-              style={{ textDecoration: "underline" }}
-            >
-              Education
-            </h2>
-            <ul className={styles.sub}>
-              {education.map((education) => (
-                <li key={education.key}>{education.name}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
+        <Footer education={education} skills={skills} />
       </main>
     </div>
   );

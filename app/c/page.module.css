@@ -1,46 +1,4 @@
-.sub {
-  font-size: 0.75rem;
-}
-
 .title {
   font-size: 1.25rem;
   font-weight: bold;
-}
-
-.resume {
-  margin: 0 auto;
-  width: 85%;
-}
-
-.footer {
-  @media (min-width: 640px) {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  display: block;
-}
-
-.skills {
-  @media (min-width: 640px) {
-    text-align: left;
-    max-width: 65%;
-  }
-}
-
-.education {
-  @media (min-width: 640px) {
-    text-align: right;
-    max-width: 65%;
-  }
-}
-
-.ast {
-  @media print {
-    color: white;
-    font-size: 0.25rem;
-    -webkit-print-color-adjust: exact;
-  }
-
-  font-size: 0;
 }
