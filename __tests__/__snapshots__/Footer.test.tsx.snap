@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer When skills are not provided matches snapshot when only education is provided 1`] = `
+<div>
+  <div
+    class="footer"
+  >
+    <div
+      class=""
+    >
+      <h2
+        class="title"
+      >
+        Education
+      </h2>
+      <ul
+        class="sub"
+      >
+        <li>
+          Bachelor's Degree
+        </li>
+        <li>
+          Master's Degree
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Footer When skills are provided matches snapshot when skills and education are provided 1`] = `
+<div>
+  <div
+    class="footer"
+  >
+    <div
+      class="skills"
+      style="text-align: left;"
+    >
+      <h2
+        class="title"
+        style="text-decoration: underline;"
+      >
+        Skills
+      </h2>
+      <ul
+        style="font-size: 0.75rem;"
+      >
+        <li>
+          JavaScript
+        </li>
+        <li>
+          React
+        </li>
+      </ul>
+    </div>
+    <div
+      class="education"
+    >
+      <h2
+        class="title"
+      >
+        Education
+      </h2>
+      <ul
+        class="sub"
+      >
+        <li>
+          Bachelor's Degree
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;

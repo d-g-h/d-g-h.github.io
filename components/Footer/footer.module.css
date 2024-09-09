@@ -1,0 +1,34 @@
+.footer {
+  display: block;
+
+  @media (min-width: 640px) {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.title {
+  text-decoration: underline;
+}
+
+.skills {
+  @media (min-width: 640px) {
+    max-width: 65%;
+  }
+}
+
+.education {
+  @media (min-width: 640px) {
+    margin-left: 0.25rem;
+    text-align: right;
+  }
+}
+.ast {
+  @media print {
+    color: white;
+    font-size: 0.25rem;
+    -webkit-print-color-adjust: exact;
+  }
+
+  font-size: 0;
+}
