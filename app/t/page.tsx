@@ -3,7 +3,7 @@ import labors from "@/public/labors.json";
 import summary from "@/public/summary.json";
 import education from "@/public/education.json";
 import skills from "@/public/skills.json";
-import shortenerLink from "@/lib/utils/shortenerLink";
+import Header from "@/components/Header";
 import Description from "@/components/Description";
 import LaborT from "@/components/LaborT";
 import styles from "@/app/t/page.module.css";
@@ -18,41 +18,7 @@ const ATS = "ATS";
 export default function Home() {
   return (
     <div className={styles.resume}>
-      <header>
-        <h1 className={styles.name}>
-          <a
-            href={`${process.env.NEXT_PUBLIC_GITHUB}`}
-          >{`${process.env.NEXT_PUBLIC_NAME}`}</a>
-        </h1>
-      </header>
-      <div className={`${styles.sub} ${styles.links}`}>
-        <div>
-          <a href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`}>
-            {process.env.NEXT_PUBLIC_EMAIL}
-          </a>
-        </div>
-        <div>
-          <a href={`${process.env.NEXT_PUBLIC_LINKEDIN}`}>
-            {shortenerLink({
-              url: `${process.env.NEXT_PUBLIC_LINKEDIN}`,
-              link: `linkedin.com`,
-            })}
-          </a>
-        </div>
-        <div>
-          <a href={`${process.env.NEXT_PUBLIC_GITHUB}`}>
-            {shortenerLink({
-              url: `${process.env.NEXT_PUBLIC_GITHUB}`,
-              link: `github.com`,
-            })}
-          </a>
-        </div>
-        <div>
-          <a href={`tel:+1${process.env.NEXT_PUBLIC_PHONE}`}>
-            {process.env.NEXT_PUBLIC_PHONE}
-          </a>
-        </div>
-      </div>
+      <Header phone />
       <main>
         <h2
           className={styles.title}

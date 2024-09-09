@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header renders Header component correctly 1`] = `
+<div>
+  <header>
+    <h1
+      class="name"
+    >
+      <a
+        href="https://github.com/profile"
+      >
+        Name Name
+      </a>
+    </h1>
+    <div
+      class="sub links"
+    >
+      <div>
+        <a
+          href="mailto:email@email.email"
+        >
+          email@email.email
+        </a>
+      </div>
+      <div>
+        <a
+          href="https://linkedin.com/in/profile"
+        >
+          linkedin.com/in/profile
+        </a>
+      </div>
+      <div>
+        <a
+          href="https://github.com/profile"
+        >
+          github.com/profile
+        </a>
+      </div>
+    </div>
+  </header>
+</div>
+`;
+
+exports[`Header renders phone link when phone prop is true 1`] = `
+<div>
+  <header>
+    <h1
+      class="name"
+    >
+      <a
+        href="https://github.com/profile"
+      >
+        Name Name
+      </a>
+    </h1>
+    <div
+      class="sub links"
+    >
+      <div>
+        <a
+          href="mailto:email@email.email"
+        >
+          email@email.email
+        </a>
+      </div>
+      <div>
+        <a
+          href="https://linkedin.com/in/profile"
+        >
+          linkedin.com/in/profile
+        </a>
+      </div>
+      <div>
+        <a
+          href="https://github.com/profile"
+        >
+          github.com/profile
+        </a>
+      </div>
+      <div>
+        <a
+          href="tel:+17188675309"
+        >
+          7188675309
+        </a>
+      </div>
+    </div>
+  </header>
+</div>
+`;

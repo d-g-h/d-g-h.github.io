@@ -1,21 +1,17 @@
-.name {
-  font-size: 1.5rem;
-  margin: 0 0 0.25rem 0;
-}
-
 .sub {
   font-size: 0.75rem;
 }
 
 .links {
-  @media (min-width: 640px) {
-    justify-content: space-between;
-    flex-direction: row;
-  }
-
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   margin-bottom: 0.75rem;
+}
+
+@media (max-width: 640px) {
+  .links {
+    flex-direction: column;
+  }
 }
 
 .title {
