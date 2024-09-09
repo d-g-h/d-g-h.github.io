@@ -46,4 +46,4 @@ npm run lint
 
 ### Deploy
 
-Push to the main branch to trigger `.github/workflows/nextjs.yml`
+Push to the main branch to trigger `.github/workflows/deploy.yml`
