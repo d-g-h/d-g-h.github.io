@@ -42,6 +42,15 @@ a {
   margin-top: var(--anchor-space);
 }
 
+.resume {
+  margin: 0 auto;
+  width: 85%;
+}
+
+.sub {
+  font-size: 0.75rem;
+}
+
 .error {
   display: flex;
   justify-content: center;
