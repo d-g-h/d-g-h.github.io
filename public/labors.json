@@ -25,7 +25,7 @@
     "end": "2023-06",
     "descriptions": [
       {
-        "description": "Add 6 features to a Next.js & Ruby on Rails application for Discovery, Talk, & Member Pages using TypeScript, React, Tailwind CSS, GraphQL, & Split URL Testing"
+        "description": "Add 6 features to a Next.js & Ruby on Rails application for Discovery, Talk, & Member Pages using TypeScript, React, Tailwind CSS, GraphQL, & A/B Testing"
       },
       {
         "description": "Improve code quality by adding code coverage tool, provide actionable code reviews, pair with developers to reduce QA testing to reduce deployment times by 31%"
@@ -48,7 +48,7 @@
     "end": "2022-06",
     "descriptions": [
       {
-        "description": "Build ingestion tool for Kyndryl Sharepoint migration sites from an IBM non-relational database content management system over 20,000 sites using Azure & IBM Cloud"
+        "description": "Wireframe & build ingestion tool for Kyndryl Sharepoint migration sites from an IBM non-relational database content management system over 20,000 sites using Azure & IBM Cloud"
       },
       {
         "description": "Develop 3 single page applications using Vue.js & backend microservices using TypeScript, CouchDB, & Node.js for all employees"
@@ -64,7 +64,7 @@
     "end": "2021-08",
     "descriptions": [
       {
-        "description": "Deliver accessible HTML, JavaScript, & CSS to the client using Vue.js, Vuex, SASS, & TypeScript using webpack"
+        "description": "Deliver accessible HTML, JavaScript, D3.js & CSS to the client using Vue.js, Vuex, SASS, & TypeScript using webpack to create data visualization components "
       },
       {
         "description": "Aggregate legacy APIs, & Cassandra column-family data using GraphQL to feed into Design Library components for intranet homepage & profile pages"
