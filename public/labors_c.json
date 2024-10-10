@@ -1,12 +1,12 @@
 [
   {
     "key": "5",
-    "title": "Web Developer",
+    "title": "Software Developer",
     "location": "Remote",
     "start": "2023-06",
     "descriptions": [
       {
-        "description": "Develop functional software & systems for applications & infrastructure in a Monorepo"
+        "description": "Develop functional software using Next.js or Expo with TypeScript & React or React Native"
       },
       {
         "description": "Monitor production environments utilizing 3rd party monitoring tools"
