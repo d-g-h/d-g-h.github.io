@@ -19,7 +19,7 @@ jobs:
       fail-fast: false
       matrix:
         language: ["javascript-typescript"]
-        node-version: ["22.4"]
+        node-version: ["22.9"]
     env:
       NEXT_PUBLIC_NAME: ${{ secrets.NEXT_PUBLIC_NAME }}
       NEXT_PUBLIC_EMAIL: ${{ secrets.NEXT_PUBLIC_EMAIL }}
@@ -42,7 +42,7 @@ jobs:
           key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
-      - run: npm ci
+      - run: npm ci --force
       - run: npm run build --if-present
       - run: npm run lint --if-present
       - run: npm run prettier:check --if-present
