@@ -67,7 +67,7 @@
         "description": "Deliver accessible HTML, JavaScript, D3.js & CSS to the client using Vue.js, Vuex, SASS, & TypeScript using webpack to create data visualization components "
       },
       {
-        "description": "Aggregate legacy APIs, & Cassandra column-family data using GraphQL to feed into Design Library components for intranet homepage & profile pages"
+        "description": "Aggregate legacy APIs, & Cassandra column-family data using GraphQL to feed into Design Library components for web forms, intranet homepage & profile pages"
       },
       {
         "description": "Refactor Node.js API microservices for improvements in modularity, readability & increased code coverage by 85%"
