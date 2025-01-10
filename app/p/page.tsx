@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 export default async function Home() {
   const url = await getQRCode({
     url: process.env.NEXT_PUBLIC_URL,
-    color: "#539bf5",
+    color: "#000",
   });
   return (
     <div className="resume">
