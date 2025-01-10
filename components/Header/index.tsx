@@ -1,19 +1,34 @@
 type HeaderProps = {
   phone?: boolean;
+  url?: string;
 };
 
+import Image from "next/image";
 import shortenerLink from "@/lib/utils/shortenerLink";
 import styles from "@/components/Header/header.module.css";
 
-export default function Header({ phone }: Readonly<HeaderProps>) {
+export default function Header({ phone, url }: Readonly<HeaderProps>) {
   return (
     <>
       <header>
-        <h1 className={styles.name}>
-          <a
-            href={`${process.env.NEXT_PUBLIC_GITHUB}`}
-          >{`${process.env.NEXT_PUBLIC_NAME}`}</a>
-        </h1>
+        <div className={styles.container}>
+          {url ? (
+            <Image
+              src={url}
+              alt="url QR code"
+              width={100}
+              height={100}
+              className={styles.img}
+            />
+          ) : (
+            ""
+          )}
+          <h1 className={styles.name}>
+            <a
+              href={`${process.env.NEXT_PUBLIC_GITHUB}`}
+            >{`${process.env.NEXT_PUBLIC_NAME}`}</a>
+          </h1>
+        </div>
         <div className={`${styles.sub} ${styles.links}`}>
           <div>
             <a href={`mailto:${process.env.NEXT_PUBLIC_EMAIL}`}>

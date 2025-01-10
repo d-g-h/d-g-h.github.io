@@ -7,6 +7,7 @@ import Header from "@/components/Header";
 import shortenerLink from "@/lib/utils/shortenerLink";
 
 const env = {
+  NEXT_PUBLIC_URL: "https://qr.qr/t",
   NEXT_PUBLIC_NAME: "Name Name",
   NEXT_PUBLIC_GITHUB: "https://github.com/profile",
   NEXT_PUBLIC_EMAIL: "email@email.email",
@@ -73,5 +74,14 @@ describe("Header", () => {
     expect(
       screen.getByText(env.NEXT_PUBLIC_PHONE).closest("a")
     ).toHaveAttribute("href", `tel:+1${env.NEXT_PUBLIC_PHONE}`);
+  });
+
+  it("renders qr code when url is defined", async () => {
+    const { container } = render(<Header url={env.NEXT_PUBLIC_URL} />);
+    expect(container).toMatchSnapshot();
+    expect(screen.getByAltText("url QR code").closest("img")).toHaveAttribute(
+      "class",
+      `img`
+    );
   });
 });
