@@ -77,11 +77,7 @@ describe("Header", () => {
   });
 
   it("renders qr code when url is defined", async () => {
-    const { container } = render(<Header url={env.NEXT_PUBLIC_URL} />);
+    const { container } = render(<Header text={env.NEXT_PUBLIC_URL} />);
     expect(container).toMatchSnapshot();
-    expect(screen.getByAltText("url QR code").closest("img")).toHaveAttribute(
-      "class",
-      `img`
-    );
   });
 });

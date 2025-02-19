@@ -1,24 +1,20 @@
 type HeaderProps = {
   phone?: boolean;
-  url?: string;
+  text?: string;
 };
 
-import Image from "next/image";
 import shortenerLink from "@/lib/utils/shortenerLink";
 import styles from "@/components/Header/header.module.css";
 
-export default function Header({ phone, url }: Readonly<HeaderProps>) {
+export default function Header({ phone, text }: Readonly<HeaderProps>) {
   return (
     <>
       <header>
         <div className={styles.container}>
-          {url ? (
-            <Image
-              src={url}
-              alt="url QR code"
-              width={100}
-              height={100}
-              className={styles.img}
+          {text ? (
+            <div
+              dangerouslySetInnerHTML={{ __html: text }}
+              aria-label="Generated SVG"
             />
           ) : (
             ""

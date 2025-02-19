@@ -103,18 +103,11 @@ exports[`Header renders qr code when url is defined 1`] = `
     <div
       class="container"
     >
-      <img
-        alt="url QR code"
-        class="img"
-        data-nimg="1"
-        decoding="async"
-        height="100"
-        loading="lazy"
-        src="/_next/image?url=https%3A%2F%2Fqr.qr%2Ft&w=256&q=75"
-        srcset="/_next/image?url=https%3A%2F%2Fqr.qr%2Ft&w=128&q=75 1x, /_next/image?url=https%3A%2F%2Fqr.qr%2Ft&w=256&q=75 2x"
-        style="color: transparent;"
-        width="100"
-      />
+      <div
+        aria-label="Generated SVG"
+      >
+        https://qr.qr/t
+      </div>
       <h1
         class="name"
       >
