@@ -1,24 +1,32 @@
 import QRCode from "qrcode";
 
-export default async function getQRCode({
-  url,
+const encodeSvg = (svg: string): string => {
+  return svg
+    .trim()
+    .replace(/[\n\r]/g, "")
+    .replace(/"/g, "'")
+    .replace(/>\s+</g, "><");
+};
+
+export async function getQRCode({
+  text,
   color,
 }: {
-  url: string | undefined;
+  text: string;
   color: string;
 }) {
-  if (!url) {
-    throw new Error("URL is required to generate a QR code");
-  }
   try {
-    const code = await QRCode.toDataURL(url, {
+    const code = await QRCode.toString(text, {
       errorCorrectionLevel: "H",
+      width: 100,
       color: {
         dark: color,
         light: "#0000",
       },
+      type: "svg",
     });
-    return code;
+
+    return encodeSvg(code);
   } catch (err) {
     console.error(err);
   }

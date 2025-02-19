@@ -8,7 +8,7 @@ import Summary from "@/components/Summary";
 import Footer from "@/components/Footer";
 import Description from "@/components/Description";
 import LaborT from "@/components/LaborT";
-import getQRCode from "@/lib/utils/getQRCode";
+import { getQRCode } from "@/lib/utils/getQRCode";
 
 export const metadata: Metadata = {
   title: "⇗💻",
@@ -16,14 +16,14 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-  const url = await getQRCode({
-    url: process.env.NEXT_PUBLIC_URL,
+  const text = await getQRCode({
+    text: `${process.env.NEXT_PUBLIC_URL}`,
     color: "#000",
   });
   return (
     <div className="resume">
       <main>
-        <Header phone url={url} />
+        <Header phone text={text} />
         <Summary summary={summary.summary} />
         <h2 className="title" style={{ textDecoration: "underline" }}>
           Experience
