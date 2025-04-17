@@ -25,7 +25,7 @@
     "end": "2023-06",
     "descriptions": [
       {
-        "description": "Add 6 features to a Next.js & Ruby on Rails application for Discovery, Talk, & Member Pages using TypeScript, React, Tailwind CSS, GraphQL, & A/B Testing"
+        "description": "Add 6 features to a Next.js & Ruby on Rails application for Discovery Topics, Talk, & Member Pages using TypeScript, React, Tailwind CSS, GraphQL, & A/B Testing"
       },
       {
         "description": "Improve code quality by adding code coverage tool, provide actionable code reviews, pair with developers to reduce QA testing to reduce deployment times by 31%"
