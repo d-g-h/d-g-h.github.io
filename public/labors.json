@@ -6,13 +6,16 @@
     "start": "2023-06",
     "descriptions": [
       {
-        "description": "Develop functional software using Next.js or Expo with TypeScript & React or React Native"
+        "description": "Develop functional software using Node.js, Next.js & Expo with TypeScript & React or React Native"
       },
       {
-        "description": "Monitor production environments utilizing 3rd party monitoring tools"
+        "description": "Architecture & integrate 2 healthcare apps integrating 2 vendor APIs to reduce in error rates, & enhance the patient experience"
       },
       {
         "description": "Consult clients in agile development & UX strategy with a focus on enabling impactful user experiences"
+      },
+      {
+        "description": "Led data migration off the legacy platform & onto the new integrated system, ensuring continuity, data integrity, & minimal downtime during transition"
       }
     ]
   },
@@ -31,7 +34,7 @@
         "description": "Improve code quality by adding code coverage tool, provide actionable code reviews, pair with developers to reduce QA testing to reduce deployment times by 31%"
       },
       {
-        "description": "Create & modify 10 accessible modular components to TED UI Design System"
+        "description": "Create & modify over 10 accessible modular components to TED UI Design System"
       },
 
       {
