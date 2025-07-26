@@ -19,7 +19,7 @@ jobs:
       fail-fast: false
       matrix:
         language: ["javascript-typescript"]
-        node-version: ["22.13"]
+        node-version: ["24.4.1"]
     env:
       NEXT_PUBLIC_URL: ${{ secrets.NEXT_PUBLIC_URL }}
       NEXT_PUBLIC_NAME: ${{ secrets.NEXT_PUBLIC_NAME }}
