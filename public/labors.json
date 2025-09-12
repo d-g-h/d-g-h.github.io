@@ -3,13 +3,13 @@
     "key": "5",
     "title": "Software Developer",
     "location": "Remote",
-    "start": "2023-06",
+    "start": "2023-07",
     "descriptions": [
       {
         "description": "Develop functional software using Node.js, Next.js & Expo with TypeScript & React or React Native"
       },
       {
-        "description": "Architecture & integrate 2 healthcare apps integrating 2 vendor APIs to reduce in error rates, & enhance the patient experience"
+        "description": "Architect & integrate 2 healthcare apps integrating 2 vendor APIs to reduce error rates, & enhance the patient experience"
       },
       {
         "description": "Consult clients in agile development & UX strategy with a focus on enabling impactful user experiences"
@@ -31,7 +31,7 @@
         "description": "Add 6 features to a Next.js & Ruby on Rails application for Discovery Topics, Talk, & Member Pages using TypeScript, React, Tailwind CSS, GraphQL, & A/B Testing"
       },
       {
-        "description": "Improve code quality by adding code coverage tool, provide actionable code reviews, pair with developers to reduce QA testing to reduce deployment times by 31%"
+        "description": "Improve code quality by adding code coverage tools, providing actionable code reviews, and pairing with developers, reducing QA testing needs and cutting deployment times by 31%"
       },
       {
         "description": "Create & modify over 10 accessible modular components to TED UI Design System"
@@ -95,7 +95,7 @@
     "end": "2018-08",
     "descriptions": [
       {
-        "description": "Deliver HTML, JavaScript, & CSS to components using React, Angular, SASS, & TypeScript from jQuery Soho library based components"
+        "description": "Deliver HTML, JavaScript, & CSS components using React, Angular, SASS, & TypeScript from jQuery Soho library based components"
       },
       {
         "description": "Measure & modify performance of Infor Design System components with Chrome DevTools to reduce rendering times by 700ms on average"
