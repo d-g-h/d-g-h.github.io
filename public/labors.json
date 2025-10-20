@@ -6,16 +6,16 @@
     "start": "2023-07",
     "descriptions": [
       {
-        "description": "Develop functional software using Node.js, Next.js & Expo with TypeScript & React or React Native"
+        "description": "Develop full-stack applications using Node.js, Next.js, and Expo with TypeScript, React, and React Native"
       },
       {
-        "description": "Architect & integrate 2 healthcare apps integrating 2 vendor APIs to reduce error rates, & enhance the patient experience"
+        "description": "Architected and integrated 2 healthcare applications with Canvas API, implementing Cloudflare Workers with KV storage to reduce authentication calls by 800+ per day and improve response times"
       },
       {
-        "description": "Consult clients in agile development & UX strategy with a focus on enabling impactful user experiences"
+        "description": "Advise clients on agile development practices and UX strategy to deliver high-impact user experiences"
       },
       {
-        "description": "Led data migration off the legacy platform & onto the new integrated system, ensuring continuity, data integrity, & minimal downtime during transition"
+        "description": "Led data migration from legacy platform to integrated system, ensuring data integrity and zero downtime during transition"
       }
     ]
   },
@@ -67,7 +67,7 @@
     "end": "2021-08",
     "descriptions": [
       {
-        "description": "Deliver accessible HTML, JavaScript, D3.js & CSS to the client using Vue.js, Vuex, SASS, & TypeScript using webpack to create data visualization components "
+        "description": "Create accessible HTML, JavaScript, D3.js & CSS using Vue.js, Vuex, SASS, & TypeScript using webpack to create data visualization components "
       },
       {
         "description": "Aggregate legacy APIs, & Cassandra column-family data using GraphQL to feed into Design Library components for web forms, intranet homepage & profile pages"
@@ -95,13 +95,16 @@
     "end": "2018-08",
     "descriptions": [
       {
-        "description": "Deliver HTML, JavaScript, & CSS components using React, Angular, SASS, & TypeScript from jQuery Soho library based components"
+        "description": "Create HTML, JavaScript, & CSS components using React, Angular, SASS, & TypeScript from jQuery Soho library based components"
       },
       {
         "description": "Measure & modify performance of Infor Design System components with Chrome DevTools to reduce rendering times by 700ms on average"
       },
       {
         "description": "Develop Python Content Management System for documentation about Infor Design System"
+      },
+      {
+        "description": "Create 4 reusable Wagtail components to extend the Python CMS and streamline content authoring workflows for designers"
       },
       {
         "description": "Design, develop & demonstrate proof of concept prototypes such as Infor Ming.le Chat & Project Max"
