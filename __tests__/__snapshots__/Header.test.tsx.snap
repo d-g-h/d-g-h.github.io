@@ -104,7 +104,8 @@ exports[`Header renders qr code when url is defined 1`] = `
       class="container"
     >
       <div
-        aria-label="Generated SVG"
+        aria-label="svg qr"
+        class="qr"
       >
         https://qr.qr/t
       </div>

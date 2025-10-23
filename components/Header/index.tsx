@@ -13,8 +13,9 @@ export default function Header({ phone, text }: Readonly<HeaderProps>) {
         <div className={styles.container}>
           {text ? (
             <div
+              className={styles.qr}
               dangerouslySetInnerHTML={{ __html: text }}
-              aria-label="Generated SVG"
+              aria-label="svg qr"
             />
           ) : (
             ""
