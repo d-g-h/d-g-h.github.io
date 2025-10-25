@@ -32,7 +32,7 @@ export default function Footer({ skills, education }: Readonly<FooterProps>) {
                 <li key={skill.key} className={styles.skill}>
                   {skill.name}
                 </li>
-              )
+              ),
             )}
           </ul>
         </div>

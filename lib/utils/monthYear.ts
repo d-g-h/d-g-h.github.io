@@ -1,7 +1,7 @@
 const formattedDate = (date: string) => {
   const [year, month] = date.split("-");
-  const yearDate = parseInt(year);
-  const monthDate = parseInt(month) - 1;
+  const yearDate = parseInt(year, 10);
+  const monthDate = parseInt(month, 10) - 1;
 
   if (yearDate && monthDate) {
     return new Date(yearDate, monthDate);
@@ -10,7 +10,7 @@ const formattedDate = (date: string) => {
   return "Invalid Date";
 };
 
-export default function monthYear({ date }: { date: string }): string {
+const monthYear = ({ date }: { date: string }): string => {
   const month = formattedDate(date).toLocaleString("en-US", {
     month: "long",
   });
@@ -24,4 +24,6 @@ export default function monthYear({ date }: { date: string }): string {
   }
 
   return "";
-}
+};
+
+export default monthYear;

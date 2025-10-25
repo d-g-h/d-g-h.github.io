@@ -1,14 +1,14 @@
-import { Metadata } from "next";
-import labors from "@/public/labors.json";
-import summary from "@/public/summary.json";
-import education from "@/public/education.json";
-import skills from "@/public/skills.json";
-import Header from "@/components/Header";
-import Summary from "@/components/Summary";
-import Footer from "@/components/Footer";
+import type { Metadata } from "next";
 import Description from "@/components/Description";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 import LaborT from "@/components/LaborT";
+import Summary from "@/components/Summary";
 import { getQRCode } from "@/lib/utils/getQRCode";
+import education from "@/public/education.json";
+import labors from "@/public/labors.json";
+import skills from "@/public/skills.json";
+import summary from "@/public/summary.json";
 
 export const metadata: Metadata = {
   title: "⇗💻",

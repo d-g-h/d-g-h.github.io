@@ -1,10 +1,10 @@
-import { Metadata } from "next";
-import labors from "@/public/labors.json";
-import education from "@/public/education.json";
+import type { Metadata } from "next";
 import Description from "@/components/Description";
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 import Labor from "@/components/Labor";
+import education from "@/public/education.json";
+import labors from "@/public/labors.json";
 
 export const metadata: Metadata = {
   title: "⇗💻",

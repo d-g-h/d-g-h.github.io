@@ -1,8 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
-import { getQRCode } from "@/lib/utils/getQRCode";
+import React, { useEffect } from "react";
+import { create } from "zustand";
 import styles from "@/components/Qr/qr.module.css";
+import { getNextDisplayState } from "@/lib/utils/displayState";
+import { getQRCode } from "@/lib/utils/getQRCode";
+import { decodeQRState, encodeQRState } from "@/lib/utils/qrState";
+import { svgStringToElement } from "@/lib/utils/svg";
 
 export type QRRow = {
   id: string;
@@ -12,17 +16,196 @@ export type QRRow = {
   svg: string;
 };
 
-type DisplayState = "show" | "hide" | "qrOnly";
+export type DisplayState = "show" | "hide" | "qrOnly";
+
+interface QRStore {
+  input: string;
+  rows: QRRow[];
+  inProgress: QRRow[];
+  displayStates: Map<string, DisplayState>;
+  loading: boolean;
+  showTextarea: boolean;
+  setInput: (input: string) => void;
+  setRows: (rows: QRRow[]) => void;
+  setInProgress: (rows: QRRow[]) => void;
+  setDisplayStates: (
+    states:
+      | Map<string, DisplayState>
+      | ((prev: Map<string, DisplayState>) => Map<string, DisplayState>),
+  ) => void;
+  setLoading: (loading: boolean) => void;
+  setShowTextarea: (show: boolean | ((prev: boolean) => boolean)) => void;
+}
+
+const useQRStore = create<QRStore>((set) => ({
+  input: "",
+  rows: [],
+  inProgress: [],
+  displayStates: new Map(),
+  loading: false,
+  showTextarea: true,
+  setInput: (input) => set({ input }),
+  setRows: (rows) => set({ rows }),
+  setInProgress: (inProgress) => set({ inProgress }),
+  setDisplayStates: (displayStates) =>
+    set((state) => ({
+      displayStates:
+        typeof displayStates === "function" ? displayStates(state.displayStates) : displayStates,
+    })),
+  setLoading: (loading) => set({ loading }),
+  setShowTextarea: (showTextarea) =>
+    set((state) => ({
+      showTextarea:
+        typeof showTextarea === "function" ? showTextarea(state.showTextarea) : showTextarea,
+    })),
+}));
 
 export default function Qr() {
-  const [input, setInput] = useState("");
-  const [rows, setRows] = useState<QRRow[]>([]);
-  const [inProgress, setInProgress] = useState<QRRow[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [showTextarea, setShowTextarea] = useState(true);
-  const [displayStates, setDisplayStates] = useState<Map<string, DisplayState>>(
-    new Map()
-  );
+  const {
+    input,
+    rows,
+    inProgress,
+    displayStates,
+    loading,
+    showTextarea,
+    setInput,
+    setRows,
+    setInProgress,
+    setDisplayStates,
+    setLoading,
+    setShowTextarea,
+  } = useQRStore();
+
+  useEffect(() => {
+    const loadFromURL = async () => {
+      const params = new URLSearchParams(window.location.search);
+      const stateParam = params.get("state");
+      if (!stateParam) return;
+
+      try {
+        const decoded = await decodeQRState(stateParam);
+        if (!decoded) return;
+
+        const allRowsFromDecoded = decoded.rows;
+
+        const inProgRows: QRRow[] = allRowsFromDecoded.filter((row) =>
+          decoded.inProgressIds.includes(row.id),
+        );
+        const mainRows: QRRow[] = allRowsFromDecoded.filter(
+          (row) => !decoded.inProgressIds.includes(row.id),
+        );
+
+        setDisplayStates(decoded.displayStates);
+        setRows(mainRows);
+        setInProgress(inProgRows);
+
+        const rebuiltInput = [...mainRows, ...inProgRows]
+          .map((r) => `${r.label} ${r.value} ${r.name}`)
+          .join("\n");
+        setInput(rebuiltInput);
+
+        const regenSVGs = async () => {
+          setLoading(true);
+
+          const updatedRows = await Promise.all(
+            allRowsFromDecoded.map(async (row) => ({
+              ...row,
+              svg: await getQRCode({ text: row.value }),
+            })),
+          );
+
+          const updatedMainRows = updatedRows.filter((r) => !decoded.inProgressIds.includes(r.id));
+          const updatedInProgRows = updatedRows.filter((r) => decoded.inProgressIds.includes(r.id));
+
+          setRows(updatedMainRows);
+          setInProgress(updatedInProgRows);
+          setLoading(false);
+        };
+        regenSVGs();
+      } catch (error_) {
+        console.error("Failed to decode state from URL", error_);
+      }
+    };
+
+    loadFromURL();
+  }, [setInput, setDisplayStates, setRows, setInProgress, setLoading]);
+
+  useEffect(() => {
+    const syncToURL = async () => {
+      try {
+        const encoded = await encodeQRState(rows, inProgress, displayStates);
+        const newURL = `?state=${encoded}`;
+
+        // Only push to history if URL actually changed
+        if (window.location.search !== newURL) {
+          window.history.pushState(null, "", newURL);
+        }
+      } catch (_error) {
+        console.error("Failed to encode state to URL", _error);
+      }
+    };
+
+    syncToURL();
+  }, [rows, inProgress, displayStates]);
+
+  useEffect(() => {
+    const handlePopState = async () => {
+      const params = new URLSearchParams(window.location.search);
+      const stateParam = params.get("state");
+
+      if (!stateParam) {
+        // No state in URL, reset to empty
+        setRows([]);
+        setInProgress([]);
+        setDisplayStates(new Map());
+        setInput("");
+        return;
+      }
+
+      try {
+        const decoded = await decodeQRState(stateParam);
+        if (!decoded) return;
+
+        const allRowsFromDecoded = decoded.rows;
+
+        const inProgRows: QRRow[] = allRowsFromDecoded.filter((row) =>
+          decoded.inProgressIds.includes(row.id),
+        );
+        const mainRows: QRRow[] = allRowsFromDecoded.filter(
+          (row) => !decoded.inProgressIds.includes(row.id),
+        );
+
+        setDisplayStates(decoded.displayStates);
+        setRows(mainRows);
+        setInProgress(inProgRows);
+
+        const rebuiltInput = [...mainRows, ...inProgRows]
+          .map((r) => `${r.label} ${r.value} ${r.name}`)
+          .join("\n");
+        setInput(rebuiltInput);
+
+        setLoading(true);
+        const updatedRows = await Promise.all(
+          allRowsFromDecoded.map(async (row) => ({
+            ...row,
+            svg: await getQRCode({ text: row.value }),
+          })),
+        );
+
+        const updatedMainRows = updatedRows.filter((r) => !decoded.inProgressIds.includes(r.id));
+        const updatedInProgRows = updatedRows.filter((r) => decoded.inProgressIds.includes(r.id));
+
+        setRows(updatedMainRows);
+        setInProgress(updatedInProgRows);
+        setLoading(false);
+      } catch (error_) {
+        console.error("Failed to decode state from history", error_);
+      }
+    };
+
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, [setInput, setDisplayStates, setRows, setInProgress, setLoading]);
 
   const handleGenerate = async () => {
     setLoading(true);
@@ -38,15 +221,16 @@ export default function Qr() {
           if (!label || !value) return null;
           const svg = await getQRCode({ text: value });
           return { id: crypto.randomUUID(), label, value, name, svg };
-        })
+        }),
       )
     ).filter(Boolean) as QRRow[];
 
     setRows(generatedRows);
     const initialStates = new Map<string, DisplayState>();
-    generatedRows.forEach((row) => {
+    for (const row of generatedRows) {
       initialStates.set(row.id, "hide");
-    });
+    }
+
     setDisplayStates(initialStates);
     setLoading(false);
   };
@@ -55,18 +239,12 @@ export default function Qr() {
     setDisplayStates((prev) => {
       const newMap = new Map(prev);
       const current = newMap.get(row.id) ?? "show";
-      const next: DisplayState =
-        current === "show" ? "hide" : current === "hide" ? "qrOnly" : "show";
-      newMap.set(row.id, next);
+      newMap.set(row.id, getNextDisplayState(current));
       return newMap;
     });
   };
 
-  const handleDragStart = (
-    e: React.DragEvent,
-    row: QRRow,
-    from: "main" | "progress"
-  ) => {
+  const handleDragStart = (e: React.DragEvent, row: QRRow, from: "main" | "progress") => {
     e.dataTransfer.setData("rowId", row.id);
     e.dataTransfer.setData("from", from);
   };
@@ -82,14 +260,14 @@ export default function Qr() {
       movedRow = rows.find((r) => r.id === rowId);
       if (!movedRow) return;
       const row = movedRow;
-      setRows((prev) => prev.filter((r) => r.id !== rowId));
-      setInProgress((prev) => [...prev, row]);
+      setRows(rows.filter((r) => r.id !== rowId));
+      setInProgress([...inProgress, row]);
     } else {
       movedRow = inProgress.find((r) => r.id === rowId);
       if (!movedRow) return;
       const row = movedRow;
-      setInProgress((prev) => prev.filter((r) => r.id !== rowId));
-      setRows((prev) => [...prev, row]);
+      setInProgress(inProgress.filter((r) => r.id !== rowId));
+      setRows([...rows, row]);
     }
 
     if (movedRow && to === "progress") {
@@ -97,61 +275,28 @@ export default function Qr() {
       setDisplayStates((prev) => {
         const newMap = new Map(prev);
         const current = newMap.get(id) ?? "show";
-        const next: DisplayState =
-          current === "show" ? "hide" : current === "hide" ? "show" : "qrOnly";
-        newMap.set(id, next);
+        newMap.set(id, current === "show" ? "hide" : "show");
         return newMap;
       });
     }
   };
 
-  const svgStringToElement = (svgString: string): React.ReactElement | null => {
-    if (!svgString) return null;
-    try {
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(svgString, "image/svg+xml");
-      const svgNode = doc.documentElement;
+  const getQrOpacity = (state: DisplayState): number => {
+    if (state === "hide") return 0.3;
+    if (state === "qrOnly") return 0.1;
+    return 1;
+  };
 
-      const attributeMap: Record<string, string> = {
-        class: "className",
-        for: "htmlFor",
-        "shape-rendering": "shapeRendering",
-        "clip-path": "clipPath",
-        "fill-opacity": "fillOpacity",
-        "stroke-width": "strokeWidth",
-        "stroke-linecap": "strokeLinecap",
-        "stroke-linejoin": "strokeLinejoin",
-        "stroke-opacity": "strokeOpacity",
-        "text-anchor": "textAnchor",
-      };
-
-      const convert = (node: Element): any => {
-        const props: any = {};
-        for (const attr of Array.from(node.attributes)) {
-          const name = attributeMap[attr.name] || attr.name;
-          props[name] = attr.value;
-        }
-        const children = Array.from(node.childNodes)
-          .map((child) => {
-            if (child.nodeType === Node.TEXT_NODE) return child.textContent;
-            if (child.nodeType === Node.ELEMENT_NODE)
-              return convert(child as Element);
-            return null;
-          })
-          .filter(Boolean);
-        return React.createElement(node.tagName, props, ...children);
-      };
-      return convert(svgNode);
-    } catch (e) {
-      console.error("Failed to parse SVG string", e);
-      return null;
-    }
+  const getTextOpacity = (state: DisplayState): number => {
+    if (state === "qrOnly") return 0;
+    if (state === "hide") return 0.5;
+    return 1;
   };
 
   const renderRow = (row: QRRow, section: "main" | "progress") => {
     const state = displayStates.get(row.id) ?? "show";
-    const qrOpacity = state === "hide" ? 0.3 : state === "qrOnly" ? 0.1 : 1;
-    const textOpacity = state === "qrOnly" ? 0 : state === "hide" ? 0.5 : 1;
+    const qrOpacity = getQrOpacity(state);
+    const textOpacity = getTextOpacity(state);
     const svgElement = svgStringToElement(row.svg);
 
     return (
@@ -181,11 +326,7 @@ export default function Qr() {
   return (
     <div className={styles.container}>
       <div className={styles.top}>
-        <button
-          className={styles.button}
-          type="button"
-          onClick={() => setShowTextarea((p) => !p)}
-        >
+        <button className={styles.button} type="button" onClick={() => setShowTextarea((p) => !p)}>
           {showTextarea ? "⊖" : "⊕"}
         </button>
         {showTextarea && (
@@ -208,6 +349,7 @@ export default function Qr() {
           </>
         )}
       </div>
+
       <ul
         className={`${styles.grid} ${styles.progress}`}
         aria-label="In progress QR items"
@@ -216,9 +358,7 @@ export default function Qr() {
         style={{ minHeight: "120px", listStyle: "none", padding: 0, margin: 0 }}
       >
         {inProgress.length === 0 && (
-          <li style={{ opacity: 0.3, textAlign: "center", fontSize: "4rem" }}>
-            🫳
-          </li>
+          <li style={{ opacity: 0.3, textAlign: "center", fontSize: "4rem" }}>🫳</li>
         )}
         {inProgress.map((row) => (
           <li key={row.id}>{renderRow(row, "progress")}</li>

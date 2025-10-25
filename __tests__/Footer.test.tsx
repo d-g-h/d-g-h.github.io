@@ -31,9 +31,7 @@ describe("Footer", () => {
     });
 
     it("matches snapshot when skills and education are provided", () => {
-      const { container } = render(
-        <Footer skills={skills} education={education} />
-      );
+      const { container } = render(<Footer skills={skills} education={education} />);
       expect(container).toMatchSnapshot();
     });
   });

@@ -1,6 +1,6 @@
 import QRCode from "qrcode";
 
-export async function getQRCode({
+export const getQRCode = async ({
   text,
   color = "#000",
   width = 100,
@@ -10,7 +10,7 @@ export async function getQRCode({
   color?: string;
   width?: number;
   margin?: number;
-}) {
+}) => {
   const svg = await QRCode.toString(text, {
     type: "svg",
     errorCorrectionLevel: "H",
@@ -27,4 +27,4 @@ export async function getQRCode({
     .replace(/[\n\r]/g, "")
     .replace(/"/g, "'")
     .replace(/>\s+</g, "><");
-}
+};

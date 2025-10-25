@@ -8,19 +8,14 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr));
   gap: 1rem;
   padding: 1rem;
-  background: rgba(255, 255, 255, 0.02);
-  min-height: 120px;
-}
-
-.grid:hover {
-  background: rgba(255, 255, 255, 0.05);
+  min-height: 7.5rem;
 }
 
 .divider {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid oklch(0.67 0.22 142.55);
   margin: 1rem 0;
 }
 
@@ -30,32 +25,35 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 1rem;
-  width: 100%;
-  max-width: 1000px;
   justify-content: center;
 }
 
 .textarea {
+  text-align: center;
   width: 100%;
-  max-width: 1000px;
   height: 9rem;
   padding: 0.5rem;
   border: none;
   outline: none;
-  resize: vertical;
+  resize: both;
   overflow-y: auto;
+  font-family: monospace;
+  box-sizing: border-box;
+}
+
+.textarea::placeholder {
+  text-align: center;
 }
 
 .button {
-  padding: 0.5rem;
-  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  line-height: 1;
+  background: none;
   border: none;
-  outline: none;
-}
-
-.button:disabled {
-  cursor: not-allowed;
-  opacity: 0.6;
+  cursor: pointer;
 }
 
 .grid {
@@ -71,8 +69,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
-  text-align: left;
+  gap: 1rem;
   cursor: pointer;
   background: none;
   border: none;
@@ -99,5 +96,5 @@
 
 .value {
   font-size: 1rem;
-  color: green;
+  color: oklch(0.67 0.22 142.55);
 }

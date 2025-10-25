@@ -104,10 +104,11 @@ exports[`Header renders qr code when url is defined 1`] = `
       class="container"
     >
       <div
-        aria-label="svg qr"
         class="qr"
       >
-        https://qr.qr/t
+        <parsererror>
+          1:15: text data outside of root node.
+        </parsererror>
       </div>
       <h1
         class="name"

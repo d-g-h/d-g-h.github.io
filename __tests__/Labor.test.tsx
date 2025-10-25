@@ -22,9 +22,7 @@ describe("Labor", () => {
         company={COMPANY}
         start={START}
         end={END}
-      >
-        <></>
-      </Labor>
+      ></Labor>,
     );
 
     const jobTitle = screen.getByText("Job Title");
@@ -34,17 +32,7 @@ describe("Labor", () => {
     expect(location).toBeInTheDocument();
   });
   it("renders Labor without Company", () => {
-    render(
-      <Labor
-        key={KEY}
-        title={TITLE}
-        location={LOCATION}
-        start={START}
-        end={END}
-      >
-        <></>
-      </Labor>
-    );
+    render(<Labor key={KEY} title={TITLE} location={LOCATION} start={START} end={END}></Labor>);
 
     const jobTitle = screen.getByText("Job Title");
     const company = screen.queryByText("Company");
@@ -61,9 +49,7 @@ describe("Labor", () => {
         company={COMPANY}
         start={START}
         end={END}
-      >
-        <></>
-      </Labor>
+      ></Labor>,
     );
     expect(container).toMatchSnapshot();
   });
