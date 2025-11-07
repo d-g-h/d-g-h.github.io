@@ -86,15 +86,23 @@
 
 .label {
   font-size: 1rem;
-  font-weight: bold;
+  font-weight: 600;
+  color: oklch(0.67 0.22 142.55);
 }
 
-.name {
+.door {
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+
+.value {
   font-size: 0.5rem;
   opacity: 0.7;
 }
 
-.value {
-  font-size: 1rem;
-  color: oklch(0.67 0.22 142.55);
+.log {
+  display: flex;
+  margin-top: 1rem;
+  width: 19rem;
+  max-width: 100%;
 }
