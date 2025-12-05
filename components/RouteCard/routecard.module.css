@@ -1,0 +1,22 @@
+.card {
+  border: 1px solid #aaa;
+  padding: 8px;
+  background: #fff;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.override {
+  color: blue;
+  cursor: pointer;
+}
+
+.wave {
+  opacity: 0.7;
+}
