@@ -1,0 +1,30 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.textarea {
+  width: 100%;
+  max-width: 640px;
+  min-height: 140px;
+  padding: 0.5rem;
+  border: 1px solid oklch(0.8 0 0);
+  border-radius: 8px;
+  font-family: monospace;
+  text-align: center;
+}
+
+.button {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid oklch(0.7 0 0);
+  border-radius: 6px;
+  background: oklch(0.96 0 0);
+  cursor: pointer;
+}
+
+.button:hover {
+  background: oklch(0.93 0 0);
+}

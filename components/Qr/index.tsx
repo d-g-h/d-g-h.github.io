@@ -46,8 +46,8 @@ export default function Qr() {
         await Promise.all(
           lines.map(async (line) => {
             const [value, label, doorStr] = line.split(/\s+/);
-            if (!value || !label || !doorStr) return null;
             const door = Number(doorStr);
+            if (!value || !label || !doorStr || Number.isNaN(door)) return null;
             const svg = await getQRCode({ text: value });
             return { id: crypto.randomUUID(), value, label, door, svg };
           }),
