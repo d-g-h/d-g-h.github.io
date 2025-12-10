@@ -1,23 +1,22 @@
 .wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   gap: 0.5rem;
-  margin: 1rem 0;
+  margin: 0;
 }
 
 .textarea {
   width: 100%;
-  max-width: 640px;
   min-height: 140px;
   padding: 0.5rem;
   border: 1px solid oklch(0.8 0 0);
   border-radius: 8px;
   font-family: monospace;
-  text-align: center;
+  text-align: left;
 }
 
 .button {
+  align-self: start;
   padding: 0.5rem 0.75rem;
   border: 1px solid oklch(0.7 0 0);
   border-radius: 6px;

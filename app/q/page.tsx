@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { ClearLocalStorageButton } from "@/components/ClearLocalStorageButton";
 import Qr from "@/components/Qr";
 
 export default function Page() {
@@ -17,5 +18,12 @@ export default function Page() {
     };
   }, []);
 
-  return <Qr />;
+  return (
+    <div style={{ display: "grid", gap: "0.75rem" }}>
+      <div style={{ padding: "0.5rem" }}>
+        <ClearLocalStorageButton align="center" />
+      </div>
+      <Qr />
+    </div>
+  );
 }

@@ -60,6 +60,23 @@ describe("Header", () => {
     expect(screen.queryByText(env.NEXT_PUBLIC_PHONE)).not.toBeInTheDocument();
   });
 
+  it("renders text-only values when printPdf is true", () => {
+    render(<Header phone printPdf />);
+    expect(screen.getByText(env.NEXT_PUBLIC_NAME).closest("a")).toBeNull();
+    expect(screen.getByText(env.NEXT_PUBLIC_EMAIL).closest("a")).toBeNull();
+    expect(
+      screen
+        .getByText(shortenerLink({ url: env.NEXT_PUBLIC_LINKEDIN, link: "linkedin.com" }))
+        .closest("a"),
+    ).toBeNull();
+    expect(
+      screen
+        .getByText(shortenerLink({ url: env.NEXT_PUBLIC_GITHUB, link: "github.com" }))
+        .closest("a"),
+    ).toBeNull();
+    expect(screen.getByText(env.NEXT_PUBLIC_PHONE).closest("a")).toBeNull();
+  });
+
   it("renders phone link when phone prop is true", () => {
     const { container } = render(<Header phone />);
     expect(container).toMatchSnapshot();

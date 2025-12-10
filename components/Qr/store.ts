@@ -11,6 +11,7 @@ export type QRRow = {
   value: string;
   door: number;
   svg: string;
+  waveTime?: string;
 };
 
 export type QRLogRow = {
@@ -18,6 +19,7 @@ export type QRLogRow = {
   label: string;
   value: string;
   door: number;
+  waveTime?: string;
   inTime?: string;
   outTime?: string;
 };
@@ -29,6 +31,7 @@ interface PersistedShape {
   displayStates: Record<string, DisplayState>;
   log: QRLogRow[];
   showTextarea: boolean;
+  recentDepartureIds: string[];
 }
 
 interface QRStore {
@@ -39,6 +42,7 @@ interface QRStore {
   loading: boolean;
   showTextarea: boolean;
   log: QRLogRow[];
+  recentDepartureIds: string[];
   setInput: (input: string) => void;
   setRows: (rows: QRRow[]) => void;
   setInProgress: (rows: QRRow[]) => void;
@@ -51,7 +55,12 @@ interface QRStore {
   setShowTextarea: (show: boolean | ((prev: boolean) => boolean)) => void;
   addInLog: (row: QRRow) => void;
   addOutLog: (row: QRRow) => void;
+  bumpRecentDeparture: (rowId: string) => void;
+  removeRecentDeparture: (rowId: string) => void;
+  clearRecentDepartures: () => void;
 }
+
+const RECENT_DEPARTURE_LIMIT = 12;
 
 const mapToObject = (map: Map<string, DisplayState>): Record<string, DisplayState> =>
   Object.fromEntries(Array.from(map.entries()));
@@ -70,6 +79,7 @@ const useQRStore = create<QRStore>()(
         loading: false,
         showTextarea: true,
         log: [],
+        recentDepartureIds: [],
         setInput: (input: string) => set({ input }),
         setRows: (rows: QRRow[]) => set({ rows }),
         setInProgress: (inProgress: QRRow[]) => set({ inProgress }),
@@ -108,6 +118,16 @@ const useQRStore = create<QRStore>()(
             );
             return { log: updated };
           }),
+        bumpRecentDeparture: (rowId: string) =>
+          set((state) => {
+            const next = [rowId, ...state.recentDepartureIds.filter((id) => id !== rowId)];
+            return { recentDepartureIds: next.slice(0, RECENT_DEPARTURE_LIMIT) };
+          }),
+        removeRecentDeparture: (rowId: string) =>
+          set((state) => ({
+            recentDepartureIds: state.recentDepartureIds.filter((id) => id !== rowId),
+          })),
+        clearRecentDepartures: () => set({ recentDepartureIds: [] }),
       }),
       {
         name: "qr-store",
@@ -118,6 +138,7 @@ const useQRStore = create<QRStore>()(
           displayStates: mapToObject(state.displayStates),
           log: state.log,
           showTextarea: state.showTextarea,
+          recentDepartureIds: state.recentDepartureIds,
         }),
         onRehydrateStorage: () => (state) => {
           if (state) {
