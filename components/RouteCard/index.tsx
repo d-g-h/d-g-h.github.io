@@ -1,9 +1,15 @@
 "use client";
 
+import type { PointerEvent } from "react";
 import { useDoorsStore } from "@/components/Doors/store";
 import styles from "@/components/RouteCard/routecard.module.css";
+import type { Route } from "@/lib/utils/generateFloorDoors";
 
-export function RouteCard({ card }) {
+type RouteCardProps = {
+  card: Route;
+};
+
+export function RouteCard({ card }: RouteCardProps) {
   const overrideRouteId = useDoorsStore((s) => s.overrideRouteId);
   const enableOverride = useDoorsStore((s) => s.enableOverride);
   const moveRouteToDoor = useDoorsStore((s) => s.moveRouteToDoor);
@@ -14,9 +20,9 @@ export function RouteCard({ card }) {
   let startX = 0;
   let startY = 0;
   let dragging = false;
-  let el = null;
+  let el: HTMLDivElement | null = null;
 
-  function onPointerDown(e) {
+  function onPointerDown(e: PointerEvent<HTMLDivElement>) {
     if (!isOverride) return;
     el = e.currentTarget;
     el.setPointerCapture(e.pointerId);
@@ -27,15 +33,15 @@ export function RouteCard({ card }) {
     el.style.zIndex = "9999";
   }
 
-  function onPointerMove(e) {
-    if (!dragging) return;
+  function onPointerMove(e: PointerEvent<HTMLDivElement>) {
+    if (!dragging || !el) return;
     const dx = e.clientX - startX;
     const dy = e.clientY - startY;
     el.style.transform = `translate(${dx}px, ${dy}px)`;
   }
 
-  function onPointerUp(e) {
-    if (!dragging) return;
+  function onPointerUp(e: PointerEvent<HTMLDivElement>) {
+    if (!dragging || !el) return;
     dragging = false;
     el.releasePointerCapture(e.pointerId);
     el.style.transform = "";
@@ -43,10 +49,12 @@ export function RouteCard({ card }) {
     el.style.zIndex = "";
 
     const target = document.elementFromPoint(e.clientX, e.clientY);
-    const door = target?.closest("[data-door]");
-    if (door) moveRouteToDoor(card, door.dataset.door);
+    const door = target?.closest("[data-door]") as HTMLElement | null;
+    const doorId = door?.dataset.door;
+    if (doorId) moveRouteToDoor(card, doorId);
 
     clearOverride();
+    el = null;
   }
 
   return (

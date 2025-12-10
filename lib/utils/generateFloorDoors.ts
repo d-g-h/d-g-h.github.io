@@ -34,11 +34,7 @@ function getPriorityDoors(doors: number[]): number[] {
   return doors;
 }
 
-function assignWaveBlock(
-  routes: Route[],
-  assignments: Record<number, Route[]>,
-  priority: number[],
-) {
+function assignWaveBlock(routes: Route[], assignments: DoorAssignments, priority: number[]) {
   if (!routes.length) return;
 
   const sorted = routes.slice().sort((a, b) => {
@@ -103,7 +99,9 @@ export function generateFloorDoors(
 
   const assignedIds = new Set<number>();
   for (const door of Object.keys(assignments)) {
-    for (const route of assignments[Number(door)]) assignedIds.add(route.id);
+    for (const route of assignments[Number(door)]) {
+      if (route) assignedIds.add(route.id);
+    }
   }
 
   const cpAllowed = getPriorityDoors(
@@ -177,7 +175,10 @@ export function generateFloorDoors(
   };
 
   for (const door of doors) {
-    const sortedRoutes = assignments[door].slice().sort(compareRoutes);
+    const sortedRoutes = assignments[door]
+      .filter((r): r is Route => r !== null)
+      .slice()
+      .sort(compareRoutes);
     assignments[door] = sortedRoutes;
   }
 
