@@ -20,11 +20,15 @@ type DoorsState = {
   blockRules: DoorBlockRuleMap;
   flrAssignments: RegionAssignments;
   routes: Route[];
+  overrideRouteId: Route["id"] | null;
   setDoorMode: (door: number) => void;
   setDoorNumbers: (doors: number[]) => void;
   setBlockRules: (rules: DoorBlockRuleMap) => void;
   normalizeUnique: (doors: DoorAssignments) => { doors: DoorAssignments };
   generateFromText: (text: string) => void;
+  enableOverride: (routeId: Route["id"]) => void;
+  clearOverride: () => void;
+  moveRouteToDoor: (route: Route, doorId: number | string) => void;
   swapCells: (sourceDoor: number, sourceRow: number, targetDoor: number, targetRow: number) => void;
 };
 
@@ -36,6 +40,7 @@ export const useDoorsStore = create<DoorsState>((set, get) => ({
   blockRules: { ...DDBLOCKRULES },
   flrAssignments: {},
   routes: [],
+  overrideRouteId: null,
   normalizeUnique: (doors: DoorAssignments) => {
     const seen = new Set<number>();
     const normalizedDoors: DoorAssignments = {};
@@ -48,6 +53,28 @@ export const useDoorsStore = create<DoorsState>((set, get) => ({
       });
     }
     return { doors: normalizedDoors };
+  },
+
+  enableOverride: (routeId) => set({ overrideRouteId: routeId }),
+  clearOverride: () => set({ overrideRouteId: null }),
+
+  moveRouteToDoor: (route, doorId) => {
+    const targetDoor = Number(doorId);
+    if (!Number.isFinite(targetDoor)) return;
+
+    set((state) => {
+      const nextDoors: DoorAssignments = {};
+      for (const [doorKey, rows] of Object.entries(state.doors)) {
+        const numericDoor = Number(doorKey);
+        nextDoors[numericDoor] = (rows || []).filter((r) => r?.id !== route.id);
+      }
+
+      if (!nextDoors[targetDoor]) nextDoors[targetDoor] = [];
+      nextDoors[targetDoor].push(route);
+
+      const normalized = state.normalizeUnique(nextDoors);
+      return { ...state, ...normalized, overrideRouteId: null };
+    });
   },
 
   setDoorMode: (door) => {

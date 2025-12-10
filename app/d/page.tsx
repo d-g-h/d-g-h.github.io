@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { DoorAssignmentList } from "@/components/DoorAssignmentList";
 import { DoorSettings } from "@/components/DoorSettings";
+import { Doors } from "@/components/Doors";
 import { FloorPlanGenerator } from "@/components/FloorPlanGenerator";
 import { RouteFloorPreview } from "@/components/RouteFloorPreview";
 import { RoutesInput } from "@/components/RoutesInput";
@@ -39,6 +40,14 @@ export default function Page() {
         </p>
         <RouteFloorPreview />
       </div>
+
+      <section style={{ display: "grid", gap: "0.5rem" }}>
+        <h2 style={{ margin: 0 }}>Dock door board</h2>
+        <p style={{ margin: 0, color: "oklch(from #475569 l c h)" }}>
+          Drag/drop overrides: click “override” on a route card to drag it onto another door.
+        </p>
+        <Doors />
+      </section>
 
       <section style={{ display: "grid", gap: "0.5rem" }}>
         <h2 style={{ margin: 0 }}>Dock door assignments</h2>
