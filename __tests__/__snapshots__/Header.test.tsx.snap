@@ -106,9 +106,7 @@ exports[`Header renders qr code when url is defined 1`] = `
       <div
         class="qr"
       >
-        <parsererror>
-          1:15: text data outside of root node.
-        </parsererror>
+        https://qr.qr/t
       </div>
       <h1
         class="name"

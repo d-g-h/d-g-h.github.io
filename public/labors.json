@@ -1,21 +1,30 @@
 [
   {
     "key": "5",
-    "title": "Software Developer",
+    "title": "Freelance Software Developer",
     "location": "Remote",
     "start": "2023-07",
     "descriptions": [
       {
-        "description": "Develop full-stack applications using Node.js, Next.js, and Expo with TypeScript, React, and React Native"
+        "description": "Owned end-to-end development of full-stack web and mobile applications using Next.js, Node.js, Expo, TypeScript, React, and React Native, delivering user-facing features from concept through production"
       },
       {
-        "description": "Architected and integrated 2 healthcare applications with Canvas API, implementing Cloudflare Workers with KV storage to reduce authentication calls by 800+ per day and improve response times"
+        "description": "Designed and integrated two healthcare applications using the Canvas API, implementing Cloudflare Worker services with KV caching to eliminate redundant authentication requests and reduce external API traffic by 800+ requests per day"
       },
       {
-        "description": "Advise clients on agile development practices and UX strategy to deliver high-impact user experiences"
+        "description": "Identified and resolved a production defect in a Supabase Edge Function notification system that caused duplicate emails to hundreds of users, restoring customer trust and operational reliability"
       },
       {
-        "description": "Led data migration from legacy platform to integrated system, ensuring data integrity and zero downtime during transition"
+        "description": "Redesigned asynchronous job execution by introducing idempotent workflows, batching strategies, and explicit state tracking to ensure consistent behavior under scheduled serverless runtimes"
+      },
+      {
+        "description": "Evaluated and improved edge-based cron architectures by uncovering race conditions and failure modes, enabling predictable and maintainable background processing"
+      },
+      {
+        "description": "Partnered with stakeholders to define product scope, UX tradeoffs, and technical feasibility, aligning engineering decisions with business objectives"
+      },
+      {
+        "description": "Led a zero-downtime data migration from a legacy platform to a unified system, validating data integrity and coordinating a phased rollout"
       }
     ]
   },
@@ -28,17 +37,16 @@
     "end": "2023-06",
     "descriptions": [
       {
-        "description": "Add 6 features to a Next.js & Ruby on Rails application for Discovery Topics, Talk, & Member Pages using TypeScript, React, Tailwind CSS, GraphQL, & A/B Testing"
+        "description": "Shipped six customer-facing features across Discovery Topics, Talk, and Member Pages using Next.js, Ruby on Rails, TypeScript, React, Tailwind CSS, GraphQL, and experimentation tooling"
       },
       {
-        "description": "Improve code quality by adding code coverage tools, providing actionable code reviews, and pairing with developers, reducing QA testing needs and cutting deployment times by 31%"
+        "description": "Improved release confidence and delivery speed by introducing code coverage tooling, leading focused code reviews, and pairing with engineers, reducing QA cycles and cutting deployment time by 31%"
       },
       {
-        "description": "Create & modify over 10 accessible modular components to TED UI Design System"
+        "description": "Designed, built, and maintained 10+ accessible, reusable UI components within the TED Design System, supporting consistent product experiences across teams"
       },
-
       {
-        "description": "Foster team collaboration through the application of Agile practices by bridging the gap between frontend & 2 backend teams"
+        "description": "Drove cross-functional collaboration with frontend, backend, design, and product partners using Agile practices to deliver features with shared ownership"
       }
     ]
   },
@@ -51,10 +59,10 @@
     "end": "2022-06",
     "descriptions": [
       {
-        "description": "Wireframe & build ingestion tool for Kyndryl Sharepoint migration sites from an IBM non-relational database content management system over 20,000 sites using Azure & IBM Cloud"
+        "description": "Designed and built an internal ingestion and migration tool to transition content from an IBM non-relational CMS to SharePoint, supporting the migration of 20,000+ enterprise sites"
       },
       {
-        "description": "Develop 3 single page applications using Vue.js & backend microservices using TypeScript, CouchDB, & Node.js for all employees"
+        "description": "Delivered three internal single-page applications and supporting backend services using Vue.js, TypeScript, Node.js, and CouchDB to streamline employee workflows"
       }
     ]
   },
@@ -67,22 +75,22 @@
     "end": "2021-08",
     "descriptions": [
       {
-        "description": "Create accessible HTML, JavaScript, D3.js & CSS using Vue.js, Vuex, SASS, & TypeScript using webpack to create data visualization components "
+        "description": "Built accessible, data-driven user interfaces and visualizations using Vue.js, D3.js, TypeScript, HTML, and CSS to support internal enterprise platforms"
       },
       {
-        "description": "Aggregate legacy APIs, & Cassandra column-family data using GraphQL to feed into Design Library components for web forms, intranet homepage & profile pages"
+        "description": "Unified legacy APIs and Cassandra data through GraphQL services that powered reusable components for forms, dashboards, and profile pages"
       },
       {
-        "description": "Refactor Node.js API microservices for improvements in modularity, readability & increased code coverage by 85%"
+        "description": "Strengthened backend service reliability by refactoring Node.js microservices, increasing test coverage by 85% and reducing production regressions"
       },
       {
-        "description": "Create maintainable code with Functional Programming & Test Driven Development"
+        "description": "Applied functional programming and test-driven development practices to produce maintainable, predictable codebases"
       },
       {
-        "description": "Foster collaboration & user engagement using team chosen agile development methodologies"
+        "description": "Delivered iterative product improvements in partnership with product and design teams using Agile methodologies"
       },
       {
-        "description": "Participate in hiring & onboarding processes by creating assessments & documentation for 2 additional team members"
+        "description": "Supported hiring and onboarding by developing technical assessments and onboarding documentation for new engineers"
       }
     ]
   },
@@ -95,22 +103,22 @@
     "end": "2018-08",
     "descriptions": [
       {
-        "description": "Create HTML, JavaScript, & CSS components using React, Angular, SASS, & TypeScript from jQuery Soho library based components"
+        "description": "Modernized legacy jQuery-based UI components by rebuilding them with React, Angular, TypeScript, and SASS as part of a centralized design system"
       },
       {
-        "description": "Measure & modify performance of Infor Design System components with Chrome DevTools to reduce rendering times by 700ms on average"
+        "description": "Diagnosed and optimized frontend performance bottlenecks using Chrome DevTools, reducing average render times by approximately 700ms"
       },
       {
-        "description": "Develop Python Content Management System for documentation about Infor Design System"
+        "description": "Developed a Python-based content management system to centralize documentation for the Infor Design System"
       },
       {
-        "description": "Create 4 reusable Wagtail components to extend the Python CMS and streamline content authoring workflows for designers"
+        "description": "Extended the CMS by creating four reusable Wagtail components, improving content authoring efficiency for designers"
       },
       {
-        "description": "Design, develop & demonstrate proof of concept prototypes such as Infor Ming.le Chat & Project Max"
+        "description": "Designed and demonstrated proof-of-concept prototypes to validate new product ideas and technical approaches"
       },
       {
-        "description": "Create Progressive Web Application utilizing NgRX, AWS Lambda, AWS Lex, Infor Coleman AI, & Reactive Programming"
+        "description": "Built a progressive web application using NgRX, AWS Lambda, AWS Lex, and reactive programming patterns"
       }
     ]
   }

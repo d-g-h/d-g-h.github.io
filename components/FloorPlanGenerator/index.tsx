@@ -1,145 +1,69 @@
 "use client";
 
 import type { CSSProperties } from "react";
-import { useMemo, useState } from "react";
-import { useDoorsStore } from "@/components/Doors/store";
-import { FloorSlotBuilder } from "@/components/FloorSlotBuilder";
-import type { Region } from "@/lib/floor";
-import { FLOOR_PLAN_DIMENSIONS, FLOOR_PLAN_LEFT_MARGIN, floorPlanRegions } from "@/lib/floorPlan";
-import { doorsToRegions } from "@/lib/utils/doorRegions";
-
-type ParsedPlan = {
-  regions: Region[];
-  width: number;
-  height: number;
-};
-
-type PlanInput = { width?: number; height?: number; regions: Region[] } | Region[];
-
-const EMPTY_PLAN_TEXT = JSON.stringify(
-  {
-    width: FLOOR_PLAN_DIMENSIONS.width,
-    height: FLOOR_PLAN_DIMENSIONS.height,
-    regions: [],
-  },
-  null,
-  2,
-);
-
-const SAMPLE_PLAN_TEXT = JSON.stringify(
-  {
-    width: FLOOR_PLAN_DIMENSIONS.width,
-    height: FLOOR_PLAN_DIMENSIONS.height,
-    regions: floorPlanRegions,
-  },
-  null,
-  2,
-);
+import { useState } from "react";
+import { useFloorPlanStore } from "@/components/FloorPlan/store";
 
 export function FloorPlanGenerator() {
-  const doorNumbers = useDoorsStore((s) => s.doorNumbers);
-  const [planText, setPlanText] = useState<string>(EMPTY_PLAN_TEXT);
-  const [planCopied, setPlanCopied] = useState<boolean>(false);
-
-  const { plan, planError } = useMemo<{
-    plan: ParsedPlan;
-    planError: string | null;
-  }>(() => {
-    try {
-      const parsed = JSON.parse(planText) as PlanInput;
-      if (Array.isArray(parsed)) {
-        return {
-          plan: {
-            regions: parsed,
-            width: FLOOR_PLAN_DIMENSIONS.width,
-            height: FLOOR_PLAN_DIMENSIONS.height,
-          },
-          planError: null,
-        };
-      }
-      const width = parsed.width ?? FLOOR_PLAN_DIMENSIONS.width;
-      const height = parsed.height ?? FLOOR_PLAN_DIMENSIONS.height;
-      const regions = parsed.regions ?? [];
-      return { plan: { regions, width, height }, planError: null };
-    } catch (err) {
-      const message = err instanceof Error ? err.message : "Invalid JSON";
-      return {
-        plan: {
-          regions: [],
-          width: FLOOR_PLAN_DIMENSIONS.width,
-          height: FLOOR_PLAN_DIMENSIONS.height,
-        },
-        planError: message,
-      };
-    }
-  }, [planText]);
+  const planText = useFloorPlanStore((s) => s.planText);
+  const setPlanText = useFloorPlanStore((s) => s.setPlanText);
+  const planError = useFloorPlanStore((s) => s.planError);
+  const resetToEmpty = useFloorPlanStore((s) => s.resetToEmpty);
+  const [importText, setImportText] = useState<string>("");
+  const [importError, setImportError] = useState<string | null>(null);
+  const [copied, setCopied] = useState<boolean>(false);
 
   return (
-    <div style={{ display: "grid", gap: "0.75rem" }}>
-      <p style={{ margin: 0, color: "oklch(from #475569 l c h)" }}>
-        Edit or paste a floor layout JSON below. Reset leaves you with an empty canvas (no doors, no
-        2×3 or 1×6 slots) sized to the defaults. You can insert doors from your settings or drag
-        shapes into place.
-      </p>
-
+    <details style={detailsStyle}>
+      <summary style={summaryStyle}>Floor</summary>
       <div style={{ display: "grid", gap: "0.5rem" }}>
-        <label style={{ fontWeight: 700 }} htmlFor="planJson">
-          Floor plan JSON
-        </label>
         <textarea
-          id="planJson"
-          value={planText}
+          aria-label="Floor plan JSON"
+          value={importText}
           onChange={(event) => {
-            setPlanText(event.target.value);
-            setPlanCopied(false);
+            setImportText(event.target.value);
+            setImportError(null);
+            setCopied(false);
           }}
           spellCheck={false}
+          placeholder="Paste floor plan JSON"
           style={textareaStyle}
         />
-        {planError ? (
-          <p style={{ margin: 0, color: "oklch(from #b91c1c l c h)" }}>
-            Failed to parse JSON; showing fallback layout. ({planError})
-          </p>
-        ) : (
-          <p style={{ margin: 0, color: "oklch(from #334155 l c h)" }}>
-            Shape: {"{ width?, height?, regions: Region[] }"} or just an array of regions.
-          </p>
-        )}
+        {importError ? (
+          <p style={{ margin: 0, color: "oklch(from #b91c1c l c h)" }}>{importError}</p>
+        ) : null}
+
         <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
           <button
             type="button"
             style={pillButtonStyle}
             onClick={() => {
-              setPlanText(EMPTY_PLAN_TEXT);
-              setPlanCopied(false);
+              const trimmed = importText.trim();
+              if (!trimmed) return;
+              try {
+                const parsed = JSON.parse(importText) as unknown;
+                const isRegionsArray = Array.isArray(parsed);
+                const isPlanObject =
+                  !!parsed &&
+                  typeof parsed === "object" &&
+                  Array.isArray((parsed as { regions?: unknown }).regions);
+                if (!isRegionsArray && !isPlanObject) {
+                  setImportError('Expected "{ regions: [...] }" or an array of regions.');
+                  return;
+                }
+              } catch (err) {
+                const message = err instanceof Error ? err.message : "Invalid JSON";
+                setImportError(message);
+                return;
+              }
+
+              setPlanText(importText);
+              setImportText("");
+              setCopied(false);
             }}
+            disabled={!importText.trim()}
           >
-            Reset to empty
-          </button>
-          <button
-            type="button"
-            style={pillButtonStyle}
-            onClick={() => {
-              const regions = doorsToRegions(doorNumbers);
-              const width = Math.max(
-                FLOOR_PLAN_DIMENSIONS.width,
-                FLOOR_PLAN_LEFT_MARGIN + doorNumbers.length * 3,
-              );
-              setPlanText(
-                JSON.stringify(
-                  {
-                    width,
-                    height: FLOOR_PLAN_DIMENSIONS.height,
-                    regions: regions.length ? regions : [],
-                  },
-                  null,
-                  2,
-                ),
-              );
-              setPlanCopied(false);
-            }}
-          >
-            Insert doors from settings
+            Import
           </button>
           <button
             type="button"
@@ -147,13 +71,13 @@ export function FloorPlanGenerator() {
             onClick={async () => {
               try {
                 await navigator.clipboard.writeText(planText);
-                setPlanCopied(true);
+                setCopied(true);
               } catch {
-                setPlanCopied(false);
+                setCopied(false);
               }
             }}
           >
-            {planCopied ? "Copied" : "Copy JSON"}
+            {copied ? "Copied" : "Copy"}
           </button>
           <button
             type="button"
@@ -163,50 +87,27 @@ export function FloorPlanGenerator() {
               color: "oklch(from #0f172a l c h)",
             }}
             onClick={() => {
-              setPlanText(SAMPLE_PLAN_TEXT);
-              setPlanCopied(false);
+              resetToEmpty();
+              setImportText("");
+              setImportError(null);
+              setCopied(false);
             }}
           >
-            Load sample layout (with slots)
+            Reset
           </button>
         </div>
-        <p style={{ margin: 0, color: "oklch(from #475569 l c h)" }}>
-          Region shape: {"{ id, label?, type, startX, startY, endX, endY, color? }"}. Canvas is
-          54×21 by default and includes the left margin before doors.
-        </p>
-      </div>
 
-      <div style={{ display: "grid", gap: "0.5rem" }}>
-        <h3 style={{ margin: 0 }}>Interactive slot placement</h3>
-        <p style={{ margin: 0, color: "oklch(from #475569 l c h)" }}>
-          Drag to place 2×3 or 1×6 slots; overlaps are blocked. Adds to the JSON above so you can
-          copy or fine-tune afterward.
-        </p>
-        <FloorSlotBuilder
-          regions={plan.regions}
-          width={plan.width}
-          height={plan.height}
-          doorNumbers={doorNumbers}
-          enableDoorModeToggle
-          onChange={(nextRegions) => {
-            setPlanText(
-              JSON.stringify(
-                { width: plan.width, height: plan.height, regions: nextRegions },
-                null,
-                2,
-              ),
-            );
-            setPlanCopied(false);
-          }}
-        />
+        {planError ? (
+          <p style={{ margin: 0, color: "oklch(from #b91c1c l c h)" }}>{planError}</p>
+        ) : null}
       </div>
-    </div>
+    </details>
   );
 }
 
 const textareaStyle: CSSProperties = {
   width: "100%",
-  minHeight: "15rem",
+  minHeight: "8rem",
   fontFamily: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
   fontSize: "0.8rem",
   padding: "0.625rem",
@@ -224,5 +125,17 @@ const pillButtonStyle: CSSProperties = {
   borderRadius: "999px",
   padding: "0.375rem 0.75rem",
   fontWeight: 600,
+  cursor: "pointer",
+};
+
+const detailsStyle: CSSProperties = {
+  border: "0.0625rem solid oklch(from #cbd5e1 l c h)",
+  borderRadius: "0.5rem",
+  padding: "0.5rem",
+  background: "oklch(from #f8fafc l c h)",
+};
+
+const summaryStyle: CSSProperties = {
+  fontWeight: 700,
   cursor: "pointer",
 };

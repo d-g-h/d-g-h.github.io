@@ -10,6 +10,7 @@ export type Region = {
   dsp?: string;
   staging?: string;
   route?: string;
+  routeKey?: string;
   wave?: number;
   waveTime?: string;
   dockDoor?: string;

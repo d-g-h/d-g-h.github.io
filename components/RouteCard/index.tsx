@@ -1,9 +1,15 @@
 "use client";
 
+import type { PointerEvent } from "react";
 import { useDoorsStore } from "@/components/Doors/store";
 import styles from "@/components/RouteCard/routecard.module.css";
+import type { Route } from "@/lib/utils/generateFloorDoors";
 
-export function RouteCard({ card }) {
+type RouteCardProps = {
+  card: Route;
+};
+
+export function RouteCard({ card }: RouteCardProps) {
   const overrideRouteId = useDoorsStore((s) => s.overrideRouteId);
   const enableOverride = useDoorsStore((s) => s.enableOverride);
   const moveRouteToDoor = useDoorsStore((s) => s.moveRouteToDoor);
@@ -14,39 +20,46 @@ export function RouteCard({ card }) {
   let startX = 0;
   let startY = 0;
   let dragging = false;
-  let el = null;
+  let el: HTMLDivElement | null = null;
 
-  function onPointerDown(e) {
+  function onPointerDown(e: PointerEvent<HTMLDivElement>) {
     if (!isOverride) return;
+    e.preventDefault();
     el = e.currentTarget;
     el.setPointerCapture(e.pointerId);
     startX = e.clientX;
     startY = e.clientY;
     dragging = true;
-    el.style.position = "absolute";
+    el.style.position = "relative";
     el.style.zIndex = "9999";
+    el.style.pointerEvents = "none";
+    el.style.cursor = "grabbing";
   }
 
-  function onPointerMove(e) {
-    if (!dragging) return;
+  function onPointerMove(e: PointerEvent<HTMLDivElement>) {
+    if (!dragging || !el) return;
     const dx = e.clientX - startX;
     const dy = e.clientY - startY;
     el.style.transform = `translate(${dx}px, ${dy}px)`;
   }
 
-  function onPointerUp(e) {
-    if (!dragging) return;
+  function onPointerUp(e: PointerEvent<HTMLDivElement>) {
+    if (!dragging || !el) return;
     dragging = false;
     el.releasePointerCapture(e.pointerId);
     el.style.transform = "";
     el.style.position = "";
     el.style.zIndex = "";
+    el.style.pointerEvents = "";
+    el.style.cursor = "";
 
     const target = document.elementFromPoint(e.clientX, e.clientY);
-    const door = target?.closest("[data-door]");
-    if (door) moveRouteToDoor(card, door.dataset.door);
+    const door = target?.closest("[data-door]") as HTMLElement | null;
+    const doorId = door?.dataset.door;
+    if (doorId) moveRouteToDoor(card, doorId);
 
     clearOverride();
+    el = null;
   }
 
   return (
@@ -57,7 +70,10 @@ export function RouteCard({ card }) {
       onPointerUp={onPointerUp}
     >
       <div className={styles.header}>
-        <span>{card.route}</span>
+        <div className={styles.routeBlock}>
+          <span className={styles.route}>{card.route}</span>
+          <span className={styles.staging}>{card.staging}</span>
+        </div>
         <button
           type="button"
           className={styles.override}
@@ -72,7 +88,10 @@ export function RouteCard({ card }) {
           override
         </button>
       </div>
-      <div className={styles.wave}>{card.waveTime}</div>
+      <div className={styles.meta}>
+        {card.dsp ? <span className={styles.metaItem}>{card.dsp}</span> : null}
+        <span className={styles.metaItem}>{card.waveTime}</span>
+      </div>
     </div>
   );
 }

@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
-  padding: 1.5rem;
+  padding: 0;
 }
 
 .grid {
@@ -26,6 +26,7 @@
   align-items: center;
   gap: 1rem;
   justify-content: center;
+  min-width: 25rem;
 }
 
 .textarea {
@@ -56,13 +57,96 @@
   cursor: pointer;
 }
 
+.error {
+  color: oklch(0.58 0.2 25);
+  font-size: 0.85rem;
+  text-align: center;
+  white-space: pre-wrap;
+}
+
+.log,
+.recentDepartures {
+  max-width: 40rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.recentGrid {
+  background: oklch(0.98 0 0);
+  border: 1px dashed oklch(0.8 0 0 / 0.5);
+  padding: 0.75rem;
+}
+
+.waveTabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: oklch(0.96 0 0);
+  border: none;
+  margin: 0;
+}
+
+.doorFilterGroup {
+  display: flex;
+  gap: 0.25rem;
+  margin-left: auto;
+}
+
+.waveTabsLegend {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.waveTab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.75rem;
+  border: 1px solid oklch(0.8 0 0 / 0.4);
+  background: var(--wave-tab-color, oklch(0.92 0 0));
+  color: oklch(0.2 0 0);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.waveTabActive {
+  border-color: oklch(0.35 0 0 / 0.5);
+  box-shadow: 0 0 0 2px oklch(0.72 0.2 55) inset;
+  color: oklch(0.15 0 0);
+}
+
+.waveTabLabel {
+  font-weight: 600;
+}
+
+.waveTabCount {
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
+
 .grid {
   flex-wrap: wrap;
   display: flex;
   justify-content: center;
   gap: 2rem;
   width: 100%;
-  max-width: 2000px;
 }
 
 .item {
@@ -71,7 +155,6 @@
   align-items: center;
   gap: 1rem;
   cursor: pointer;
-  background: none;
   border: none;
 }
 
@@ -80,8 +163,23 @@
 }
 
 .qr {
-  width: 100px;
-  height: 100px;
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+}
+
+.qr :global(svg) {
+  width: 50px;
+  height: 50px;
+  display: block;
+}
+
+.info {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .label {
@@ -91,8 +189,7 @@
 }
 
 .door {
-  font-size: 1.5rem;
-  font-weight: 900;
+  font-size: 0.5rem;
 }
 
 .value {
@@ -100,9 +197,106 @@
   opacity: 0.7;
 }
 
-.log {
+.logTable {
+  display: grid;
+  grid-template-columns: 8ch auto 10ch 8ch 5ch 8ch 8ch;
+  gap: 0.25rem 1rem;
+  width: 100%;
+  font-family: monospace;
+  font-size: 0.85rem;
+  overflow-x: auto;
+  padding: 1rem;
+  background: oklch(0.98 0 0);
+  border: 1px solid oklch(0.9 0 0);
+}
+
+.logHeader {
+  font-weight: 700;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid oklch(0.9 0 0);
+  color: oklch(0.4 0 0);
+  text-align: left;
+}
+
+.logCell {
+  padding: 0.25rem 0;
+  white-space: pre;
+  color: oklch(0.3 0 0);
+  border-bottom: 1px solid oklch(0.95 0 0);
+}
+
+.doorSlots {
   display: flex;
-  margin-top: 1rem;
-  width: 19rem;
-  max-width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25rem;
+  width: 100%;
+  max-width: 2000px;
+}
+
+.doorSlot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 5rem;
+  padding: 0.5rem;
+  border: none;
+  background: oklch(0.95 0 0);
+  overflow: hidden;
+}
+
+.doorSlotHeader {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: oklch(0.3 0 0);
+}
+
+.doorSlotContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem;
+  cursor: grab;
+  width: 100%;
+  box-sizing: border-box;
+  border: none;
+}
+
+.doorSlotQr {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.doorSlotQr :global(svg) {
+  width: 40px;
+  height: 40px;
+  display: block;
+}
+
+.doorSlotContent:hover {
+  filter: brightness(0.95);
+}
+
+.doorSlotLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: oklch(0.4 0.15 142);
+  min-height: 1rem;
+}
+
+.doorSlotValue {
+  font-size: 0.65rem;
+  opacity: 0.7;
+}
+
+.doorSlotEmpty {
+  font-size: 1.5rem;
+  opacity: 0.3;
+  min-height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

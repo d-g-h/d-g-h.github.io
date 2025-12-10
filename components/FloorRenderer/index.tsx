@@ -1,4 +1,7 @@
-import type { CSSProperties, KeyboardEvent } from "react";
+"use client";
+
+import type { CSSProperties, KeyboardEvent, PointerEvent as ReactPointerEvent } from "react";
+import { useRef, useState } from "react";
 import type { Region } from "@/lib/floor";
 import styles from "./floorRenderer.module.css";
 
@@ -11,6 +14,8 @@ type FloorRendererProps = {
   showRegionLabels?: boolean;
   showRoutes?: boolean;
   metaFields?: Array<"doorMode" | "staging" | "vehicle" | "dsp" | "waveTime" | "wave">;
+  enableRouteDrag?: boolean;
+  onRouteSwap?: (sourceRegionId: string, targetRegionId: string) => void;
   onDoorToggle?: (doorId: string) => void;
 };
 
@@ -28,6 +33,12 @@ const LANE_VARIANT_COLORS: Record<string, string> = {
   F: "oklch(from #16a34a l c h)",
   I: "oklch(from #f59e0b l c h)",
 };
+
+function getVehicleEmoji(vehicle: Region["vehicle"] | undefined): string | null {
+  if (vehicle === "van") return "🚐";
+  if (vehicle === "truck") return "🚚";
+  return null;
+}
 
 function getLaneVariantColor(label?: string): string | undefined {
   if (!label) return undefined;
@@ -57,10 +68,46 @@ export function FloorRenderer({
   showRegionLabels = true,
   showRoutes = true,
   metaFields = ["doorMode", "staging", "vehicle", "dsp", "waveTime", "wave"],
+  enableRouteDrag = false,
+  onRouteSwap,
   onDoorToggle,
 }: FloorRendererProps) {
+  const dragStateRef = useRef<{
+    pointerId: number;
+    sourceRegionId: string;
+    startX: number;
+    startY: number;
+    element: HTMLDivElement;
+    onRouteSwap: (sourceRegionId: string, targetRegionId: string) => void;
+  } | null>(null);
+  const [draggingRegionId, setDraggingRegionId] = useState<string | null>(null);
+  const globalDragListenersRef = useRef<{
+    onPointerUp: (event: globalThis.PointerEvent) => void;
+    onPointerCancel: (event: globalThis.PointerEvent) => void;
+    onBlur: () => void;
+  } | null>(null);
   const unit = "rem";
   const cellSizeValue = `${cellSize}${unit}`;
+  const dividerThickness = Math.max(0.2, cellSize * 0.12);
+  const twoByThreeLanes = regions.filter(
+    (region) =>
+      region.type === "lane" &&
+      region.endX - region.startX + 1 === 2 &&
+      region.endY - region.startY + 1 === 3,
+  );
+  const laneStartMap = new Map<string, Region>();
+  for (const lane of twoByThreeLanes) {
+    laneStartMap.set(`${lane.startX}:${lane.endX}:${lane.startY}`, lane);
+  }
+  const lanesWithDividerBelow = new Set<string>();
+  const lanesWithDividerAbove = new Set<string>();
+  for (const lane of twoByThreeLanes) {
+    const belowKey = `${lane.startX}:${lane.endX}:${lane.endY + 1}`;
+    const belowLane = laneStartMap.get(belowKey);
+    if (!belowLane) continue;
+    lanesWithDividerBelow.add(lane.id);
+    lanesWithDividerAbove.add(belowLane.id);
+  }
   const containerStyle: CSSProperties = {
     width: `${width * cellSize}${unit}`,
     height: `${height * cellSize}${unit}`,
@@ -85,6 +132,115 @@ export function FloorRenderer({
     return null;
   };
 
+  function getLaneAtPoint(clientX: number, clientY: number): HTMLElement | null {
+    if (typeof document === "undefined") return null;
+
+    const elements =
+      typeof document.elementsFromPoint === "function"
+        ? document.elementsFromPoint(clientX, clientY)
+        : [document.elementFromPoint(clientX, clientY)].filter((value): value is Element =>
+            Boolean(value),
+          );
+
+    for (const element of elements) {
+      const lane = element.closest?.('[data-region-type="lane"]');
+      if (lane instanceof HTMLElement) return lane;
+    }
+
+    return null;
+  }
+
+  function detachGlobalDragListeners() {
+    if (typeof window === "undefined") return;
+    const listeners = globalDragListenersRef.current;
+    if (!listeners) return;
+    window.removeEventListener("pointerup", listeners.onPointerUp);
+    window.removeEventListener("pointercancel", listeners.onPointerCancel);
+    window.removeEventListener("blur", listeners.onBlur);
+    globalDragListenersRef.current = null;
+  }
+
+  function cancelDrag(pointerId: number) {
+    const state = dragStateRef.current;
+    if (!state || state.pointerId !== pointerId) return;
+    dragStateRef.current = null;
+    detachGlobalDragListeners();
+    setDraggingRegionId(null);
+    try {
+      state.element.releasePointerCapture(pointerId);
+    } catch {
+      // ignore
+    }
+  }
+
+  function finishDrag(pointerId: number, clientX: number, clientY: number) {
+    const state = dragStateRef.current;
+    if (!state || state.pointerId !== pointerId) return;
+    dragStateRef.current = null;
+    detachGlobalDragListeners();
+    setDraggingRegionId(null);
+    try {
+      state.element.releasePointerCapture(pointerId);
+    } catch {
+      // ignore
+    }
+
+    const dx = Math.abs(clientX - state.startX);
+    const dy = Math.abs(clientY - state.startY);
+    if (dx + dy < 6) return;
+
+    const targetLane = getLaneAtPoint(clientX, clientY);
+    const targetRegionId = targetLane?.dataset.regionId?.trim() ?? "";
+    if (!targetRegionId || targetRegionId === state.sourceRegionId) return;
+
+    const targetRoute = (targetLane?.dataset.route ?? "").trim();
+    if (targetRoute) return;
+
+    state.onRouteSwap(state.sourceRegionId, targetRegionId);
+  }
+
+  function onRoutePointerDown(event: ReactPointerEvent<HTMLDivElement>, regionId: string) {
+    if (!enableRouteDrag || !onRouteSwap) return;
+    if (event.button !== 0) return;
+    detachGlobalDragListeners();
+    setDraggingRegionId(regionId);
+
+    const element = event.currentTarget;
+    dragStateRef.current = {
+      pointerId: event.pointerId,
+      sourceRegionId: regionId,
+      startX: event.clientX,
+      startY: event.clientY,
+      element,
+      onRouteSwap,
+    };
+    const listeners = {
+      onPointerUp: (windowEvent: globalThis.PointerEvent) => {
+        finishDrag(windowEvent.pointerId, windowEvent.clientX, windowEvent.clientY);
+      },
+      onPointerCancel: (windowEvent: globalThis.PointerEvent) => {
+        cancelDrag(windowEvent.pointerId);
+      },
+      onBlur: () => {
+        const current = dragStateRef.current;
+        if (current) cancelDrag(current.pointerId);
+      },
+    };
+    globalDragListenersRef.current = listeners;
+    if (typeof window !== "undefined") {
+      window.addEventListener("pointerup", listeners.onPointerUp);
+      window.addEventListener("pointercancel", listeners.onPointerCancel);
+      window.addEventListener("blur", listeners.onBlur);
+    }
+
+    try {
+      element.setPointerCapture(event.pointerId);
+    } catch {
+      // ignore
+    }
+    event.preventDefault();
+  }
+
   return (
     <div className={styles.canvas} style={containerStyle} role="presentation">
       {regions.map((region) => {
@@ -94,6 +250,10 @@ export function FloorRenderer({
           width: `${(region.endX - region.startX + 1) * cellSize}${unit}`,
           height: `${(region.endY - region.startY + 1) * cellSize}${unit}`,
           backgroundColor: getRegionColor(region),
+          borderBottom: lanesWithDividerBelow.has(region.id)
+            ? `${dividerThickness}${unit} solid #000`
+            : undefined,
+          borderTopWidth: lanesWithDividerAbove.has(region.id) ? "0" : undefined,
         };
 
         const showRouteBlock =
@@ -108,6 +268,14 @@ export function FloorRenderer({
         const showLabelTag = showRegionLabels && !!region.label && !showRouteBlock;
         const modeSymbol = doorModeEmoji(region.doorMode);
         const isDoor = region.type === "door";
+        const isDraggableRoute =
+          enableRouteDrag &&
+          showRoutes &&
+          !!region.route &&
+          region.type === "lane" &&
+          !!onRouteSwap;
+        const isDragging = isDraggableRoute && draggingRegionId === region.id;
+        const dragEmoji = isDragging ? getVehicleEmoji(region.vehicle ?? "truck") : null;
 
         const handleClick = isDoor && onDoorToggle ? () => onDoorToggle(region.id) : undefined;
         const handleKeyDown =
@@ -119,6 +287,8 @@ export function FloorRenderer({
                 }
               }
             : undefined;
+        const style: CSSProperties =
+          handleClick && handleKeyDown ? { ...regionStyle, cursor: "pointer" } : regionStyle;
         const interactiveProps =
           handleClick && handleKeyDown
             ? {
@@ -126,53 +296,86 @@ export function FloorRenderer({
                 tabIndex: 0,
                 onClick: handleClick,
                 onKeyDown: handleKeyDown,
-                style: { ...regionStyle, cursor: "pointer" },
+                style,
               }
-            : { style: regionStyle };
+            : { style };
+
+        const regionInfoContent = (
+          <>
+            {dragEmoji ? <span className={styles.dragEmoji}>{dragEmoji}</span> : null}
+            {region.route ? (
+              <span className={`${styles.regionLine} ${styles.regionLineSmall}`}>
+                {region.route}
+              </span>
+            ) : null}
+            {metaFields.includes("doorMode") && modeSymbol ? (
+              <span className={styles.regionLine}>{modeSymbol}</span>
+            ) : null}
+            {metaFields.includes("staging") && region.staging ? (
+              <span className={`${styles.regionLine} ${styles.regionLineStaging}`}>
+                {`${region.staging}`}
+              </span>
+            ) : null}
+            {metaFields.includes("waveTime") && region.waveTime ? (
+              <span className={`${styles.regionLine} ${styles.regionLineSmall}`}>
+                {region.waveTime}
+              </span>
+            ) : null}
+            {metaFields.includes("vehicle") && region.vehicle ? (
+              <span className={styles.regionLine}>{region.vehicle}</span>
+            ) : null}
+            {metaFields.includes("dsp") && region.dsp ? (
+              <span className={`${styles.regionLine} ${styles.regionLineSmall}`}>{region.dsp}</span>
+            ) : null}
+            {metaFields.includes("wave") && !region.waveTime && region.wave ? (
+              <span className={styles.regionLine}>{`Wave ${region.wave}`}</span>
+            ) : null}
+          </>
+        );
+
+        const regionInfoBlock = showRouteBlock ? (
+          <div className={styles.regionInfo}>{regionInfoContent}</div>
+        ) : null;
+
+        const regionContent = (
+          <>
+            {showLabelTag ? <span className={styles.regionTag}>{region.label}</span> : null}
+            {isDoor && modeSymbol ? <span className={styles.regionMode}>{modeSymbol}</span> : null}
+            {regionInfoBlock}
+          </>
+        );
+
+        const content = isDraggableRoute ? (
+          <div
+            className={styles.regionContent}
+            style={{
+              userSelect: "none",
+              touchAction: "none",
+              cursor: isDragging ? "grabbing" : "grab",
+            }}
+            onPointerDown={(event) => onRoutePointerDown(event, region.id)}
+          >
+            {regionContent}
+          </div>
+        ) : (
+          <div className={styles.regionContent}>{regionContent}</div>
+        );
 
         return (
           <div
             key={region.id}
-            className={styles.region}
+            className={`${styles.region} ${isDragging ? styles.regionDragging : ""}`}
             title={region.id}
+            data-region-id={region.id}
             data-region-type={region.type}
             data-route={region.route ?? ""}
             data-dsp={region.dsp ?? ""}
             {...interactiveProps}
           >
-            <div className={styles.regionContent}>
-              {showLabelTag ? <span className={styles.regionTag}>{region.label}</span> : null}
-              {isDoor && modeSymbol ? (
-                <span className={styles.regionMode}>{modeSymbol}</span>
-              ) : null}
-              {showRouteBlock ? (
-                <div className={styles.regionInfo}>
-                  {region.route ? <span className={styles.regionLine}>{region.route}</span> : null}
-                  {metaFields.includes("doorMode") && modeSymbol ? (
-                    <span className={styles.regionLine}>{modeSymbol}</span>
-                  ) : null}
-                  {metaFields.includes("staging") && region.staging ? (
-                    <span className={styles.regionLine}>{`Staging ${region.staging}`}</span>
-                  ) : null}
-                  {metaFields.includes("waveTime") && region.waveTime ? (
-                    <span className={styles.regionLine}>{region.waveTime}</span>
-                  ) : null}
-                  {metaFields.includes("vehicle") && region.vehicle ? (
-                    <span className={styles.regionLine}>{region.vehicle}</span>
-                  ) : null}
-                  {metaFields.includes("dsp") && region.dsp ? (
-                    <span className={styles.regionLine}>{region.dsp}</span>
-                  ) : null}
-                  {metaFields.includes("wave") && !region.waveTime && region.wave ? (
-                    <span className={styles.regionLine}>{`Wave ${region.wave}`}</span>
-                  ) : null}
-                </div>
-              ) : null}
-            </div>
+            {content}
           </div>
         );
       })}
-
       {showGrid ? (
         <div className={styles.coordinateGrid} style={coordinateGridStyle} aria-hidden="true">
           {Array.from({ length: height }).map((_, row) =>
