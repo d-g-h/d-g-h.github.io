@@ -23,7 +23,7 @@ export default async function Home() {
   return (
     <div className="resume">
       <main>
-        <Header phone text={text} />
+        <Header phone text={text} printPdf />
         <Summary summary={summary.summary} />
         <h2 className="title" style={{ textDecoration: "underline" }}>
           Experience

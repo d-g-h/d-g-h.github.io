@@ -11,12 +11,15 @@ export function RoutesInput() {
   return (
     <div className={styles.wrapper}>
       <textarea
+        aria-label="Routes"
         value={text}
         onChange={(e) => setText(e.target.value)}
         className={styles.textarea}
+        spellCheck={false}
+        placeholder="DSP ROUTE STAGING TIME"
       />
       <button type="button" onClick={() => generate(text)} className={styles.button}>
-        🖨️
+        Generate
       </button>
     </div>
   );

@@ -215,10 +215,10 @@ export function FloorSlotBuilder({
           );
         })}
         <button type="button" onClick={handleUndo} style={pillButtonStyle}>
-          Undo last
+          Undo
         </button>
         <button type="button" onClick={handleClear} style={pillButtonStyle}>
-          Clear added
+          Clear
         </button>
         <button
           type="button"
@@ -234,8 +234,7 @@ export function FloorSlotBuilder({
       </div>
 
       <p style={{ margin: 0, color: "oklch(from #334155 l c h)" }}>
-        Drag on the grid to place the selected shape. Slots cannot overlap doors or other regions.
-        Grid size: {width} × {height}.
+        Drag to place. {width} × {height}.
       </p>
       {error ? <p style={{ margin: 0, color: "oklch(from #b91c1c l c h)" }}>{error}</p> : null}
 

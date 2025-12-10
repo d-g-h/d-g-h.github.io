@@ -79,11 +79,6 @@
   border-bottom: 1px solid oklch(0.73 0 0 / 0.17);
 }
 
-.qr {
-  width: 100px;
-  height: 100px;
-}
-
 .label {
   font-size: 1rem;
   font-weight: 600;
