@@ -68,6 +68,8 @@ interface QRStore {
   setShowTextarea: (show: boolean | ((prev: boolean) => boolean)) => void;
   addInLog: (row: QRRow) => void;
   addOutLog: (row: QRRow) => void;
+  updateLogRow: (rowId: string, updates: Partial<QRLogRow>) => void;
+  removeLogRow: (rowId: string) => void;
   bumpRecentDeparture: (rowId: string) => void;
   removeRecentDeparture: (rowId: string) => void;
   clearRecentDepartures: () => void;
@@ -158,6 +160,15 @@ const useQRStore = create<QRStore>()(
             );
             return { log: updated };
           }),
+        updateLogRow: (rowId: string, updates: Partial<QRLogRow>) =>
+          set((state) => ({
+            log: state.log.map((row) => (row.id === rowId ? { ...row, ...updates } : row)),
+          })),
+        removeLogRow: (rowId: string) =>
+          set((state) => ({
+            log: state.log.filter((row) => row.id !== rowId),
+            recentDepartureIds: state.recentDepartureIds.filter((id) => id !== rowId),
+          })),
         bumpRecentDeparture: (rowId: string) =>
           set((state) => {
             const next = [rowId, ...state.recentDepartureIds.filter((id) => id !== rowId)];

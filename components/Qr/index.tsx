@@ -6,11 +6,12 @@ import {
   useCallback,
   useEffect,
   useMemo,
+  useRef,
   useState,
   useTransition,
 } from "react";
 import styles from "@/components/Qr/qr.module.css";
-import useQRStore, { type DisplayState, type QRRow } from "@/components/Qr/store";
+import useQRStore, { type DisplayState, type QRLogRow, type QRRow } from "@/components/Qr/store";
 import { getNextDisplayState } from "@/lib/utils/displayState";
 import { getQRCode } from "@/lib/utils/getQRCode";
 import { normalizeDspCode, normalizeRouteCode } from "@/lib/utils/routeKey";
@@ -21,13 +22,23 @@ import { waveToMinutes } from "@/lib/utils/waveToMinutes";
 const FALLBACK_WAVE_COLOR = "oklch(0.92 0 0)";
 const WAVE_COLOR_SCALE = [WAVE_COLORS[0], WAVE_COLORS[1], WAVE_COLORS[2]];
 
-type ParsedInputRow = Omit<QRRow, "svg">;
+type ParsedInputRow = Omit<QRRow, "svg" | "id">;
 type ParsedInputResult = { row: ParsedInputRow; qrText: string } | { error: string };
 
 const ROUTE_FORMAT = "DSP route staging waveTime";
 const DIRECT_FORMAT = "value label";
 const WAVE_ALL = "__all__";
 const WAVE_NONE = "__none__";
+type LogField = "dsp" | "value" | "waveTime" | "label" | "door" | "inTime" | "outTime";
+const LOG_FIELD_LABELS: Record<LogField, string> = {
+  dsp: "DSP",
+  value: "Route",
+  waveTime: "Wave",
+  label: "Staging",
+  door: "Door",
+  inTime: "In",
+  outTime: "Out",
+};
 
 function formatLineError(lineNumber: number, message: string): string {
   return `Line ${lineNumber}: ${message}`;
@@ -35,6 +46,10 @@ function formatLineError(lineNumber: number, message: string): string {
 
 function normalizeStaging(value: string): string {
   return value.replace(/[^A-Za-z0-9.]/g, "").toUpperCase();
+}
+
+function normalizeEditableValue(value: string): string {
+  return value.replace(/\s+/g, " ").trim();
 }
 
 function getWaveKey(rawWave: string): string {
@@ -71,7 +86,6 @@ function parseQrInputLine(line: string, lineNumber: number): ParsedInputResult {
     }
     return {
       row: {
-        id: crypto.randomUUID(),
         value,
         label,
       },
@@ -117,7 +131,6 @@ function parseQrInputLine(line: string, lineNumber: number): ParsedInputResult {
 
   return {
     row: {
-      id: crypto.randomUUID(),
       dsp: dspCode,
       value: routeCode,
       label: staging,
@@ -152,6 +165,8 @@ export default function Qr() {
     setShowTextarea,
     addInLog,
     addOutLog,
+    updateLogRow,
+    removeLogRow,
     bumpRecentDeparture,
     clearRecentDepartures,
     stagingOrder,
@@ -163,6 +178,8 @@ export default function Qr() {
   const [activeWave, setActiveWave] = useState(WAVE_ALL);
   const [doorFilter, setDoorFilter] = useState<"all" | "empty" | "full">("all");
   const [isCopied, setIsCopied] = useState(false);
+  const [deleteArmedId, setDeleteArmedId] = useState<string | null>(null);
+  const deleteTimeoutRef = useRef<number | null>(null);
 
   const waveTabs = useMemo(() => {
     const waves = new Map<
@@ -227,6 +244,15 @@ export default function Qr() {
     setActiveWave(WAVE_ALL);
   }, [activeWave, waveTabs]);
 
+  useEffect(
+    () => () => {
+      if (deleteTimeoutRef.current !== null) {
+        window.clearTimeout(deleteTimeoutRef.current);
+      }
+    },
+    [],
+  );
+
   const filteredRows = useMemo(() => filterRowsByWave(rows, activeWave), [rows, activeWave]);
   const sortedRows = useMemo(() => filteredRows, [filteredRows]);
   const recentDepartures = useMemo(() => {
@@ -278,6 +304,20 @@ export default function Qr() {
     startTransition(async () => {
       setLoading(true);
       setError(null);
+      const existingRows = [...rows, ...inProgress];
+      const existingByValue = new Map<string, QRRow>();
+      const existingLogByValue = new Map<string, QRLogRow>();
+      const inProgressIds = new Set(inProgress.map((row) => row.id));
+      const logIds = new Set(log.map((row) => row.id));
+
+      for (const row of existingRows) {
+        existingByValue.set(row.value, row);
+      }
+
+      for (const row of log) {
+        if (!existingByValue.has(row.value)) existingLogByValue.set(row.value, row);
+      }
+
       const lines = input
         .split("\n")
         .map((l) => l.trim())
@@ -301,22 +341,72 @@ export default function Qr() {
         return;
       }
 
-      const generatedRows: QRRow[] = await Promise.all(
-        parsedRows.map(async ({ row, qrText }) => {
-          const svg = await getQRCode({ text: qrText, width: 50 });
-          return { ...row, svg };
-        }),
+      const prepared = parsedRows.map(({ row, qrText }) => {
+        const existing = existingByValue.get(row.value);
+        const fallbackLog = existing ? undefined : existingLogByValue.get(row.value);
+        return {
+          row,
+          qrText,
+          id: existing?.id ?? fallbackLog?.id ?? crypto.randomUUID(),
+          svg: existing?.svg,
+        };
+      });
+
+      const rowsNeedingSvg = prepared.filter((entry) => !entry.svg);
+      const generatedSvgs = await Promise.all(
+        rowsNeedingSvg.map((entry) => getQRCode({ text: entry.qrText, width: 50 })),
       );
 
-      setRows(generatedRows);
-      setStagingOrder(generatedRows.map((row) => row.id));
+      let svgIndex = 0;
+      const updatedRows: QRRow[] = prepared.map((entry) => {
+        const svg = entry.svg ?? generatedSvgs[svgIndex++];
+        return { ...entry.row, id: entry.id, svg };
+      });
 
-      const initialStates = new Map<string, DisplayState>();
-      for (const row of generatedRows) initialStates.set(row.id, "hide");
-      setDisplayStates(initialStates);
+      const updatedById = new Map(updatedRows.map((row) => [row.id, row]));
+      const nextInProgress = inProgress.map((row) => updatedById.get(row.id) ?? row);
+      const nextRows = updatedRows.filter((row) => !inProgressIds.has(row.id));
+      const nextDisplayStates = new Map(displayStates);
+      const activeIds = new Set([...nextRows, ...nextInProgress].map((row) => row.id));
+
+      for (const id of nextDisplayStates.keys()) {
+        if (!activeIds.has(id)) nextDisplayStates.delete(id);
+      }
+
+      for (const row of [...nextRows, ...nextInProgress]) {
+        if (!nextDisplayStates.has(row.id)) nextDisplayStates.set(row.id, "hide");
+      }
+
+      for (const row of updatedRows) {
+        if (!logIds.has(row.id)) continue;
+        updateLogRow(row.id, {
+          dsp: row.dsp,
+          value: row.value,
+          waveTime: row.waveTime,
+          label: row.label,
+          door: row.door,
+        });
+      }
+
+      setRows(nextRows);
+      setInProgress(nextInProgress);
+      setStagingOrder(updatedRows.map((row) => row.id));
+      setDisplayStates(nextDisplayStates);
       setLoading(false);
     });
-  }, [input, setRows, setDisplayStates, setLoading, setStagingOrder]);
+  }, [
+    displayStates,
+    input,
+    inProgress,
+    log,
+    rows,
+    setDisplayStates,
+    setInProgress,
+    setLoading,
+    setRows,
+    setStagingOrder,
+    updateLogRow,
+  ]);
 
   const handleParseDoors = useCallback(() => {
     const doorNumbers = doorsInput
@@ -515,6 +605,56 @@ export default function Qr() {
     return log.filter((row) => getWaveKey(row.waveTime ?? "") === activeWave).sort(sortByOrder);
   }, [activeWave, log, stagingOrder]);
 
+  const commitLogUpdate = useCallback(
+    (row: QRLogRow, field: LogField, rawValue: string) => {
+      const normalized = normalizeEditableValue(rawValue);
+      if (field === "door") {
+        const parsed = normalized ? Number(normalized) : undefined;
+        const nextDoor = Number.isFinite(parsed) ? parsed : undefined;
+        if (nextDoor === row.door) return;
+        updateLogRow(row.id, { door: nextDoor });
+        return;
+      }
+
+      const currentValue =
+        field === "dsp"
+          ? (row.dsp ?? "")
+          : field === "waveTime"
+            ? (row.waveTime ?? "")
+            : field === "inTime"
+              ? (row.inTime ?? "")
+              : field === "outTime"
+                ? (row.outTime ?? "")
+                : field === "label"
+                  ? row.label
+                  : row.value;
+
+      const nextValue =
+        field === "label" || field === "value" ? normalized : normalized ? normalized : undefined;
+
+      if ((nextValue ?? "") === currentValue) return;
+
+      updateLogRow(row.id, { [field]: nextValue } as Partial<QRLogRow>);
+    },
+    [updateLogRow],
+  );
+
+  const handleLogKeyDown = useCallback(
+    (event: React.KeyboardEvent<HTMLDivElement>, fallbackValue: string) => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        event.currentTarget.blur();
+        return;
+      }
+      if (event.key === "Escape") {
+        event.preventDefault();
+        event.currentTarget.textContent = fallbackValue;
+        event.currentTarget.blur();
+      }
+    },
+    [],
+  );
+
   const handleCopy = useCallback(() => {
     const logHeaders = ["DSP", "Route", "Wave", "Staging", "Door", "In", "Out"];
     const logRows = filteredLog.map((route) =>
@@ -535,6 +675,57 @@ export default function Qr() {
       setTimeout(() => setIsCopied(false), 2000);
     });
   }, [filteredLog]);
+
+  const clearDeleteTimer = useCallback(() => {
+    if (deleteTimeoutRef.current !== null) {
+      window.clearTimeout(deleteTimeoutRef.current);
+      deleteTimeoutRef.current = null;
+    }
+  }, []);
+
+  const armDelete = useCallback(
+    (rowId: string) => {
+      clearDeleteTimer();
+      setDeleteArmedId(rowId);
+      deleteTimeoutRef.current = window.setTimeout(() => {
+        setDeleteArmedId((current) => (current === rowId ? null : current));
+      }, 2000);
+    },
+    [clearDeleteTimer],
+  );
+
+  const handleDeleteClick = useCallback(
+    (rowId: string) => {
+      if (deleteArmedId === rowId) {
+        clearDeleteTimer();
+        removeLogRow(rowId);
+        setDeleteArmedId(null);
+        return;
+      }
+      armDelete(rowId);
+    },
+    [armDelete, clearDeleteTimer, deleteArmedId, removeLogRow],
+  );
+
+  const renderEditableCell = useCallback(
+    (row: QRLogRow, field: LogField, value: string) => (
+      // biome-ignore lint/a11y/useSemanticElements: contentEditable cell is intentional.
+      <div
+        className={`${styles.logCell} ${styles.logCellEditable}`}
+        contentEditable
+        suppressContentEditableWarning
+        spellCheck={false}
+        role="textbox"
+        tabIndex={0}
+        aria-label={`${LOG_FIELD_LABELS[field]} log entry`}
+        onBlur={(event) => commitLogUpdate(row, field, event.currentTarget.textContent ?? "")}
+        onKeyDown={(event) => handleLogKeyDown(event, value)}
+      >
+        {value}
+      </div>
+    ),
+    [commitLogUpdate, handleLogKeyDown],
+  );
 
   return (
     <div className={styles.container}>
@@ -722,16 +913,33 @@ export default function Qr() {
           <div className={styles.logHeader}>Door</div>
           <div className={styles.logHeader}>In</div>
           <div className={styles.logHeader}>Out</div>
+          <div className={styles.logHeader}>Del</div>
 
           {filteredLog.map((route) => (
             <Fragment key={route.id}>
-              <div className={styles.logCell}>{route.dsp ?? ""}</div>
-              <div className={styles.logCell}>{route.value}</div>
-              <div className={styles.logCell}>{route.waveTime ?? ""}</div>
-              <div className={styles.logCell}>{route.label}</div>
-              <div className={styles.logCell}>{route.door ?? ""}</div>
-              <div className={styles.logCell}>{route.inTime ?? ""}</div>
-              <div className={styles.logCell}>{route.outTime ?? ""}</div>
+              {renderEditableCell(route, "dsp", route.dsp ?? "")}
+              {renderEditableCell(route, "value", route.value)}
+              {renderEditableCell(route, "waveTime", route.waveTime ?? "")}
+              {renderEditableCell(route, "label", route.label)}
+              {renderEditableCell(route, "door", route.door?.toString() ?? "")}
+              {renderEditableCell(route, "inTime", route.inTime ?? "")}
+              {renderEditableCell(route, "outTime", route.outTime ?? "")}
+              <button
+                type="button"
+                className={`${styles.logDelete} ${
+                  deleteArmedId === route.id ? styles.logDeleteArmed : ""
+                }`}
+                onClick={() => handleDeleteClick(route.id)}
+                onDoubleClick={() => {
+                  clearDeleteTimer();
+                  removeLogRow(route.id);
+                  setDeleteArmedId(null);
+                }}
+                aria-label={`Delete log for ${route.value}`}
+                title={deleteArmedId === route.id ? "Click again to delete" : "Click to arm delete"}
+              >
+                🗑️
+              </button>
             </Fragment>
           ))}
         </div>
