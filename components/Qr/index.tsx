@@ -442,6 +442,9 @@ export default function Qr() {
       const from = e.dataTransfer.getData("from");
       if (!rowId) return;
 
+      const assignedRowId = doorAssignments.get(door);
+      if (assignedRowId && assignedRowId !== rowId) return;
+
       const row = allRowsById.get(rowId);
       if (row) {
         const rowWithDoor = { ...row, door };
@@ -455,7 +458,16 @@ export default function Qr() {
         setInProgress([...inProgress, row]);
       }
     },
-    [assignRowToDoor, allRowsById, addInLog, rows, inProgress, setRows, setInProgress],
+    [
+      assignRowToDoor,
+      allRowsById,
+      addInLog,
+      doorAssignments,
+      rows,
+      inProgress,
+      setRows,
+      setInProgress,
+    ],
   );
 
   const cycleDisplayState = useCallback(

@@ -40,6 +40,8 @@
   overflow-y: auto;
   font-family: monospace;
   box-sizing: border-box;
+  field-sizing: content;
+  min-height: 3lh;
 }
 
 .textarea::placeholder {
