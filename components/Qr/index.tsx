@@ -14,7 +14,7 @@ import styles from "@/components/Qr/qr.module.css";
 import useQRStore, { type DisplayState, type QRLogRow, type QRRow } from "@/components/Qr/store";
 import { getNextDisplayState } from "@/lib/utils/displayState";
 import { getQRCode } from "@/lib/utils/getQRCode";
-import { normalizeDspCode, normalizeRouteCode } from "@/lib/utils/routeKey";
+import { getRouteKey, normalizeDspCode, normalizeRouteCode } from "@/lib/utils/routeKey";
 import { svgStringToElement } from "@/lib/utils/svg";
 import { WAVE_COLORS } from "@/lib/utils/waveColors";
 import { waveToMinutes } from "@/lib/utils/waveToMinutes";
@@ -42,6 +42,40 @@ const LOG_FIELD_LABELS: Record<LogField, string> = {
 
 function formatLineError(lineNumber: number, message: string): string {
   return `Line ${lineNumber}: ${message}`;
+}
+
+function getRowIdentityKey(row: Pick<QRRow, "dsp" | "value" | "label" | "waveTime">): string {
+  const key = getRouteKey(row.value, row.dsp, row.label, row.waveTime);
+  if (key) return key;
+
+  return [
+    normalizeDspCode(row.dsp),
+    row.value.trim().toUpperCase(),
+    normalizeStaging(row.label),
+    row.waveTime?.trim().toUpperCase() ?? "",
+  ].join("|");
+}
+
+function pushToBucket<T>(map: Map<string, T[]>, key: string, value: T): void {
+  const bucket = map.get(key);
+  if (bucket) {
+    bucket.push(value);
+    return;
+  }
+  map.set(key, [value]);
+}
+
+function takeFromBucket<T>(map: Map<string, T[]>, key: string): T | undefined {
+  const bucket = map.get(key);
+  if (!bucket || bucket.length === 0) return undefined;
+  const value = bucket.shift();
+  if (bucket.length === 0) map.delete(key);
+  return value;
+}
+
+function createRouteInstanceId(identityKey: string): string {
+  const encodedIdentity = identityKey || "route";
+  return `${encodedIdentity}::${Date.now().toString(36)}::${crypto.randomUUID()}`;
 }
 
 function normalizeStaging(value: string): string {
@@ -313,17 +347,21 @@ export default function Qr() {
       setLoading(true);
       setError(null);
       const existingRows = [...rows, ...inProgress];
-      const existingByValue = new Map<string, QRRow>();
-      const existingLogByValue = new Map<string, QRLogRow>();
+      const existingByIdentity = new Map<string, QRRow[]>();
+      const existingLogByIdentity = new Map<string, QRLogRow[]>();
       const inProgressIds = new Set(inProgress.map((row) => row.id));
       const logIds = new Set(log.map((row) => row.id));
+      const activeRowIds = new Set(existingRows.map((row) => row.id));
 
       for (const row of existingRows) {
-        existingByValue.set(row.value, row);
+        const identityKey = getRowIdentityKey(row);
+        pushToBucket(existingByIdentity, identityKey, row);
       }
 
       for (const row of log) {
-        if (!existingByValue.has(row.value)) existingLogByValue.set(row.value, row);
+        if (activeRowIds.has(row.id)) continue;
+        const identityKey = getRowIdentityKey(row);
+        pushToBucket(existingLogByIdentity, identityKey, row);
       }
 
       const lines = input
@@ -349,13 +387,23 @@ export default function Qr() {
         return;
       }
 
+      const usedIds = new Set<string>();
       const prepared = parsedRows.map(({ row, qrText }) => {
-        const existing = existingByValue.get(row.value);
-        const fallbackLog = existing ? undefined : existingLogByValue.get(row.value);
+        const identityKey = getRowIdentityKey(row);
+        const existing = takeFromBucket(existingByIdentity, identityKey);
+        const fallbackLog = existing
+          ? undefined
+          : takeFromBucket(existingLogByIdentity, identityKey);
+        let id = existing?.id ?? fallbackLog?.id;
+        if (!id || usedIds.has(id)) {
+          id = createRouteInstanceId(identityKey);
+        }
+        usedIds.add(id);
+
         return {
           row,
           qrText,
-          id: existing?.id ?? fallbackLog?.id ?? crypto.randomUUID(),
+          id,
           svg: existing?.svg,
         };
       });
