@@ -262,6 +262,14 @@ export default function Qr() {
       .map((rowId) => byId.get(rowId))
       .filter((row): row is QRRow => Boolean(row));
   }, [rows, inProgress, recentDepartureIds]);
+  const recentDepartureDoorById = useMemo(() => {
+    const map = new Map<string, number>();
+    for (const entry of log) {
+      if (!entry.outTime || entry.door === undefined) continue;
+      map.set(entry.id, entry.door);
+    }
+    return map;
+  }, [log]);
 
   const waveGroupByMinute = useMemo(() => {
     const minutes = new Set<number>();
@@ -562,12 +570,15 @@ export default function Qr() {
   );
 
   const renderRow = useCallback(
-    (row: QRRow, section: "main" | "progress") => {
+    (row: QRRow, section: "main" | "progress", recentDoor?: number) => {
       const state = displayStates.get(row.id) ?? "show";
       const qrOpacity = getQrOpacity(state);
       const textOpacity = getTextOpacity(state);
       const svgElement = svgStringToElement(row.svg);
       const backgroundColor = getWaveColor(row);
+      const showMovedDoor =
+        recentDoor !== undefined && row.door !== undefined && recentDoor !== row.door;
+      const visibleDoor = recentDoor ?? row.door;
 
       return (
         <button
@@ -591,9 +602,16 @@ export default function Qr() {
             <div className={styles.label} style={{ opacity: textOpacity }}>
               {row.label}
             </div>
-            {row.door !== undefined && (
+            {visibleDoor !== undefined && (
               <div className={styles.door} style={{ opacity: textOpacity }}>
-                {row.door}
+                {showMovedDoor ? (
+                  <span className={styles.doorMoved}>
+                    <span className={styles.doorOriginal}>{row.door}</span>
+                    <span>{recentDoor}</span>
+                  </span>
+                ) : (
+                  visibleDoor
+                )}
               </div>
             )}
           </div>
@@ -897,7 +915,9 @@ export default function Qr() {
           </button>
           <ul className={`${styles.grid} ${styles.recentGrid}`}>
             {recentDepartures.map((row) => (
-              <li key={`recent-${row.id}`}>{renderRow(row, "main")}</li>
+              <li key={`recent-${row.id}`}>
+                {renderRow(row, "main", recentDepartureDoorById.get(row.id))}
+              </li>
             ))}
           </ul>
         </div>

@@ -145,7 +145,15 @@ const useQRStore = create<QRStore>()(
             const existingIndex = state.log.findIndex((r) => r.id === row.id);
             if (existingIndex !== -1) {
               const updatedLog = [...state.log];
-              updatedLog[existingIndex] = { ...updatedLog[existingIndex], inTime: timeString };
+              updatedLog[existingIndex] = {
+                ...updatedLog[existingIndex],
+                dsp: row.dsp,
+                label: row.label,
+                value: row.value,
+                waveTime: row.waveTime,
+                door: row.door,
+                inTime: timeString,
+              };
               return { log: updatedLog };
             }
             return { log: [...state.log, { ...row, inTime: timeString }] };
@@ -156,7 +164,17 @@ const useQRStore = create<QRStore>()(
             const hours = now.getHours() % 12 || 12;
             const timeString = `${hours}:${now.getMinutes().toString().padStart(2, "0")}`;
             const updated = state.log.map((r) =>
-              r.id === row.id ? { ...r, outTime: timeString } : r,
+              r.id === row.id
+                ? {
+                    ...r,
+                    dsp: row.dsp,
+                    label: row.label,
+                    value: row.value,
+                    waveTime: row.waveTime,
+                    door: row.door,
+                    outTime: timeString,
+                  }
+                : r,
             );
             return { log: updated };
           }),
