@@ -1,9 +1,9 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Footer When skills are not provided matches snapshot when only education is provided 1`] = `
+exports[`Footer > When skills are not provided > matches snapshot when only education is provided 1`] = `
 <div>
   <div
-    class="footer"
+    class="_footer_9078fe"
   >
     <div
       class=""
@@ -28,13 +28,13 @@ exports[`Footer When skills are not provided matches snapshot when only educatio
 </div>
 `;
 
-exports[`Footer When skills are provided matches snapshot when skills and education are provided 1`] = `
+exports[`Footer > When skills are provided > matches snapshot when skills and education are provided 1`] = `
 <div>
   <div
-    class="footer"
+    class="_footer_9078fe"
   >
     <div
-      class="skills"
+      class="_skills_9078fe"
       style="text-align: left;"
     >
       <h2
@@ -44,19 +44,19 @@ exports[`Footer When skills are provided matches snapshot when skills and educat
       </h2>
       <ul>
         <li
-          class="skill"
+          class="_skill_9078fe"
         >
           JavaScript
         </li>
         <li
-          class="skill"
+          class="_skill_9078fe"
         >
           React
         </li>
       </ul>
     </div>
     <div
-      class="education"
+      class="_education_9078fe"
     >
       <h2
         class="title"

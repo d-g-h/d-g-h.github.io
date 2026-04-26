@@ -1,10 +1,9 @@
-/**
- * @jest-environment jsdom
- */
 import { getQRCode } from "@/lib/utils/getQRCode";
 
-jest.mock("qrcode", () => ({
-  toString: jest.fn(),
+vi.mock("qrcode", () => ({
+  default: {
+    toString: vi.fn(),
+  },
 }));
 
 import QRCode from "qrcode";
@@ -12,7 +11,7 @@ import QRCode from "qrcode";
 describe("getQRCode", () => {
   it("calls QRCode.toString and formats SVG string", async () => {
     const sample = `\n<svg width="10">\n  <rect />\n</svg>\n`;
-    (QRCode.toString as jest.Mock).mockResolvedValueOnce(sample);
+    vi.mocked(QRCode.toString).mockResolvedValueOnce(sample);
 
     const out = await getQRCode({ text: "123" });
     // no newlines

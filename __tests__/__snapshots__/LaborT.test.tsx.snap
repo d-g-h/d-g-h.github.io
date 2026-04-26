@@ -1,18 +1,18 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Labor renders html correctly 1`] = `
+exports[`Labor > renders html correctly 1`] = `
 <div>
   <li
-    class="labor"
+    class="_labor_f6e493"
   >
     <div
-      class="header"
+      class="_header_f6e493"
     >
       <div
-        class="group"
+        class="_group_f6e493"
       >
         <div
-          class="title"
+          class="_title_f6e493"
         >
           Job Title
         </div>
@@ -20,19 +20,19 @@ exports[`Labor renders html correctly 1`] = `
           ,
         </span>
         <div
-          class="highlight"
+          class="_highlight_f6e493"
         >
           Company
         </div>
       </div>
       <div>
         <div
-          class="location"
+          class="_location_f6e493"
         >
           Location
         </div>
         <div
-          class="time"
+          class="_time_f6e493"
         >
           <time
             datetime="2020-02"

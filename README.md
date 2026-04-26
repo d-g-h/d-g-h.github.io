@@ -44,6 +44,12 @@ prod
 npm run build
 ```
 
+preview production build
+
+```
+npm run start
+```
+
 lint
 
 ```

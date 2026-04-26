@@ -1,10 +1,15 @@
-"use client";
-
+import { createFileRoute } from "@tanstack/react-router";
 import { useEffect } from "react";
-import { ClearLocalStorageButton } from "@/components/ClearLocalStorageButton";
-import Qr from "@/components/Qr";
+import BatchQr from "@/components/BatchQr";
 
-export default function Page() {
+export const Route = createFileRoute("/b")({
+  head: () => ({
+    meta: [{ title: "⇗💻" }, { name: "description", content: "❤️" }],
+  }),
+  component: BatchQrPage,
+});
+
+function BatchQrPage() {
   useEffect(() => {
     const originalBg = document.body.style.backgroundColor;
     const originalColor = document.body.style.color;
@@ -18,12 +23,5 @@ export default function Page() {
     };
   }, []);
 
-  return (
-    <div style={{ display: "grid", gap: "0.75rem" }}>
-      <div style={{ position: "fixed", top: "0.1rem", right: "0.25rem", zIndex: 100 }}>
-        <ClearLocalStorageButton />
-      </div>
-      <Qr />
-    </div>
-  );
+  return <BatchQr />;
 }

@@ -1,9 +1,9 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Description renders html correctly 1`] = `
+exports[`Description > renders html correctly 1`] = `
 <div>
   <li
-    class="description"
+    class="_description_4001a0"
   >
     Job description
   </li>

@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Time renders html correctly 1`] = `
+exports[`Time > renders html correctly 1`] = `
 <div>
   <time
     datetime="2020-02"
