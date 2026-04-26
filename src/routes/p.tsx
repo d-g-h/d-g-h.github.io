@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { createFileRoute } from "@tanstack/react-router";
 import Description from "@/components/Description";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
@@ -9,21 +9,27 @@ import education from "@/public/education.json";
 import labors from "@/public/labors.json";
 import skills from "@/public/skills.json";
 import summary from "@/public/summary.json";
+import { publicEnv } from "@/src/env";
 
-export const metadata: Metadata = {
-  title: "⇗💻",
-  description: "❤️",
-};
+export const Route = createFileRoute("/p")({
+  head: () => ({
+    meta: [{ title: "⇗💻" }, { name: "description", content: "❤️" }],
+  }),
+  loader: () =>
+    getQRCode({
+      text: publicEnv.url,
+      color: "#000",
+    }),
+  component: Printable,
+});
 
-export default async function Home() {
-  const text = await getQRCode({
-    text: `${process.env.NEXT_PUBLIC_URL}\t`,
-    color: "#539bf5",
-  });
+function Printable() {
+  const text = Route.useLoaderData();
+
   return (
     <div className="resume">
       <main>
-        <Header phone text={text} />
+        <Header phone text={text} printPdf />
         <Summary summary={summary.summary} />
         <h2 className="title" style={{ textDecoration: "underline" }}>
           Experience
@@ -40,9 +46,9 @@ export default async function Home() {
                 end={labor.end}
               >
                 <ul>
-                  {labor.descriptions.map((description, i) => (
+                  {labor.descriptions.map((description) => (
                     <Description
-                      key={`${labor.company}${i}`}
+                      key={`${labor.key}-${description.description}`}
                       description={description.description}
                     ></Description>
                   ))}

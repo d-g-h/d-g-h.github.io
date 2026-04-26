@@ -1,30 +1,27 @@
-import type { Metadata } from "next";
+import { createFileRoute } from "@tanstack/react-router";
 import Description from "@/components/Description";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import LaborT from "@/components/LaborT";
-import Summary from "@/components/Summary";
+import Labor from "@/components/Labor";
 import education from "@/public/education.json";
-import labors from "@/public/labors_c.json";
-import skills from "@/public/skills.json";
-import summary from "@/public/summary.json";
+import labors from "@/public/labors.json";
 
-export const metadata: Metadata = {
-  title: "⇗💻",
-  description: "❤️",
-};
+export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [{ title: "⇗💻" }, { name: "description", content: "❤️" }],
+  }),
+  component: Home,
+});
 
-export default function Home() {
+function Home() {
   return (
     <div className="resume">
       <main>
-        <Header phone />
-        <Summary summary={summary.summary} />
-        <h2 className="title">Experience</h2>
+        <Header />
         <div>
           <ul>
             {labors.map((labor) => (
-              <LaborT
+              <Labor
                 key={labor.key}
                 title={labor.title}
                 location={labor.location}
@@ -33,18 +30,18 @@ export default function Home() {
                 end={labor.end}
               >
                 <ul>
-                  {labor.descriptions.map((description, i) => (
+                  {labor.descriptions.map((description) => (
                     <Description
-                      key={`${labor.company}${i}`}
+                      key={`${labor.key}-${description.description}`}
                       description={description.description}
                     ></Description>
                   ))}
                 </ul>
-              </LaborT>
+              </Labor>
             ))}
           </ul>
         </div>
-        <Footer education={education} skills={skills} />
+        <Footer education={education} />
       </main>
     </div>
   );

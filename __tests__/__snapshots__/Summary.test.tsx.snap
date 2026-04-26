@@ -1,14 +1,14 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Summary renders html correctly 1`] = `
+exports[`Summary > renders html correctly 1`] = `
 <div>
   <h2
-    class="title"
+    class="_title_1bc019"
   >
     Summary
   </h2>
   <p
-    class="summary"
+    class="_summary_1bc019"
   >
     Sum of the summary
   </p>

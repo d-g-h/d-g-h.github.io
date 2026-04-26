@@ -8,9 +8,14 @@
 # testing
 /coverage
 
-# next.js
+# build output
 /.next/
 /out/
+/.output/
+/dist/
+/.vinxi/
+/.tanstack/
+/.playwright-mcp/
 
 # production
 /build
@@ -31,6 +36,5 @@ yarn-error.log*
 # vercel
 .vercel
 
-# typescript
+# generated types
 *.tsbuildinfo
-next-env.d.ts

@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.4.4/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.4.13/schema.json",
   "vcs": {
     "enabled": true,
     "clientKind": "git",
@@ -69,13 +69,15 @@
       }
     },
     {
-      "includes": ["app/**/page.tsx", "app/**/layout.tsx", "app/**/route.ts"],
+      "includes": ["src/routeTree.gen.ts"],
+      "assist": {
+        "enabled": false
+      },
       "linter": {
-        "rules": {
-          "correctness": {
-            "noUnusedVariables": "off"
-          }
-        }
+        "enabled": false
+      },
+      "formatter": {
+        "enabled": false
       }
     }
   ]

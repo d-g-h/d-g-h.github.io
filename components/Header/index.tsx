@@ -1,5 +1,6 @@
 import styles from "@/components/Header/header.module.css";
 import shortenerLink from "@/lib/utils/shortenerLink";
+import { publicEnv } from "@/src/env";
 
 type HeaderProps = {
   phone?: boolean;
@@ -8,11 +9,12 @@ type HeaderProps = {
 };
 
 export default function Header({ phone, text, printPdf }: Readonly<HeaderProps>) {
-  const name = process.env.NEXT_PUBLIC_NAME ?? "Name";
-  const githubUrl = process.env.NEXT_PUBLIC_GITHUB ?? "#";
-  const emailText = process.env.NEXT_PUBLIC_EMAIL ?? "email@example.com";
-  const emailHref = process.env.NEXT_PUBLIC_EMAIL ?? "";
-  const linkedInUrl = process.env.NEXT_PUBLIC_LINKEDIN ?? "#";
+  const name = publicEnv.name;
+  const githubUrl = publicEnv.github;
+  const emailText = publicEnv.email;
+  const emailHref = publicEnv.email;
+  const linkedInUrl = publicEnv.linkedIn;
+  const phoneNumber = publicEnv.phone;
   const githubLabel = shortenerLink({ url: githubUrl, link: "github.com" });
   const linkedInLabel = shortenerLink({ url: linkedInUrl, link: "linkedin.com" });
 
@@ -25,7 +27,7 @@ export default function Header({ phone, text, printPdf }: Readonly<HeaderProps>)
           {printPdf ? <span>{name}</span> : <a href={githubUrl}>{name}</a>}
         </h1>
       </div>
-      <div className={`${styles.sub} ${styles.links}`}>
+      <div className={`sub ${styles.links}`}>
         <div>
           {printPdf ? <span>{emailText}</span> : <a href={`mailto:${emailHref}`}>{emailText}</a>}
         </div>
@@ -33,12 +35,12 @@ export default function Header({ phone, text, printPdf }: Readonly<HeaderProps>)
           {printPdf ? <span>{linkedInLabel}</span> : <a href={linkedInUrl}>{linkedInLabel}</a>}
         </div>
         <div>{printPdf ? <span>{githubLabel}</span> : <a href={githubUrl}>{githubLabel}</a>}</div>
-        {phone && process.env.NEXT_PUBLIC_PHONE && (
+        {phone && phoneNumber && (
           <div>
             {printPdf ? (
-              <span>{process.env.NEXT_PUBLIC_PHONE}</span>
+              <span>{phoneNumber}</span>
             ) : (
-              <a href={`tel:+1${process.env.NEXT_PUBLIC_PHONE}`}>{process.env.NEXT_PUBLIC_PHONE}</a>
+              <a href={`tel:+1${phoneNumber}`}>{phoneNumber}</a>
             )}
           </div>
         )}

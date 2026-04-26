@@ -1,0 +1,252 @@
+.shell {
+  min-height: 100vh;
+  padding: 0;
+  background: #fff;
+  color: #000;
+}
+
+.panel {
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.header {
+  display: grid;
+  justify-items: center;
+  gap: 0.5rem;
+  padding-top: 0.5rem;
+}
+
+.eyebrow {
+  margin: 0;
+  font-family: monospace;
+  font-size: 0.78rem;
+  color: oklch(0.67 0.22 142.55);
+}
+
+.title {
+  margin: 0;
+  font-size: 2rem;
+  line-height: 1;
+  font-weight: 400;
+}
+
+.hint {
+  max-width: 44rem;
+  margin: 0;
+  color: oklch(0.3 0 0);
+  font-family: monospace;
+  font-size: 0.85rem;
+  line-height: 1.2;
+}
+
+.controls {
+  display: grid;
+  justify-items: center;
+  gap: 1rem;
+  padding: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.textarea {
+  text-align: center;
+  width: min(100%, 40rem);
+  height: 9rem;
+  min-height: 3lh;
+  resize: vertical;
+  padding: 0.5rem;
+  border: none;
+  outline: none;
+  background: #fff;
+  color: inherit;
+  font-family: monospace;
+  font-size: 1rem;
+  box-sizing: border-box;
+  field-sizing: content;
+}
+
+.textarea::placeholder {
+  text-align: center;
+}
+
+.actions,
+.filters,
+.summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.actions {
+  justify-content: space-between;
+}
+
+.button,
+.filterButton,
+.smallButton {
+  border: none;
+  background: none;
+  color: #000;
+  cursor: pointer;
+  font-weight: 400;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.smallButton,
+.filterButton {
+  padding: 0.3rem 0.75rem;
+  font-size: 0.85rem;
+}
+
+.filterButton {
+  border: 1px solid oklch(0.8 0 0 / 0.4);
+  background: oklch(0.92 0 0);
+  color: oklch(0.2 0 0);
+}
+
+.filterButtonActive {
+  box-shadow: 0 0 0 2px oklch(0.72 0.2 55) inset;
+  color: oklch(0.15 0 0);
+}
+
+.meta,
+.counter {
+  font-family: monospace;
+  font-size: 0.88rem;
+  color: oklch(0.3 0 0);
+}
+
+.summary {
+  justify-content: center;
+  padding: 0.5rem;
+  background: oklch(0.96 0 0);
+  color: oklch(0.2 0 0);
+}
+
+.summary strong {
+  font-size: 1.15rem;
+}
+
+.error {
+  color: oklch(0.58 0.2 25);
+  font-size: 0.85rem;
+  text-align: center;
+  white-space: pre-wrap;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+  min-height: 7.5rem;
+}
+
+.card {
+  display: grid;
+  gap: 0.4rem;
+  padding: 0.45rem;
+  background: #fff;
+  border: none;
+  box-shadow: none;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  text-align: inherit;
+}
+
+.card:focus-visible {
+  outline: 2px solid oklch(0.72 0.2 55);
+  outline-offset: 2px;
+}
+
+.cardDone {
+  background: oklch(0.92 0 0);
+}
+
+.qr {
+  width: 100%;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+.qr :global(svg) {
+  width: min(100%, 5.25rem);
+  height: auto;
+  display: block;
+}
+
+.tba {
+  overflow-wrap: anywhere;
+  text-align: center;
+  font-family: monospace;
+  font-size: 0.5rem;
+  font-weight: 400;
+  opacity: 0.7;
+}
+
+.state {
+  text-align: center;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.empty {
+  padding: 2rem;
+  text-align: center;
+  border: none;
+  background: transparent;
+  color: oklch(0.4 0 0);
+}
+
+@media (max-width: 42rem) {
+  .shell {
+    padding: 0.75rem;
+  }
+
+  .actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .button {
+    width: 100%;
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(6.8rem, 1fr));
+  }
+}

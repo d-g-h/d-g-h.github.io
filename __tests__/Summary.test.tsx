@@ -1,8 +1,4 @@
-/**
- * @jest-environment jsdom
- */
 import { render, screen } from "@testing-library/react";
-import "@testing-library/jest-dom";
 import Summary from "@/components/Summary";
 
 const SUMMARY = "Sum of the summary";

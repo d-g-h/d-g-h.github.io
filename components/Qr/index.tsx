@@ -14,6 +14,7 @@ import styles from "@/components/Qr/qr.module.css";
 import useQRStore, { type DisplayState, type QRLogRow, type QRRow } from "@/components/Qr/store";
 import { getNextDisplayState } from "@/lib/utils/displayState";
 import { getQRCode } from "@/lib/utils/getQRCode";
+import { parseDoors } from "@/lib/utils/parseDoors";
 import { getRouteKey, normalizeDspCode, normalizeRouteCode } from "@/lib/utils/routeKey";
 import { svgStringToElement } from "@/lib/utils/svg";
 import { WAVE_COLORS } from "@/lib/utils/waveColors";
@@ -465,14 +466,7 @@ export default function Qr() {
   ]);
 
   const handleParseDoors = useCallback(() => {
-    const doorNumbers = doorsInput
-      .split(/[\s,]+/)
-      .map((s) => s.trim())
-      .filter(Boolean)
-      .map((s) => Number(s))
-      .filter((n) => !Number.isNaN(n) && n > 0);
-    const uniqueDoorNumbers = new Set(doorNumbers);
-    setDoors([...uniqueDoorNumbers]);
+    setDoors(parseDoors(doorsInput));
   }, [doorsInput, setDoors]);
 
   const allRowsById = useMemo(() => {
