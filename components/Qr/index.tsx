@@ -712,7 +712,7 @@ export default function Qr() {
   );
 
   const handleLogKeyDown = useCallback(
-    (event: React.KeyboardEvent<HTMLDivElement>, fallbackValue: string) => {
+    (event: React.KeyboardEvent<HTMLInputElement>, fallbackValue: string) => {
       if (event.key === "Enter") {
         event.preventDefault();
         event.currentTarget.blur();
@@ -720,7 +720,7 @@ export default function Qr() {
       }
       if (event.key === "Escape") {
         event.preventDefault();
-        event.currentTarget.textContent = fallbackValue;
+        event.currentTarget.value = fallbackValue;
         event.currentTarget.blur();
       }
     },
@@ -781,20 +781,16 @@ export default function Qr() {
 
   const renderEditableCell = useCallback(
     (row: QRLogRow, field: LogField, value: string) => (
-      // biome-ignore lint/a11y/useSemanticElements: contentEditable cell is intentional.
-      <div
+      <input
+        key={`${row.id}-${field}-${value}`}
+        type="text"
         className={`${styles.logCell} ${styles.logCellEditable}`}
-        contentEditable
-        suppressContentEditableWarning
         spellCheck={false}
-        role="textbox"
-        tabIndex={0}
+        defaultValue={value}
         aria-label={`${LOG_FIELD_LABELS[field]} log entry`}
-        onBlur={(event) => commitLogUpdate(row, field, event.currentTarget.textContent ?? "")}
+        onBlur={(event) => commitLogUpdate(row, field, event.currentTarget.value)}
         onKeyDown={(event) => handleLogKeyDown(event, value)}
-      >
-        {value}
-      </div>
+      />
     ),
     [commitLogUpdate, handleLogKeyDown],
   );
@@ -809,6 +805,7 @@ export default function Qr() {
         <Activity mode={showTextarea ? "visible" : "hidden"}>
           <textarea
             className={styles.textarea}
+            aria-label="Route list"
             placeholder={"GALX\tCP39\tC.2\t09:30 AM\t100"}
             value={input}
             onChange={(e) => setInput(e.target.value)}
@@ -823,6 +820,7 @@ export default function Qr() {
           </button>
           <textarea
             className={styles.textarea}
+            aria-label="Door list"
             placeholder={"123    122    121    120    119"}
             value={doorsInput}
             onChange={(e) => setDoorsInput(e.target.value)}
@@ -885,7 +883,7 @@ export default function Qr() {
             const assignedRowId = doorAssignments.get(door);
             const assignedRow = assignedRowId ? allRowsById.get(assignedRowId) : undefined;
             return (
-              // biome-ignore lint/a11y/noStaticElementInteractions: drop zone for drag-and-drop
+              // oxlint-disable-next-line jsx-a11y/no-static-element-interactions
               <div
                 key={door}
                 className={styles.doorSlot}
@@ -939,7 +937,7 @@ export default function Qr() {
         </div>
       )}
       {recentDepartures.length > 0 && (
-        // biome-ignore lint/a11y/noStaticElementInteractions: drop zone for drag-and-drop
+        // oxlint-disable-next-line jsx-a11y/no-static-element-interactions
         <div
           className={styles.recentDepartures}
           onDragOver={(e) => e.preventDefault()}

@@ -5,10 +5,10 @@ import Header from "@/components/Header";
 import LaborT from "@/components/LaborT";
 import Summary from "@/components/Summary";
 import { getQRCode } from "@/lib/utils/getQRCode";
-import education from "@/public/education.json";
-import labors from "@/public/labors.json";
-import skills from "@/public/skills.json";
-import summary from "@/public/summary.json";
+import education from "@/src/data/education.json";
+import labors from "@/src/data/labors.json";
+import skills from "@/src/data/skills.json";
+import summary from "@/src/data/summary.json";
 import { publicEnv } from "@/src/env";
 
 export const Route = createFileRoute("/t")({

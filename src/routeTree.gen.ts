@@ -12,7 +12,6 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as TRouteImport } from './routes/t'
 import { Route as QRouteImport } from './routes/q'
 import { Route as PRouteImport } from './routes/p'
-import { Route as CRouteImport } from './routes/c'
 import { Route as BRouteImport } from './routes/b'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -31,11 +30,6 @@ const PRoute = PRouteImport.update({
   path: '/p',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CRoute = CRouteImport.update({
-  id: '/c',
-  path: '/c',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const BRoute = BRouteImport.update({
   id: '/b',
   path: '/b',
@@ -50,7 +44,6 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/b': typeof BRoute
-  '/c': typeof CRoute
   '/p': typeof PRoute
   '/q': typeof QRoute
   '/t': typeof TRoute
@@ -58,7 +51,6 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/b': typeof BRoute
-  '/c': typeof CRoute
   '/p': typeof PRoute
   '/q': typeof QRoute
   '/t': typeof TRoute
@@ -67,23 +59,21 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/b': typeof BRoute
-  '/c': typeof CRoute
   '/p': typeof PRoute
   '/q': typeof QRoute
   '/t': typeof TRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/b' | '/c' | '/p' | '/q' | '/t'
+  fullPaths: '/' | '/b' | '/p' | '/q' | '/t'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/b' | '/c' | '/p' | '/q' | '/t'
-  id: '__root__' | '/' | '/b' | '/c' | '/p' | '/q' | '/t'
+  to: '/' | '/b' | '/p' | '/q' | '/t'
+  id: '__root__' | '/' | '/b' | '/p' | '/q' | '/t'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BRoute: typeof BRoute
-  CRoute: typeof CRoute
   PRoute: typeof PRoute
   QRoute: typeof QRoute
   TRoute: typeof TRoute
@@ -112,13 +102,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/c': {
-      id: '/c'
-      path: '/c'
-      fullPath: '/c'
-      preLoaderRoute: typeof CRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/b': {
       id: '/b'
       path: '/b'
@@ -139,7 +122,6 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BRoute: BRoute,
-  CRoute: CRoute,
   PRoute: PRoute,
   QRoute: QRoute,
   TRoute: TRoute,

@@ -3,23 +3,14 @@ import Description from "@/components/Description";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import LaborT from "@/components/LaborT";
-import Summary from "@/components/Summary";
-import { getQRCode } from "@/lib/utils/getQRCode";
-import education from "@/public/education.json";
-import labors from "@/public/labors.json";
-import skills from "@/public/skills.json";
-import summary from "@/public/summary.json";
-import { publicEnv } from "@/src/env";
+import education from "@/src/data/education.json";
+import labors from "@/src/data/labors.json";
+import skills from "@/src/data/skills.json";
 
 export const Route = createFileRoute("/p")({
   head: () => ({
     meta: [{ title: "⇗💻" }, { name: "description", content: "❤️" }],
   }),
-  loader: () =>
-    getQRCode({
-      text: publicEnv.url,
-      color: "oklab(0 0 0)",
-    }),
   component: Printable,
 });
 
@@ -30,7 +21,6 @@ function Printable() {
     <div className="resume">
       <main>
         <Header phone text={text} printPdf />
-        <Summary summary={summary.summary} />
         <h2 className="title" style={{ textDecoration: "underline" }}>
           Experience
         </h2>

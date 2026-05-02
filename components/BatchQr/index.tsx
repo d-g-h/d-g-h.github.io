@@ -194,6 +194,7 @@ export default function BatchQr() {
               <textarea
                 id={INPUT_ID}
                 className={styles.textarea}
+                aria-label="TBA list"
                 value={input}
                 onChange={(event) => setInput(event.target.value)}
                 placeholder={"TBA123456789000\nTBA123456789001\nTBA123456789002"}

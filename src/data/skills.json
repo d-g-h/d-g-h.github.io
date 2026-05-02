@@ -1,7 +1,7 @@
 [
   {
     "key": "3",
-    "name": "PostgreSQL, MySQL, IBM Cloud, Heroku, AWS S3, AWS Lambda, AWS Lex, Cassandra, CouchDB, Redis, Azure"
+    "name": "PostgreSQL, MySQL, IBM Cloud, Heroku, AWS S3, AWS Lambda, AWS Lex, Cassandra, CouchDB, Redis, Azure, SQLite"
   },
   {
     "key": "2",
@@ -9,7 +9,7 @@
   },
   {
     "key": "1",
-    "name": "Git, GitHub Actions, Docker, Chrome DevTools, SonarLint, ESLint, Prettier, Jest, npm, Node.js, GitHub Actions, pino, Datadog"
+    "name": "Git, GHA, Docker, Chrome DevTools, oxlint, oxfmt, Jest, npm, Node.js, pino, Datadog"
   },
   {
     "key": "0",

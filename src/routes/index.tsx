@@ -3,8 +3,8 @@ import Description from "@/components/Description";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Labor from "@/components/Labor";
-import education from "@/public/education.json";
-import labors from "@/public/labors.json";
+import education from "@/src/data/education.json";
+import labors from "@/src/data/labors.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({

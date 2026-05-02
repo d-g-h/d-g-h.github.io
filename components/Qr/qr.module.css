@@ -235,6 +235,14 @@
   white-space: pre;
   color: oklch(0.3 0 0);
   border-bottom: 1px solid oklch(0.95 0 0);
+  background: transparent;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  box-sizing: border-box;
+  font: inherit;
+  min-width: 0;
+  width: 100%;
 }
 
 .logCellEditable {
