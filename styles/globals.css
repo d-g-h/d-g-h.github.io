@@ -1,9 +1,9 @@
 :root {
-  --light-gray-color: #adbac7;
-  --dark-gray-color: #22272e;
-  --white-color: #ffffff;
-  --blue-color: #539bf5;
-  --lime-color: #8ddb8c;
+  --light-gray-color: oklch(0.7829 0.0235 248.13);
+  --dark-gray-color: oklch(0.2708 0.0149 256.8);
+  --white-color: oklab(1 0 0);
+  --blue-color: oklch(0.6841 0.152 255.12);
+  --lime-color: oklch(0.8212 0.1333 143.96);
   --anchor-space: 0.7rem;
 }
 

@@ -1,8 +1,11 @@
 import QRCode from "qrcode";
 
+const QR_RENDER_DARK_COLOR = "#000000";
+const QR_RENDER_LIGHT_COLOR = "#00000000";
+
 export const getQRCode = async ({
   text,
-  color = "#000",
+  color = "oklab(0 0 0)",
   width = 100,
   margin = 2,
 }: {
@@ -17,13 +20,14 @@ export const getQRCode = async ({
     width,
     margin,
     color: {
-      dark: color,
-      light: "#0000",
+      dark: QR_RENDER_DARK_COLOR,
+      light: QR_RENDER_LIGHT_COLOR,
     },
   });
 
   return svg
     .trim()
+    .replaceAll(QR_RENDER_DARK_COLOR, color)
     .replace(/[\n\r]/g, "")
     .replace(/"/g, "'")
     .replace(/>\s+</g, "><");

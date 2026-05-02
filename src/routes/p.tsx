@@ -18,7 +18,7 @@ export const Route = createFileRoute("/p")({
   loader: () =>
     getQRCode({
       text: publicEnv.url,
-      color: "#000",
+      color: "oklab(0 0 0)",
     }),
   component: Printable,
 });

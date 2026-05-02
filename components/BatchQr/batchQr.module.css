@@ -1,8 +1,8 @@
 .shell {
   min-height: 100vh;
   padding: 0;
-  background: #fff;
-  color: #000;
+  background: oklab(1 0 0);
+  color: oklab(0 0 0);
 }
 
 .panel {
@@ -73,7 +73,7 @@
   padding: 0.5rem;
   border: none;
   outline: none;
-  background: #fff;
+  background: oklab(1 0 0);
   color: inherit;
   font-family: monospace;
   font-size: 1rem;
@@ -103,7 +103,7 @@
 .smallButton {
   border: none;
   background: none;
-  color: #000;
+  color: oklab(0 0 0);
   cursor: pointer;
   font-weight: 400;
 }
@@ -176,7 +176,7 @@
   display: grid;
   gap: 0.4rem;
   padding: 0.45rem;
-  background: #fff;
+  background: oklab(1 0 0);
   border: none;
   box-shadow: none;
   color: inherit;
@@ -199,7 +199,7 @@
   display: grid;
   place-items: center;
   padding: 0;
-  background: #fff;
+  background: oklab(1 0 0);
   box-sizing: border-box;
 }
 

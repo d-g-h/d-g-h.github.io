@@ -18,7 +18,7 @@ export const Route = createFileRoute("/t")({
   loader: () =>
     getQRCode({
       text: `${publicEnv.url}\t`,
-      color: "#539bf5",
+      color: "oklch(0.6841 0.152 255.12)",
     }),
   component: TextResume,
 });

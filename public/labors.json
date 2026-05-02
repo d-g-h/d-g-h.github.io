@@ -6,7 +6,7 @@
     "start": "2023-07",
     "descriptions": [
       {
-        "description": "Owned end-to-end development of full-stack web and mobile applications using Next.js, Node.js, Expo, TypeScript, React, and React Native, delivering user-facing features from concept through production"
+        "description": "Owned end-to-end development of full-stack web and mobile applications using TanStack, Next.js, Node.js, Expo, TypeScript, React, and React Native, delivering user-facing features from concept through production"
       },
       {
         "description": "Designed and integrated two healthcare applications using the Canvas API, implementing Cloudflare Worker services with KV caching to eliminate redundant authentication requests and reduce external API traffic by 800+ requests per day"

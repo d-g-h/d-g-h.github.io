@@ -5,15 +5,15 @@
   },
   {
     "key": "2",
-    "name": "GraphQL, Express.js, Next.js, React, React Native, Expo, Angular, Vue, D3.js, NgRX, Redux, zustand, RxJS, webpack, Tailwind CSS"
+    "name": "Vite, TanStack, GraphQL, Express.js, Next.js, React, React Native, Expo, Angular, Vue, D3.js, NgRX, Redux, zustand, RxJS, webpack, Tailwind CSS"
   },
   {
     "key": "1",
-    "name": "Git, Docker, Chrome DevTools, SonarLint, ESLint, Prettier, Jest, npm, Node.js, GitHub Actions, pino, Datadog"
+    "name": "Git, GitHub Actions, Docker, Chrome DevTools, SonarLint, ESLint, Prettier, Jest, npm, Node.js, GitHub Actions, pino, Datadog"
   },
   {
     "key": "0",
-    "name": "HTML5, CSS3, JavaScript, TypeScript, PHP, Ruby on Rails, Python, SQL, NoSQL, Playwright, Jest"
+    "name": "HTML, CSS, JavaScript, TypeScript, PHP, Ruby on Rails, Python, SQL, NoSQL, Playwright, Jest"
   },
   {
     "key": "ATS",

@@ -15,8 +15,8 @@ function QrPage() {
     const originalBg = document.body.style.backgroundColor;
     const originalColor = document.body.style.color;
 
-    document.body.style.backgroundColor = "#FFF";
-    document.body.style.color = "#000";
+    document.body.style.backgroundColor = "oklab(1 0 0)";
+    document.body.style.color = "oklab(0 0 0)";
 
     return () => {
       document.body.style.backgroundColor = originalBg;
