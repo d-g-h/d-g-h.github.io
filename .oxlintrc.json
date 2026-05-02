@@ -1,0 +1,38 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "env": {
+    "browser": true,
+    "es2022": true,
+    "node": true,
+    "vitest": true
+  },
+  "plugins": ["oxc", "typescript", "unicorn", "react", "jsx-a11y"],
+  "categories": {
+    "correctness": "error"
+  },
+  "settings": {
+    "react": {
+      "version": "19.2.5"
+    }
+  },
+  "ignorePatterns": ["dist/**", "coverage/**", "src/routeTree.gen.ts"],
+  "rules": {
+    "no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_",
+        "caughtErrorsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_"
+      }
+    ],
+    "jsx-a11y/no-static-element-interactions": "error",
+    "jsx-a11y/prefer-tag-over-role": "error",
+    "prefer-const": "warn",
+    "react/exhaustive-deps": "warn",
+    "react/no-danger": "error",
+    "react/react-in-jsx-scope": "off",
+    "typescript/consistent-type-imports": "warn",
+    "typescript/no-explicit-any": "warn",
+    "typescript/no-non-null-assertion": "warn"
+  }
+}

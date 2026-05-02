@@ -781,7 +781,7 @@ export default function Qr() {
 
   const renderEditableCell = useCallback(
     (row: QRLogRow, field: LogField, value: string) => (
-      // biome-ignore lint/a11y/useSemanticElements: contentEditable cell is intentional.
+      // oxlint-disable-next-line jsx-a11y/prefer-tag-over-role
       <div
         className={`${styles.logCell} ${styles.logCellEditable}`}
         contentEditable
@@ -885,7 +885,7 @@ export default function Qr() {
             const assignedRowId = doorAssignments.get(door);
             const assignedRow = assignedRowId ? allRowsById.get(assignedRowId) : undefined;
             return (
-              // biome-ignore lint/a11y/noStaticElementInteractions: drop zone for drag-and-drop
+              // oxlint-disable-next-line jsx-a11y/no-static-element-interactions
               <div
                 key={door}
                 className={styles.doorSlot}
@@ -939,7 +939,7 @@ export default function Qr() {
         </div>
       )}
       {recentDepartures.length > 0 && (
-        // biome-ignore lint/a11y/noStaticElementInteractions: drop zone for drag-and-drop
+        // oxlint-disable-next-line jsx-a11y/no-static-element-interactions
         <div
           className={styles.recentDepartures}
           onDragOver={(e) => e.preventDefault()}

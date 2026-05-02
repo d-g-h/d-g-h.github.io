@@ -21,7 +21,7 @@ export default function Header({ phone, text, printPdf }: Readonly<HeaderProps>)
   return (
     <header>
       <div className={styles.container}>
-        {/* biome-ignore lint/security/noDangerouslySetInnerHtml: SVG from trusted source */}
+        {/* oxlint-disable-next-line react/no-danger */}
         {text && <div className={styles.qr} dangerouslySetInnerHTML={{ __html: text }} />}
         <h1 className={styles.name}>
           {printPdf ? <span>{name}</span> : <a href={githubUrl}>{name}</a>}

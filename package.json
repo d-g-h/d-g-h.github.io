@@ -8,8 +8,9 @@
     "dev": "vite dev",
     "dev:inspect": "vite dev --host 0.0.0.0 --debug",
     "start": "vite preview",
-    "lint": "biome check",
-    "format": "biome format --write",
+    "lint": "oxlint",
+    "format": "oxfmt --write",
+    "format:check": "oxfmt --check",
     "test": "vitest",
     "test:ci": "vitest run --coverage"
   },
@@ -22,7 +23,6 @@
     "zustand": "^5.0.12"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.13",
     "@tanstack/router-plugin": "latest",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
@@ -34,6 +34,8 @@
     "@vitejs/plugin-react": "latest",
     "@vitest/coverage-v8": "latest",
     "jsdom": "latest",
+    "oxfmt": "^0.47.0",
+    "oxlint": "^1.62.0",
     "typescript": "6.0.3",
     "vite": "latest",
     "vitest": "latest"

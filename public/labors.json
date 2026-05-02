@@ -18,7 +18,7 @@
         "description": "Redesigned asynchronous job execution by introducing idempotent workflows, batching strategies, and explicit state tracking to ensure consistent behavior under scheduled serverless runtimes"
       },
       {
-        "description": "Evaluated and improved edge-based cron architectures by uncovering race conditions and failure modes, enabling predictable and maintainable background processing"
+        "description": "Evaluated and improved edge cron architectures by uncovering race conditions and failure modes, enabling predictable and maintainable background processing"
       },
       {
         "description": "Partnered with stakeholders to define product scope, UX tradeoffs, and technical feasibility, aligning engineering decisions with business objectives"
@@ -84,7 +84,7 @@
         "description": "Strengthened backend service reliability by refactoring Node.js microservices, increasing test coverage by 85% and reducing production regressions"
       },
       {
-        "description": "Applied functional programming and test-driven development practices to produce maintainable, predictable codebases"
+        "description": "Applied functional programming and test-driven development practices to produce maintainable, predictable code"
       },
       {
         "description": "Delivered iterative product improvements in partnership with product and design teams using Agile methodologies"
@@ -103,13 +103,7 @@
     "end": "2018-08",
     "descriptions": [
       {
-        "description": "Modernized legacy jQuery-based UI components by rebuilding them with React, Angular, TypeScript, and SASS as part of a centralized design system"
-      },
-      {
-        "description": "Diagnosed and optimized frontend performance bottlenecks using Chrome DevTools, reducing average render times by approximately 700ms"
-      },
-      {
-        "description": "Developed a Python-based content management system to centralize documentation for the Infor Design System"
+        "description": "Modernized legacy jQuery content management system to centralize documentation for the Infor Design System"
       },
       {
         "description": "Extended the CMS by creating four reusable Wagtail components, improving content authoring efficiency for designers"
