@@ -40,6 +40,13 @@ exports[`Header > renders Header component correctly 1`] = `
           github.com/profile
         </a>
       </div>
+      <div>
+        <a
+          href="tel:+17188675309"
+        >
+          7188675309
+        </a>
+      </div>
     </div>
   </header>
 </div>
@@ -140,6 +147,13 @@ exports[`Header > renders qr code when url is defined 1`] = `
           href="https://github.com/profile"
         >
           github.com/profile
+        </a>
+      </div>
+      <div>
+        <a
+          href="tel:+17188675309"
+        >
+          7188675309
         </a>
       </div>
     </div>

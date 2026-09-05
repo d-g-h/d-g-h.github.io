@@ -963,6 +963,7 @@ export default function Qr() {
         </div>
       )}
 
+      {/* oxlint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
       <ul
         className={styles.grid}
         onDragOver={(e) => e.preventDefault()}

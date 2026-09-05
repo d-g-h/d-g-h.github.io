@@ -51,7 +51,7 @@ describe("Header", () => {
       screen.getByText(shortenerLink({ url: env.VITE_GITHUB, link: "github.com" })).closest("a"),
     ).toHaveAttribute("href", env.VITE_GITHUB);
 
-    expect(screen.queryByText(env.VITE_PHONE)).not.toBeInTheDocument();
+    expect(screen.queryByText(env.VITE_PHONE)).toBeInTheDocument();
   });
 
   it("renders text-only values when printPdf is true", () => {

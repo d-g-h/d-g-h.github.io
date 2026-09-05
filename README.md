@@ -44,7 +44,7 @@ prod
 npm run build
 ```
 
-preview production build
+dev
 
 ```
 npm run start

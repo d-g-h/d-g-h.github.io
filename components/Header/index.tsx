@@ -3,12 +3,11 @@ import shortenerLink from "@/lib/utils/shortenerLink";
 import { publicEnv } from "@/src/env";
 
 type HeaderProps = {
-  phone?: boolean;
   text?: string;
   printPdf?: boolean;
 };
 
-export default function Header({ phone, text, printPdf }: Readonly<HeaderProps>) {
+export default function Header({ text, printPdf }: Readonly<HeaderProps>) {
   const name = publicEnv.name;
   const githubUrl = publicEnv.github;
   const emailText = publicEnv.email;
@@ -35,7 +34,7 @@ export default function Header({ phone, text, printPdf }: Readonly<HeaderProps>)
           {printPdf ? <span>{linkedInLabel}</span> : <a href={linkedInUrl}>{linkedInLabel}</a>}
         </div>
         <div>{printPdf ? <span>{githubLabel}</span> : <a href={githubUrl}>{githubLabel}</a>}</div>
-        {phone && phoneNumber && (
+        {phoneNumber && (
           <div>
             {printPdf ? (
               <span>{phoneNumber}</span>
