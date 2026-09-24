@@ -28,4 +28,21 @@ describe("BatchQr", () => {
       expect(screen.getAllByRole("button", { name: /^Toggle TBA/ })).toHaveLength(66);
     });
   });
+
+  it("restores saved input and progress", () => {
+    localStorage.setItem(
+      "batch-tba-qr-state",
+      JSON.stringify({
+        input: "TBA123456789001",
+        items: [{ id: "saved", tba: "TBA123456789001", svg: "<svg />", completed: true }],
+        filter: "completed",
+        showTextarea: true,
+      }),
+    );
+
+    render(<BatchQr />);
+
+    expect(screen.getByLabelText("TBA list")).toHaveValue("TBA123456789001");
+    expect(screen.getByRole("button", { name: "Toggle TBA123456789001" })).toBeInTheDocument();
+  });
 });

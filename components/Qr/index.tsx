@@ -210,7 +210,7 @@ export default function Qr() {
 
   const [isPending, startTransition] = useTransition();
   const [error, setError] = useState<string | null>(null);
-  const [activeWave, setActiveWave] = useState(WAVE_ALL);
+  const [selectedWave, setActiveWave] = useState(WAVE_ALL);
   const [doorFilter, setDoorFilter] = useState<"all" | "empty" | "full">("all");
   const [isCopied, setIsCopied] = useState(false);
   const [deleteArmedId, setDeleteArmedId] = useState<string | null>(null);
@@ -274,10 +274,7 @@ export default function Qr() {
     return tabs;
   }, [rows]);
 
-  useEffect(() => {
-    if (waveTabs.some((tab) => tab.key === activeWave)) return;
-    setActiveWave(WAVE_ALL);
-  }, [activeWave, waveTabs]);
+  const activeWave = waveTabs.some((tab) => tab.key === selectedWave) ? selectedWave : WAVE_ALL;
 
   useEffect(
     () => () => {

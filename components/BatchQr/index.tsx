@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import styles from "@/components/BatchQr/batchQr.module.css";
 import { MAX_TBA_COUNT, parseBatchTbas } from "@/lib/utils/batchTbas";
 import { getQRCode } from "@/lib/utils/getQRCode";
@@ -9,6 +9,9 @@ import { svgStringToElement } from "@/lib/utils/svg";
 const STORAGE_KEY = "batch-tba-qr-state";
 const INPUT_ID = "batch-tba-input";
 const ERROR_ID = "batch-tba-error";
+const subscribeToHydration = () => () => {};
+const getClientSnapshot = () => true;
+const getServerSnapshot = () => false;
 
 type BatchQrItem = {
   id: string;
@@ -45,29 +48,30 @@ function readStoredState(): StoredBatchState | null {
 }
 
 export default function BatchQr() {
-  const gridRef = useRef<HTMLElement | null>(null);
-  const [input, setInput] = useState("");
-  const [items, setItems] = useState<BatchQrItem[]>([]);
-  const [filter, setFilter] = useState<ProgressFilter>("all");
-  const [error, setError] = useState<string | null>(null);
-  const [isHydrated, setIsHydrated] = useState(false);
-  const [isGenerating, setIsGenerating] = useState(false);
-  const [showTextarea, setShowTextarea] = useState(true);
+  const isHydrated = useSyncExternalStore(
+    subscribeToHydration,
+    getClientSnapshot,
+    getServerSnapshot,
+  );
 
-  useEffect(() => {
-    const stored = readStoredState();
-    if (stored) {
-      setInput(stored.input ?? "");
-      setItems(stored.items);
-      setFilter(
-        stored.filter === "open" || stored.filter === "completed" || stored.filter === "all"
-          ? stored.filter
-          : "all",
-      );
-      setShowTextarea(stored.showTextarea ?? true);
-    }
-    setIsHydrated(true);
-  }, []);
+  return <BatchQrContent key={isHydrated ? "client" : "server"} isHydrated={isHydrated} />;
+}
+
+function BatchQrContent({ isHydrated }: { isHydrated: boolean }) {
+  const gridRef = useRef<HTMLElement | null>(null);
+  const [storedState] = useState(() => (isHydrated ? readStoredState() : null));
+  const [input, setInput] = useState(storedState?.input ?? "");
+  const [items, setItems] = useState<BatchQrItem[]>(storedState?.items ?? []);
+  const [filter, setFilter] = useState<ProgressFilter>(
+    storedState?.filter === "open" ||
+      storedState?.filter === "completed" ||
+      storedState?.filter === "all"
+      ? storedState.filter
+      : "all",
+  );
+  const [error, setError] = useState<string | null>(null);
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [showTextarea, setShowTextarea] = useState(storedState?.showTextarea ?? true);
 
   useEffect(() => {
     if (!isHydrated) return;
