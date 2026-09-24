@@ -1,30 +1,36 @@
 [
   {
     "key": "5",
-    "title": "Senior Full-Stack Software Engineer / Freelance Consultant",
+    "title": "Technical Implementation Consultant / Senior Full-Stack Software Engineer",
     "location": "Remote",
-    "start": "2012-07",
+    "start": "2023-07",
     "descriptions": [
       {
-        "description": "Owned end-to-end development of full-stack web and mobile applications using TanStack, Next.js, Node.js, Expo, TypeScript, React, and React Native, delivering user-facing features from concept through production"
+        "description": "Led end-to-end delivery of healthcare SaaS applications, translating business, workflow, and technical requirements into production-ready web and mobile features."
       },
       {
-        "description": "Designed and integrated two healthcare applications using the Canvas API, implementing Cloudflare Worker services with KV caching to eliminate redundant authentication requests and reduce external API traffic by 800+ requests per day"
+        "description": "Designed and integrated two healthcare applications using the Canvas API, supporting clinical workflows through API-first implementation and reliable data exchange."
       },
       {
-        "description": "Identified and resolved a production defect in a Supabase Edge Function notification system that caused duplicate emails to hundreds of users, restoring customer trust and operational reliability"
+        "description": "Partnered with stakeholders to define product scope, implementation priorities, UX tradeoffs, and technical feasibility, aligning delivery plans with business objectives."
       },
       {
-        "description": "Redesigned asynchronous job execution by introducing idempotent workflows, batching strategies, and explicit state tracking to ensure consistent behavior under scheduled serverless runtimes"
+        "description": "Led a zero-downtime migration from a legacy platform to a unified system, validating data integrity, coordinating rollout steps, and reducing implementation risk."
       },
       {
-        "description": "Evaluated and improved edge cron architectures by uncovering race conditions and failure modes, enabling predictable and maintainable background processing"
+        "description": "Implemented Cloudflare Worker services with KV caching to reduce redundant authentication requests and lower external API traffic by 800+ requests per day."
       },
       {
-        "description": "Partnered with stakeholders to define product scope, UX tradeoffs, and technical feasibility, aligning engineering decisions with business objectives"
+        "description": "Resolved a production defect in a Supabase Edge Function notification system that caused duplicate emails to hundreds of users, restoring operational reliability and customer trust."
       },
       {
-        "description": "Led a zero-downtime data migration from a legacy platform to a unified system, validating data integrity and coordinating a phased rollout"
+        "description": "Redesigned asynchronous workflows using idempotent job execution, batching, and explicit state tracking to improve predictability under scheduled serverless runtimes."
+      },
+      {
+        "description": "Identified race conditions, failure modes, and process gaps in edge cron workflows, improving implementation reliability and maintainability."
+      },
+      {
+        "description": "Collaborated with technical and non-technical stakeholders to clarify requirements, surface risks, and support successful product delivery in ambiguous environments."
       }
     ]
   },
@@ -37,60 +43,50 @@
     "end": "2023-06",
     "descriptions": [
       {
-        "description": "Shipped six customer-facing features across Discovery Topics, Talk, and Member Pages using Next.js, Ruby on Rails, TypeScript, React, Tailwind CSS, GraphQL, and experimentation tooling"
+        "description": "Shipped six customer-facing features across Discovery Topics, Talk, and Member Pages using Next.js, Ruby on Rails, TypeScript, React, Tailwind CSS, GraphQL, and experimentation tooling."
       },
       {
-        "description": "Improved release confidence and delivery speed by introducing code coverage tooling, leading focused code reviews, and pairing with engineers, reducing QA cycles and cutting deployment time by 31%"
+        "description": "Improved release confidence and delivery speed by introducing code coverage tooling, leading focused code reviews, and pairing with engineers, reducing QA cycles and cutting deployment time by 31%."
       },
       {
-        "description": "Designed, built, and maintained 10+ accessible, reusable UI components within the TED Design System, supporting consistent product experiences across teams"
+        "description": "Designed, built, and maintained 10+ accessible, reusable UI components within the TED Design System, supporting consistent product experiences across teams."
       },
       {
-        "description": "Drove cross-functional collaboration with frontend, backend, design, and product partners using Agile practices to deliver features with shared ownership"
+        "description": "Drove cross-functional collaboration with frontend, backend, design, and product partners using Agile practices to deliver features with shared ownership."
       }
     ]
   },
   {
     "key": "3",
-    "title": "Software Developer",
+    "title": "Software Engineer",
     "location": "New York, NY",
-    "company": "Kyndryl",
-    "start": "2021-08",
+    "company": "IBM / Kyndryl",
+    "start": "2018-08",
     "end": "2022-06",
     "descriptions": [
       {
-        "description": "Designed and built an internal ingestion and migration tool to transition content from an IBM non-relational CMS to SharePoint, supporting the migration of 20,000+ enterprise sites"
+        "description": "Designed and built an internal ingestion and migration tool to transition content from a legacy non-relational CMS to SharePoint, supporting the migration of 20,000+ enterprise sites."
       },
       {
-        "description": "Delivered three internal single-page applications and supporting backend services using Vue.js, TypeScript, Node.js, and CouchDB to streamline employee workflows"
-      }
-    ]
-  },
-  {
-    "key": "2",
-    "title": "Software Engineer",
-    "location": "New York, NY",
-    "company": "IBM",
-    "start": "2018-08",
-    "end": "2021-08",
-    "descriptions": [
-      {
-        "description": "Built accessible, data-driven user interfaces and visualizations using Vue.js, D3.js, TypeScript, HTML, and CSS to support internal enterprise platforms"
+        "description": "Translated complex migration requirements into structured delivery steps, helping internal stakeholders move legacy content into a unified enterprise platform."
       },
       {
-        "description": "Unified legacy APIs and Cassandra data through GraphQL services that powered reusable components for forms, dashboards, and profile pages"
+        "description": "Delivered three internal single-page applications and supporting backend services using Vue.js, TypeScript, Node.js, and CouchDB to streamline employee workflows."
       },
       {
-        "description": "Strengthened backend service reliability by refactoring Node.js microservices, increasing test coverage by 85% and reducing production regressions"
+        "description": "Built accessible, data-driven user interfaces and visualizations using Vue.js, D3.js, TypeScript, HTML, and CSS to support internal enterprise platforms."
       },
       {
-        "description": "Applied functional programming and test-driven development practices to produce maintainable, predictable code"
+        "description": "Unified legacy APIs and Cassandra data through GraphQL services that powered reusable components for forms, dashboards, and profile pages."
       },
       {
-        "description": "Delivered iterative product improvements in partnership with product and design teams using Agile methodologies"
+        "description": "Strengthened backend service reliability by refactoring Node.js microservices, increasing test coverage by 85% and reducing production regressions."
       },
       {
-        "description": "Supported hiring and onboarding by developing technical assessments and onboarding documentation for new engineers"
+        "description": "Delivered iterative product improvements in partnership with product and design teams using Agile methodologies."
+      },
+      {
+        "description": "Supported hiring and onboarding by developing technical assessments and onboarding documentation for new engineers."
       }
     ]
   },
@@ -103,16 +99,16 @@
     "end": "2018-08",
     "descriptions": [
       {
-        "description": "Modernized legacy jQuery content management system to centralize documentation for the Infor Design System"
+        "description": "Modernized a legacy jQuery content management system to centralize documentation for the Infor Design System."
       },
       {
-        "description": "Extended the CMS by creating four reusable Wagtail components, improving content authoring efficiency for designers"
+        "description": "Extended the CMS by creating four reusable Wagtail components, improving content authoring efficiency for designers."
       },
       {
-        "description": "Designed and demonstrated proof-of-concept prototypes to validate new product ideas and technical approaches"
+        "description": "Designed and demonstrated proof-of-concept prototypes to validate new product ideas and technical approaches."
       },
       {
-        "description": "Built a progressive web application using NgRX, AWS Lambda, AWS Lex, and reactive programming patterns"
+        "description": "Built a progressive web application using NgRX, AWS Lambda, AWS Lex, and reactive programming patterns."
       }
     ]
   }
