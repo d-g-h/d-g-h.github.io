@@ -9,25 +9,15 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as TRouteImport } from './routes/t'
-import { Route as QRouteImport } from './routes/q'
-import { Route as PRouteImport } from './routes/p'
-import { Route as BRouteImport } from './routes/b'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BRouteImport } from './routes/b'
+import { Route as PRouteImport } from './routes/p'
+import { Route as QRouteImport } from './routes/q'
+import { Route as TRouteImport } from './routes/t'
 
-const TRoute = TRouteImport.update({
-  id: '/t',
-  path: '/t',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const QRoute = QRouteImport.update({
-  id: '/q',
-  path: '/q',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PRoute = PRouteImport.update({
-  id: '/p',
-  path: '/p',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BRoute = BRouteImport.update({
@@ -35,9 +25,19 @@ const BRoute = BRouteImport.update({
   path: '/b',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const PRoute = PRouteImport.update({
+  id: '/p',
+  path: '/p',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QRoute = QRouteImport.update({
+  id: '/q',
+  path: '/q',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TRoute = TRouteImport.update({
+  id: '/t',
+  path: '/t',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -81,25 +81,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/t': {
-      id: '/t'
-      path: '/t'
-      fullPath: '/t'
-      preLoaderRoute: typeof TRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/q': {
-      id: '/q'
-      path: '/q'
-      fullPath: '/q'
-      preLoaderRoute: typeof QRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/p': {
-      id: '/p'
-      path: '/p'
-      fullPath: '/p'
-      preLoaderRoute: typeof PRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/b': {
@@ -109,11 +95,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/p': {
+      id: '/p'
+      path: '/p'
+      fullPath: '/p'
+      preLoaderRoute: typeof PRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/q': {
+      id: '/q'
+      path: '/q'
+      fullPath: '/q'
+      preLoaderRoute: typeof QRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/t': {
+      id: '/t'
+      path: '/t'
+      fullPath: '/t'
+      preLoaderRoute: typeof TRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
