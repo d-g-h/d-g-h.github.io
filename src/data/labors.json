@@ -1,36 +1,27 @@
 [
   {
     "key": "5",
-    "title": "Technical Implementation Consultant / Senior Full-Stack Software Engineer",
+    "title": "Senior Full-Stack Software Engineer / Freelance Consultant",
     "location": "Remote",
     "start": "2023-07",
     "descriptions": [
       {
-        "description": "Led end-to-end delivery of healthcare SaaS applications, translating business, workflow, and technical requirements into production-ready web and mobile features."
+        "description": "Built a Python web scraper for a bookstore inventory project serving students at a major university in New York City."
       },
       {
-        "description": "Designed and integrated two healthcare applications using the Canvas API, supporting clinical workflows through API-first implementation and reliable data exchange."
+        "description": "Delivered healthcare SaaS web and mobile features, translating business and clinical workflow requirements into production software."
       },
       {
-        "description": "Partnered with stakeholders to define product scope, implementation priorities, UX tradeoffs, and technical feasibility, aligning delivery plans with business objectives."
+        "description": "Designed and integrated two healthcare applications using the Canvas API to support clinical workflows and data exchange."
       },
       {
-        "description": "Led a zero-downtime migration from a legacy platform to a unified system, validating data integrity, coordinating rollout steps, and reducing implementation risk."
+        "description": "Led a zero-downtime migration from a legacy platform to a unified system, validating data integrity and coordinating the rollout."
       },
       {
-        "description": "Implemented Cloudflare Worker services with KV caching to reduce redundant authentication requests and lower external API traffic by 800+ requests per day."
+        "description": "Built Cloudflare Worker services with KV caching, reducing redundant authentication requests and external API traffic by 800+ requests per day."
       },
       {
-        "description": "Resolved a production defect in a Supabase Edge Function notification system that caused duplicate emails to hundreds of users, restoring operational reliability and customer trust."
-      },
-      {
-        "description": "Redesigned asynchronous workflows using idempotent job execution, batching, and explicit state tracking to improve predictability under scheduled serverless runtimes."
-      },
-      {
-        "description": "Identified race conditions, failure modes, and process gaps in edge cron workflows, improving implementation reliability and maintainability."
-      },
-      {
-        "description": "Collaborated with technical and non-technical stakeholders to clarify requirements, surface risks, and support successful product delivery in ambiguous environments."
+        "description": "Fixed a Supabase Edge Function defect that sent duplicate emails to hundreds of users; redesigned asynchronous workflows with idempotent execution, batching, and explicit state tracking."
       }
     ]
   },
@@ -99,16 +90,16 @@
     "end": "2018-08",
     "descriptions": [
       {
-        "description": "Modernized a legacy jQuery content management system to centralize documentation for the Infor Design System."
+        "description": "Developed four reusable Wagtail CMS components in Python, improving content authoring efficiency for designers."
       },
       {
-        "description": "Extended the CMS by creating four reusable Wagtail components, improving content authoring efficiency for designers."
+        "description": "Modernized a legacy jQuery content management system to centralize documentation for the Infor Design System."
       },
       {
         "description": "Designed and demonstrated proof-of-concept prototypes to validate new product ideas and technical approaches."
       },
       {
-        "description": "Built a progressive web application using NgRX, AWS Lambda, AWS Lex, and reactive programming patterns."
+        "description": "Built a progressive web application using Angular, NgRX, AWS Lambda, AWS Lex, and reactive programming patterns."
       }
     ]
   }

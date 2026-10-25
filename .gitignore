@@ -40,3 +40,15 @@ yarn-error.log*
 
 # generated types
 *.tsbuildinfo
+
+# Private resume runtime / disposable artifacts
+.wrangler/
+*.pdf
+*.docx
+/private-resume-*/
+
+# Local Terraform providers, plans, and state
+**/.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan

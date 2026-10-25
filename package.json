@@ -12,17 +12,39 @@
     "format": "oxfmt --write",
     "format:check": "oxfmt --check",
     "test": "vitest",
-    "test:ci": "vitest run --coverage"
+    "test:ci": "vitest run --coverage",
+    "resume:new": "node scripts/resume/cli.mjs resume:new",
+    "resume:list": "node scripts/resume/cli.mjs resume:list",
+    "resume:show": "node scripts/resume/cli.mjs resume:show",
+    "resume:update": "node scripts/resume/cli.mjs resume:update",
+    "resume:render": "node scripts/resume/cli.mjs resume:render",
+    "resume:share": "node scripts/resume/cli.mjs resume:share",
+    "resume:revoke": "node scripts/resume/cli.mjs resume:revoke",
+    "application:new": "node scripts/resume/cli.mjs application:new",
+    "application:list": "node scripts/resume/cli.mjs application:list",
+    "application:update": "node scripts/resume/cli.mjs application:update",
+    "resume:import": "node scripts/resume/cli.mjs career:import",
+    "resume:career:list": "node scripts/resume/cli.mjs career:list",
+    "resume:career:show": "node scripts/resume/cli.mjs career:show",
+    "resume:cloudflare": "node scripts/resume/cloudflare.mjs",
+    "resume:typecheck": "tsc -p workers/resume/tsconfig.json",
+    "resume:dev": "wrangler dev --config workers/resume/wrangler.jsonc --log-level error",
+    "resume:migrate:local": "node scripts/resume/cloudflare.mjs migrate",
+    "resume:build": "wrangler deploy --dry-run --config workers/resume/wrangler.jsonc --outdir /tmp/private-resume-worker-build"
   },
   "dependencies": {
+    "@cloudflare/puppeteer": "^1.4.0",
     "@tanstack/react-router": "latest",
     "@tanstack/react-start": "latest",
+    "pdf-lib": "^1.17.1",
     "qrcode": "^1.5.4",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
+    "zod": "^4.6.7",
     "zustand": "^5.0.16"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261025.1",
     "@tanstack/router-plugin": "latest",
     "@testing-library/jest-dom": "^7.0.1",
     "@testing-library/react": "^16.3.3",
@@ -38,7 +60,8 @@
     "oxlint": "^1.89.0",
     "typescript": "7.0.2",
     "vite": "latest",
-    "vitest": "^5.0.5"
+    "vitest": "^5.0.5",
+    "wrangler": "^4.152.0"
   },
   "overrides": {
     "@types/react": "^19.3.0",
