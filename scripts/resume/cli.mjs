@@ -66,12 +66,12 @@ async function importCareer() {
       .replace(/[^a-z0-9]+/g, "-")
       .replace(/^-|-$/g, "");
   // Known IDs map to existing text only; no invented achievements.
-  const experienceIds = { 5: "consulting", 4: "ted", 3: "ibm", 1: "infor" };
+  const experienceIds = { 5: "consulting", 4: "ted", 3: "kyndryl", 2: "ibm", 1: "infor" };
   const knownBullets = {
     "Designed and integrated two healthcare applications": "consulting-healthcare-api",
     "Built Cloudflare Worker services with KV caching": "consulting-cloudflare-cache",
     "Unified legacy APIs and Cassandra data": "ibm-graphql",
-    "Designed and built an internal ingestion and migration tool": "ibm-migration",
+    "Designed and built an internal ingestion and migration tool": "kyndryl-migration",
     "Strengthened backend service reliability": "ibm-node-reliability",
   };
   const career = {

@@ -24,6 +24,16 @@ Schema migrations run transactionally when the database starts. The deployment h
 
 ## Create, render, and track links
 
+The files in `src/data/` are the master career catalog. Keep the full project history there;
+use a résumé's selections to choose and order the bullets relevant to a particular role.
+Freelance engagements date from 2012 and may overlap full-time employment. IBM and Kyndryl
+are imported as separate employers with their own dates and experience IDs.
+
+Run `resume:import` after editing the catalog to save a new career revision. Existing résumé
+versions and share links keep their original content. To use revised career data, create a
+résumé from the new revision or update an existing résumé with the new `revision_id` and
+matching experience, bullet, skill, and education selections.
+
 ```sh
 npm run resume:import
 npm run resume:new -- --company WCG --role "Full Stack Python Developer" --title "Full Stack Python Developer"

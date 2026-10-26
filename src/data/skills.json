@@ -13,7 +13,11 @@
   },
   {
     "key": "1",
-    "name": "Git, GHA, Docker, Chrome DevTools, oxlint, oxfmt, Jest, npm, Node.js, pino, Datadog"
+    "name": "Git, GitHub Actions, Docker, Terraform, Vault, Hetzner, Cloudflare Workers, Cloudflare KV, Cloudflare R2, Supabase, Chrome DevTools, oxlint, oxfmt, Vitest, Jest, npm, Node.js, Bun, pino, Datadog"
+  },
+  {
+    "key": "media-payments",
+    "name": "Web Audio API, MediaRecorder, FFmpeg, SVG, Canvas, Stripe, Stripe Connect, PayPal"
   },
   {
     "key": "0",
