@@ -1,0 +1,47 @@
+.page {
+  max-width: 52rem;
+  margin: 0 auto;
+  padding: 1.5rem;
+  line-height: 1.6;
+}
+
+.page h1 {
+  font-size: 2.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.page h2 {
+  font-size: 1.3rem;
+  margin-top: 2rem;
+}
+
+.page h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.page p {
+  margin: 0.35rem 0;
+}
+
+.list li {
+  border-top: 1px solid var(--light-gray-color);
+  padding: 1.1rem 0;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.5rem;
+}
+
+.page a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+@media print {
+  .page nav {
+    display: none;
+  }
+}

@@ -14,6 +14,8 @@ export default defineConfig({
       prerender: {
         enabled: true,
         autoSubfolderIndex: true,
+        // Static resumes are copied from public; the prerenderer reads responses as text.
+        filter: ({ path }) => !/\.(pdf|html)$/i.test(path),
       },
     }),
     viteReact(),

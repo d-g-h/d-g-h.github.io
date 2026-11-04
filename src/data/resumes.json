@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Full Stack Developer",
+    "description": "WCG",
+    "pdf": "/resumes/full-stack.pdf",
+    "html": null
+  },
+  {
+    "title": "Full Stack Python Developer",
+    "description": "WCG",
+    "pdf": "/resumes/full-stack-python.pdf",
+    "html": null
+  },
+  {
+    "title": "Python & Healthcare Software Engineering",
+    "description": "WCG",
+    "pdf": "/resumes/python-healthcare.pdf",
+    "html": "/resumes/python-healthcare.html"
+  },
+  {
+    "title": "Full Stack Software Engineer",
+    "description": "Kobalt Labs",
+    "pdf": "/resumes/kobalt-labs.pdf",
+    "html": "/resumes/kobalt-labs.html"
+  },
+  {
+    "title": "Senior Full Stack Engineer",
+    "description": "Kristoffer submission",
+    "pdf": "/resumes/senior-full-stack.pdf",
+    "html": "/resumes/senior-full-stack.html"
+  }
+]

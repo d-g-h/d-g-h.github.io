@@ -16,6 +16,7 @@
 /.vinxi/
 /.tanstack/
 /.playwright-mcp/
+/output/playwright/
 
 # production
 /build
@@ -41,9 +42,9 @@ yarn-error.log*
 # generated types
 *.tsbuildinfo
 
-# Private resume runtime / disposable artifacts
-.wrangler/
+# Local documents; published resumes are tracked
 *.pdf
+!/public/resumes/*.pdf
 *.docx
 /private-resume-*/
 

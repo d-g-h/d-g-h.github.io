@@ -18,6 +18,9 @@ function Home() {
     <div className="resume">
       <main>
         <Header />
+        <nav aria-label="Resume versions">
+          <a href="/resumes/">Browse resumes</a>
+        </nav>
         <div>
           <ul>
             {labors.map((labor) => (

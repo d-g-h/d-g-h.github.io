@@ -10,9 +10,8 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as BRouteImport } from './routes/b'
 import { Route as PRouteImport } from './routes/p'
-import { Route as QRouteImport } from './routes/q'
+import { Route as ResumesRouteImport } from './routes/resumes'
 import { Route as TRouteImport } from './routes/t'
 
 const IndexRoute = IndexRouteImport.update({
@@ -20,19 +19,14 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BRoute = BRouteImport.update({
-  id: '/b',
-  path: '/b',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const PRoute = PRouteImport.update({
   id: '/p',
   path: '/p',
   getParentRoute: () => rootRouteImport,
 } as any)
-const QRoute = QRouteImport.update({
-  id: '/q',
-  path: '/q',
+const ResumesRoute = ResumesRouteImport.update({
+  id: '/resumes',
+  path: '/resumes',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TRoute = TRouteImport.update({
@@ -43,39 +37,35 @@ const TRoute = TRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/b': typeof BRoute
   '/p': typeof PRoute
-  '/q': typeof QRoute
+  '/resumes': typeof ResumesRoute
   '/t': typeof TRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/b': typeof BRoute
   '/p': typeof PRoute
-  '/q': typeof QRoute
+  '/resumes': typeof ResumesRoute
   '/t': typeof TRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/b': typeof BRoute
   '/p': typeof PRoute
-  '/q': typeof QRoute
+  '/resumes': typeof ResumesRoute
   '/t': typeof TRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/b' | '/p' | '/q' | '/t'
+  fullPaths: '/' | '/p' | '/resumes' | '/t'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/b' | '/p' | '/q' | '/t'
-  id: '__root__' | '/' | '/b' | '/p' | '/q' | '/t'
+  to: '/' | '/p' | '/resumes' | '/t'
+  id: '__root__' | '/' | '/p' | '/resumes' | '/t'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  BRoute: typeof BRoute
   PRoute: typeof PRoute
-  QRoute: typeof QRoute
+  ResumesRoute: typeof ResumesRoute
   TRoute: typeof TRoute
 }
 
@@ -88,13 +78,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/b': {
-      id: '/b'
-      path: '/b'
-      fullPath: '/b'
-      preLoaderRoute: typeof BRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/p': {
       id: '/p'
       path: '/p'
@@ -102,11 +85,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/q': {
-      id: '/q'
-      path: '/q'
-      fullPath: '/q'
-      preLoaderRoute: typeof QRouteImport
+    '/resumes': {
+      id: '/resumes'
+      path: '/resumes'
+      fullPath: '/resumes'
+      preLoaderRoute: typeof ResumesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/t': {
@@ -121,9 +104,8 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  BRoute: BRoute,
   PRoute: PRoute,
-  QRoute: QRoute,
+  ResumesRoute: ResumesRoute,
   TRoute: TRoute,
 }
 export const routeTree = rootRouteImport

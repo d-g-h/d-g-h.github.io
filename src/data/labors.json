@@ -64,6 +64,21 @@
       },
       {
         "description": "Built a Python web scraper for a bookstore inventory project serving students at a major university in New York City."
+      },
+      {
+        "description": "Built browser-based logistics tools with React, TypeScript, and Zustand for route staging, dispatch-wave coordination, dock-door assignments, and QR barcode generation."
+      },
+      {
+        "description": "Developed interactive warehouse floorplan editors with pointer-based slot placement, overlap validation, configurable dock doors, and JSON import and export."
+      },
+      {
+        "description": "Implemented route-to-staging assignment logic using dispatch waves, staging lanes, and route types, with persisted manual overrides and composite route identities."
+      },
+      {
+        "description": "Added drag-and-drop dock-door assignments, arrival and departure logging, editable dispatch records, and spreadsheet-ready clipboard exports, preserving operational state across reloads."
+      },
+      {
+        "description": "Created package-tracking QR batches for up to 100 identifiers, with duplicate validation, saved completion progress, and responsive layouts for mobile scanning."
       }
     ]
   },
@@ -117,7 +132,7 @@
     "end": "2021-08",
     "descriptions": [
       {
-        "description": "Built accessible, data-driven user interfaces and visualizations using Vue.js, D3.js, TypeScript, HTML, and CSS to support internal enterprise platforms."
+        "description": "Built internal enterprise applications backed by IBM Cloudant (CouchDB), including accessible, data-driven user interfaces and visualizations using Vue.js, D3.js, TypeScript, HTML, and CSS."
       },
       {
         "description": "Unified legacy APIs and Cassandra data through GraphQL services that powered reusable components for forms, dashboards, and profile pages."

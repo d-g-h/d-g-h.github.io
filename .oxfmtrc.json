@@ -9,5 +9,5 @@
   "trailingComma": "all",
   "arrowParens": "always",
   "sortPackageJson": false,
-  "ignorePatterns": ["AGENTS.md", "src/routeTree.gen.ts"]
+  "ignorePatterns": ["AGENTS.md", "src/routeTree.gen.ts", "public/resumes/*.html"]
 }
