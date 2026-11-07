@@ -6,79 +6,31 @@
     "start": "2012-07",
     "descriptions": [
       {
-        "description": "Owned end-to-end delivery of project-based web and mobile applications using TanStack, Next.js, Node.js, Expo, TypeScript, React, and React Native, from product scope and UX decisions through production releases."
+        "description": "Lead web and mobile product delivery from discovery and UX decisions through production using React, TypeScript, TanStack, Next.js, Node.js, Expo, and React Native."
       },
       {
-        "description": "Delivered healthcare SaaS web and mobile features, translating business and clinical workflow requirements into production software."
+        "description": "Deliver healthcare SaaS features and Canvas API integrations; led a zero-downtime platform migration with phased rollout and data validation."
       },
       {
-        "description": "Designed and integrated two healthcare applications using the Canvas API to support clinical workflows and data exchange."
+        "description": "Improve reliability with idempotent jobs, batching, and state tracking; fixed duplicate notifications affecting hundreds of users and reduced API traffic by 800+ requests per day with Cloudflare Workers and KV."
       },
       {
-        "description": "Led a zero-downtime migration from a legacy platform to a unified system, validating data integrity and coordinating a phased rollout."
+        "description": "Built a multimedia publishing platform with browser recording, waveform editing, synchronized text/audio, FFmpeg processing, PostgreSQL, and R2 storage."
       },
       {
-        "description": "Built Cloudflare Worker services with KV caching, reducing redundant authentication requests and external API traffic by 800+ requests per day."
+        "description": "Integrated Stripe, PayPal, and Stripe Connect with ledger reconciliation, refunds, webhook deduplication, and scoped collaboration permissions."
       },
       {
-        "description": "Resolved a production defect in a Supabase Edge Function notification system that sent duplicate emails to hundreds of users, restoring reliable notification delivery."
+        "description": "Created logistics tools for route staging, dispatch waves, dock-door tracking, interactive floorplans, drag-and-drop assignments, and QR batches of up to 100 tracking IDs."
       },
       {
-        "description": "Redesigned asynchronous workflows with idempotent job execution, batching, and explicit state tracking to make scheduled serverless processing predictable."
+        "description": "Provisioned infrastructure with Terraform, Hetzner, and Cloudflare; automated Docker releases with GitHub Actions, Vault, migrations, and health checks."
       },
       {
-        "description": "Identified race conditions, failure modes, and process gaps in edge cron architectures, improving the reliability and maintainability of background processing."
+        "description": "Partner with stakeholders on scope, priorities, feasibility, and delivery risks; build unit and integration coverage for payments, authorization, media processing, and routes."
       },
       {
-        "description": "Partnered with technical and non-technical stakeholders to define product scope, implementation priorities, UX tradeoffs, and technical feasibility, clarify requirements, and surface delivery risks."
-      },
-      {
-        "description": "Built an independent multimedia publishing platform with React, TypeScript, TanStack Start, Bun, and PostgreSQL, supporting content authoring, chapter organization, audio playback, and sharing."
-      },
-      {
-        "description": "Developed browser-based recording and audio editing tools with waveform visualization, interactive playback timelines, word-level timing controls, synchronized text playback, and mobile touch interactions."
-      },
-      {
-        "description": "Implemented FFmpeg media pipelines for audio and video imports, audio transcoding, noise reduction, and voice/music mixing, with background job tracking and Cloudflare R2 storage."
-      },
-      {
-        "description": "Integrated Stripe and PayPal checkout, creator contributions, and Stripe Connect onboarding, with payment ledger reconciliation, refund handling, and webhook deduplication."
-      },
-      {
-        "description": "Implemented invitation-based collaboration and content access using scoped action tokens, hashed share tokens, expiring grants, and secure cookies to control reading, editing, and contribution permissions."
-      },
-      {
-        "description": "Designed PostgreSQL schemas and migrations for publishing, chapter organization, collaboration, media-processing jobs, and payment records."
-      },
-      {
-        "description": "Provisioned application infrastructure with Terraform, Hetzner, and Cloudflare, including object storage, DNS, origin TLS, firewall rules, and asset caching."
-      },
-      {
-        "description": "Automated container builds and production releases with Docker and GitHub Actions, integrating Vault-based deployment secrets, database migrations, and application health checks."
-      },
-      {
-        "description": "Built unit and integration coverage for authorization boundaries, payment policies, audio processing, timing preservation, and route behavior, with lint, type checking, tests, and builds enforced in CI."
-      },
-      {
-        "description": "Created a responsive SVG composition editor with custom letterforms, shared preview/export layout, and SVG and PNG downloads with image sizing limits for mobile devices."
-      },
-      {
-        "description": "Built a Python web scraper for a bookstore inventory project serving students at a major university in New York City."
-      },
-      {
-        "description": "Built browser-based logistics tools with React, TypeScript, and Zustand for route staging, dispatch-wave coordination, dock-door assignments, and QR barcode generation."
-      },
-      {
-        "description": "Developed interactive warehouse floorplan editors with pointer-based slot placement, overlap validation, configurable dock doors, and JSON import and export."
-      },
-      {
-        "description": "Implemented route-to-staging assignment logic using dispatch waves, staging lanes, and route types, with persisted manual overrides and composite route identities."
-      },
-      {
-        "description": "Added drag-and-drop dock-door assignments, arrival and departure logging, editable dispatch records, and spreadsheet-ready clipboard exports, preserving operational state across reloads."
-      },
-      {
-        "description": "Created package-tracking QR batches for up to 100 identifiers, with duplicate validation, saved completion progress, and responsive layouts for mobile scanning."
+        "description": "Built SVG/PNG composition tools and a Python scraper for a university bookstore inventory project."
       }
     ]
   },
