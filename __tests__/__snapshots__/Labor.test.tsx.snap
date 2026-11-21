@@ -1,0 +1,42 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Labor > renders html correctly 1`] = `
+<div>
+  <li
+    class="_labor_c9b4a5"
+  >
+    <div
+      class="_title_c9b4a5"
+    >
+      Job Title
+    </div>
+    <div
+      class="_highlight_c9b4a5"
+    >
+      Company
+    </div>
+    <div
+      class="_location_c9b4a5"
+    >
+      Location
+    </div>
+    <div
+      class="_time_c9b4a5"
+    >
+      <time
+        datetime="2020-02"
+      >
+        February 2020
+      </time>
+      <span>
+         - 
+      </span>
+      <time
+        datetime="2024-02"
+      >
+        February 2024
+      </time>
+    </div>
+  </li>
+</div>
+`;

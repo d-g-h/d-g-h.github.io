@@ -1,0 +1,18 @@
+import { render, screen } from "@testing-library/react";
+import Description from "@/components/Description";
+
+const DESCRIPTION = "Job description";
+
+describe("Description", () => {
+  it("renders Description", () => {
+    render(<Description description={DESCRIPTION} />);
+
+    const description = screen.getByText(DESCRIPTION);
+
+    expect(description).toBeInTheDocument();
+  });
+  it("renders html correctly", () => {
+    const { container } = render(<Description description={DESCRIPTION} />);
+    expect(container).toMatchSnapshot();
+  });
+});

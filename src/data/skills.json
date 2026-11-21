@@ -1,0 +1,34 @@
+[
+  {
+    "key": "python",
+    "name": "Python, Wagtail CMS, Web scraping"
+  },
+  {
+    "key": "wordpress",
+    "name": "WordPress, Custom PHP themes, Custom post types, CMS templates, Pug"
+  },
+  {
+    "key": "3",
+    "name": "PostgreSQL, MySQL, IBM Cloud, Heroku, AWS S3, AWS Lambda, AWS Lex, Cassandra, CouchDB, IBM Cloudant, Redis, Azure, SQLite"
+  },
+  {
+    "key": "2",
+    "name": "Vite, TanStack, GraphQL, Express.js, Next.js, React, React Native, Expo, Angular, Vue, D3.js, NgRX, Redux, zustand, RxJS, webpack, Tailwind CSS"
+  },
+  {
+    "key": "1",
+    "name": "Git, GitHub Actions, Docker, Terraform, Vault, Hetzner, Cloudflare Workers, Cloudflare KV, Cloudflare R2, Supabase, Chrome DevTools, oxlint, oxfmt, Vitest, Jest, npm, Node.js, Bun, pino, Datadog"
+  },
+  {
+    "key": "media-payments",
+    "name": "Web Audio API, MediaRecorder, FFmpeg, SVG, Canvas, Stripe, Stripe Connect, PayPal"
+  },
+  {
+    "key": "0",
+    "name": "HTML, CSS, JavaScript, TypeScript, PHP, Ruby on Rails, SQL, NoSQL, Playwright, Jest"
+  },
+  {
+    "key": "ATS",
+    "name": "JIRA Bash Markdown WebDriverIO Cypress Responsive Design Mobile Development React.js frontend front-end unix linux user experience fullstack product development Amazon Web Services, CI/CD, Microservices architecture UX design create documentation"
+  }
+]

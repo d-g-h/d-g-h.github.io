@@ -1,0 +1,46 @@
+{
+  "name": "d-g-h",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite dev",
+    "dev:inspect": "vite dev --host 0.0.0.0 --debug",
+    "start": "vite preview",
+    "lint": "oxlint",
+    "format": "oxfmt --write",
+    "format:check": "oxfmt --check",
+    "test": "vitest",
+    "test:ci": "vitest run --coverage"
+  },
+  "dependencies": {
+    "@tanstack/react-router": "latest",
+    "@tanstack/react-start": "latest",
+    "qrcode": "^1.5.4",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@tanstack/router-plugin": "latest",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.3",
+    "@types/node": "26.6.6",
+    "@types/qrcode": "^1.5.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/react-test-renderer": "^19.3.1",
+    "@vitejs/plugin-react": "latest",
+    "@vitest/coverage-v8": "latest",
+    "jsdom": "latest",
+    "oxfmt": "^0.77.0",
+    "oxlint": "^1.92.0",
+    "typescript": "7.0.2",
+    "vite": "latest",
+    "vitest": "^5.1.0"
+  },
+  "overrides": {
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0"
+  }
+}

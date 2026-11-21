@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.qr {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-inline: auto;
+  background: var(--white-color);
+
+  @media print {
+    width: 100px;
+  }
+}
+
+.name {
+  font-size: 1.5rem;
+  margin: 0 0 0.25rem 0;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.75rem;
+
+  @media (min-width: 640px) {
+    justify-content: space-between;
+    flex-direction: row;
+  }
+}

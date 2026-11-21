@@ -1,0 +1,76 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Footer > When skills are not provided > matches snapshot when only education is provided 1`] = `
+<div>
+  <div
+    class="_footer_9078fe"
+  >
+    <div
+      class=""
+    >
+      <h2
+        class="title"
+      >
+        Education
+      </h2>
+      <ul
+        class="sub"
+      >
+        <li>
+          Bachelor's Degree
+        </li>
+        <li>
+          Master's Degree
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Footer > When skills are provided > matches snapshot when skills and education are provided 1`] = `
+<div>
+  <div
+    class="_footer_9078fe"
+  >
+    <div
+      class="_skills_9078fe"
+      style="text-align: left;"
+    >
+      <h2
+        class="title"
+      >
+        Skills
+      </h2>
+      <ul>
+        <li
+          class="_skill_9078fe"
+        >
+          JavaScript
+        </li>
+        <li
+          class="_skill_9078fe"
+        >
+          React
+        </li>
+      </ul>
+    </div>
+    <div
+      class="_education_9078fe"
+    >
+      <h2
+        class="title"
+      >
+        Education
+      </h2>
+      <ul
+        class="sub"
+      >
+        <li>
+          Bachelor's Degree
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,75 @@
+:root {
+  --light-gray-color: oklch(0.7829 0.0235 248.13);
+  --dark-gray-color: oklch(0.2708 0.0149 256.8);
+  --white-color: oklab(1 0 0);
+  --blue-color: oklch(0.6841 0.152 255.12);
+  --lime-color: oklch(0.8212 0.1333 143.96);
+  --anchor-space: 0.7rem;
+}
+
+html {
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    Segoe UI,
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    Fira Sans,
+    Droid Sans,
+    Helvetica Neue,
+    sans-serif;
+}
+
+body {
+  background-color: var(--dark-gray-color);
+  color: var(--light-gray-color);
+  padding: 0;
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  display: block;
+  color: var(--blue-color);
+  margin-bottom: var(--anchor-space);
+  margin-top: var(--anchor-space);
+}
+
+.resume {
+  margin: 0 auto;
+  width: 85%;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.sub {
+  font-size: 0.75rem;
+}
+
+.error {
+  display: flex;
+  justify-content: center;
+  font-size: 10rem;
+}
+
+@media print {
+  body,
+  a {
+    color: var(--dark-gray-color);
+  }
+
+  body {
+    background: white;
+  }
+}

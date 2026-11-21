@@ -1,0 +1,53 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Header > renders Header component correctly 1`] = `
+<div>
+  <header>
+    <div
+      class="_container_a935f8"
+    >
+      <h1
+        class="_name_a935f8"
+      >
+        <a
+          href="https://github.com/profile"
+        >
+          Name Name
+        </a>
+      </h1>
+    </div>
+    <div
+      class="sub _links_a935f8"
+    >
+      <div>
+        <a
+          href="mailto:email@email.email"
+        >
+          email@email.email
+        </a>
+      </div>
+      <div>
+        <a
+          href="https://linkedin.com/in/profile"
+        >
+          linkedin.com/in/profile
+        </a>
+      </div>
+      <div>
+        <a
+          href="https://github.com/profile"
+        >
+          github.com/profile
+        </a>
+      </div>
+      <div>
+        <a
+          href="tel:+17188675309"
+        >
+          7188675309
+        </a>
+      </div>
+    </div>
+  </header>
+</div>
+`;

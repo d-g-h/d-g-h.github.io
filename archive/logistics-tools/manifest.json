@@ -1,0 +1,45 @@
+{
+  "archived_on": "2026-11-03",
+  "snapshots": [
+    {
+      "file": "dispatch-source.tar.gz",
+      "source_commit": "61829ae8b6ecc27801855cea3ccd627a47068202",
+      "prefix": "dispatch/",
+      "file_count": 110,
+      "sha256": "9160fdda423245a465541c251578cf79a6bd345992c327d71a8fdb280eee618b"
+    },
+    {
+      "file": "floorplan-source.tar.gz",
+      "source_commit": "cee4a325c5980b78bb45322e7551d1d9f041d8a5",
+      "prefix": "floorplan/",
+      "file_count": 123,
+      "sha256": "5ecfd45b221d8efdeec9599d5f354e5991e73f7efb7a076198b352301f224077"
+    }
+  ],
+  "retired_paths": [
+    "src/routes/b.tsx",
+    "src/routes/q.tsx",
+    "components/BatchQr/index.tsx",
+    "components/BatchQr/batchQr.module.css",
+    "components/Qr/index.tsx",
+    "components/Qr/qr.module.css",
+    "components/Qr/store.ts",
+    "components/ClearLocalStorageButton/index.tsx",
+    "lib/utils/batchTbas.ts",
+    "lib/utils/displayState.ts",
+    "lib/utils/getRoutePrefix.ts",
+    "lib/utils/parseDoors.ts",
+    "lib/utils/routeKey.ts",
+    "lib/utils/stagingCode.ts",
+    "lib/utils/svg.ts",
+    "lib/utils/waveColors.ts",
+    "lib/utils/waveToMinutes.ts",
+    "__tests__/BatchQr.test.ts",
+    "__tests__/BatchQrComponent.test.tsx",
+    "__tests__/displayState.test.ts",
+    "__tests__/parseDoors.test.ts",
+    "__tests__/svg.test.tsx",
+    "__tests__/waveToMinutes.test.ts"
+  ],
+  "retained_shared_files": ["lib/utils/getQRCode.ts", "__tests__/getQRCode.test.ts"]
+}

@@ -1,0 +1,16 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Summary > renders html correctly 1`] = `
+<div>
+  <h2
+    class="_title_1bc019"
+  >
+    Summary
+  </h2>
+  <p
+    class="_summary_1bc019"
+  >
+    Sum of the summary
+  </p>
+</div>
+`;

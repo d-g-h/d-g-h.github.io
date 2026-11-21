@@ -1,0 +1,23 @@
+.labor {
+  margin-bottom: 0.75rem;
+}
+.title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+.highlight {
+  color: var(--lime-color);
+}
+.time {
+  font-size: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+.location {
+  font-size: 0.75rem;
+}
+
+@media print {
+  .highlight {
+    color: var(--dark-gray-color);
+  }
+}

@@ -1,0 +1,56 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# build output
+/.next/
+/out/
+/.output/
+/dist/
+/.vinxi/
+/.tanstack/
+/.playwright-mcp/
+/output/playwright/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# local env files
+.env*.local
+/private/
+.dev.vars*
+
+# vercel
+.vercel
+
+# generated types
+*.tsbuildinfo
+
+# Local resumes and submission documents
+*.pdf
+*.docx
+/private-resume-*/
+/public/resumes/*
+!/public/resumes/index.html
+
+# Local Terraform providers, plans, and state
+**/.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan

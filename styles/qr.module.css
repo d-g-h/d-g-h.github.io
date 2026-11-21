@@ -1,0 +1,17 @@
+.page {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  align-content: center;
+  box-sizing: border-box;
+  min-height: 100svh;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.code {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  background: var(--white-color);
+}

@@ -1,0 +1,11 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Description > renders html correctly 1`] = `
+<div>
+  <li
+    class="_description_4001a0"
+  >
+    Job description
+  </li>
+</div>
+`;

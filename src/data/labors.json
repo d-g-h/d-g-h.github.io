@@ -1,0 +1,140 @@
+[
+  {
+    "key": "5",
+    "title": "Senior Product Tech Developer / Freelance Consultant",
+    "location": "Remote",
+    "start": "2012-07",
+    "descriptions": [
+      {
+        "description": "Lead web and mobile product delivery from discovery and UX decisions through production using React, TypeScript, TanStack, Next.js, Node.js, Expo, and React Native."
+      },
+      {
+        "description": "Build and maintain a responsive client portfolio using HTML, CSS, JavaScript, and Pug, including video galleries, embedded media, navigation, and ongoing design and content updates."
+      },
+      {
+        "description": "Develop and maintain custom WordPress themes using PHP, JavaScript, and CSS, with reusable templates, custom post types, responsive layouts, digital magazine archives, and PayPal purchase and donation integrations."
+      },
+      {
+        "description": "Updated a GraphQL resolver and supporting helper to meet backend requirements, and deprecated a legacy endpoint."
+      },
+      {
+        "description": "Deliver healthcare SaaS features and Canvas API integrations; led a zero-downtime platform migration with phased rollout and data validation."
+      },
+      {
+        "description": "Improve reliability with idempotent jobs, batching, and state tracking; fixed duplicate notifications affecting hundreds of users and reduced API traffic by 800+ requests per day with Cloudflare Workers and KV."
+      },
+      {
+        "description": "Built a multimedia publishing platform with browser recording, waveform editing, synchronized text/audio, FFmpeg processing, PostgreSQL, and R2 storage."
+      },
+      {
+        "description": "Integrated Stripe, PayPal, and Stripe Connect with ledger reconciliation, refunds, webhook deduplication, and scoped collaboration permissions."
+      },
+      {
+        "description": "Created logistics tools for route staging, dispatch waves, dock-door tracking, interactive floorplans, drag-and-drop assignments, and QR batches of up to 100 tracking IDs."
+      },
+      {
+        "description": "Provisioned infrastructure with Terraform, Hetzner, and Cloudflare; automated Docker releases with GitHub Actions, Vault, migrations, and health checks."
+      },
+      {
+        "description": "Partner with stakeholders on scope, priorities, feasibility, and delivery risks; build unit and integration coverage for payments, authorization, media processing, and routes."
+      },
+      {
+        "description": "Built a responsive SVG composition editor with SVG and PNG exports."
+      },
+      {
+        "description": "Built a Python web scraper for a bookstore inventory project serving university students."
+      }
+    ]
+  },
+  {
+    "key": "4",
+    "title": "Senior Software Engineer",
+    "location": "New York, NY",
+    "company": "TED",
+    "start": "2022-11",
+    "end": "2023-06",
+    "descriptions": [
+      {
+        "description": "Shipped six customer-facing features across Discovery Topics, Talk, and Member Pages using Next.js, Ruby on Rails, TypeScript, React, Tailwind CSS, GraphQL, and experimentation tooling."
+      },
+      {
+        "description": "Improved release confidence and delivery speed by introducing code coverage tooling, leading focused code reviews, and pairing with engineers, reducing QA cycles and cutting deployment time by 31%."
+      },
+      {
+        "description": "Designed, built, and maintained 10+ accessible, reusable UI components within the TED Design System, supporting consistent product experiences across teams."
+      },
+      {
+        "description": "Drove cross-functional collaboration with frontend, backend, design, and product partners using Agile practices to deliver features with shared ownership."
+      }
+    ]
+  },
+  {
+    "key": "3",
+    "title": "Software Developer",
+    "location": "New York, NY",
+    "company": "Kyndryl",
+    "start": "2021-08",
+    "end": "2022-06",
+    "descriptions": [
+      {
+        "description": "Designed and built an internal ingestion and migration tool to transition content from a legacy non-relational CMS to SharePoint, supporting the migration of 20,000+ enterprise sites."
+      },
+      {
+        "description": "Translated complex migration requirements into structured delivery steps, helping internal stakeholders move legacy content into a unified enterprise platform."
+      },
+      {
+        "description": "Delivered three internal single-page applications and supporting backend services using Vue.js, TypeScript, Node.js, and CouchDB to streamline employee workflows."
+      }
+    ]
+  },
+  {
+    "key": "2",
+    "title": "Software Engineer",
+    "location": "New York, NY",
+    "company": "IBM",
+    "start": "2018-08",
+    "end": "2021-08",
+    "descriptions": [
+      {
+        "description": "Built internal enterprise applications backed by IBM Cloudant (CouchDB), including accessible, data-driven user interfaces and visualizations using Vue.js, D3.js, TypeScript, HTML, and CSS."
+      },
+      {
+        "description": "Unified legacy APIs and Cassandra data through GraphQL services that powered reusable components for forms, dashboards, and profile pages."
+      },
+      {
+        "description": "Strengthened backend service reliability by refactoring Node.js microservices, increasing test coverage by 85% and reducing production regressions."
+      },
+      {
+        "description": "Applied functional programming and test-driven development practices to produce maintainable, predictable code."
+      },
+      {
+        "description": "Delivered iterative product improvements in partnership with product and design teams using Agile methodologies."
+      },
+      {
+        "description": "Supported hiring and onboarding by developing technical assessments and onboarding documentation for new engineers."
+      }
+    ]
+  },
+  {
+    "key": "1",
+    "title": "Software Engineer",
+    "location": "New York, NY",
+    "company": "Infor",
+    "start": "2016-02",
+    "end": "2018-08",
+    "descriptions": [
+      {
+        "description": "Developed four reusable Wagtail CMS components in Python, improving content authoring efficiency for designers."
+      },
+      {
+        "description": "Modernized a legacy jQuery content management system to centralize documentation for the Infor Design System."
+      },
+      {
+        "description": "Designed and demonstrated proof-of-concept prototypes to validate new product ideas and technical approaches."
+      },
+      {
+        "description": "Built a progressive web application using Angular, NgRX, AWS Lambda, AWS Lex, and reactive programming patterns."
+      }
+    ]
+  }
+]
